@@ -1,0 +1,10 @@
+method: ace_context
+repo: external/ace @ 82709de050e1db6e6ef2f07bcb0393560b94992a
+persistent_state: playbook.txt + curator_ops.jsonl + reflector_output.jsonl
+components:
+  reflector: official ace.core.reflector.Reflector (deepseek-flash)
+  curator: official ace.core.curator.Curator (deepseek-flash)
+  playbook_ops: official playbook_utils.apply_curator_operations
+executor: OpenETA (ACE Generator is NOT used; guide section 19.1)
+injection: full playbook while <= 8192 tokens
+logs: playbook_before/after + reflector/curator outputs per update

@@ -1,0 +1,10 @@
+method: embodiskill
+repo: external/EmbodiSkill @ 760126030eab1d33ec6a6f30988f0f1fb58df3a7
+status: BLOCKED
+reason: >
+  Official implementation is ALFWorld/agentkit-specific (StateChain + reflection
+  epoch files owned by the agentkit executor). External OpenETA trajectory
+  injection would require rewriting reflection/update semantics (>200 lines),
+  exceeding the guide's integration limit.
+audit: outputs/preflight/EMBODISKILL_CALL_PATH.md
+note: no pseudo-EmbodiSkill is shipped.

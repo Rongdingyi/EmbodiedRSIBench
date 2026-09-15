@@ -1,0 +1,25 @@
+# secrets
+embodied_rsi/.env
+*.env
+!embodied_rsi/.env.example
+
+# vendored upstream repositories (pins live in manifests/external_sources.json)
+embodied_rsi/external/
+embodied_rsi/external/OpenETA/.venv/
+
+# dataset release symlink / workspace assets
+data
+embodied_rsi/data
+
+# scratch outputs (gate evidence JSON/logs are kept on purpose)
+embodied_rsi/outputs/preflight/smoke_state/
+embodied_rsi/outputs/rsi_smoke/
+embodied_rsi/outputs/pilot150/*/seed_*/rsi_state/
+embodied_rsi/outputs/pilot150/*/seed_*/experience/
+embodied_rsi/outputs/pilot150/*/seed_*/probes/
+embodied_rsi/outputs/pilot150/*/seed_*/artifacts/
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/

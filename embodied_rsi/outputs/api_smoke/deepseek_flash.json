@@ -1,0 +1,63 @@
+{
+  "base_url": "https://api.deepseek.com",
+  "requested_model": "deepseek-flash",
+  "request_time_utc": "2026-09-15T14:15:15Z",
+  "checks": {
+    "text smoke": true,
+    "vision smoke": true,
+    "openeta backend compat smoke": true
+  },
+  "text_smoke": {
+    "requested_model": "deepseek-flash",
+    "returned_model": "deepseek-flash",
+    "content": "DEEPSEEK_FLASH_TEXT_OK",
+    "usage": {
+      "prompt_tokens": 41,
+      "completion_tokens": 28,
+      "total_tokens": 69,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 19
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 41
+    }
+  },
+  "resolved_model": "deepseek-flash",
+  "vision_smoke": {
+    "returned_model": "deepseek-flash",
+    "content": "A white refrigerator is surrounded by white cabinetry, with a counter holding a red appliance and a blue container visible on the left.",
+    "content_source": "content",
+    "usage": {
+      "prompt_tokens": 233,
+      "completion_tokens": 249,
+      "total_tokens": 482,
+      "prompt_tokens_details": {
+        "cached_tokens": 0
+      },
+      "completion_tokens_details": {
+        "reasoning_tokens": 222
+      },
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 233
+    }
+  },
+  "openeta_backend_compat": {
+    "url": "https://api.deepseek.com/v1/chat/completions",
+    "request_model": "deepseek-flash",
+    "no_chat_template_kwargs": true,
+    "image_in_user_message": true,
+    "status": "PipelineStatus.PLANNED",
+    "provider": "openai-compatible",
+    "model": "deepseek-flash",
+    "payload_kind": "str",
+    "payload": "<decision>\n  <kind>tool_call</kind>\n  <name>find</name>\n  <reasoning>The scene image shows a kitchen counter with a blue container and a red toaster, plus a refrigerator; no mug is visible in the current view, so the mug's location is unknown. The task requires finding the mug before picking it up, and no dependency exists on any prior action, so I issue a read-only locate action first and will replan from its sensed result.</reasoning>\n  <parameters>\n    <object>mug</object>\n  </parameters>\n</decision>",
+    "planner_prompt_hash": "6d1882a07bff2ef18b9b1a1be7f46af9cf7252873293f07ed304cafede0a9ed0",
+    "parsed_action_type": "tool_call",
+    "parsed_action": "find",
+    "validation_errors": []
+  },
+  "status": "PASS"
+}

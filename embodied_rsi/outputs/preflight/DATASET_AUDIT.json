@@ -1,0 +1,55 @@
+{
+  "raw_count": 8046,
+  "normalized_count": 8046,
+  "core_count": 2200,
+  "roles": {
+    "experience": 1500,
+    "id_probe": 300,
+    "transfer_probe": 300,
+    "retention_probe": 100
+  },
+  "role_source_matrix": {
+    "TVRBench": {
+      "experience": 1080,
+      "id_probe": 160,
+      "transfer_probe": 140,
+      "retention_probe": 28
+    },
+    "SpatialWorld": {
+      "experience": 220,
+      "id_probe": 70,
+      "transfer_probe": 100,
+      "retention_probe": 20
+    },
+    "AsgardBench": {
+      "experience": 46,
+      "id_probe": 46,
+      "transfer_probe": 0,
+      "retention_probe": 12
+    },
+    "EB-ALFRED": {
+      "experience": 75,
+      "id_probe": 12,
+      "transfer_probe": 30,
+      "retention_probe": 20
+    },
+    "EB-Habitat": {
+      "experience": 79,
+      "id_probe": 12,
+      "transfer_probe": 30,
+      "retention_probe": 20
+    }
+  },
+  "physical_overlap": {
+    "experiencexid_probe": 0,
+    "experiencextransfer_probe": 0,
+    "experiencexretention_probe": 0,
+    "id_probextransfer_probe": 0,
+    "id_probexretention_probe": 0,
+    "transfer_probexretention_probe": 0
+  },
+  "id_pairs": 300,
+  "transfer_pairs": 300,
+  "status": "PASS",
+  "failures": []
+}

@@ -1,0 +1,5 @@
+method: raw_memory
+persistent_state: episodes.jsonl (public trajectory summaries only)
+retrieval: BM25 over instruction text, top_k = 4
+injection: deterministic truncation (per-episode action window 12->0) until <= 8192 tokens
+llm_calls: none (no reflection, no abstraction)

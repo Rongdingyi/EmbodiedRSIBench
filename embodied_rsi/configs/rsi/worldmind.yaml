@@ -1,0 +1,15 @@
+method: worldmind
+repo: external/WorldMind @ 712b0fd53b4bd6a1948603f087a1e9f25a5adaea
+persistent_state: goal_experience/ + process_experience/ (official plugin save_path)
+components:
+  process_experience: official Plugin/worldmind_plugin ProcessExperienceModule
+  goal_experience: official GoalExperienceModule (success episodes only)
+  retrieval: official ExperienceRetrievalModule
+  sidecar: independent deepseek-flash prediction call after the action is locked
+retrieval:
+  goal_experience_top_k: 3
+  process_experience_top_k: 5
+  enable_experience_refine: true
+constraints:
+  sidecar_never_returns_to_planner: true
+  no_private_environment_state: true

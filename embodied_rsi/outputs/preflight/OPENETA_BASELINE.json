@@ -1,0 +1,293 @@
+{
+  "episodes": 25,
+  "infra_errors": 0,
+  "rgb_delivered": 19,
+  "tool_calls": 70,
+  "invalid_action_rate": 0.0,
+  "native_writes_during_run": [],
+  "checks": {
+    "all samples ran": true,
+    "no infrastructure crash": true,
+    "rgb delivered to planner": false,
+    "invalid action rate <= 0.20": true,
+    "native self-improvement writes == 0": true
+  },
+  "status": "FAIL",
+  "results": [
+    {
+      "task": "1cbca28172c230851ba0b3a1",
+      "source": "AsgardBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 73.9,
+      "native_si": false
+    },
+    {
+      "task": "edc2eb518e7ac7546849e161",
+      "source": "AsgardBench",
+      "status": "ok",
+      "error": null,
+      "turns": 3,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 51.8,
+      "native_si": false
+    },
+    {
+      "task": "b66239d48982bbde2f0e0bf4",
+      "source": "AsgardBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 58.8,
+      "native_si": false
+    },
+    {
+      "task": "8a0cd6898dbea9c618a71ef8",
+      "source": "AsgardBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 59.9,
+      "native_si": false
+    },
+    {
+      "task": "0f1774fec3ecb52175c830ab",
+      "source": "AsgardBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 57.2,
+      "native_si": false
+    },
+    {
+      "task": "dbf6026dc5a0706ba3b70a94",
+      "source": "EB-ALFRED",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 81.6,
+      "native_si": false
+    },
+    {
+      "task": "153c85b09e6933cfefef246f",
+      "source": "EB-ALFRED",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 243.4,
+      "native_si": false
+    },
+    {
+      "task": "35fbbf440b5a9c6b40e12442",
+      "source": "EB-ALFRED",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 74.3,
+      "native_si": false
+    },
+    {
+      "task": "1e934d9bd5ab9971c3111bb2",
+      "source": "EB-ALFRED",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 93.5,
+      "native_si": false
+    },
+    {
+      "task": "eb43fe190990073d2fd2eaae",
+      "source": "EB-ALFRED",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 124.6,
+      "native_si": false
+    },
+    {
+      "task": "eb695671f276599e3dc10102",
+      "source": "EB-Habitat",
+      "status": "error",
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 17 is episode 31, expected 115",
+      "turns": 0,
+      "success": null,
+      "images_in_planner_request": false,
+      "wall_s": 58.1,
+      "native_si": false
+    },
+    {
+      "task": "d72d737eefa6680b861aa6a7",
+      "source": "EB-Habitat",
+      "status": "error",
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 13 is episode 41, expected 35",
+      "turns": 0,
+      "success": null,
+      "images_in_planner_request": false,
+      "wall_s": 44.5,
+      "native_si": false
+    },
+    {
+      "task": "01a92278ebb7781633d0ba1e",
+      "source": "EB-Habitat",
+      "status": "error",
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 3 is episode 36, expected 130",
+      "turns": 0,
+      "success": null,
+      "images_in_planner_request": false,
+      "wall_s": 42.5,
+      "native_si": false
+    },
+    {
+      "task": "85ffc7b1bbe41b0d55d8d060",
+      "source": "EB-Habitat",
+      "status": "error",
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 37 is episode 5, expected 99",
+      "turns": 0,
+      "success": null,
+      "images_in_planner_request": false,
+      "wall_s": 60.8,
+      "native_si": false
+    },
+    {
+      "task": "27029c6e47c3b1127484ca3b",
+      "source": "EB-Habitat",
+      "status": "error",
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 44 is episode 25, expected 60",
+      "turns": 0,
+      "success": null,
+      "images_in_planner_request": false,
+      "wall_s": 65.1,
+      "native_si": false
+    },
+    {
+      "task": "7db7f20010e0e167de136595",
+      "source": "SpatialWorld",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 53.1,
+      "native_si": false
+    },
+    {
+      "task": "3c7313502fdfcc3e2a908176",
+      "source": "SpatialWorld",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 83.8,
+      "native_si": false
+    },
+    {
+      "task": "dd1c40207c32f639e8211b07",
+      "source": "SpatialWorld",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 87.6,
+      "native_si": false
+    },
+    {
+      "task": "01c9217502f0569d7a0fbba1",
+      "source": "SpatialWorld",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 95.9,
+      "native_si": false
+    },
+    {
+      "task": "46ab4e8d921f56749d222e1e",
+      "source": "SpatialWorld",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 56.6,
+      "native_si": false
+    },
+    {
+      "task": "747a4771599fba71b5bc2b42",
+      "source": "TVRBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 291.0,
+      "native_si": false
+    },
+    {
+      "task": "4b32f0207b81426faa763b94",
+      "source": "TVRBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 185.7,
+      "native_si": false
+    },
+    {
+      "task": "1e86a9bb01fe821c33bea56d",
+      "source": "TVRBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 209.7,
+      "native_si": false
+    },
+    {
+      "task": "cd72e0b10b4826ee7e4a9e29",
+      "source": "TVRBench",
+      "status": "ok",
+      "error": null,
+      "turns": 4,
+      "success": false,
+      "images_in_planner_request": true,
+      "wall_s": 146.1,
+      "native_si": false
+    },
+    {
+      "task": "3251656a4e5acbaf5107f1e2",
+      "source": "TVRBench",
+      "status": "error",
+      "error": "WorkerError: reset failed: TimeoutError: Reading from AI2-THOR backend timed out (using 100.0s) timeout.",
+      "turns": 0,
+      "success": null,
+      "images_in_planner_request": false,
+      "wall_s": 125.6,
+      "native_si": false
+    }
+  ]
+}

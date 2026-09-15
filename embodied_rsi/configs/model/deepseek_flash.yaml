@@ -1,0 +1,17 @@
+# DeepSeek official API - `deepseek-flash` (DeepSeek-V4.1-Flash, rolling alias).
+# Used for the OpenETA planner and ALL RSI updater roles (Primary Self-Evolution Track).
+provider: openai_compatible
+base_url_env: DEEPSEEK_BASE_URL
+api_key_env: DEEPSEEK_API_KEY
+model: deepseek-flash
+vision: true
+# IMPORTANT: pinned OpenETA emits Qwen-style chat_template_kwargs whenever
+# enable_thinking is not None. DeepSeek official API must NOT receive it.
+# Keep this null so the pinned backend sends no chat_template_kwargs and
+# DeepSeek uses its default thinking mode.
+enable_thinking: null
+temperature: 0.0   # ignored by DeepSeek while thinking is enabled; kept for schema parity
+top_p: 1.0
+max_output_tokens: 8192
+request_timeout_s: 180
+max_retries: 3

@@ -1,0 +1,916 @@
+{
+  "tasks_total": 100,
+  "crashes": 16,
+  "crash_rate": 0.16,
+  "leakage_hits": [],
+  "status": "FAIL",
+  "per_source": {
+    "AsgardBench": 20,
+    "EB-ALFRED": 20,
+    "EB-Habitat": 20,
+    "SpatialWorld": 20,
+    "TVRBench": 20
+  },
+  "results": [
+    {
+      "source": "AsgardBench",
+      "task": "b42423a1423a8532cc5c2235",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "d1b904401a94bda3829e2b84",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "fd0e6974c09a6ff3755ea912",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "edc2eb518e7ac7546849e161",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "417a3cc243d7b1cfbe53d915",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "62f68eac1931273ebc1a4a66",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "b66239d48982bbde2f0e0bf4",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "388ba754b7b6281ffed15455",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "5925c7aa1a0b26dc65383d09",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "e5c5b2450b5c91558b0200cf",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "cdeec2e34103c97ce9a9eafb",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "3453ddb3cc6b8adbc5992f8b",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "5d67e44b0de99442f03bdde9",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "1588ad6091675e76e10de412",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "160ffd276d84b6458ac67f45",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "b790196f87b5e0da5e7b0324",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "e3796be162a64df3be2582a4",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "899099a6c1b32b10550cf992",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "5819c41e2f779ccbe9b3df01",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "AsgardBench",
+      "task": "59f3087d932810b196c3381b",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "dc3526aaf4a7a3f1e8bba58f",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "195789464b011bc2625d5bcf",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "15b57f8549a90cbfc2ffee15",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "52ad713a5902ae3118b082cb",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "aa4a178965825fc0d7d305f8",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "eb43fe190990073d2fd2eaae",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "d1b4f6b3a7b2df6baeefc244",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "d3cc163a32ead595d091085b",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "eebb0a0e71e89f09ba2b49a1",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "88d0aa1ebf8ab511bbdb4a2d",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "74890515d1ee8d6f3d85f74f",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "9373c9de5373322868ac8281",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "e5603a52a48ebf7995657860",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "6ad599a592dcee129046189b",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "bfa9625c32712284c91d7c73",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "1ee49b1e2d1c5198476e7bcc",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "b8b34a83d7184e51097ed16c",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "1e934d9bd5ab9971c3111bb2",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "e105083f4a08435e3241535b",
+      "role": "retention",
+      "status": "ok",
+      "steps": 1,
+      "action_success": false,
+      "private_success": false
+    },
+    {
+      "source": "EB-ALFRED",
+      "task": "59a70c9eae8f621557ba3d8d",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "bc60c2b8db6e9f2f450c0cd6",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "125eb1e8949268ef8b6e5c8f",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": true
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "039ba990885295b33a44ffdf",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: worker closed stdout on reset: ",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 76, in call\n    raise WorkerError(f\"worker closed stdout on {op}: {self._drain_stderr()[:500]}\")\nbenchmark.adapters.worker_protocol.WorkerError: worker closed stdout on reset: \n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "10e1964b56abda2568bc63d4",
+      "role": "retention",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 41 is episode 32, expected 74",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 41 is episode 32, expected 74\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "866991ed0feff64a9ad1c319",
+      "role": "transfer",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 29 is episode 26, expected 37",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 29 is episode 26, expected 37\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "d6b4b12ee63fb4dc595c392f",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 14 is episode 2, expected 113",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 14 is episode 2, expected 113\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "ae32f926a9f5a536d5e9f28e",
+      "role": "retention",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 43 is episode 22, expected 23",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 43 is episode 22, expected 23\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "7c0a676ee8522925f7e0c11e",
+      "role": "transfer",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 42 is episode 27, expected 6",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 42 is episode 27, expected 6\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "9bd12d8c62ec2f901ab7b675",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 25 is episode 4, expected 192",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 25 is episode 4, expected 192\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "58af1172df8ba70c5ee9441d",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 1 is episode 30, expected 49",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 1 is episode 30, expected 49\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "da675b21347eeac50c7a419f",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "fa258150de1e955282ad0319",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "c02608d638cc4ceed6f45976",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: worker closed stdout on reset: ",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 76, in call\n    raise WorkerError(f\"worker closed stdout on {op}: {self._drain_stderr()[:500]}\")\nbenchmark.adapters.worker_protocol.WorkerError: worker closed stdout on reset: \n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "47a6fff9fca47f179cf0a41a",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 34 is episode 3, expected 36",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 34 is episode 3, expected 36\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "344ca642c1c92a6900775613",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 4 is episode 38, expected 78",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 4 is episode 38, expected 78\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "98f20b0f20d6e50c1f81fa87",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 40 is episode 7, expected 87",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 40 is episode 7, expected 87\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "b6197c40630cdc115b2891c6",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 6 is episode 43, expected 22",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 6 is episode 43, expected 22\n"
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "9b469ab2d41657b056ba2d81",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "8e7bd7f2b54a63b7499436ae",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "EB-Habitat",
+      "task": "488aa137f774d782e4f55f56",
+      "role": "id",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 22 is episode 23, expected 172",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: RuntimeError: EB-Habitat episode mismatch: dataset index 22 is episode 23, expected 172\n"
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "66b340096e6c35bc846037bf",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "3d809c72c646922267357045",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "458388fb413450ac72884dea",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "27235167d97b33fdbf65ef41",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "ffd6a9501c4c1c5eba910fff",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": true
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "5692df37e35897c9ebe0582f",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "5132bf329da32581dfc68aa7",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "4546218ea97c751f299e7630",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "7b93ebd463ce4cf1b1e5ed61",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "b2a949a567d0cf48440b2d78",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "1019ac774088fcbf53af5011",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "fbbf53e72dbe97c83d5e8b51",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "f2fe3291361b843c5a7e3e46",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "438cfc57acea2b51788dafde",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "e3ac85065e51f190c1ea8999",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "c989644e635dd8d9f6b028e7",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "666861a5e7a646a668917ce7",
+      "role": "id",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "ce0316f121e633329dd88fa5",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "8901c7d48b4d1bd6f22c78a9",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "SpatialWorld",
+      "task": "b8404efec942b7210a3843be",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "c6238a7691c9cf4c653377d9",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "d19bc703f0beb48d9a11c36c",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "4bd630ab311033cf4d1180d6",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "0c0b24a9e98c98329936fe58",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "38fc76758d99327c61dc9c93",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: worker timed out after 300s on reset",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 73, in call\n    raise WorkerError(\n        f\"worker timed out after {timeout_s or self.timeout_s:.0f}s on {op}\") from None\nbenchmark.adapters.worker_protocol.WorkerError: worker timed out after 300s on reset\n"
+    },
+    {
+      "source": "TVRBench",
+      "task": "ac5c1ee899f64f71dc0b4ad4",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "7de82c72773069abd3357671",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "4e8913374ca8e3258639aafe",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "2743290fd62026183d0c5fc6",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "77c8c332add7c0c4341ffde7",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "5f82d5fb7bb5cb2b6a687a53",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "857e7a4ebeaf085b63035756",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "95a6217e5e2445f690e04683",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "12b2e8955168330cf9b9d73b",
+      "role": "transfer",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "811dbbf9866e416b0f2184c3",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "d93e056149157044407fcefa",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "227bab9cc6462d2a4d2bf8ec",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "9822be1760421e2be61289c6",
+      "role": "experience",
+      "status": "crash",
+      "steps": 0,
+      "error": "WorkerError: reset failed: TimeoutError: Reading from AI2-THOR backend timed out (using 100.0s) timeout.",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/scripts/04_validate_adapters.py\", line 91, in main\n    obs = adapter.reset(rec)\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/__init__.py\", line 70, in reset\n    result = self.worker.reset(self._task_record_for_worker(task_record))\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 103, in reset\n    return self.call(\"reset\", task_record=task_record)\n           ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/benchmark/adapters/worker_protocol.py\", line 81, in call\n    raise WorkerError(f\"{op} failed: {resp.get('error')}\")\nbenchmark.adapters.worker_protocol.WorkerError: reset failed: TimeoutError: Reading from AI2-THOR backend timed out (using 100.0s) timeout.\n"
+    },
+    {
+      "source": "TVRBench",
+      "task": "182746b59f74dc02602fd407",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    },
+    {
+      "source": "TVRBench",
+      "task": "ad4b1da00df4ab67680da11f",
+      "role": "experience",
+      "status": "ok",
+      "steps": 1,
+      "action_success": true,
+      "private_success": false
+    }
+  ]
+}

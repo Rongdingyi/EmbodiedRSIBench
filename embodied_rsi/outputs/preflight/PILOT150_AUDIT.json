@@ -1,0 +1,44 @@
+{
+  "counts": {
+    "experience": 75,
+    "id": 25,
+    "transfer": 30,
+    "retention": 20
+  },
+  "physical_overlap": {
+    "experiencexid": 0,
+    "experiencextransfer": 0,
+    "experiencexretention": 0,
+    "idxtransfer": 0,
+    "idxretention": 0,
+    "transferxretention": 0
+  },
+  "id_by_source": {
+    "TVRBench": 13,
+    "SpatialWorld": 6,
+    "AsgardBench": 4,
+    "EB-ALFRED": 1,
+    "EB-Habitat": 1
+  },
+  "transfer_by_source": {
+    "TVRBench": 10,
+    "SpatialWorld": 10,
+    "EB-ALFRED": 5,
+    "EB-Habitat": 5
+  },
+  "retention_by_source": {
+    "AsgardBench": 2,
+    "EB-ALFRED": 4,
+    "EB-Habitat": 4,
+    "SpatialWorld": 4,
+    "TVRBench": 6
+  },
+  "experience_by_source": {
+    "TVRBench": 37,
+    "SpatialWorld": 15,
+    "AsgardBench": 5,
+    "EB-ALFRED": 10,
+    "EB-Habitat": 8
+  },
+  "status": "PASS"
+}

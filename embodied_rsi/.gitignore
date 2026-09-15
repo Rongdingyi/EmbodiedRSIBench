@@ -1,0 +1,11 @@
+# secrets
+.env
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# scratch/state outputs (gate evidence JSON/logs ARE committed on purpose)
+outputs/preflight/smoke_state/
+outputs/rsi_smoke/
