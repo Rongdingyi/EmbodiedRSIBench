@@ -143,8 +143,7 @@ class RawMemoryRSI(RSIMethod):
         output_dir.mkdir(parents=True, exist_ok=True)
         self.copy_tree(self._episodes_file().parent, output_dir)
 
-    def load_snapshot(self, input_dir: Path) -> None:
-        self.state_dir = Path(input_dir)
+    def _reload_state(self) -> None:
         self._load()
 
     def state_hash(self) -> str:

@@ -71,15 +71,15 @@ external/OpenETA/.venv/bin/python scripts/09_analyze_pilot.py
 python scripts/10_audit_release.py
 ```
 
-## Current status (2026-09-15)
+## Current status (v0.4, 2026-09-15)
 
-- G0/G1/G2 **PASS** (dataset audit, OpenETA freeze + native-SI disabled,
-  DeepSeek text/vision/backend smoke with `chat_template_kwargs` audit).
-- G3 **FAIL** — adapter crash rate 16% (EB-Habitat 14 + transient TVR 2);
-  leakage 0. Root cause + fix plan: `BLOCKERS.md` B3.
-- G4 **FAIL** — RGB delivery 19/25 (threshold 90%), misses dominated by B3.
-- C4 `embodiskill` **BLOCKED** (B1, official audit in `outputs/preflight/`).
-- Pilot-150 has **not run yet** (blocked behind G3/G4 by design).
+- G0/G1/G2 **PASS**.
+- Episode loop now runs on the pinned **upstream `OpenEtaEpisodeRunner`**
+  (environment protocol implementation in `benchmark/openeta_bridge/`), verified
+  on a real TVR episode (PASS, upstream budgets/receipts, leakage 0).
+- G3/G4/G5 must be **re-run** with the refactored stack (previous failures
+  predate the fixes); see `../PROBLEMS.md` and `BLOCKERS.md` B3.
+- C4 `embodiskill`: thin adapter implemented, **POC_READY_UNVERIFIED** (B1).
+- Pilot-150 manifest rebuilt and balanced (TVR 23 / others 13); not yet run.
 
-See `../PROBLEMS.md` for the consolidated write-up and `CURRENT_STATE.md` for
-evidence paths.
+See `../PROBLEMS.md` (problems/next actions) and `CURRENT_STATE.md` (evidence).

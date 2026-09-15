@@ -49,6 +49,7 @@ class TVRWorker(Worker):
         self.trajectory: list[dict] = []
         self.stopped = False
         self.steps = 0
+        self.target_frame_b64: str | None = None
 
     def actions(self) -> list[dict]:
         return [{
@@ -85,11 +86,12 @@ class TVRWorker(Worker):
         self.env.reset(position=start["position"], rotation_y=start["rotation_y"],
                        horizon=start["horizon"])
         self.trajectory = [self.env.get_state()]
+        self.target_frame_b64 = encode_frame(target_frame)
 
         return {
             "instruction": task_record.get("instruction") or
                            "Reproduce the target viewpoint: match the target image's position and camera angle.",
-            "images": [encode_frame(start_frame), encode_frame(target_frame)],
+            "images": [encode_frame(start_frame), self.target_frame_b64],
             "image_roles": ["current_view", "target_view"],
             "text_feedback": "Episode started. Move and look to match the target image, then Stop.",
             "public_metadata": {"action_space": ACTION_NAMES},
@@ -111,8 +113,8 @@ class TVRWorker(Worker):
             "observation": {
                 "instruction": self.task.get("instruction") or
                                "Reproduce the target viewpoint: match the target image's position and camera angle.",
-                "images": [encode_frame(frame)],
-                "image_roles": ["current_view"],
+                "images": [encode_frame(frame)] + ([self.target_frame_b64] if self.target_frame_b64 else []),
+                "image_roles": ["current_view"] + (["target_view"] if self.target_frame_b64 else []),
                 "text_feedback": f"{action} -> {'ok' if success else 'blocked'}",
                 "public_metadata": {"action_space": ACTION_NAMES},
             },

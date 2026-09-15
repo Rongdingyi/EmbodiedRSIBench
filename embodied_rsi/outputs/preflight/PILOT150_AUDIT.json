@@ -34,11 +34,11 @@
     "TVRBench": 6
   },
   "experience_by_source": {
-    "TVRBench": 37,
-    "SpatialWorld": 15,
-    "AsgardBench": 5,
-    "EB-ALFRED": 10,
-    "EB-Habitat": 8
+    "TVRBench": 23,
+    "SpatialWorld": 13,
+    "AsgardBench": 13,
+    "EB-ALFRED": 13,
+    "EB-Habitat": 13
   },
   "status": "PASS"
 }

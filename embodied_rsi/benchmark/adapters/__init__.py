@@ -97,11 +97,14 @@ class SubprocessAdapter(BenchmarkEnvAdapter):
     @staticmethod
     def _public(payload: dict) -> PublicObservation:
         images = [decode_png_b64(b64) for b64 in payload.get("images") or []]
+        metadata = dict(payload.get("public_metadata") or {})
+        if payload.get("image_roles"):
+            metadata["image_roles"] = list(payload["image_roles"])
         return PublicObservation(
             instruction=payload.get("instruction", ""),
             images=images,
             text_feedback=payload.get("text_feedback", ""),
-            public_metadata=payload.get("public_metadata") or {},
+            public_metadata=metadata,
         )
 
 

@@ -21,6 +21,7 @@ sys.path.insert(0, str(PROJECT))
 
 from benchmark.adapters import make_adapter  # noqa: E402
 from benchmark.registry.loader import load_role  # noqa: E402
+from benchmark.runner import gates  # noqa: E402
 
 OUT = PROJECT / "outputs" / "preflight"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -77,16 +78,18 @@ def main() -> int:
     leakage_hits: list[str] = []
     crashes = 0
     total = 0
+    schema_failures = 0
 
     for source, records in sorted(records_by_source.items()):
         records = sorted(records, key=lambda r: rank(r["global_task_id"]))
         # spread across roles: take a deterministic mix
         sample = records[:SAMPLES_PER_SOURCE]
-        adapter = make_adapter(source)
         for rec in sample:
             total += 1
             entry = {"source": source, "task": rec["global_task_id"],
                      "role": rec["role"], "status": "ok", "steps": 0}
+            # fresh worker per task (P2): no cross-task simulator/controller reuse
+            adapter = make_adapter(source)
             try:
                 try:
                     obs = adapter.reset(rec)
@@ -102,7 +105,10 @@ def main() -> int:
                 scan_leakage(obs.public_metadata, f"{source}:reset", leakage_hits)
 
                 tools = adapter.build_tool_specs(rec)
-                assert tools, "no tools"
+                if not tools:
+                    schema_failures += 1
+                    raise AssertionError("tool schema empty after reset")
+                entry["tool_count"] = len(tools)
                 name, params = one_legal_action(source, tools)
                 out = adapter.step(name, params)
                 assert out.observation.images, "step returned no RGB"
@@ -118,25 +124,28 @@ def main() -> int:
                 entry["status"] = "crash"
                 entry["error"] = f"{type(exc).__name__}: {exc}"
                 entry["traceback"] = traceback.format_exc()[-1500:]
+            finally:
                 try:
                     adapter.close()
                 except Exception:
                     pass
-                adapter = make_adapter(source)
             results.append(entry)
-        try:
-            adapter.close()
-        except Exception:
-            pass
         print(f"[{source}] done: {sum(1 for r in results if r['source'] == source)} tasks")
 
     crash_rate = crashes / max(total, 1)
-    status = "PASS" if crash_rate <= 0.02 and not leakage_hits else "FAIL"
+    checks = {
+        "crash rate <= 2%": crash_rate <= 0.02,
+        "no private leakage": not leakage_hits,
+        "non-empty tool schema for every task": schema_failures == 0,
+    }
+    status = gates.PASS if all(checks.values()) else gates.FAIL
     report = {
         "tasks_total": total,
         "crashes": crashes,
         "crash_rate": round(crash_rate, 4),
+        "schema_failures": schema_failures,
         "leakage_hits": leakage_hits,
+        "checks": checks,
         "status": status,
         "per_source": {s: sum(1 for r in results if r["source"] == s)
                        for s in sorted(records_by_source)},
@@ -144,8 +153,9 @@ def main() -> int:
     }
     (OUT / "ADAPTER_VALIDATION.json").write_text(json.dumps(report, indent=2) + "\n")
     print(f"\nG3 ADAPTER GATE: {status}  (total={total} crashes={crashes} "
-          f"crash_rate={crash_rate:.3f} leakage={len(leakage_hits)})")
-    return 0 if status == "PASS" else 1
+          f"crash_rate={crash_rate:.3f} schema_failures={schema_failures} "
+          f"leakage={len(leakage_hits)})")
+    return 0 if status == gates.PASS else 1
 
 
 if __name__ == "__main__":

@@ -28,6 +28,7 @@ MANIFESTS.mkdir(parents=True, exist_ok=True)
 
 SEED = "20260915"
 ID_COUNT, TRANSFER_COUNT, RETENTION_COUNT, EXPERIENCE_COUNT = 25, 30, 20, 75
+TARGET_EXPERIENCE_PER_SOURCE = 15
 TRANSFER_QUOTA = {"TVRBench": 10, "SpatialWorld": 10, "EB-ALFRED": 5, "EB-Habitat": 5}
 
 
@@ -86,7 +87,9 @@ def main() -> int:
                       key=lambda r: rank("retention", r["global_task_id"]))
         chosen_retention.extend(rows[:n])
 
-    # ---- Experience: pair anchors + retention anchors' experience partners + fill
+    # ---- Experience: mandatory pair anchors first, then deficit filling
+    # (review amendment: retention anchors are NOT paired with a synthetic
+    # experience anchor; they are fixed held-out tasks re-measured per checkpoint)
     chosen_experience_ids: list[str] = []
     seen = set()
 
@@ -95,43 +98,33 @@ def main() -> int:
             seen.add(global_id)
             chosen_experience_ids.append(global_id)
 
-    def anchor_of(probe_global_id: str) -> str | None:
-        for pair in id_pairs + transfer_pairs:
-            if pair["probe_task_id"] == probe_global_id:
-                return pair["experience_task_id"]
-        return None
-
     for pair in chosen_id_pairs + chosen_transfer_pairs:
         add_experience(pair["experience_task_id"])
 
-    # retention anchors: add one Experience anchor from the same source+skill family
-    exp_by_source_skill = defaultdict(list)
-    for rec in experience.values():
-        exp_by_source_skill[(rec["source_dataset"], rec["skill_family_primary"])].append(rec)
-    for rec in chosen_retention:
-        key = (rec["source_dataset"], rec["skill_family_primary"])
-        options = sorted(exp_by_source_skill.get(key, []),
-                         key=lambda r: rank("retention_exp", r["global_task_id"]))
-        if options:
-            add_experience(options[0]["global_task_id"])
-
-    # deterministic fill with source coverage targets (~15/source)
-    per_source_target = largest_remainder(
-        {s: len([r for r in experience.values() if r["source_dataset"] == s])
-         for s in {r["source_dataset"] for r in experience.values()}}, EXPERIENCE_COUNT)
+    # deficit filling: repeatedly add to the most-deficient source until the cap
     pool = sorted(experience.values(), key=lambda r: rank("experience", r["global_task_id"]))
-    have = Counter(experience[g]["source_dataset"] for g in chosen_experience_ids if g in experience)
-    for source, target in sorted(per_source_target.items()):
-        while have[source] < target and len(chosen_experience_ids) < EXPERIENCE_COUNT:
-            for rec in pool:
-                if rec["source_dataset"] != source or rec["global_task_id"] in seen:
-                    continue
-                add_experience(rec["global_task_id"])
-                have[source] += 1
-                break
-            else:
-                break
-    for rec in pool:
+    have = Counter(experience[g]["source_dataset"] for g in chosen_experience_ids
+                   if g in experience)
+    sources = sorted({r["source_dataset"] for r in experience.values()})
+    target = {src: TARGET_EXPERIENCE_PER_SOURCE for src in sources}
+    exhausted: set[str] = set()
+    while len(chosen_experience_ids) < EXPERIENCE_COUNT:
+        deficits = {src: target[src] - have[src] for src in sources if src not in exhausted}
+        positive = [src for src, d in deficits.items() if d > 0]
+        if not positive:
+            break
+        src = max(positive, key=lambda s: (deficits[s], s))
+        added = False
+        for rec in pool:
+            if rec["source_dataset"] != src or rec["global_task_id"] in seen:
+                continue
+            add_experience(rec["global_task_id"])
+            have[src] += 1
+            added = True
+            break
+        if not added:
+            exhausted.add(src)
+    for rec in pool:                      # final top-up with any remaining experience
         if len(chosen_experience_ids) >= EXPERIENCE_COUNT:
             break
         add_experience(rec["global_task_id"])

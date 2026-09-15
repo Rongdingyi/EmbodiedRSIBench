@@ -32,6 +32,8 @@ def _slug(text: str) -> str:
 class EBHabitatWorker(Worker):
     source = "eb_habitat"
 
+    schema_hash: int = 0
+
     def __init__(self) -> None:
         self.env = None
         self.task = None
@@ -41,6 +43,10 @@ class EBHabitatWorker(Worker):
         self._last_info: dict = {}
 
     def actions(self) -> list[dict]:
+        if not self.actions_text:
+            raise RuntimeError(
+                "EB-Habitat action schema is not available yet: the worker must "
+                "reset() an episode before exposing tools")
         tools = []
         self._tool_to_text = {}
         for i, text in enumerate(self.actions_text):
@@ -101,6 +107,11 @@ class EBHabitatWorker(Worker):
                 f"EB-Habitat episode mismatch after reset: got {actual}, "
                 f"expected {expected_episode_id}")
         self.actions_text = list(self.env.language_skill_set)
+        if len(self.actions_text) != 70:
+            raise RuntimeError(
+                f"EB-Habitat canonical skill schema drift: expected 70 skills, "
+                f"got {len(self.actions_text)}")
+        self.schema_hash = hash(tuple(self.actions_text)) & 0xFFFFFFFF
         self._last_info = {}
         return self._observation(obs, None)
 

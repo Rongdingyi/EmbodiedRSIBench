@@ -10,6 +10,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import time
 from pathlib import Path
 
 from benchmark.openeta_bridge.context_injection import RSIInjection, count_tokens, make_injection
@@ -24,6 +25,22 @@ BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
 MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 TOKEN_BUDGET = 8192
 MAX_PLAYBOOK_TOKENS = 8192
+
+def _usage_from_infos(infos: list) -> dict:
+    """Sum prompt/completion tokens reported by ACE's timed_llm_call info dicts."""
+    prompt = completion = 0
+    calls = 0
+    for info in infos:
+        if not isinstance(info, dict):
+            continue
+        usage = info.get("usage") if isinstance(info.get("usage"), dict) else info
+        if not isinstance(usage, dict):
+            continue
+        prompt += int(usage.get("prompt_tokens") or usage.get("input_tokens") or 0)
+        completion += int(usage.get("completion_tokens") or usage.get("output_tokens") or 0)
+        calls += 1
+    return {"prompt_tokens": prompt, "completion_tokens": completion, "calls": calls}
+
 
 EMPTY_PLAYBOOK = """## STRATEGIES & INSIGHTS
 
@@ -113,6 +130,7 @@ class AceContextRSI(RSIMethod):
         curator = Curator(client, "openai", MODEL)
 
         bullets_used = self.playbook
+        t0 = time.time()
         reflection, bullet_tags, reflect_info = reflector.reflect(
             question=question,
             reasoning_trace=reasoning_trace,
@@ -139,6 +157,8 @@ class AceContextRSI(RSIMethod):
             log_dir=str(paths["log_dir"]),
             next_global_id=next_id,
         )
+        self.last_update_wall_s = time.time() - t0
+        self.last_update_usage = _usage_from_infos([reflect_info, curate_info])
         updated = new_playbook
         if not updated or updated == self.playbook:
             try:
@@ -170,10 +190,11 @@ class AceContextRSI(RSIMethod):
     def snapshot(self, output_dir: Path) -> None:
         self.copy_tree(self.state_dir, output_dir)
 
-    def load_snapshot(self, input_dir: Path) -> None:
-        self.state_dir = Path(input_dir)
+    def _reload_state(self) -> None:
+        assert self.state_dir is not None
         pb = self.state_dir / "playbook.txt"
         self.playbook = pb.read_text() if pb.exists() else EMPTY_PLAYBOOK
+        (self.state_dir / "llm_logs").mkdir(parents=True, exist_ok=True)
 
     def state_hash(self) -> str:
         assert self.state_dir is not None

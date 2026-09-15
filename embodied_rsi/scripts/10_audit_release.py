@@ -10,6 +10,8 @@ import sys
 from pathlib import Path
 
 PROJECT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PROJECT))
+from benchmark.runner import gates  # noqa: E402
 OUT = PROJECT / "outputs" / "preflight"
 PILOT = PROJECT / "outputs" / "pilot150"
 
@@ -61,28 +63,52 @@ def main() -> int:
         check("rsi smoke gate PASS", rsi_smoke.get("status") == "PASS",
               str(rsi_smoke.get("status")))
 
-    # pilot completion
-    completed = []
+    # pilot completion, two-level status (review amendment)
+    method_status: dict[str, str] = {}
     probe_mutations = 0
+    snapshot_failures = 0
+    infra_crashes = 0
+    leakage_violations = 0
+    total_episodes = 0
     if PILOT.exists():
         for method_dir in PILOT.iterdir():
             if not method_dir.is_dir():
                 continue
             for seed_dir in method_dir.glob("seed_*"):
                 metrics_file = seed_dir / "metrics.json"
-                status_file = seed_dir / "FINAL_STATUS.txt"
-                if metrics_file.exists() and status_file.exists():
-                    metrics = json.loads(metrics_file.read_text())
-                    if metrics.get("probe_state_unchanged") is False:
-                        probe_mutations += 1
-                    completed.append(method_dir.name)
+                if not metrics_file.exists():
+                    continue
+                metrics = json.loads(metrics_file.read_text())
+                method_status[method_dir.name] = metrics.get("status", gates.FAIL)
+                if metrics.get("probe_state_unchanged") is False:
+                    probe_mutations += 1
+                if metrics.get("probe_state_unchanged") is None:
+                    snapshot_failures += 1
+                infra_crashes += int(metrics.get("infra_errors") or 0)
+                leakage_violations += int(metrics.get("leakage_violations") or 0)
+                total_episodes += int(metrics.get("experience") or 0)
     check("probe mutation count == 0", probe_mutations == 0, str(probe_mutations))
+    check("snapshot reload failures == 0", snapshot_failures == 0, str(snapshot_failures))
+    check("private leakage violations == 0", leakage_violations == 0, str(leakage_violations))
+
     primary = {"none", "raw_memory", "ace_context", "worldmind"}
-    missing = sorted(primary - set(completed))
+    completed = set(method_status)
+    missing = sorted(primary - completed)
     check("all primary conditions completed", not missing, f"missing: {missing}")
 
-    status = "PASS" if not FAILS else "FAIL"
-    lines = [f"FINAL_STATUS: {status}"]
+    # blocked methods must be declared as BLOCKED (never silently PASS)
+    embodiskill_status = method_status.get("embodiskill", gates.BLOCKED)
+    check("embodiskill recorded as BLOCKED (not PASS)", embodiskill_status == gates.BLOCKED,
+          embodiskill_status)
+
+    infra_rate = infra_crashes / max(total_episodes, 1)
+    check("infrastructure crash rate < 2%", infra_rate < 0.02,
+          f"{infra_crashes}/{total_episodes}")
+
+    status = gates.FAIL if FAILS else gates.release_status(
+        {**method_status, "embodiskill": embodiskill_status})
+    lines = [f"FINAL_STATUS: {status}",
+             f"METHOD_STATUS: {json.dumps(method_status, sort_keys=True)}"]
     if FAILS:
         lines += [f"- {f}" for f in FAILS]
     (PROJECT / "outputs" / "FINAL_STATUS.txt").write_text("\n".join(lines) + "\n")

@@ -1,10 +1,21 @@
-"""Canonical episode runner (guide section 28) + trajectory export."""
+"""Canonical episode runner (P0-1): upstream OpenETA loop + benchmark environment.
+
+Flow (guide section 28 + review amendment):
+
+    RSI.before_episode -> fresh OpenETA runtime
+      -> upstream OpenEtaEpisodeRunner
+         -> BenchmarkEpisodeEnvironment -> simulator worker
+      -> private evaluator -> RSI.after_episode (experience only)
+
+The runner is the pinned upstream `OpenEtaEpisodeRunner`; this module only wires
+it, records the public trajectory, runs the private evaluator and closes the
+episode. Nothing here re-implements completion/tool-budget/token-budget/timeout
+semantics.
+"""
 from __future__ import annotations
 
 import json
-import os
 import sys
-import tempfile
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -15,57 +26,25 @@ for _p in (str(PROJECT), str(OPENETA)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
-from adapter.protocol import CameraFrame, EnvObservation, RobotState  # noqa: E402
-
 from benchmark.adapters.base import BenchmarkEnvAdapter  # noqa: E402
-from benchmark.openeta_bridge.build_runtime import build_runtime, runtime_descriptor  # noqa: E402
-from benchmark.openeta_bridge.context_injection import RSIInjection, log_injection, make_injection  # noqa: E402
+from benchmark.openeta_bridge.benchmark_environment import (  # noqa: E402
+    BenchmarkEpisodeEnvironment,
+)
+from benchmark.openeta_bridge.context_injection import (  # noqa: E402
+    RSIInjection,
+    log_injection,
+    make_injection,
+)
+from benchmark.runner.accounting import Accountant  # noqa: E402
 
-MAX_TURNS_DEFAULT = 30
-
-
-ROLE_MAP = {"current_view": "scene_primary", "target_view": "scene_secondary"}
-
-
-def to_env_observation(public, *, step_idx: int, artifact_dir: Path | None = None) -> EnvObservation:
-    """Build an upstream EnvObservation and materialise RGB frames as artifacts.
-
-    The pinned planner only forwards images to the backend through
-    `metadata["image_artifacts"]` paths, so every camera frame is written to
-    disk here and declared with kind/frame_id/role/width/height.
-    """
-    from PIL import Image  # noqa: PLC0415
-
-    cameras = []
-    artifacts = []
-    roles = public.public_metadata.get("image_roles") or ["current_view"] * len(public.images)
-    for index, (role, frame) in enumerate(zip(roles, public.images)):
-        cameras.append(CameraFrame(frame_id=role, rgb=frame.tolist(),
-                                   role=ROLE_MAP.get(role, "scene_secondary")))
-        path = None
-        if artifact_dir is not None:
-            artifact_dir.mkdir(parents=True, exist_ok=True)
-            path = artifact_dir / f"step{step_idx:03d}_{index}_{role}.png"
-            Image.fromarray(frame).save(path)
-        artifacts.append({
-            "kind": "rgb",
-            "frame_id": role,
-            "role": ROLE_MAP.get(role, "scene_secondary"),
-            "path": str(path) if path else "",
-            "width": int(frame.shape[1]),
-            "height": int(frame.shape[0]),
-            "format": "png",
-            "index": index,
-        })
-    metadata = {"step_idx": step_idx, **public.public_metadata,
-                "image_artifacts": [a for a in artifacts if a["path"]]}
-    return EnvObservation(
-        task=public.instruction,
-        cameras=cameras,
-        robot=RobotState(),
-        objects=[],
-        metadata=metadata,
-    )
+DEFAULTS = {
+    "max_turns": 8,
+    "max_tool_calls": 40,
+    "timeout_s": 900.0,
+    "max_total_tokens": 2_000_000,
+    "recovery_turns_per_branch": 0,
+    "max_recovery_turns": 0,
+}
 
 
 @dataclass
@@ -75,24 +54,34 @@ class EpisodeResult:
     private_evaluation: dict
     outcome: dict
     turns: int
+    env_steps: int
     wall_time_s: float
     runtime_descriptor: dict
+    accounting: dict = field(default_factory=dict)
+    leakage_violations: list[str] = field(default_factory=list)
     error: str | None = None
-    audit_requests: int = 0
-    field: dict = field(default_factory=dict)
+    status: str = "PASS"
 
 
 def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
-                role: str, output_dir: Path | None = None,
-                max_turns: int = MAX_TURNS_DEFAULT, task_tools: list[dict] | None = None,
-                exploration: bool = False) -> EpisodeResult:
-    """One canonical episode: fresh session, frozen probe rules applied by caller."""
-    from benchmark.openeta_bridge import build_runtime as br
+                role: str, config: dict | None = None,
+                output_dir: Path | None = None,
+                task_tools: list[dict] | None = None) -> EpisodeResult:
+    from agent.runtime.episode import OpenEtaEpisodeRunner  # noqa: PLC0415
+    from benchmark.openeta_bridge.build_runtime import (  # noqa: PLC0415
+        build_runtime,
+        runtime_descriptor,
+    )
 
+    cfg = {**DEFAULTS, **(config or {})}
     t0 = time.time()
-    task_tools = task_tools or adapter.build_tool_specs(task)
+    result_dir = output_dir
+    if result_dir is not None:
+        result_dir.mkdir(parents=True, exist_ok=True)
+    accountant = Accountant(episode_dir=result_dir)
+    artifact_dir = (result_dir / "artifacts") if result_dir else None
 
-    # 2. RSI.before_episode + budget validation (also for `none`, which is empty)
+    # 2. RSI.before_episode + shared-budget validation
     public_view = {
         "global_task_id": task["global_task_id"],
         "instruction": task.get("instruction"),
@@ -100,100 +89,64 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
         "scene_id_canonical": task.get("scene_id_canonical"),
         "difficulty_canonical": task.get("difficulty_canonical"),
     }
-    injection: RSIInjection = rsi.before_episode(public_view) if rsi is not None else make_injection("")
+    injection: RSIInjection = (rsi.before_episode(public_view) if rsi is not None
+                               else make_injection(""))
+    accountant.record_injection(injection.estimated_tokens)
+    if result_dir is not None:
+        log_injection(injection, result_dir / "rsi_injection.jsonl",
+                      episode_id=task["global_task_id"],
+                      method=getattr(rsi, "name", "none"))
+        (result_dir / "rsi_injection.jsonl.raw").write_text(injection.context_text)
 
-    # 3/4. fresh OpenETA session with the guidance in the shared context slot
-    br.REQUEST_AUDIT.clear()
-    runtime = build_runtime(task_tools, guidance=injection.context_text,
-                            guidance_provenance=injection.provenance_ids)
-    descriptor = runtime_descriptor(runtime)
-
-    trajectory: list[dict] = []
-    error = None
+    # 3/4/5. environment prepare -> live tool schema -> fresh runtime
+    env = BenchmarkEpisodeEnvironment(
+        adapter, task, rsi=rsi, accountant=accountant,
+        env_step_budget=cfg.get("max_env_steps"),
+        artifact_dir=artifact_dir,
+    )
+    error: str | None = None
+    runner = None
+    descriptor: dict = {}
+    public_trajectory: list[dict] = []
     private_eval: dict = {}
-    turns = 0
+    upstream_summary: dict = {}
     try:
-        # 6. env.reset
-        observation = adapter.reset(task)
-        runtime.start_session(task=observation.instruction,
-                              metadata={"global_task_id": task["global_task_id"], "role": role})
-        artifact_dir = (output_dir / "artifacts") if output_dir else (
-            Path(tempfile.mkdtemp(prefix="openeta_artifacts_")))
-        env_obs = to_env_observation(observation, step_idx=0, artifact_dir=artifact_dir)
-
-        terminated = truncated = False
-        while turns < max_turns and not (terminated or truncated):
-            turns += 1
-            action = runtime.act(env_obs)
-            action_type = getattr(action, "action_type", "")
-            command = getattr(action, "command", {}) or {}
-            request = command.get("request", {}) if isinstance(command, dict) else {}
-            name = str(request.get("name", ""))
-            parameters = request.get("parameters", {})
-            if not isinstance(parameters, dict):
-                parameters = {}
-
-            step_record = {
-                "step_idx": turns,
-                "planner_request_hash": "",
-                "chosen_action": {"name": name, "parameters": parameters,
-                                  "action_type": action_type},
-                "public_env_feedback": "",
-                "action_success": None,
-                "terminated": False,
-                "truncated": False,
-            }
-            if br.REQUEST_AUDIT:
-                step_record["planner_usage"] = br.REQUEST_AUDIT[-1]["body"].get("messages") and {}
-                step_record["planner_request_hash"] = _audit_hash(br.REQUEST_AUDIT[-1])
-
-            if action_type != "tool_call":
-                # planner response (e.g. task_complete / talk / ask_human)
-                feedback = f"planner response: {name or 'response'}"
-                step_record["public_env_feedback"] = feedback
-                trajectory.append(step_record)
-                runtime.update_memory({"type": "step_result", "public_feedback": feedback,
-                                       "terminated": False, "truncated": False})
-                if name in {"task_complete", "done", "stop"}:
-                    terminated = True
-                elif exploration and turns >= max_turns:
-                    truncated = True
-                env_obs = to_env_observation(observation, step_idx=turns, artifact_dir=artifact_dir)
-                continue
-
-            if name not in {t["name"] for t in task_tools}:
-                feedback = f"invalid action {name!r} (not in this task's action space)"
-                step_record["public_env_feedback"] = feedback
-                step_record["action_success"] = False
-                step_record["invalid_action"] = True
-                trajectory.append(step_record)
-                runtime.update_memory({"type": "step_result", "public_feedback": feedback,
-                                       "terminated": False, "truncated": False})
-                env_obs = to_env_observation(observation, step_idx=turns, artifact_dir=artifact_dir)
-                continue
-
-            outcome = adapter.step(name, parameters)
-            observation = outcome.observation
-            step_record["public_env_feedback"] = outcome.public_feedback
-            step_record["action_success"] = outcome.action_success
-            step_record["terminated"] = outcome.terminated
-            step_record["truncated"] = outcome.truncated
-            trajectory.append(step_record)
-            runtime.update_memory({
-                "type": "step_result",
-                "public_feedback": outcome.public_feedback,
-                "terminated": outcome.terminated,
-                "truncated": outcome.truncated,
-                "action_success": outcome.action_success,
-            })
-            terminated = outcome.terminated
-            truncated = outcome.truncated
-            env_obs = to_env_observation(observation, step_idx=turns, artifact_dir=artifact_dir)
-
-        if not terminated and not truncated:
-            truncated = True
+        first_observation = env.prepare()
+        # the environment's public instruction is authoritative (TVR has no
+        # household instruction in the registry and synthesizes one)
+        runner_task = (first_observation.task or task.get("instruction") or
+                       task.get("global_task_id") or "")
+        specs = task_tools or env.tool_specs()
+        runtime = build_runtime(specs, guidance=injection.context_text,
+                                guidance_provenance=injection.provenance_ids,
+                                accountant=accountant,
+                                planner_tokens=int(cfg.get("planner_max_output_tokens", 8192)))
+        descriptor = runtime_descriptor(runtime)
+        runner = OpenEtaEpisodeRunner(runtime=runtime, environment=env)
+        upstream = runner.run(
+            task=runner_task,
+            max_turns=int(cfg["max_turns"]),
+            max_tool_calls=int(cfg["max_tool_calls"]),
+            timeout_s=float(cfg["timeout_s"]),
+            max_total_tokens=int(cfg["max_total_tokens"]),
+            recovery_turns_per_branch=int(cfg["recovery_turns_per_branch"]),
+            max_recovery_turns=int(cfg["max_recovery_turns"]),
+            metadata={"global_task_id": task["global_task_id"], "role": role,
+                      "source_dataset": task["source_dataset"]},
+        )
+        public_trajectory = _public_trajectory(upstream)
+        upstream_summary = {
+            "terminated": upstream.terminated,
+            "truncated": upstream.truncated,
+            "steps": len(upstream.steps),
+            "session_id": upstream.session_id,
+            "stop_reason": runner.stop_reason,
+            "failure_reason": runner.failure_reason,
+            "tool_calls": runner.tool_call_count,
+            "runner_tokens": runner.total_tokens,
+        }
         private_eval = adapter.private_evaluate()
-    except Exception as exc:  # noqa: BLE001 — infrastructure failures are audited
+    except Exception as exc:  # noqa: BLE001 — audits infrastructure failures honestly
         error = f"{type(exc).__name__}: {exc}"
         try:
             private_eval = adapter.private_evaluate()
@@ -201,43 +154,116 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
             private_eval = {"success": None, "error": "evaluator unavailable"}
     finally:
         try:
-            adapter.close()
+            env.close()
         except Exception:
             pass
 
+    turns = len(public_trajectory)
     outcome = {
         "success": private_eval.get("success"),
-        "terminated": bool(locals().get("terminated")),
-        "truncated": bool(locals().get("truncated")),
+        "terminated": bool(upstream_summary.get("terminated")),
+        "truncated": bool(upstream_summary.get("truncated")),
         "num_steps": turns,
+        "env_steps": env.env_step_count(),
+        "status": "FAIL" if error else "PASS",
         "infrastructure_error": error,
+        "upstream": upstream_summary,
     }
 
-    # 10. experience update (probe callers disable updates via set_update_enabled)
+    # RSI update (experience only; probes run with update disabled by caller)
     if rsi is not None and role == "experience":
         try:
-            rsi.after_episode(_public_episode(task, trajectory, outcome),
+            rsi.after_episode(_public_episode(task, public_trajectory, outcome),
                               _public_outcome(outcome))
+            usage = None
+            if hasattr(rsi, "last_update_usage"):
+                usage = rsi.last_update_usage()
+            accountant.record_rsi_update(usage=usage,
+                                         wall_s=float(getattr(rsi, "last_update_wall_s", 0.0)))
         except Exception as exc:  # noqa: BLE001
             outcome["rsi_update_error"] = f"{type(exc).__name__}: {exc}"
+            outcome["status"] = "FAIL"
 
-    return EpisodeResult(
+    # leakage audit over every model request made in this episode
+    violations = accountant.leakage_violations(env.private_reference_values)
+    accountant.write_dump()
+
+    result = EpisodeResult(
         task=task,
-        public_trajectory=trajectory,
+        public_trajectory=public_trajectory,
         private_evaluation=private_eval,
         outcome=outcome,
         turns=turns,
+        env_steps=env.env_step_count(),
         wall_time_s=time.time() - t0,
         runtime_descriptor=descriptor,
+        accounting=accountant.to_dict(),
+        leakage_violations=violations,
         error=error,
-        audit_requests=len(br.REQUEST_AUDIT),
+        status="FAIL" if (error or violations or outcome.get("rsi_update_error")) else "PASS",
     )
+    if result_dir is not None:
+        (result_dir / "outcome.json").write_text(
+            json.dumps(result.outcome, ensure_ascii=False, indent=2) + "\n")
+        (result_dir / "token_usage.json").write_text(
+            json.dumps(result.accounting, ensure_ascii=False, indent=2) + "\n")
+        (result_dir / "public_trajectory.json").write_text(
+            json.dumps(result.public_trajectory, ensure_ascii=False, indent=2) + "\n")
+        (result_dir / "private_eval.json").write_text(
+            json.dumps(result.private_evaluation, ensure_ascii=False, indent=2) + "\n")
+        (result_dir / "LEAKAGE_AUDIT.json").write_text(
+            json.dumps({"violations": violations, "requests": len(accountant.request_dumps),
+                        "status": "PASS" if not violations else "FAIL"},
+                       ensure_ascii=False, indent=2) + "\n")
+    return result
 
 
-def _audit_hash(audit: dict) -> str:
-    import hashlib
+# ------------------------------------------------------------------ helpers
+def _public_trajectory(upstream) -> list[dict]:
+    from agent.runtime.episode import action_token_usage  # noqa: PLC0415
 
-    return hashlib.sha256(json.dumps(audit.get("body", {}), sort_keys=True).encode()).hexdigest()[:24]
+    rows = []
+    for step in upstream.steps:
+        action = step.action
+        command = action.command if isinstance(action.command, dict) else {}
+        request = command.get("request", {}) if isinstance(command, dict) else {}
+        name = str(request.get("name") or "")
+        parameters = request.get("parameters") if isinstance(request.get("parameters"), dict) else {}
+        info = step.step_result.info or {}
+        rows.append({
+            "step_idx": step.turn_index,
+            "chosen_action": {"action_type": getattr(action, "action_type", ""),
+                              "name": name, "parameters": parameters},
+            "public_env_feedback": info.get("public_feedback") or info.get("termination_reason") or "",
+            "action_success": info.get("action_success"),
+            "terminated": bool(step.step_result.terminated),
+            "truncated": bool(step.step_result.truncated),
+            "planner_usage": _planner_usage(action),
+
+            "rsi_aux_usage": {},
+        })
+    return rows
+
+
+def _planner_usage(action) -> dict:
+    """Token usage for one planner action, including the upstream charged total."""
+    from agent.runtime.episode import action_token_usage  # noqa: PLC0415
+
+    command = action.command if isinstance(action.command, dict) else {}
+    metadata = command.get("metadata") if isinstance(command, dict) else {}
+    planner_metadata = metadata.get("planner_metadata") if isinstance(metadata, dict) else {}
+    backend_usage = planner_metadata.get("backend_usage") if isinstance(planner_metadata, dict) else {}
+    if not isinstance(backend_usage, dict):
+        backend_details = planner_metadata.get("backend_details") if isinstance(planner_metadata, dict) else {}
+        backend_usage = backend_details.get("usage") if isinstance(backend_details, dict) else {}
+    usage = backend_usage if isinstance(backend_usage, dict) else {}
+    charged, sources = action_token_usage(action)
+    return {
+        "input_tokens": int(usage.get("prompt_tokens") or usage.get("input_tokens") or 0),
+        "output_tokens": int(usage.get("completion_tokens") or usage.get("output_tokens") or 0),
+        "charged_tokens": int(charged),
+        "sources": dict(sources),
+    }
 
 
 def _public_episode(task: dict, trajectory: list[dict], outcome: dict) -> dict:
@@ -264,4 +290,5 @@ def _public_outcome(outcome: dict) -> dict:
         "terminated": outcome.get("terminated"),
         "truncated": outcome.get("truncated"),
         "num_steps": outcome.get("num_steps"),
+        "env_steps": outcome.get("env_steps"),
     }

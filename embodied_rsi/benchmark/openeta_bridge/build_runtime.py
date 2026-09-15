@@ -43,14 +43,28 @@ PLANNER_CONTEXT = PlannerContextConfig(
 REQUEST_AUDIT: list[dict] = []
 
 
-def _audited_transport(url, body, headers, timeout_s):
+def _make_audited_transport(accountant=None):
+    """Transport that records every model request (P1-6/P1-4)."""
+    import time as _time
+
     from agent.backends.planner import _post_json
 
-    REQUEST_AUDIT.append({"url": url, "body": body})
-    return _post_json(url, body, headers, timeout_s)
+    def transport(url, body, headers, timeout_s):
+        REQUEST_AUDIT.append({"url": url, "body": body})
+        started = _time.time()
+        response = None
+        try:
+            response = _post_json(url, body, headers, timeout_s)
+            return response
+        finally:
+            if accountant is not None:
+                accountant.record_planner_exchange(url=url, body=body, response=response,
+                                                   wall_s=_time.time() - started)
+
+    return transport
 
 
-def deepseek_backend(*, max_tokens: int = 8192) -> OpenAICompatiblePlannerBackend:
+def deepseek_backend(*, max_tokens: int = 8192, accountant=None) -> OpenAICompatiblePlannerBackend:
     config = OpenAICompatiblePlannerBackendConfig(
         provider="openai-compatible",
         model=DEEPSEEK_MODEL,
@@ -69,7 +83,7 @@ def deepseek_backend(*, max_tokens: int = 8192) -> OpenAICompatiblePlannerBacken
     missing = config.missing_fields()
     if missing:
         raise RuntimeError(f"DeepSeek planner config incomplete: {missing}")
-    return OpenAICompatiblePlannerBackend(config, transport=_audited_transport)
+    return OpenAICompatiblePlannerBackend(config, transport=_make_audited_transport(accountant))
 
 
 def _noop_handler(context):  # tool calls become pending EnvActions for the host
@@ -110,7 +124,8 @@ def build_benchmark_tools(tool_specs: list[dict]) -> ToolRegistry:
 
 def build_runtime(tool_specs: list[dict], *, guidance: str = "",
                   guidance_provenance: list[str] | None = None,
-                  planner_tokens: int = 8192) -> OpenEtaAgentRuntime:
+                  planner_tokens: int = 8192,
+                  accountant=None) -> OpenEtaAgentRuntime:
     """Assemble one frozen runtime for one episode (fresh session per episode)."""
     from benchmark.openeta_bridge.freeze import (
         assert_native_self_improvement_disabled,
@@ -121,7 +136,7 @@ def build_runtime(tool_specs: list[dict], *, guidance: str = "",
     tools = build_benchmark_tools(tool_specs)
     system_prompt, _hash = planner_prompt()
     planner = ToolCallingPlanner(
-        backend=deepseek_backend(max_tokens=planner_tokens),
+        backend=deepseek_backend(max_tokens=planner_tokens, accountant=accountant),
         system_prompt=system_prompt,
         context_config=PLANNER_CONTEXT,
         max_validation_retries=2,

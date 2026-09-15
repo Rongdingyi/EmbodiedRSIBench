@@ -31,6 +31,7 @@ from benchmark.rsi.embodiskill import EmbodiSkillRSI  # noqa: E402
 from benchmark.rsi.none import NoneRSI  # noqa: E402
 from benchmark.rsi.raw_memory import RawMemoryRSI  # noqa: E402
 from benchmark.rsi.worldmind import WorldMindRSI  # noqa: E402
+from benchmark.runner import gates  # noqa: E402
 
 OUT = PROJECT / "outputs" / "preflight"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -38,12 +39,15 @@ METHODS = {"none": NoneRSI, "raw_memory": RawMemoryRSI,
            "ace_context": AceContextRSI, "worldmind": WorldMindRSI,
            "embodiskill": EmbodiSkillRSI}
 N_EXPERIENCE, N_PROBES = 5, 3
+BUDGET = {"max_turns": 4, "max_tool_calls": 16, "timeout_s": 600,
+          "max_total_tokens": 1_500_000, "max_env_steps": 60}
 
 
 def main() -> int:
     manifest = json.loads((PROJECT / "manifests" / "pilot150.json").read_text())
     pilot_dir = PROJECT / "outputs" / "rsi_smoke"
     audits = {}
+    statuses: dict[str, str] = {}
     for name, cls in METHODS.items():
         method = cls()
         state_root = pilot_dir / name / "rsi_state"
@@ -52,8 +56,10 @@ def main() -> int:
         evidence = {"name": name, "blocked": getattr(method, "BLOCKED", False)}
         if evidence["blocked"]:
             evidence["reason"] = method.BLOCK_REASON
+            evidence["status"] = gates.BLOCKED
             audits[name] = evidence
-            print(f"[{name}] BLOCKED (recorded)")
+            statuses[name] = gates.BLOCKED
+            print(f"[{name}] BLOCKED (recorded, not counted as PASS)")
             continue
 
         hashes = []
@@ -64,7 +70,9 @@ def main() -> int:
             task = by_global_id("experience")[gid]
             adapter = make_adapter(task["source_dataset"])
             try:
-                run_episode(task, adapter, method, role="experience", max_turns=4)
+                res = run_episode(task, adapter, method, role="experience", config=BUDGET)
+                if res.error:
+                    evidence.setdefault("errors", []).append(f"exp {gid}: {res.error}")
             except Exception as exc:  # noqa: BLE001
                 evidence.setdefault("errors", []).append(f"exp {gid}: {exc}")
             hashes.append(method.state_hash())
@@ -79,8 +87,10 @@ def main() -> int:
             task = by_global_id("id")[gid]
             adapter = make_adapter(task["source_dataset"])
             try:
-                res = run_episode(task, adapter, clone, role="id", max_turns=4)
+                res = run_episode(task, adapter, clone, role="id", config=BUDGET)
                 probe_success.append(res.outcome.get("success"))
+                if res.error:
+                    evidence.setdefault("errors", []).append(f"probe {gid}: {res.error}")
             except Exception as exc:  # noqa: BLE001
                 evidence.setdefault("errors", []).append(f"probe {gid}: {exc}")
         h1 = clone.state_hash()
@@ -115,10 +125,10 @@ def main() -> int:
         print(f"[{name}] probes_unchanged={evidence.get('probe_state_unchanged')} "
               f"evidence={ {k: v for k, v in evidence.items() if k in ('state_unchanged','episodes_stored','retrieval_nonempty','playbook_changed')} }")
 
-    checks = {}
+    checks: dict[str, str] = {}
     for name, ev in audits.items():
         if ev.get("blocked"):
-            checks[name] = True  # blocked methods are skipped by design
+            checks[name] = gates.BLOCKED      # never coerced to PASS
             continue
         ok = (ev.get("probe_state_unchanged") is True) and not ev.get("errors")
         if name == "none":
@@ -127,12 +137,12 @@ def main() -> int:
             ok = ok and ev.get("retrieval_nonempty") is True
         if name == "ace_context":
             ok = ok and ev.get("playbook_changed") is True
-        checks[name] = bool(ok)
-    report = {"checks": checks, "methods": audits,
-              "status": "PASS" if all(checks.values()) else "FAIL"}
+        checks[name] = gates.PASS if ok else gates.FAIL
+    status = gates.combine(checks)
+    report = {"checks": checks, "methods": audits, "status": status}
     (OUT / "RSI_SMOKE.json").write_text(json.dumps(report, indent=2) + "\n")
-    print(f"\nG5 RSI SMOKE GATE: {report['status']}  {checks}")
-    return 0 if report["status"] == "PASS" else 1
+    print(f"\nG5 RSI SMOKE GATE: {status}  {checks}")
+    return 0 if status in (gates.PASS, gates.BLOCKED) else 1
 
 
 if __name__ == "__main__":

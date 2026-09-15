@@ -1,44 +1,44 @@
 # BLOCKERS
 
-## B1 — EmbodiSkill integration (Condition E)
+## B1 — EmbodiSkill (Condition E): POC_READY_UNVERIFIED
 
-Status: **BLOCKED** for Pilot v0.3 (guide sections 2.5 / 21.7).
+Status: **re-evaluated after review**. The official integration path
+(`init_task_context → move_skill_state → save_task_context → reflect_episode →
+revise_manual`) makes a thin adapter feasible without upstream edits. The
+converter is implemented in `benchmark/adapters/workers/embodiskill_worker.py`
+(≤200 lines) but has **not been executed yet** because it needs the EmbodiSkill
+dependency env (`langchain-chroma`, `sentence-transformers`, `finch`), kept out
+of the agent environment on purpose.
 
-The official EmbodiSkill implementation is ALFWorld/agentkit-specific: its
-`StateChain`, reflection epoch files and manual-injection path are owned by the
-agentkit executor. Feeding an external OpenETA trajectory requires rewriting
-reflection/update semantics (>200 lines of core changes). Audit:
-`outputs/preflight/EMBODISKILL_CALL_PATH.md`.
+C4 stays out of the pilot table until the PoC runs and produces the four official
+reflection categories. Audit: `outputs/preflight/EMBODISKILL_CALL_PATH.md`.
 
-Consequence: Pilot v0.3 runs conditions C0 (`none`), C1 (`raw_memory`),
-C2 (`ace_context`), C3 (`worldmind`); C4 remains BLOCKED and is excluded from
-the primary table until a canonical integration is available.
-
-## B2 — EB-ALFRED rendering depends on the machine's physical X display
+## B2 — EB-ALFRED rendering needs the machine's physical X display
 
 The 2018 AI2-THOR build presents through NVIDIA Vulkan, which cannot create a
-swapchain for a private Xvfb. EB-ALFRED episodes therefore require a real X
-server (this machine: `:1`). Mitigation: `scripts_render/00_pick_display.sh`;
-failures are reported as infrastructure errors, never as method failures.
+swapchain for a private Xvfb; episodes require a real X server (this machine
+`:1`). Mitigation: `scripts_render/00_pick_display.sh`; display failures are
+infrastructure errors, never method failures.
 
-## B3 — EB-Habitat dataset index/id alignment (G3 FAIL root cause)
+## B3 — EB-Habitat episode lookup (open; gates must re-run)
 
-Status: **OPEN** (found by G3 adapter validation: 14/20 EB-Habitat samples crashed).
+`EBHabEnv(eval_set=...)` re-orders/renames its internal dataset: neither
+`source_entry_index` (pickle order) nor `source_task_id` (pickle episode_id)
+addresses the loaded episode (e.g. index 41 → episode 32 while the release
+expects 74). Current worker behaviour: resolve by exact instruction first, then
+by episode_id, and fail loudly otherwise; the canonical 70-skill schema is
+validated at reset.
 
-`EBHabEnv(eval_set=...)` builds its own dataset ordering and its own
-`episode_id` values: neither the release's `source_entry_index` (pickle order)
-nor the release `source_task_id` (pickle episode_id) resolves to the right
-episode — e.g. instruction-matched episode 35 loaded where the release expects
-16. Impact: EB-Habitat task selection must join on the physical signature
-(scene_id + sampled_entities + start pose) that the release already records.
+If the instruction/id join still fails for some tasks, the next fix is the
+physical signature already stored in the release:
+`(basename(scene_id), canonical_json(sampled_entities), start_position[4dp])`.
 
-Fix plan (next session):
-1. In `eb_habitat_worker.reset`, build a lookup from
-   `(scene_id basename, canonical_json(sampled_entities))` to dataset index and
-   use it as the primary key (fall back to instruction only when unique).
-2. Re-run `scripts/04_validate_adapters.py`; target crash rate <= 2%.
+Re-run `scripts/04_validate_adapters.py` (target crash rate ≤ 2%, schema
+failures = 0, leakage = 0) and `scripts/06_smoke_openeta.py` (RGB delivery ≥ 90%)
+after any change here.
 
-Second G3 contributor: 2/20 TVRBench samples hit transient AI2-THOR backend
-timeouts while all four GPUs were heavily loaded (external processes). The
-validator now retries transient timeouts once; keep GPU contention in mind when
-running gates.
+## B4 — gate re-run cost
+
+G3/G4/G5 plus the Pilot-150 run are simulator- and API-heavy (multi-hour per
+gate/method). Run them on an idle GPU machine; the G3 validator now uses a fresh
+worker per task, which is safer but slower.

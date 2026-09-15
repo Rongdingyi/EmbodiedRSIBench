@@ -7,6 +7,30 @@
 
 > **v0.3 改动**：为优先跑通系统，本轮 executor 与所有 RSI updater 统一改为 DeepSeek 官方 API `deepseek-flash`；删除本地 Qwen/vLLM 部署要求，改为 DeepSeek API text + vision smoke gate。
 
+> **v0.4 修正（2026-09-15 审查后）**：
+> 1. **canonical episode loop**：benchmark 必须实现 upstream `EpisodeEnvironment`，
+>    由 pinned `OpenEtaEpisodeRunner` 真正负责闭环（完成判定、tool/token budget、
+>    timeout、environment receipt、recovery）；benchmark 只做环境翻译与 RSI hook。
+> 2. **两级状态**：G7 / 最终 release 采用
+>    `FULL_PILOT_PASS`（C0–C4 全部完成）与
+>    `PIPELINE_PASS_WITH_BLOCKER`（C0–C3 完成，C4 按协议合法 BLOCKED，所有
+>    leakage/freeze/probe/snapshot invariants PASS）。**BLOCKED 绝不能伪装成 PASS。**
+> 3. **Retention 语义**：`retention_probe` 是从固定 retention anchors 中 deterministic
+>    选出的 held-out tasks，在 S000/S075 等 checkpoint 重复评测，**永不进入 Experience
+>    stream**；不存在“retention anchor 的对应 Experience anchor”，不得临时 oracle pairing。
+> 4. **Pilot Experience 均衡**：mandatory pair anchors 先放入，再用 deficit filling
+>    尽量接近 15/source，而不是按 Full Core 原始比例分配；偏差记录在 pilot audit。
+> 5. **Probe snapshot**：clone 必须是新 plugin 实例 + 临时 snapshot 目录 +
+>    `update_enabled=False`，禁止 deepcopy live method。
+> 6. **模型可见 observation**：严格 allowlist（instruction / RGB / 官方反馈）；
+>    simulator metadata（object id、distance、picked state 等）只保存为 diagnostic，
+>    不得进入 planner request；每个模型请求保存 redacted `public_context_dump.jsonl`。
+> 7. **WorldMind prediction 时序**：sidecar 在 action 锁定后、`env.step` 之前调用；
+>    真实反馈返回后再喂 `process_single_step()`；sidecar 输出永不回流 planner。
+> 8. **C4 EmbodiSkill**：官方 `init_task_context / move_skill_state /
+>    save_task_context / reflect_episode / revise_manual` 使薄适配可行；先完成
+>    `<200 行 thin-adapter PoC` 再判定，PoC 未执行前 C4 记为 POC_READY_UNVERIFIED。
+
 ---
 
 # 0. 先读：本任务书到底要验证什么
@@ -2195,9 +2219,10 @@ SHA256("20260915|pilot150|" + global_task_id)
 1. 从 `id_pairs.parquet` 选 Pilot ID pairs；
 2. 从 `transfer_pairs.parquet` 选 Pilot Transfer pairs；
 3. 把它们需要的 experience anchors 放进 Pilot Experience；
-4. 从 retention schedule 选 retention anchors；
-5. 把 retention anchors 对应的 Experience 放入 Pilot Experience；
-6. 再 deterministic fill 到 75 Experience。
+4. 从固定 `retention_probe` 中 deterministic 选 20 个 Pilot retention anchors
+   （这些 anchor 在 S000/S075 等 checkpoint 重复评测，永不进入 Experience stream，
+   不存在 retention→experience 的 oracle pairing）；
+5. 再 deterministic deficit filling 到 75 Experience，目标约 15/source。
 
 ## 24.2 Transfer target 建议 quota
 
@@ -3269,10 +3294,14 @@ snapshot hash == reload hash
 
 ## G7 — Pilot Gate
 
-要求：
+两级状态（v0.4）：
 
 ```text
-all 5 primary conditions complete
+FULL_PILOT_PASS             C0-C4 全部完成且 checks 通过
+PIPELINE_PASS_WITH_BLOCKER  C0-C3 完成且通过；C4 按协议合法 BLOCKED（记录，不伪装）
+FAIL                        任何已执行 condition 失败或 invariant 被破坏
+
+common requirements:
 infrastructure crash rate <2%
 probe mutation = 0
 private leakage = 0
@@ -3628,20 +3657,17 @@ assert leakage_violation_count == 0
 assert probe_mutation_count == 0
 assert snapshot_reload_failures == 0
 assert infrastructure_crash_rate < 0.02
-assert all_primary_conditions_completed
 ```
 
-然后才写：
+然后按两级状态写：
 
 ```text
-FINAL_STATUS: PASS
+FINAL_STATUS: FULL_PILOT_PASS            # C0-C4 全部完成
+FINAL_STATUS: PIPELINE_PASS_WITH_BLOCKER # C0-C3 完成，C4 合法 BLOCKED
+FINAL_STATUS: FAIL                       # 任何失败
 ```
 
-否则：
-
-```text
-FINAL_STATUS: FAIL
-```
+BLOCKED 不得提升为 PASS。
 
 不得人工改成 PASS。
 

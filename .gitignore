@@ -23,3 +23,7 @@ embodied_rsi/outputs/pilot150/*/seed_*/artifacts/
 __pycache__/
 *.pyc
 .pytest_cache/
+
+# per-episode gate scratch (gate summary JSON stays committed)
+embodied_rsi/outputs/openeta_baseline/
+embodied_rsi/outputs/rsi_smoke/

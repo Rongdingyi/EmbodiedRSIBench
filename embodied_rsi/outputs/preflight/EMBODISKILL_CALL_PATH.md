@@ -30,7 +30,27 @@ Audited files: `tasks/run_epochs.py`, `agentkit/skill/common.py`,
 - epoch-labeled reflection files tied to `run_epochs.py`;
 - manual/skill text injected through the agentkit system-prompt path.
 
-## Why this is BLOCKED for Pilot v0.3
+## Update (review re-evaluation): thin adapter IS feasible
+
+The official base class exposes the exact integration points needed:
+
+```text
+EmbodiSkill.init_task_context(task_main, task_description)
+EmbodiSkill.move_skill_state(action, observation)          # per step
+EmbodiSkill.save_task_context(label, feedback) -> MASMessage
+EmbodiSkill.reflect_episode(mas_message)                   # S_NEW/S_BETTER/FAIL_SKILL/FAIL_EXECUTION
+EmbodiSkill.revise_manual(epoch_id, success_rate)          # manual_state update
+```
+
+`StateChain` itself is just a NetworkX DiGraph container, so an external OpenETA
+trajectory can be replayed into it without touching upstream code. The converter
+is implemented in `benchmark/adapters/workers/embodiskill_worker.py` (<<200
+lines) and runs in an isolated worker env because of the dependency weight
+(`langchain-chroma`, `sentence-transformers`, `finch`). Status is therefore
+**POC_READY_UNVERIFIED**, not a permanent BLOCK: C4 stays out of the pilot table
+until the PoC is executed and the four official reflection categories appear.
+
+## Original assessment (superseded)
 
 To feed an external OpenETA trajectory we would have to (a) rebuild
 `StateChain` with a foreign schema, (b) bypass the agentkit loop that triggers

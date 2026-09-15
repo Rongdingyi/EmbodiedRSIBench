@@ -1,4 +1,4 @@
-# Pilot-150 fixed protocol (Pilot v0.3, seed 20260915).
+# Pilot-150 fixed protocol (Pilot v0.3, seed 20260915), amended per review.
 seed: 20260915
 
 roles:
@@ -8,24 +8,30 @@ roles:
   retention: 20
 total: 150
 
-transfer_quota:            # guide section 24.2 (Core has no Asgard transfer)
+transfer_quota:            # Core has no Asgard transfer
   TVRBench: 10
   SpatialWorld: 10
   EB-ALFRED: 5
   EB-Habitat: 5
 
 selection:
-  pair_first: true                           # pair anchors before filler
+  pair_first: true
+  target_experience_per_source: 15          # deficit filling after mandatory anchors
   rank_experience: "sha256(20260915|experience|global_task_id)"
   rank_stream: "sha256(20260915|experience_stream|global_task_id)"
-  retention_exp_anchor: "sha256(20260915|retention_exp|global_task_id)"
+  retention_pairing: none   # retention anchors are fixed held-out tasks (no oracle pairing)
 
 probe_checkpoints: [S000, S025, S050, S075]
 probe_roles: [id, transfer, retention]
 probe_update_enabled: false                  # frozen probes, state hash must not change
 
+# OpenETA turns / tool calls and environment steps are separate budgets (P1-5)
 budgets:
-  max_turns_per_episode: 8
+  openeta_turns: 8
+  openeta_tool_calls: 40
+  episode_timeout_s: 900
+  planner_max_output_tokens: 8192
+  max_total_tokens: 2000000
   max_env_steps:
     EB-ALFRED: 30
     EB-Habitat: 60
@@ -33,4 +39,3 @@ budgets:
     AsgardBench: 60
     TVRBench: 100
   max_rsi_injection_tokens: 8192
-  planner_max_output_tokens: 8192

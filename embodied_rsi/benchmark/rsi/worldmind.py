@@ -1,10 +1,13 @@
 """Condition D: WorldMind (Goal + Process Experience) with OpenETA executor.
 
-Uses the official `Plugin/worldmind_plugin` modules:
+Official `Plugin/worldmind_plugin` modules:
   ProcessExperienceModule / GoalExperienceModule / ExperienceRetrievalModule.
-The predicted-state sidecar is an independent DeepSeek call that happens after
-OpenETA has locked its action; its output never returns to the planner
-(guide section 20.2).
+
+Prediction timing (P0-2, guide section 20.2): the prediction sidecar runs via
+`predict_sidecar()` AFTER OpenETA locks the action and BEFORE the environment
+executes it. `after_step()` then feeds the real public feedback into
+`process_single_step()` so the module compares predicted vs actual state. The
+sidecar output never returns to the planner.
 """
 from __future__ import annotations
 
@@ -28,8 +31,8 @@ MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 MAX_INJECTION_TOKENS = 8192
 
 
-def _sidecar_predict(observation_text: str, action_text: str, image_path: str | None) -> dict:
-    """DeepSeek call that predicts the abstract next state (RSI-cost counted)."""
+def _sidecar_predict(observation_text: str, action_text: str) -> dict:
+    """Independent DeepSeek call predicting the abstract next state."""
     prompt = (
         "You are a world-model helper. Given the current observation summary and the action "
         "the robot is about to take, predict the abstract next state in one short sentence.\n"
@@ -65,12 +68,14 @@ class WorldMindRSI(RSIMethod):
         self.process_module = None
         self.goal_module = None
         self.retrieval_module = None
-        self.current_task: dict | None = None
-        self.pending: dict | None = None
+        self._pending_prediction: str | None = None
+        self._pending_action: dict | None = None
+        self._sidecar_usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
+        self._sidecar_wall_s = 0.0
+        self._goal_usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
 
     # ------------------------------------------------------------------ setup
-    def init_run(self, run_ctx: dict) -> None:
-        super().init_run(run_ctx)
+    def _build_modules(self) -> None:
         from worldmind_plugin.config import WorldMindConfig
         from worldmind_plugin.core import (
             ExperienceRetrievalModule,
@@ -97,16 +102,23 @@ class WorldMindRSI(RSIMethod):
         self.goal_module = GoalExperienceModule(self.config)
         self.retrieval_module = ExperienceRetrievalModule(self.config)
 
+    def init_run(self, run_ctx: dict) -> None:
+        super().init_run(run_ctx)
+        self._build_modules()
+
+    def _reload_state(self) -> None:
+        self._build_modules()
+
     # ------------------------------------------------------------------ hooks
     def before_episode(self, task_public_view: dict) -> RSIInjection:
-        self.current_task = task_public_view
-        self.pending = None
+        self._pending_prediction = None
+        self._pending_action = None
         try:
             result = self.retrieval_module.retrieve(
                 task_instruction=task_public_view.get("instruction") or "",
                 enable_refine=True,
             )
-        except Exception as exc:  # noqa: BLE001 — retrieval failures must not stop the episode
+        except Exception:  # noqa: BLE001 — retrieval failure must not stop the episode
             return make_injection("")
         text = (result or {}).get("formatted_prompt") or ""
         if not text.strip():
@@ -115,39 +127,68 @@ class WorldMindRSI(RSIMethod):
             text = text[: MAX_INJECTION_TOKENS * 3]
         return make_injection(text, provenance_ids=(result or {}).get("experience_ids") or [])
 
+    def predict_sidecar(self, *, public_observation: dict, action: dict,
+                        accountant=None) -> str | None:
+        """Called by the environment after the action is locked (no feedback yet)."""
+        if not self._guard_update():
+            return None
+        observation_text = (
+            f"instruction: {public_observation.get('instruction', '')}; "
+            f"last feedback: {public_observation.get('text_feedback', '')}"
+        )
+        action_text = f"{action.get('name')} {json.dumps(action.get('parameters') or {})}".strip()
+        try:
+            result = _sidecar_predict(observation_text, action_text)
+        except Exception as exc:  # noqa: BLE001
+            self._log({"sidecar_error": f"{type(exc).__name__}: {exc}"})
+            return None
+        usage = result.get("usage") or {}
+        self._sidecar_usage["prompt_tokens"] += int(usage.get("prompt_tokens") or 0)
+        self._sidecar_usage["completion_tokens"] += int(usage.get("completion_tokens") or 0)
+        self._sidecar_usage["calls"] += 1
+        self._sidecar_wall_s += float(result.get("wall_s") or 0.0)
+        if accountant is not None:
+            accountant.record_sidecar(usage=usage, wall_s=float(result.get("wall_s") or 0.0))
+        self._pending_prediction = result.get("text") or ""
+        self._pending_action = dict(action)
+        return self._pending_prediction
+
     def after_step(self, step_public_record: dict) -> None:
-        self.pending = dict(step_public_record)
+        if not self._guard_update() or self._pending_prediction is None:
+            self._pending_prediction = None
+            return
+        from worldmind_plugin.core import ProcessTrajectoryStep
+
+        prediction = self._pending_prediction
+        action = self._pending_action or {}
+        self._pending_prediction = None
+        self._pending_action = None
+        action_text = f"{action.get('name')} {json.dumps(action.get('parameters') or {})}".strip()
+        observation_text = f"instruction: {step_public_record.get('task', '')}"
+        feedback = step_public_record.get("public_feedback") or ""
+        try:
+            self.process_module.process_single_step(
+                task_instruction=step_public_record.get("task") or "",
+                step=ProcessTrajectoryStep(
+                    observation=observation_text,
+                    action=action_text,
+                    predicted_state=prediction,
+                    env_feedback=feedback,
+                ),
+            )
+        except Exception as exc:  # noqa: BLE001
+            self._log({"process_step_error": f"{type(exc).__name__}: {exc}"})
 
     def after_episode(self, trajectory_public: dict, outcome_public: dict) -> None:
         if not self._guard_update():
             return
-        from worldmind_plugin.core import GoalTrajectoryStep, ProcessTrajectoryStep
+        from worldmind_plugin.core import GoalTrajectoryStep
 
-        actions = trajectory_public.get("actions") or []
-        # ---- process experience: prediction-error driven, step by step
-        for i, item in enumerate(actions):
-            action_text = f"{item.get('action')} {json.dumps(item.get('parameters') or {})}".strip()
-            feedback = item.get("public_feedback") or ""
-            observation_text = f"step {i}, previous feedback: {feedback[:200]}"
-            prediction = _sidecar_predict(observation_text, action_text, None)
-            try:
-                self.process_module.process_single_step(
-                    task_instruction=trajectory_public.get("instruction") or "",
-                    step=ProcessTrajectoryStep(
-                        observation=observation_text,
-                        action=action_text,
-                        predicted_state=prediction["text"],
-                        env_feedback=feedback,
-                    ),
-                )
-            except Exception as exc:  # noqa: BLE001
-                self._log({"process_step_error": f"{type(exc).__name__}: {exc}", "step": i})
-        # ---- goal experience: only from successful episodes (guide 20.4)
         if outcome_public.get("success"):
             trajectory = [
                 GoalTrajectoryStep(action=str(item.get("action")),
                                    env_feedback=item.get("public_feedback") or "")
-                for item in actions
+                for item in (trajectory_public.get("actions") or [])
             ]
             try:
                 self.goal_module.extract_experience(
@@ -162,18 +203,22 @@ class WorldMindRSI(RSIMethod):
         except Exception as exc:  # noqa: BLE001
             self._log({"reload_error": f"{type(exc).__name__}: {exc}"})
 
+    def last_update_usage(self) -> dict:
+        return {
+            "prompt_tokens": self._sidecar_usage["prompt_tokens"] + self._goal_usage["prompt_tokens"],
+            "completion_tokens": self._sidecar_usage["completion_tokens"] + self._goal_usage["completion_tokens"],
+            "calls": self._sidecar_usage["calls"] + self._goal_usage["calls"],
+        }
+
     def _log(self, record: dict) -> None:
-        assert self.state_dir is not None
+        if self.state_dir is None:
+            return
         with open(self.state_dir / "errors.jsonl", "a") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
     # --------------------------------------------------------------- snapshot
     def snapshot(self, output_dir: Path) -> None:
         self.copy_tree(self.state_dir, output_dir)
-
-    def load_snapshot(self, input_dir: Path) -> None:
-        self.state_dir = Path(input_dir)
-        self.init_run({"state_root": str(input_dir), **self.run_ctx})
 
     def state_hash(self) -> str:
         assert self.state_dir is not None

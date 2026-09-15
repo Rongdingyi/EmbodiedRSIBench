@@ -21,7 +21,7 @@ class NoneRSI(RSIMethod):
         output_dir.mkdir(parents=True, exist_ok=True)
         (output_dir / "state.json").write_text('{"state": "empty"}\n')
 
-    def load_snapshot(self, input_dir: Path) -> None:
+    def _reload_state(self) -> None:
         return None
 
     def state_hash(self) -> str:
