@@ -1,0 +1,30 @@
+{
+  "note": "maps neutral episode dirs to task ids (never model-visible)",
+  "map": {
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep001": "1cbca28172c230851ba0b3a1",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep002": "edc2eb518e7ac7546849e161",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep003": "b66239d48982bbde2f0e0bf4",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep004": "8a0cd6898dbea9c618a71ef8",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep005": "0f1774fec3ecb52175c830ab",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep006": "dbf6026dc5a0706ba3b70a94",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep007": "153c85b09e6933cfefef246f",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep008": "35fbbf440b5a9c6b40e12442",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep009": "1e934d9bd5ab9971c3111bb2",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep010": "eb43fe190990073d2fd2eaae",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep011": "eb695671f276599e3dc10102",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep012": "d72d737eefa6680b861aa6a7",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep013": "01a92278ebb7781633d0ba1e",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep014": "85ffc7b1bbe41b0d55d8d060",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep015": "27029c6e47c3b1127484ca3b",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep016": "7db7f20010e0e167de136595",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep017": "3c7313502fdfcc3e2a908176",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep018": "dd1c40207c32f639e8211b07",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep019": "01c9217502f0569d7a0fbba1",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep020": "46ab4e8d921f56749d222e1e",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep021": "747a4771599fba71b5bc2b42",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep022": "4b32f0207b81426faa763b94",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep023": "1e86a9bb01fe821c33bea56d",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep024": "cd72e0b10b4826ee7e4a9e29",
+    "/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/openeta_baseline/ep025": "3251656a4e5acbaf5107f1e2"
+  }
+}

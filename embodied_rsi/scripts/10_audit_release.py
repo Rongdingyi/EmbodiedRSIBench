@@ -126,6 +126,23 @@ def main() -> int:
     missing = sorted(primary - completed)
     check("all primary conditions completed", not missing, f"missing: {missing}")
 
+    # same-model invariant: every executed method must share one model/endpoint
+    # (Primary Self-Evolution Track: only the RSI mechanism may vary)
+    if PILOT.exists():
+        provenance_models = {}
+        for method_dir in sorted(p.name for p in PILOT.iterdir() if p.is_dir()):
+            for seed_dir in (PILOT / method_dir).glob("seed_*"):
+                prov_file = seed_dir / "provenance.json"
+                if prov_file.exists():
+                    prov = json.loads(prov_file.read_text())
+                    provenance_models[f"{method_dir}/{seed_dir.name}"] = (
+                        prov.get("model"), prov.get("model_base_url"),
+                        prov.get("openeta_commit"))
+        if provenance_models:
+            unique = set(provenance_models.values())
+            check("all conditions share the same model/endpoint/agent",
+                  len(unique) == 1, str(sorted(unique)))
+
     # blocked methods must be declared as BLOCKED (never silently PASS)
     embodiskill_status = method_status.get("embodiskill", gates.BLOCKED)
     check("embodiskill recorded as BLOCKED (not PASS)", embodiskill_status == gates.BLOCKED,

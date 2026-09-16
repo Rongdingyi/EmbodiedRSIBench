@@ -1,0 +1,33 @@
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[worldmind] probes_unchanged=True evidence={}
+
+G5 RSI SMOKE GATE: PASS  {'worldmind': 'PASS'}

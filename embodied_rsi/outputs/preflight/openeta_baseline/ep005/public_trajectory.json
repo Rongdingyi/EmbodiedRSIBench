@@ -8,14 +8,14 @@
         "object": "potato"
       }
     },
-    "public_env_feedback": "find potato -> failed (<AsgardBench.objects.StepError object at 0x7f1d71b8fc10>)",
+    "public_env_feedback": "find potato -> failed (<AsgardBench.objects.StepError object at 0x717dbd98fc10>)",
     "action_success": false,
     "terminated": false,
     "truncated": false,
     "planner_usage": {
       "input_tokens": 5694,
-      "output_tokens": 220,
-      "charged_tokens": 5914,
+      "output_tokens": 172,
+      "charged_tokens": 5866,
       "sources": {
         "provider": 1
       }
@@ -36,9 +36,9 @@
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 6737,
-      "output_tokens": 818,
-      "charged_tokens": 7555,
+      "input_tokens": 6743,
+      "output_tokens": 986,
+      "charged_tokens": 7729,
       "sources": {
         "provider": 1
       }
@@ -47,29 +47,6 @@
   },
   {
     "step_idx": 3,
-    "chosen_action": {
-      "action_type": "tool_call",
-      "name": "find",
-      "parameters": {
-        "object": "potato"
-      }
-    },
-    "public_env_feedback": "find potato -> ok",
-    "action_success": true,
-    "terminated": false,
-    "truncated": false,
-    "planner_usage": {
-      "input_tokens": 14575,
-      "output_tokens": 1538,
-      "charged_tokens": 16113,
-      "sources": {
-        "provider": 2
-      }
-    },
-    "rsi_aux_usage": {}
-  },
-  {
-    "step_idx": 4,
     "chosen_action": {
       "action_type": "tool_call",
       "name": "pickup",
@@ -82,11 +59,34 @@
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 7959,
-      "output_tokens": 601,
-      "charged_tokens": 8560,
+      "input_tokens": 7242,
+      "output_tokens": 1792,
+      "charged_tokens": 9034,
       "sources": {
         "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "microwave"
+      }
+    },
+    "public_env_feedback": "open microwave -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15121,
+      "output_tokens": 1455,
+      "charged_tokens": 16576,
+      "sources": {
+        "provider": 2
       }
     },
     "rsi_aux_usage": {}

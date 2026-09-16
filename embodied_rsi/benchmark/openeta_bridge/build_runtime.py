@@ -29,7 +29,10 @@ from agent.runtime.runtime import OpenEtaAgentRuntime  # noqa: E402
 from agent.runtime.skills import SkillRegistry  # noqa: E402
 from agent.tools.registry import ToolEffect, ToolRegistry, ToolSpec  # noqa: E402
 
-DEEPSEEK_BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+from benchmark.utils import normalize_base_url  # noqa: E402
+
+DEEPSEEK_BASE_URL = normalize_base_url(
+    os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
 DEEPSEEK_MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 PLANNER_CONTEXT = PlannerContextConfig(
     recent_conversation_action_groups=4,

@@ -21,10 +21,12 @@ OPENETA = PROJECT / "external" / "OpenETA"
 sys.path.insert(0, str(PROJECT))
 sys.path.insert(0, str(OPENETA))
 
-BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+from benchmark.utils import chat_completions_url, normalize_base_url  # noqa: E402
+
+BASE_URL = normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
 MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 API_KEY = os.environ.get("DEEPSEEK_API_KEY", "")
-EXPECTED_URL = f"{BASE_URL.rstrip('/')}/v1/chat/completions"
+EXPECTED_URL = chat_completions_url(BASE_URL)
 
 AUDIT_BODIES: list[dict] = []
 

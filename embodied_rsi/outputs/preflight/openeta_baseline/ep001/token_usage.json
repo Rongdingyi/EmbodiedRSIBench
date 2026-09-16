@@ -1,8 +1,8 @@
 {
-  "planner_input_tokens": 27547,
-  "planner_output_tokens": 1559,
+  "planner_input_tokens": 27184,
+  "planner_output_tokens": 3082,
   "planner_calls": 4,
-  "planner_wall_s": 12.234,
+  "planner_wall_s": 19.779,
   "rsi_injection_tokens": 0,
   "rsi_update_input_tokens": 0,
   "rsi_update_output_tokens": 0,

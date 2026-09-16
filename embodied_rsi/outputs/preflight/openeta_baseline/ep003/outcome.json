@@ -10,10 +10,10 @@
     "terminated": false,
     "truncated": true,
     "steps": 4,
-    "session_id": "ca36c57e-8a36-4d3a-a2fd-21c05c8066f0",
+    "session_id": "e0c58428-eec9-4c6b-a0d8-718e31dfd6de",
     "stop_reason": "max_turns",
     "failure_reason": {},
     "tool_calls": 4,
-    "runner_tokens": 49962
+    "runner_tokens": 40179
   }
 }

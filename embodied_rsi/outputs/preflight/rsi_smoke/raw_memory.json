@@ -1,0 +1,33 @@
+{
+  "method": "raw_memory",
+  "status": "PASS",
+  "evidence": {
+    "name": "raw_memory",
+    "blocked": false,
+    "accounting": {
+      "sidecar_calls": 0,
+      "component_calls": 0,
+      "planner_calls": 16,
+      "simulator_steps": 9
+    },
+    "state_hashes_after_experience": [
+      "1f1753d0400ab89ea704d2b7",
+      "3d7675993a41a7172b1bb515",
+      "eaddd3b4e6e61c5d7aa9f7a2",
+      "073b265eb9adefd82bc933c0",
+      "e6cb7313641db536e721e9cd"
+    ],
+    "probe_hash_before": "e6cb7313641db536e721e9cd",
+    "probe_hash_after": "e6cb7313641db536e721e9cd",
+    "probe_state_unchanged": true,
+    "probe_success": [
+      false,
+      false,
+      false
+    ],
+    "wall_s": 304.0,
+    "episodes_stored": 5,
+    "retrieval_nonempty": true,
+    "retrieval_tokens": 152
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "success": false,
+  "partial": null,
+  "measures": {
+    "num_steps": 4,
+    "was_prev_action_invalid": true,
+    "predicate_task_success": false,
+    "lang_goal": "Transport all plate and put them on the right counter.",
+    "task_progress": 0.25,
+    "subgoal_reward": 0.0,
+    "num_invalid_actions": 2,
+    "action": "pick_plate(robot_0)",
+    "env_feedback": "Last action is invalid. Robot cannot pick any object when holding something. Please place the object before picking something.",
+    "env_step": 4,
+    "action_id": 27,
+    "action_description": "pick up the plate",
+    "reasoning": "",
+    "instruction": "Transport all plate and put them on the right counter.",
+    "last_action_success": 0.0,
+    "task_success": false
+  },
+  "physical_task_id": "ebh:d89f2b9f867f83d52247c5a9"
+}

@@ -10,10 +10,10 @@
     "terminated": true,
     "truncated": false,
     "steps": 4,
-    "session_id": "cc27a11d-a632-43bd-ae0b-8467b11ab12b",
+    "session_id": "ce022226-a0f7-4b64-8341-23da44946c0b",
     "stop_reason": "environment",
     "failure_reason": {},
     "tool_calls": 4,
-    "runner_tokens": 45399
+    "runner_tokens": 29440
   }
 }

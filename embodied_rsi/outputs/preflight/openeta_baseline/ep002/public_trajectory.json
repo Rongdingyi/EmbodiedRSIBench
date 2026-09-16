@@ -8,14 +8,14 @@
         "object": "television"
       }
     },
-    "public_env_feedback": "find television -> failed (<AsgardBench.objects.StepError object at 0x79fb089a3d90>)",
+    "public_env_feedback": "find television -> failed (<AsgardBench.objects.StepError object at 0x76fce09a3d90>)",
     "action_success": false,
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 5676,
-      "output_tokens": 140,
-      "charged_tokens": 5816,
+      "input_tokens": 5675,
+      "output_tokens": 288,
+      "charged_tokens": 5963,
       "sources": {
         "provider": 1
       }
@@ -36,9 +36,9 @@
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 6709,
-      "output_tokens": 1369,
-      "charged_tokens": 8078,
+      "input_tokens": 6707,
+      "output_tokens": 415,
+      "charged_tokens": 7122,
       "sources": {
         "provider": 1
       }
@@ -51,19 +51,19 @@
       "action_type": "tool_call",
       "name": "toggle_on",
       "parameters": {
-        "object": "tv"
+        "object": "television"
       }
     },
-    "public_env_feedback": "toggle_on tv -> ok",
+    "public_env_feedback": "toggle_on television -> ok",
     "action_success": true,
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 21835,
-      "output_tokens": 1594,
-      "charged_tokens": 23429,
+      "input_tokens": 7195,
+      "output_tokens": 335,
+      "charged_tokens": 7530,
       "sources": {
-        "provider": 3
+        "provider": 1
       }
     },
     "rsi_aux_usage": {}
@@ -80,9 +80,9 @@
     "terminated": true,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 7625,
-      "output_tokens": 451,
-      "charged_tokens": 8076,
+      "input_tokens": 7466,
+      "output_tokens": 1359,
+      "charged_tokens": 8825,
       "sources": {
         "provider": 1
       }

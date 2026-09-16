@@ -21,7 +21,9 @@ ACE_REPO = PROJECT / "external" / "ace"
 if str(ACE_REPO) not in sys.path:
     sys.path.insert(0, str(ACE_REPO))
 
-BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+from benchmark.utils import chat_completions_url, normalize_base_url  # noqa: E402
+
+BASE_URL = normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
 MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 TOKEN_BUDGET = 8192
 MAX_PLAYBOOK_TOKENS = 8192
@@ -48,7 +50,7 @@ class _AuditedChatClient:
         accountant = (self._owner.run_ctx or {}).get("accountant")
         if accountant is not None:
             accountant.record_request_dump(
-                url=f"{BASE_URL.rstrip('/')}/v1/chat/completions",
+                url=chat_completions_url(BASE_URL),
                 body={
                     "model": kwargs.get("model"),
                     "messages": kwargs.get("messages") or [],
@@ -115,7 +117,7 @@ class AceContextRSI(RSIMethod):
 
             inner = OpenAI(
                 api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
-                base_url=f"{BASE_URL.rstrip('/')}/v1",
+                base_url=f"{BASE_URL}/v1",
             )
             self._client = _AuditedChatClient(inner, self)
         return self._client
@@ -150,11 +152,41 @@ class AceContextRSI(RSIMethod):
             text = "\n".join(lines)
         return make_injection(text, provenance_ids=["ace_playbook"])
 
+    @staticmethod
+    def _import_ace_with_own_logger():
+        """Import ACE modules with ACE's own `logger.py` bound to `logger`.
+
+        The OpenETA venv also ships a top-level `logger` package; without this
+        swap, ACE's `from logger import log_llm_call` resolves to OpenETA's
+        module and raises ImportError.
+        """
+        import importlib.util
+        import sys as _sys
+
+        if "ace.core.reflector" in _sys.modules:
+            from ace.core.curator import Curator
+            from ace.core.reflector import Reflector
+            return Reflector, Curator
+
+        saved = _sys.modules.get("logger")
+        spec = importlib.util.spec_from_file_location("logger", ACE_REPO / "logger.py")
+        ace_logger = importlib.util.module_from_spec(spec)
+        _sys.modules["logger"] = ace_logger
+        try:
+            spec.loader.exec_module(ace_logger)
+            from ace.core.curator import Curator
+            from ace.core.reflector import Reflector
+        finally:
+            if saved is not None:
+                _sys.modules["logger"] = saved
+            else:
+                _sys.modules.pop("logger", None)
+        return Reflector, Curator
+
     def after_episode(self, trajectory_public: dict, outcome_public: dict) -> None:
         if not self._guard_update():
             return
-        from ace.core.curator import Curator
-        from ace.core.reflector import Reflector
+        Reflector, Curator = self._import_ace_with_own_logger()
         from playbook_utils import (
             apply_curator_operations,
             format_playbook_line,
@@ -211,10 +243,15 @@ class AceContextRSI(RSIMethod):
         self._last_update_usage = _usage_from_infos([reflect_info, curate_info])
         updated = new_playbook
         if not updated or updated == self.playbook:
+            # official fallback: apply_curator_operations returns
+            # (updated_playbook, next_global_id) -- a tuple, not a string
             try:
-                updated = apply_curator_operations(self.playbook, operations, next_id)
+                result = apply_curator_operations(self.playbook, operations, next_id)
+                updated = result[0] if isinstance(result, tuple) else result
             except Exception:
                 updated = self.playbook
+        if not isinstance(updated, str) or not updated.strip():
+            updated = self.playbook          # never store a non-string playbook
         self.playbook = updated
         paths["playbook"].write_text(self.playbook)
 

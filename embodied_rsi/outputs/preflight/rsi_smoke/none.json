@@ -1,0 +1,31 @@
+{
+  "method": "none",
+  "status": "PASS",
+  "evidence": {
+    "name": "none",
+    "blocked": false,
+    "accounting": {
+      "sidecar_calls": 0,
+      "component_calls": 0,
+      "planner_calls": 12,
+      "simulator_steps": 7
+    },
+    "state_hashes_after_experience": [
+      "cd32ae080a76d234b7d493f2",
+      "cd32ae080a76d234b7d493f2",
+      "cd32ae080a76d234b7d493f2",
+      "cd32ae080a76d234b7d493f2",
+      "cd32ae080a76d234b7d493f2"
+    ],
+    "probe_hash_before": "cd32ae080a76d234b7d493f2",
+    "probe_hash_after": "cd32ae080a76d234b7d493f2",
+    "probe_state_unchanged": true,
+    "probe_success": [
+      false,
+      false,
+      false
+    ],
+    "wall_s": 263.1,
+    "state_unchanged": true
+  }
+}

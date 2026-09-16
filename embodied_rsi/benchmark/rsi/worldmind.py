@@ -20,13 +20,14 @@ from pathlib import Path
 
 from benchmark.openeta_bridge.context_injection import RSIInjection, count_tokens, make_injection
 from benchmark.rsi.base import RSIMethod
+from benchmark.utils import chat_completions_url, normalize_base_url
 
 PROJECT = Path(__file__).resolve().parents[2]
 PLUGIN = PROJECT / "external" / "WorldMind" / "Plugin"
 if str(PLUGIN) not in sys.path:
     sys.path.insert(0, str(PLUGIN))
 
-BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
+BASE_URL = normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com"))
 MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 MAX_INJECTION_TOKENS = 8192
 
@@ -69,7 +70,7 @@ def _ensure_worldmind_client_instrumented() -> None:
             accountant = (owner.run_ctx or {}).get("accountant")
             if accountant is not None:
                 accountant.record_request_dump(
-                    url=f"{BASE_URL.rstrip('/')}/v1/chat/completions",
+                    url=chat_completions_url(BASE_URL),
                     body={"model": self.model_name, "messages": list(messages),
                           "max_tokens": self.max_tokens},
                     role="worldmind_component",
@@ -111,7 +112,7 @@ def _sidecar_predict(observation_text: str, action_text: str) -> dict:
         "max_tokens": 512,
     }
     request = urllib.request.Request(
-        f"{BASE_URL.rstrip('/')}/v1/chat/completions",
+        chat_completions_url(BASE_URL),
         data=json.dumps(body).encode(),
         headers={"Authorization": f"Bearer {os.environ.get('DEEPSEEK_API_KEY', '')}",
                  "Content-Type": "application/json"},
@@ -142,6 +143,7 @@ class WorldMindRSI(RSIMethod):
         self._component_usage = dict(ZERO_USAGE)
         self.strict_updates = True
         self.update_errors: list[str] = []
+        self.prediction_errors: list[dict] = []
 
     # ------------------------------------------------------------------ setup
     @staticmethod
@@ -185,9 +187,12 @@ class WorldMindRSI(RSIMethod):
             ProcessExperienceModule,
         )
 
+        # the official LLMClient feeds api_base straight into the OpenAI SDK,
+        # which appends only "/chat/completions"; the SDK base therefore needs
+        # the /v1 suffix (unlike the pinned OpenETA backend).
         self.config = WorldMindConfig(
             api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
-            api_base=BASE_URL,
+            api_base=f"{BASE_URL}/v1",
             is_multimodal=False,
             discriminator_model=MODEL,
             reflector_model=MODEL,
@@ -222,6 +227,7 @@ class WorldMindRSI(RSIMethod):
         self._component_usage = dict(ZERO_USAGE)
         self._sidecar_wall_s = 0.0
         self.update_errors = []
+        self.prediction_errors = []
         try:
             result = self.retrieval_module.retrieve(
                 task_instruction=task_public_view.get("instruction") or "",
@@ -287,7 +293,11 @@ class WorldMindRSI(RSIMethod):
         # Official semantics: state_after = step.observation, state_before is the
         # explicit kwarg; discriminator compares prediction vs state_after (P0-1).
         try:
-            has_error, _experiences = self.process_module.process_single_step(
+            # Official semantics: the first return value is "the prediction was
+            # wrong and a process experience was extracted" -- the productive
+            # path of the module, NOT an internal failure. Genuine module
+            # exceptions still propagate to rsi_update_error below.
+            prediction_error, experiences = self.process_module.process_single_step(
                 task_instruction=instruction,
                 step=ProcessTrajectoryStep(
                     observation=state_after,
@@ -297,8 +307,10 @@ class WorldMindRSI(RSIMethod):
                 ),
                 state_before=state_before,
             )
-            if has_error:
-                raise RuntimeError("WorldMind process updater reported an internal error")
+            if prediction_error:
+                self.prediction_errors.append(
+                    {"step_action": action_text, "experiences": list(experiences or [])})
+                self._log({"prediction_error_reflected": len(experiences or [])})
         except Exception as exc:  # noqa: BLE001
             message = f"process_step_error: {type(exc).__name__}: {exc}"
             self.update_errors.append(message)

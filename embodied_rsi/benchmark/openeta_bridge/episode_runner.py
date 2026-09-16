@@ -240,8 +240,13 @@ def _private_reference_values(task: dict) -> list[str]:
     values: list[str] = []
     for key in ("physical_task_id", "source_task_id", "global_task_id"):
         value = task.get(key)
-        if isinstance(value, str) and value:
-            values.append(value)
+        if not isinstance(value, str) or not value:
+            continue
+        # only distinctive identifiers are sentinels: EB-Habitat episode ids are
+        # short integers (e.g. "35") that trivially occur in ordinary text
+        if len(value) < 6 or value.isdigit():
+            continue
+        values.append(value)
     private = task.get("private_eval_metadata") or {}
     if private:
         values.append(json.dumps(private, sort_keys=True, separators=(",", ":")))

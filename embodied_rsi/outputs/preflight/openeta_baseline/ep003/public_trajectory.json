@@ -5,17 +5,17 @@
       "action_type": "tool_call",
       "name": "find",
       "parameters": {
-        "object": "table"
+        "object": "mug"
       }
     },
-    "public_env_feedback": "find table -> failed (<AsgardBench.objects.StepError object at 0x725045f1b940>)",
+    "public_env_feedback": "find mug -> failed (<AsgardBench.objects.StepError object at 0x7acf2e893940>)",
     "action_success": false,
     "terminated": false,
     "truncated": false,
     "planner_usage": {
       "input_tokens": 5712,
-      "output_tokens": 490,
-      "charged_tokens": 6202,
+      "output_tokens": 412,
+      "charged_tokens": 6124,
       "sources": {
         "provider": 1
       }
@@ -28,17 +28,17 @@
       "action_type": "tool_call",
       "name": "find",
       "parameters": {
-        "object": "dining_table"
+        "object": "table"
       }
     },
-    "public_env_feedback": "find dining_table -> ok",
+    "public_env_feedback": "find table -> ok",
     "action_success": true,
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 6759,
-      "output_tokens": 2468,
-      "charged_tokens": 9227,
+      "input_tokens": 6762,
+      "output_tokens": 539,
+      "charged_tokens": 7301,
       "sources": {
         "provider": 1
       }
@@ -47,29 +47,6 @@
   },
   {
     "step_idx": 3,
-    "chosen_action": {
-      "action_type": "tool_call",
-      "name": "find",
-      "parameters": {
-        "object": "mug"
-      }
-    },
-    "public_env_feedback": "find mug -> ok",
-    "action_success": true,
-    "terminated": false,
-    "truncated": false,
-    "planner_usage": {
-      "input_tokens": 22029,
-      "output_tokens": 2435,
-      "charged_tokens": 24464,
-      "sources": {
-        "provider": 3
-      }
-    },
-    "rsi_aux_usage": {}
-  },
-  {
-    "step_idx": 4,
     "chosen_action": {
       "action_type": "tool_call",
       "name": "pickup",
@@ -82,11 +59,34 @@
     "terminated": false,
     "truncated": false,
     "planner_usage": {
-      "input_tokens": 7688,
-      "output_tokens": 2381,
-      "charged_tokens": 10069,
+      "input_tokens": 7265,
+      "output_tokens": 899,
+      "charged_tokens": 8164,
       "sources": {
         "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "table"
+      }
+    },
+    "public_env_feedback": "put table -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15203,
+      "output_tokens": 3387,
+      "charged_tokens": 18590,
+      "sources": {
+        "provider": 2
       }
     },
     "rsi_aux_usage": {}

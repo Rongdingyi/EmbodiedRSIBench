@@ -62,8 +62,11 @@ class DeepSeekLLM:
         from openai import OpenAI
 
         self.model = model
+        base = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com").rstrip("/")
+        if base.endswith("/v1"):
+            base = base[: -len("/v1")].rstrip("/")
         self.client = OpenAI(api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
-                             base_url="https://api.deepseek.com/v1")
+                             base_url=f"{base}/v1")
 
     def __call__(self, messages, temperature: float = 0.0, max_tokens: int = 2048,
                  stop_strs=None, num_comps: int = 1) -> str:

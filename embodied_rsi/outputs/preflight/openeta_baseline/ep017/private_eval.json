@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "success_logic": "AND",
+  "condition_results": [
+    false,
+    false,
+    false
+  ],
+  "physical_task_id": "spatial::procthor::procthor119"
+}

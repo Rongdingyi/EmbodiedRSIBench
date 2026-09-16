@@ -1,0 +1,58 @@
+Warning: sentence-transformers or faiss not available for bulletpoint analysis.
+Install with: pip install sentence-transformers faiss-cpu
+[REFLECTOR] Starting call reflect_af7d9cda2ce61e372c12e879...
+[REFLECTOR] Call reflect_af7d9cda2ce61e372c12e879 completed in 20.95s
+[LOG] reflector call logged to reflector_reflect_af7d9cda2ce61e372c12e879_20260916_182749_876.json
+[CURATOR] Starting call curate_af7d9cda2ce61e372c12e879...
+[CURATOR] Call curate_af7d9cda2ce61e372c12e879 completed in 10.17s
+[LOG] curator call logged to curator_curate_af7d9cda2ce61e372c12e879_20260916_182800_049.json
+✅ Curator JSON schema validated successfully: 6 operations
+  Added bullet sai-00001 to section strategies_and_insights
+  Added bullet sai-00002 to section strategies_and_insights
+  Added bullet sai-00003 to section strategies_and_insights
+  Added bullet err-00004 to section common_mistakes_to_avoid
+  Added bullet err-00005 to section common_mistakes_to_avoid
+  Added bullet err-00006 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[REFLECTOR] Starting call reflect_4a97f0840bafb152996f2e80...
+[REFLECTOR] Call reflect_4a97f0840bafb152996f2e80 completed in 14.92s
+[LOG] reflector call logged to reflector_reflect_4a97f0840bafb152996f2e80_20260916_182853_133.json
+[CURATOR] Starting call curate_4a97f0840bafb152996f2e80...
+[CURATOR] Call curate_4a97f0840bafb152996f2e80 completed in 2.58s
+[LOG] curator call logged to curator_curate_4a97f0840bafb152996f2e80_20260916_182855_712.json
+✅ Curator JSON schema validated successfully: 0 operations
+[REFLECTOR] Starting call reflect_0d010879c7a339a772617f6a...
+[REFLECTOR] Call reflect_0d010879c7a339a772617f6a completed in 20.50s
+[LOG] reflector call logged to reflector_reflect_0d010879c7a339a772617f6a_20260916_183025_530.json
+[CURATOR] Starting call curate_0d010879c7a339a772617f6a...
+[CURATOR] Call curate_0d010879c7a339a772617f6a completed in 10.94s
+[LOG] curator call logged to curator_curate_0d010879c7a339a772617f6a_20260916_183036_470.json
+✅ Curator JSON schema validated successfully: 3 operations
+  Added bullet sai-00007 to section strategies_and_insights
+  Added bullet sai-00008 to section strategies_and_insights
+  Added bullet err-00009 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[REFLECTOR] Starting call reflect_e850a0224beb8832f99ec80a...
+[REFLECTOR] Call reflect_e850a0224beb8832f99ec80a completed in 16.51s
+[LOG] reflector call logged to reflector_reflect_e850a0224beb8832f99ec80a_20260916_183154_024.json
+[CURATOR] Starting call curate_e850a0224beb8832f99ec80a...
+[CURATOR] Call curate_e850a0224beb8832f99ec80a completed in 4.63s
+[LOG] curator call logged to curator_curate_e850a0224beb8832f99ec80a_20260916_183158_652.json
+✅ Curator JSON schema validated successfully: 0 operations
+[REFLECTOR] Starting call reflect_f441c9c91dd0a1ffb6f474a9...
+[REFLECTOR] Call reflect_f441c9c91dd0a1ffb6f474a9 completed in 20.20s
+[LOG] reflector call logged to reflector_reflect_f441c9c91dd0a1ffb6f474a9_20260916_183242_041.json
+[CURATOR] Starting call curate_f441c9c91dd0a1ffb6f474a9...
+[CURATOR] Call curate_f441c9c91dd0a1ffb6f474a9 completed in 1.71s
+[LOG] curator call logged to curator_curate_f441c9c91dd0a1ffb6f474a9_20260916_183243_750.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] probes_unchanged=True evidence={'playbook_changed': True}
+
+G5 RSI SMOKE GATE: PASS  {'ace_context': 'PASS'}

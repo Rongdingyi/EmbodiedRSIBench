@@ -1,0 +1,34 @@
+{
+  "method": "worldmind",
+  "status": "PASS",
+  "evidence": {
+    "name": "worldmind",
+    "blocked": false,
+    "accounting": {
+      "sidecar_calls": 6,
+      "component_calls": 6,
+      "planner_calls": 11,
+      "simulator_steps": 6
+    },
+    "state_hashes_after_experience": [
+      "e3b0c44298fc1c149afbf4c8",
+      "e3b0c44298fc1c149afbf4c8",
+      "e3b0c44298fc1c149afbf4c8",
+      "e3b0c44298fc1c149afbf4c8",
+      "e3b0c44298fc1c149afbf4c8"
+    ],
+    "probe_hash_before": "e3b0c44298fc1c149afbf4c8",
+    "probe_hash_after": "e3b0c44298fc1c149afbf4c8",
+    "probe_state_unchanged": true,
+    "probe_success": [
+      false,
+      false,
+      false
+    ],
+    "wall_s": 244.1,
+    "state_files": [],
+    "updater_errors": "",
+    "sidecar_calls": 6,
+    "component_calls": 6
+  }
+}

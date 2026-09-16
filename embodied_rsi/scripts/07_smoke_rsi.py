@@ -13,6 +13,7 @@ Output: outputs/preflight/RSI_SMOKE.json
 """
 from __future__ import annotations
 
+import argparse
 import json
 import shutil
 import sys
@@ -44,11 +45,22 @@ BUDGET = {"max_turns": 4, "max_tool_calls": 16, "timeout_s": 600,
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--method", action="append", default=None,
+                        help="run only this method (repeatable); default = all")
+    args = parser.parse_args()
+    selected = args.method or sorted(METHODS)
+    for name in selected:
+        if name not in METHODS:
+            raise SystemExit(f"unknown method {name!r} (choices: {sorted(METHODS)})")
+
     manifest = json.loads((PROJECT / "manifests" / "pilot150.json").read_text())
     pilot_dir = PROJECT / "outputs" / "rsi_smoke"
     audits = {}
     statuses: dict[str, str] = {}
     for name, cls in METHODS.items():
+        if name not in selected:
+            continue
         method = cls()
         state_root = pilot_dir / name / "rsi_state"
         state_root.mkdir(parents=True, exist_ok=True)
@@ -163,7 +175,22 @@ def main() -> int:
         checks[name] = gates.PASS if ok else gates.FAIL
     status = gates.combine(checks)
     report = {"checks": checks, "methods": audits, "status": status}
-    (OUT / "RSI_SMOKE.json").write_text(json.dumps(report, indent=2) + "\n")
+    # per-method artifact (parallel-safe) + merged aggregate
+    per_dir = OUT / "rsi_smoke"
+    per_dir.mkdir(parents=True, exist_ok=True)
+    for name, ev in audits.items():
+        (per_dir / f"{name}.json").write_text(
+            json.dumps({"method": name, "status": checks.get(name), "evidence": ev},
+                       indent=2) + "\n")
+    merged_checks: dict[str, str] = {}
+    merged_methods: dict[str, dict] = {}
+    for f in sorted(per_dir.glob("*.json")):
+        item = json.loads(f.read_text())
+        merged_checks[item["method"]] = item["status"]
+        merged_methods[item["method"]] = item["evidence"]
+    merged = {"checks": merged_checks, "methods": merged_methods,
+              "status": gates.combine(merged_checks)}
+    (OUT / "RSI_SMOKE.json").write_text(json.dumps(merged, indent=2) + "\n")
     print(f"\nG5 RSI SMOKE GATE: {status}  {checks}")
     return 0 if status in (gates.PASS, gates.BLOCKED) else 1
 

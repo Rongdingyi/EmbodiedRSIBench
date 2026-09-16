@@ -1,0 +1,8 @@
+{
+  "success": true,
+  "success_logic": "AND",
+  "condition_results": [
+    true
+  ],
+  "physical_task_id": "spatial::ai2thor::ai2thor04061"
+}

@@ -1,0 +1,33 @@
+[AsgardBench] 1cbca28172c230851ba0b3a1 turns=4 env_steps=4 success=False image=True status=PASS (42s)
+[AsgardBench] edc2eb518e7ac7546849e161 turns=4 env_steps=4 success=False image=True status=PASS (84s)
+[AsgardBench] b66239d48982bbde2f0e0bf4 turns=4 env_steps=4 success=False image=True status=PASS (51s)
+[AsgardBench] 8a0cd6898dbea9c618a71ef8 turns=4 env_steps=4 success=False image=True status=PASS (52s)
+[AsgardBench] 0f1774fec3ecb52175c830ab turns=4 env_steps=4 success=False image=True status=PASS (47s)
+[EB-ALFRED] dbf6026dc5a0706ba3b70a94 turns=4 env_steps=4 success=False image=True status=PASS (41s)
+[EB-ALFRED] 153c85b09e6933cfefef246f turns=4 env_steps=4 success=False image=True status=PASS (249s)
+[EB-ALFRED] 35fbbf440b5a9c6b40e12442 turns=4 env_steps=4 success=False image=True status=PASS (48s)
+[EB-ALFRED] 1e934d9bd5ab9971c3111bb2 turns=4 env_steps=4 success=False image=True status=PASS (123s)
+[EB-ALFRED] eb43fe190990073d2fd2eaae turns=4 env_steps=4 success=False image=True status=PASS (76s)
+[EB-Habitat] eb695671f276599e3dc10102 turns=4 env_steps=4 success=False image=True status=PASS (31s)
+[EB-Habitat] d72d737eefa6680b861aa6a7 turns=4 env_steps=4 success=False image=True status=PASS (30s)
+[EB-Habitat] 01a92278ebb7781633d0ba1e turns=4 env_steps=4 success=False image=True status=PASS (246s)
+[EB-Habitat] 85ffc7b1bbe41b0d55d8d060 turns=4 env_steps=4 success=False image=True status=PASS (103s)
+[EB-Habitat] 27029c6e47c3b1127484ca3b turns=4 env_steps=4 success=False image=True status=PASS (87s)
+[SpatialWorld] 7db7f20010e0e167de136595 turns=4 env_steps=4 success=False image=True status=PASS (64s)
+[SpatialWorld] 3c7313502fdfcc3e2a908176 turns=4 env_steps=4 success=False image=True status=PASS (25s)
+[SpatialWorld] dd1c40207c32f639e8211b07 turns=4 env_steps=4 success=False image=True status=PASS (26s)
+[SpatialWorld] 01c9217502f0569d7a0fbba1 turns=4 env_steps=4 success=False image=True status=PASS (25s)
+[SpatialWorld] 46ab4e8d921f56749d222e1e turns=4 env_steps=4 success=True image=True status=PASS (41s)
+[TVRBench] 747a4771599fba71b5bc2b42 turns=4 env_steps=4 success=False image=True status=PASS (85s)
+[TVRBench] 4b32f0207b81426faa763b94 turns=4 env_steps=4 success=False image=True status=PASS (69s)
+[TVRBench] 1e86a9bb01fe821c33bea56d turns=4 env_steps=4 success=False image=True status=PASS (63s)
+[TVRBench] cd72e0b10b4826ee7e4a9e29 turns=4 env_steps=4 success=False image=True status=PASS (57s)
+[TVRBench] 3251656a4e5acbaf5107f1e2 turns=4 env_steps=4 success=False image=True status=PASS (46s)
+[ok] all samples ran
+[ok] no infrastructure error
+[ok] no episode-level failure
+[ok] rgb delivered to planner (>=90%)
+[ok] no private leakage in requests
+[ok] native self-improvement writes == 0
+
+G4 OPENETA BASELINE GATE: PASS

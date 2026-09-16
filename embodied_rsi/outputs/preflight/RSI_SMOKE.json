@@ -1,0 +1,125 @@
+{
+  "checks": {
+    "ace_context": "PASS",
+    "none": "PASS",
+    "raw_memory": "PASS",
+    "worldmind": "PASS"
+  },
+  "methods": {
+    "ace_context": {
+      "name": "ace_context",
+      "blocked": false,
+      "accounting": {
+        "sidecar_calls": 0,
+        "component_calls": 10,
+        "planner_calls": 18,
+        "simulator_steps": 12
+      },
+      "state_hashes_after_experience": [
+        "5b9edcae563e2be11b07c2f2",
+        "b5a021b219faa7004f0c6503",
+        "40bde09fe63ced5a4f7cfa9d",
+        "de76decd811d956e43898e01",
+        "785dc11948963da7d0a8a49a"
+      ],
+      "probe_hash_before": "785dc11948963da7d0a8a49a",
+      "probe_hash_after": "785dc11948963da7d0a8a49a",
+      "probe_state_unchanged": true,
+      "probe_success": [
+        false,
+        false,
+        false
+      ],
+      "wall_s": 437.3,
+      "playbook_changed": true,
+      "curator_ops_file": true
+    },
+    "none": {
+      "name": "none",
+      "blocked": false,
+      "accounting": {
+        "sidecar_calls": 0,
+        "component_calls": 0,
+        "planner_calls": 12,
+        "simulator_steps": 7
+      },
+      "state_hashes_after_experience": [
+        "cd32ae080a76d234b7d493f2",
+        "cd32ae080a76d234b7d493f2",
+        "cd32ae080a76d234b7d493f2",
+        "cd32ae080a76d234b7d493f2",
+        "cd32ae080a76d234b7d493f2"
+      ],
+      "probe_hash_before": "cd32ae080a76d234b7d493f2",
+      "probe_hash_after": "cd32ae080a76d234b7d493f2",
+      "probe_state_unchanged": true,
+      "probe_success": [
+        false,
+        false,
+        false
+      ],
+      "wall_s": 263.1,
+      "state_unchanged": true
+    },
+    "raw_memory": {
+      "name": "raw_memory",
+      "blocked": false,
+      "accounting": {
+        "sidecar_calls": 0,
+        "component_calls": 0,
+        "planner_calls": 16,
+        "simulator_steps": 9
+      },
+      "state_hashes_after_experience": [
+        "1f1753d0400ab89ea704d2b7",
+        "3d7675993a41a7172b1bb515",
+        "eaddd3b4e6e61c5d7aa9f7a2",
+        "073b265eb9adefd82bc933c0",
+        "e6cb7313641db536e721e9cd"
+      ],
+      "probe_hash_before": "e6cb7313641db536e721e9cd",
+      "probe_hash_after": "e6cb7313641db536e721e9cd",
+      "probe_state_unchanged": true,
+      "probe_success": [
+        false,
+        false,
+        false
+      ],
+      "wall_s": 304.0,
+      "episodes_stored": 5,
+      "retrieval_nonempty": true,
+      "retrieval_tokens": 152
+    },
+    "worldmind": {
+      "name": "worldmind",
+      "blocked": false,
+      "accounting": {
+        "sidecar_calls": 6,
+        "component_calls": 6,
+        "planner_calls": 11,
+        "simulator_steps": 6
+      },
+      "state_hashes_after_experience": [
+        "e3b0c44298fc1c149afbf4c8",
+        "e3b0c44298fc1c149afbf4c8",
+        "e3b0c44298fc1c149afbf4c8",
+        "e3b0c44298fc1c149afbf4c8",
+        "e3b0c44298fc1c149afbf4c8"
+      ],
+      "probe_hash_before": "e3b0c44298fc1c149afbf4c8",
+      "probe_hash_after": "e3b0c44298fc1c149afbf4c8",
+      "probe_state_unchanged": true,
+      "probe_success": [
+        false,
+        false,
+        false
+      ],
+      "wall_s": 244.1,
+      "state_files": [],
+      "updater_errors": "",
+      "sidecar_calls": 6,
+      "component_calls": 6
+    }
+  },
+  "status": "PASS"
+}

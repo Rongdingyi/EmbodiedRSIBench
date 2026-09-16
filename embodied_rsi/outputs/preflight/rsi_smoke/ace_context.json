@@ -1,0 +1,32 @@
+{
+  "method": "ace_context",
+  "status": "PASS",
+  "evidence": {
+    "name": "ace_context",
+    "blocked": false,
+    "accounting": {
+      "sidecar_calls": 0,
+      "component_calls": 10,
+      "planner_calls": 18,
+      "simulator_steps": 12
+    },
+    "state_hashes_after_experience": [
+      "5b9edcae563e2be11b07c2f2",
+      "b5a021b219faa7004f0c6503",
+      "40bde09fe63ced5a4f7cfa9d",
+      "de76decd811d956e43898e01",
+      "785dc11948963da7d0a8a49a"
+    ],
+    "probe_hash_before": "785dc11948963da7d0a8a49a",
+    "probe_hash_after": "785dc11948963da7d0a8a49a",
+    "probe_state_unchanged": true,
+    "probe_success": [
+      false,
+      false,
+      false
+    ],
+    "wall_s": 437.3,
+    "playbook_changed": true,
+    "curator_ops_file": true
+  }
+}

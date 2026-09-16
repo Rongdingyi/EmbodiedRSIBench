@@ -18,12 +18,13 @@ if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
   echo "[FAIL] DEEPSEEK_API_KEY is not set" >&2
   exit 1
 fi
-if [ "${DEEPSEEK_BASE_URL:-}" != "https://api.deepseek.com" ]; then
-  echo "[FAIL] DEEPSEEK_BASE_URL must be https://api.deepseek.com (got '${DEEPSEEK_BASE_URL:-}')" >&2
+if [ -z "${DEEPSEEK_BASE_URL:-}" ]; then
+  echo "[FAIL] DEEPSEEK_BASE_URL is not set" >&2
   exit 1
 fi
-if [ "${DEEPSEEK_MODEL:-}" != "deepseek-flash" ]; then
-  echo "[FAIL] DEEPSEEK_MODEL must be deepseek-flash (got '${DEEPSEEK_MODEL:-}')" >&2
+EXPECTED_MODEL="${EXPECTED_MODEL:-deepseek-flash}"
+if [ "${DEEPSEEK_MODEL:-}" != "${EXPECTED_MODEL}" ]; then
+  echo "[FAIL] DEEPSEEK_MODEL must be ${EXPECTED_MODEL} (got '${DEEPSEEK_MODEL:-}')" >&2
   exit 1
 fi
 echo "[ok] env: base_url=${DEEPSEEK_BASE_URL} model=${DEEPSEEK_MODEL}"

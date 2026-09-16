@@ -1,0 +1,3 @@
+[none] probes_unchanged=True evidence={'state_unchanged': True}
+
+G5 RSI SMOKE GATE: PASS  {'none': 'PASS'}
