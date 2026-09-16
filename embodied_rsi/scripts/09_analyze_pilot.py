@@ -1,12 +1,12 @@
 #!/usr/bin/env python
-"""09_analyze_pilot.py -- Pilot-150 analysis (guide section 43/50).
+"""09_analyze_pilot.py -- Pilot-60 analysis (guide section 43/50).
 
 Reads outputs/pilot150/*/seed_*/ and produces:
-  outputs/pilot150/PILOT_REPORT.md
-  outputs/pilot150/PILOT_RESULTS.csv
-  outputs/pilot150/PILOT_RESULTS_BY_SOURCE.csv
-  outputs/pilot150/PILOT_RESULTS_BY_SKILL.csv
-  outputs/pilot150/PILOT_COST.csv
+  outputs/pilot60/PILOT_REPORT.md
+  outputs/pilot60/PILOT_RESULTS.csv
+  outputs/pilot60/PILOT_RESULTS_BY_SOURCE.csv
+  outputs/pilot60/PILOT_RESULTS_BY_SKILL.csv
+  outputs/pilot60/PILOT_COST.csv
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 from benchmark.registry.loader import by_global_id  # noqa: E402
 
-PILOT = PROJECT / "outputs" / "pilot150"
+PILOT = PROJECT / "outputs" / "pilot60"
 
 
 def load_probe_summary(root: Path, checkpoint: str) -> dict:
@@ -28,6 +28,26 @@ def load_probe_summary(root: Path, checkpoint: str) -> dict:
     if not path.exists():
         return {}
     return json.loads(path.read_text())
+
+
+def paired_transitions(first: dict, last: dict, role: str) -> dict:
+    tasks0 = {g: t for g, t in (first.get("tasks") or {}).items() if t.get("role") == role}
+    tasks1 = {g: t for g, t in (last.get("tasks") or {}).items() if t.get("role") == role}
+    counts = {"n": 0, "fail_to_success": 0, "success_to_fail": 0,
+              "success_to_success": 0, "fail_to_fail": 0}
+    for gid, a in tasks0.items():
+        b = tasks1.get(gid)
+        if not b or a.get("success") is None or b.get("success") is None:
+            continue
+        counts["n"] += 1
+        if bool(a["success"]) == bool(b["success"]):
+            counts["success_to_success" if a["success"] else "fail_to_fail"] += 1
+        elif b["success"]:
+            counts["fail_to_success"] += 1
+        else:
+            counts["success_to_fail"] += 1
+    counts["net_gain"] = counts["fail_to_success"] - counts["success_to_fail"]
+    return counts
 
 
 def success_rate(summary: dict, role: str) -> tuple[float | None, int]:
@@ -41,6 +61,7 @@ def success_rate(summary: dict, role: str) -> tuple[float | None, int]:
 def main() -> int:
     methods = sorted(p.name for p in PILOT.iterdir() if p.is_dir()) if PILOT.exists() else []
     rows = []
+    paired_rows = []
     by_source_rows = []
     by_skill_rows = []
     cost_rows = []
@@ -65,6 +86,9 @@ def main() -> int:
             id0, id1, idg, idn0, idn1 = gains(first, last, "id")
             tr0, tr1, trg, trn0, trn1 = gains(first, last, "transfer")
             rt0, rt1, rtg, rtn0, rtn1 = gains(first, last, "retention")
+            for role in ("id", "transfer", "retention"):
+                paired_rows.append({"method": method, "seed": seed_dir.name, "role": role,
+                                    **paired_transitions(first, last, role)})
             rows.append({
                 "method": method, "seed": seed_dir.name,
                 "experience": metrics.get("experience"),
@@ -143,8 +167,14 @@ def main() -> int:
                                 ["method"])
         writer.writeheader()
         writer.writerows(cost_rows)
+    with open(PILOT / "PILOT_PAIRED.csv", "w", newline="") as f:
+        writer = csv.DictWriter(
+            f, fieldnames=["method", "seed", "role", "n", "fail_to_success",
+                           "success_to_fail", "success_to_success", "fail_to_fail", "net_gain"])
+        writer.writeheader()
+        writer.writerows(paired_rows)
 
-    lines = ["# Pilot-150 Report", "",
+    lines = ["# Pilot-60 Report", "",
              "| Method | Init ID | Final ID | ID Gain | Init Transfer | Final Transfer | "
              "Transfer Gain | Retention | Probe state OK |",
              "|---|---:|---:|---:|---:|---:|---:|---:|---|"]
@@ -156,11 +186,22 @@ def main() -> int:
             c=fmt(r["id_gain"]), d=fmt(r["initial_transfer"]), e=fmt(r["final_transfer"]),
             f=fmt(r["transfer_gain"]), g=fmt(r["final_retention"]),
             h=r["probe_state_unchanged"]))
+    lines += ["", "## Paired transitions (S000 -> Sfinal)",
+              "",
+              "Same frozen tasks at both checkpoints; a task counts only when both runs "
+              "produced a scored outcome.",
+              "",
+              "| Method | Role | n | fail->success | success->fail | success->success | fail->fail | Net gain |",
+              "|---|---|---:|---:|---:|---:|---:|---:|"]
+    for r in paired_rows:
+        lines.append("| {method} | {role} | {n} | {fail_to_success} | {success_to_fail} | "
+                     "{success_to_success} | {fail_to_fail} | {net_gain:+d} |".format(**r))
     lines += ["", "## Excluded conditions",
               "- `embodiskill`: BLOCKED (see BLOCKERS.md / EMBODISKILL_CALL_PATH.md).",
               "", "## Notes",
               "- Success rates use the official per-source private evaluators.",
-              "- Probe checkpoints re-run the same frozen tasks with updates disabled.",
+              "- Probe checkpoints re-run the same frozen tasks with updates disabled "
+              "(Pilot-60: S000 and S030).",
               "- Token accounting: planner calls are counted per episode; exact token "
               "totals are emitted by the rollout recorder when enabled."]
     (PILOT / "PILOT_REPORT.md").write_text("\n".join(lines) + "\n")

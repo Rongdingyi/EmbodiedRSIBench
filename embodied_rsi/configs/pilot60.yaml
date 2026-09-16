@@ -1,27 +1,27 @@
-# Pilot-150 fixed protocol (Pilot v0.3, seed 20260915), amended per review.
+# Pilot-60 fixed protocol (Pilot v0.7, seed 20260915), amended per review.
 seed: 20260915
 
 roles:
-  experience: 75
-  id: 25
-  transfer: 30
-  retention: 20
-total: 150
+  experience: 30
+  id: 10
+  transfer: 10
+  retention: 10
+total: 60
 
 transfer_quota:            # Core has no Asgard transfer
-  TVRBench: 10
-  SpatialWorld: 10
-  EB-ALFRED: 5
-  EB-Habitat: 5
+  TVRBench: 3
+  SpatialWorld: 3
+  EB-ALFRED: 2
+  EB-Habitat: 2
 
 selection:
   pair_first: true
-  target_experience_per_source: 15          # deficit filling after mandatory anchors
+  target_experience_per_source: 6          # deficit filling after mandatory anchors
   rank_experience: "sha256(20260915|experience|global_task_id)"
   rank_stream: "sha256(20260915|experience_stream|global_task_id)"
   retention_pairing: none   # retention anchors are fixed held-out tasks (no oracle pairing)
 
-probe_checkpoints: [S000, S025, S050, S075]
+probe_checkpoints: [S000, S030]
 probe_roles: [id, transfer, retention]
 probe_update_enabled: false                  # frozen probes, state hash must not change
 

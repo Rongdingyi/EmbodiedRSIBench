@@ -54,7 +54,7 @@ def main() -> int:
         if name not in METHODS:
             raise SystemExit(f"unknown method {name!r} (choices: {sorted(METHODS)})")
 
-    manifest = json.loads((PROJECT / "manifests" / "pilot150.json").read_text())
+    manifest = json.loads((PROJECT / "manifests" / "pilot60.json").read_text())
     pilot_dir = PROJECT / "outputs" / "rsi_smoke"
     audits = {}
     statuses: dict[str, str] = {}

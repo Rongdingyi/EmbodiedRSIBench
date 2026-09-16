@@ -1,0 +1,45 @@
+{
+  "protocol": "Pilot-60-v0.1",
+  "counts": {
+    "experience": 30,
+    "id": 10,
+    "transfer": 10,
+    "retention": 10
+  },
+  "physical_overlap": {
+    "experiencexid": 0,
+    "experiencextransfer": 0,
+    "experiencexretention": 0,
+    "idxtransfer": 0,
+    "idxretention": 0,
+    "transferxretention": 0
+  },
+  "id_by_source": {
+    "TVRBench": 2,
+    "SpatialWorld": 2,
+    "AsgardBench": 2,
+    "EB-ALFRED": 2,
+    "EB-Habitat": 2
+  },
+  "transfer_by_source": {
+    "TVRBench": 3,
+    "SpatialWorld": 3,
+    "EB-ALFRED": 2,
+    "EB-Habitat": 2
+  },
+  "retention_by_source": {
+    "TVRBench": 2,
+    "SpatialWorld": 2,
+    "AsgardBench": 2,
+    "EB-ALFRED": 2,
+    "EB-Habitat": 2
+  },
+  "experience_by_source": {
+    "TVRBench": 6,
+    "SpatialWorld": 6,
+    "AsgardBench": 6,
+    "EB-ALFRED": 6,
+    "EB-Habitat": 6
+  },
+  "status": "PASS"
+}

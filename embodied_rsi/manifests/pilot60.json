@@ -1,0 +1,455 @@
+{
+  "pilot_version": "Pilot-60-v0.1",
+  "seed": "20260915",
+  "quota": {
+    "experience": 30,
+    "id": 10,
+    "transfer": 10,
+    "retention": 10
+  },
+  "experience": [
+    "af7d9cda2ce61e372c12e879",
+    "4a97f0840bafb152996f2e80",
+    "d2aa0cdd7ecc9aad2e914919",
+    "07e959ea67b68ed3096ea5b5",
+    "7802f5fb304e2e4e21b38427",
+    "cf68b1e84949b3893e84e45b",
+    "c328b6e02a5e37f4670f3f06",
+    "ac94d453797c68aa2ca35c40",
+    "5c41ee1d4160f8bbbc2aea18",
+    "254490a0a79cf4400009b339",
+    "48f70d107f5b702a2eb39617",
+    "b2711b84d576de87f3a06e22",
+    "af42691cc783441286a66457",
+    "39a9f8a930eb004a155843c1",
+    "a625628e54f6da76a4839471",
+    "e0a791f31631dab6573c5e31",
+    "024f0f6a00587246b173332c",
+    "78a6df9d17c48d835eb5061f",
+    "8132995f6c1233b67a77fc77",
+    "fd44b1790c66485aae012861",
+    "8ea46e8d0b384acee00f5984",
+    "4c1a2c8453807a70b177d912",
+    "fda43d9972133290afc4e4f8",
+    "f1e99d709afa71fcf72e3312",
+    "b4b66ccef4b6574a03487ec7",
+    "24623e5f57bf49ffcadf1744",
+    "8901c7d48b4d1bd6f22c78a9",
+    "79549635dc9c8e77c5cb5350",
+    "118ab8288a38e5aaa5fc0620",
+    "d46bfd9c78877123e3a33459"
+  ],
+  "id_probe": [
+    "55f4646168b23224b5d696ff",
+    "bd18f6ce84e3e8ab6cd55e94",
+    "55785a78f7b5ffd3a11afb53",
+    "3fb8dc5c7aff7d9d661bee6b",
+    "69d7188eabb26cbcf48069c7",
+    "d9ce41e276ecbfe1d442ea98",
+    "1e4d2a5616a4a39087e7c596",
+    "f5d8b4251f31e1c9f00fbd9d",
+    "8c168a32b8b9983d92e5b683",
+    "040608c64b7d922a0c173c37"
+  ],
+  "transfer_probe": [
+    "3889a4831aeea72694365c1d",
+    "ff31172beb2274e1659a235d",
+    "cd72e0b10b4826ee7e4a9e29",
+    "31f2f615a94d1ebf6ec44d74",
+    "ce0316f121e633329dd88fa5",
+    "f2fe3291361b843c5a7e3e46",
+    "1e934d9bd5ab9971c3111bb2",
+    "2a9f9fc6154bb4d05c69738e",
+    "866991ed0feff64a9ad1c319",
+    "a8df749bb4964fa87151e000"
+  ],
+  "retention_probe": [
+    "574cb4aa3fd00f2b9ecd7b45",
+    "bf387458ac08516f66ca8129",
+    "7db7f20010e0e167de136595",
+    "e4d9f370cf1df3444eb34476",
+    "45596a740ab8b820d40759e1",
+    "78a092265319cde9c13500ed",
+    "d3cc163a32ead595d091085b",
+    "a452f4d9bdd800422794199b",
+    "b52ed5a2b64e1e1cf6b9979e",
+    "7c7b1d0e5bddab709946fcfa"
+  ],
+  "id_pairs": [
+    {
+      "pair_id": "a8a9356da952ef42f7ba",
+      "experience_task_id": "af7d9cda2ce61e372c12e879",
+      "probe_task_id": "55f4646168b23224b5d696ff",
+      "source_dataset": "TVRBench",
+      "pair_type": "ID",
+      "shared_skill_family": "S01",
+      "shared_native_type": "target_viewpoint_reproduction",
+      "experience_scene": "ai2thor::FloorPlan23",
+      "probe_scene": "ai2thor::FloorPlan23",
+      "experience_objects": [],
+      "probe_objects": [],
+      "matching_rule": "same_scene_same_viewpoint_universe"
+    },
+    {
+      "pair_id": "426dde85e2dc42f4b5d5",
+      "experience_task_id": "4a97f0840bafb152996f2e80",
+      "probe_task_id": "bd18f6ce84e3e8ab6cd55e94",
+      "source_dataset": "TVRBench",
+      "pair_type": "ID",
+      "shared_skill_family": "S01",
+      "shared_native_type": "target_viewpoint_reproduction",
+      "experience_scene": "ai2thor::FloorPlan408",
+      "probe_scene": "ai2thor::FloorPlan408",
+      "experience_objects": [],
+      "probe_objects": [],
+      "matching_rule": "same_scene_same_viewpoint_universe"
+    },
+    {
+      "pair_id": "53219f3daad4a0bfb32c",
+      "experience_task_id": "d2aa0cdd7ecc9aad2e914919",
+      "probe_task_id": "55785a78f7b5ffd3a11afb53",
+      "source_dataset": "SpatialWorld",
+      "pair_type": "ID",
+      "shared_skill_family": "S04",
+      "shared_native_type": "Hybrid",
+      "experience_scene": "ai2thor::FloorPlan23",
+      "probe_scene": "ai2thor::FloorPlan210",
+      "experience_objects": [
+        "Fork",
+        "Spoon"
+      ],
+      "probe_objects": [
+        "Watch"
+      ],
+      "matching_rule": "same_backend_same_task_type_same_primary_unique_anchor"
+    },
+    {
+      "pair_id": "fbae79bfe5bc4241a352",
+      "experience_task_id": "07e959ea67b68ed3096ea5b5",
+      "probe_task_id": "3fb8dc5c7aff7d9d661bee6b",
+      "source_dataset": "SpatialWorld",
+      "pair_type": "ID",
+      "shared_skill_family": "S04",
+      "shared_native_type": "Hybrid",
+      "experience_scene": "ai2thor::FloorPlan323",
+      "probe_scene": "ai2thor::FloorPlan23",
+      "experience_objects": [
+        "Mug"
+      ],
+      "probe_objects": [
+        "Pencil"
+      ],
+      "matching_rule": "same_backend_same_task_type_same_primary_unique_anchor"
+    },
+    {
+      "pair_id": "2e6a26bfe7be2f08a21b",
+      "experience_task_id": "7802f5fb304e2e4e21b38427",
+      "probe_task_id": "69d7188eabb26cbcf48069c7",
+      "source_dataset": "AsgardBench",
+      "pair_type": "ID",
+      "shared_skill_family": "S04",
+      "shared_native_type": "put_away_dishes",
+      "experience_scene": "ai2thor::FloorPlan2",
+      "probe_scene": "ai2thor::FloorPlan6",
+      "experience_objects": [
+        "Bowl",
+        "Cup",
+        "Mug",
+        "Plate",
+        "Pot"
+      ],
+      "probe_objects": [
+        "Bowl",
+        "Cup",
+        "Mug",
+        "Plate",
+        "Pot"
+      ],
+      "matching_rule": "same_task_family_designated_variation_pair"
+    },
+    {
+      "pair_id": "d17bfff810ed8e12cd91",
+      "experience_task_id": "cf68b1e84949b3893e84e45b",
+      "probe_task_id": "d9ce41e276ecbfe1d442ea98",
+      "source_dataset": "AsgardBench",
+      "pair_type": "ID",
+      "shared_skill_family": "S10",
+      "shared_native_type": "slice_and_place",
+      "experience_scene": "ai2thor::FloorPlan26",
+      "probe_scene": "ai2thor::FloorPlan18",
+      "experience_objects": [
+        "Bowl",
+        "Knife",
+        "Pan",
+        "Plate",
+        "Pot",
+        "Tomato"
+      ],
+      "probe_objects": [
+        "Apple",
+        "Bowl",
+        "Knife",
+        "Pan",
+        "Plate",
+        "Pot"
+      ],
+      "matching_rule": "same_task_family_designated_variation_pair"
+    },
+    {
+      "pair_id": "05114c3b10e59b7b45d6",
+      "experience_task_id": "c328b6e02a5e37f4670f3f06",
+      "probe_task_id": "1e4d2a5616a4a39087e7c596",
+      "source_dataset": "EB-ALFRED",
+      "pair_type": "ID",
+      "shared_skill_family": "S08",
+      "shared_native_type": "pick_heat_then_place_in_recep",
+      "experience_scene": "ai2thor::FloorPlan18",
+      "probe_scene": "ai2thor::FloorPlan12",
+      "experience_objects": [
+        "Apple"
+      ],
+      "probe_objects": [
+        "Tomato"
+      ],
+      "matching_rule": "same_native_type_same_primary_unique_anchor"
+    },
+    {
+      "pair_id": "daf2cd7b6d3be02b1609",
+      "experience_task_id": "ac94d453797c68aa2ca35c40",
+      "probe_task_id": "f5d8b4251f31e1c9f00fbd9d",
+      "source_dataset": "EB-ALFRED",
+      "pair_type": "ID",
+      "shared_skill_family": "S07",
+      "shared_native_type": "pick_clean_then_place_in_recep",
+      "experience_scene": "ai2thor::FloorPlan4",
+      "probe_scene": "ai2thor::FloorPlan427",
+      "experience_objects": [
+        "Ladle"
+      ],
+      "probe_objects": [
+        "DishSponge"
+      ],
+      "matching_rule": "same_native_type_same_primary_unique_anchor"
+    },
+    {
+      "pair_id": "3fd8ff07886c62c436f4",
+      "experience_task_id": "5c41ee1d4160f8bbbc2aea18",
+      "probe_task_id": "8c168a32b8b9983d92e5b683",
+      "source_dataset": "EB-Habitat",
+      "pair_type": "ID",
+      "shared_skill_family": "S04",
+      "shared_native_type": "instruct_id_family",
+      "experience_scene": "habitat_replicacad::v3_sc3_staging_02",
+      "probe_scene": "habitat_replicacad::v3_sc0_staging_13",
+      "experience_objects": [
+        "toy airplane"
+      ],
+      "probe_objects": [
+        "block"
+      ],
+      "matching_rule": "same_instruct_id_same_primary_unique_anchor"
+    },
+    {
+      "pair_id": "236efadc0e8f75361f4c",
+      "experience_task_id": "254490a0a79cf4400009b339",
+      "probe_task_id": "040608c64b7d922a0c173c37",
+      "source_dataset": "EB-Habitat",
+      "pair_type": "ID",
+      "shared_skill_family": "S04",
+      "shared_native_type": "instruct_id_family",
+      "experience_scene": "habitat_replicacad::v3_sc3_staging_01",
+      "probe_scene": "habitat_replicacad::v3_sc3_staging_05",
+      "experience_objects": [
+        "mug"
+      ],
+      "probe_objects": [
+        "pear"
+      ],
+      "matching_rule": "same_instruct_id_same_primary_unique_anchor"
+    }
+  ],
+  "transfer_pairs": [
+    {
+      "pair_id": "91d6084bdf5163a028c0",
+      "experience_task_id": "48f70d107f5b702a2eb39617",
+      "probe_task_id": "3889a4831aeea72694365c1d",
+      "source_dataset": "TVRBench",
+      "transfer_axis": "scene_ood",
+      "experience_backend": "procthor",
+      "probe_backend": "procthor",
+      "experience_scene": "procthor::procthor_00825",
+      "probe_scene": "procthor::procthor_01090",
+      "shared_skill_family": "S01",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "official_eval_scene_ood_same_difficulty_stratum"
+    },
+    {
+      "pair_id": "747650ab37ca55d10793",
+      "experience_task_id": "b2711b84d576de87f3a06e22",
+      "probe_task_id": "ff31172beb2274e1659a235d",
+      "source_dataset": "TVRBench",
+      "transfer_axis": "scene_ood",
+      "experience_backend": "procthor",
+      "probe_backend": "procthor",
+      "experience_scene": "procthor::procthor_02828",
+      "probe_scene": "procthor::procthor_03569",
+      "shared_skill_family": "S01",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "official_eval_scene_ood_same_difficulty_stratum"
+    },
+    {
+      "pair_id": "4b63829799fc8be92312",
+      "experience_task_id": "af42691cc783441286a66457",
+      "probe_task_id": "cd72e0b10b4826ee7e4a9e29",
+      "source_dataset": "TVRBench",
+      "transfer_axis": "scene_ood",
+      "experience_backend": "procthor",
+      "probe_backend": "procthor",
+      "experience_scene": "procthor::procthor_02614",
+      "probe_scene": "procthor::procthor_03257",
+      "shared_skill_family": "S01",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "official_eval_scene_ood_same_difficulty_stratum"
+    },
+    {
+      "pair_id": "afa213759769ac0da079",
+      "experience_task_id": "39a9f8a930eb004a155843c1",
+      "probe_task_id": "31f2f615a94d1ebf6ec44d74",
+      "source_dataset": "SpatialWorld",
+      "transfer_axis": "backend_ood",
+      "experience_backend": "ai2thor",
+      "probe_backend": "procthor",
+      "experience_scene": "ai2thor::FloorPlan15",
+      "probe_scene": "procthor::221",
+      "shared_skill_family": "S03",
+      "primitive_jaccard": 0.75,
+      "object_jaccard": 0.0,
+      "matching_rule": "cross_backend_ai2thor_to_procthor_unique_anchor"
+    },
+    {
+      "pair_id": "e14ae8393b51f2ea58ba",
+      "experience_task_id": "a625628e54f6da76a4839471",
+      "probe_task_id": "ce0316f121e633329dd88fa5",
+      "source_dataset": "SpatialWorld",
+      "transfer_axis": "backend_ood",
+      "experience_backend": "ai2thor",
+      "probe_backend": "procthor",
+      "experience_scene": "ai2thor::FloorPlan311",
+      "probe_scene": "procthor::111",
+      "shared_skill_family": "S03",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "cross_backend_ai2thor_to_procthor_anchor_reused"
+    },
+    {
+      "pair_id": "d8cc9e05db3c3fe44514",
+      "experience_task_id": "07e959ea67b68ed3096ea5b5",
+      "probe_task_id": "f2fe3291361b843c5a7e3e46",
+      "source_dataset": "SpatialWorld",
+      "transfer_axis": "backend_ood",
+      "experience_backend": "ai2thor",
+      "probe_backend": "procthor",
+      "experience_scene": "ai2thor::FloorPlan323",
+      "probe_scene": "procthor::74",
+      "shared_skill_family": "S04",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "cross_backend_ai2thor_to_procthor_unique_anchor"
+    },
+    {
+      "pair_id": "c09db81306c6ab747850",
+      "experience_task_id": "e0a791f31631dab6573c5e31",
+      "probe_task_id": "1e934d9bd5ab9971c3111bb2",
+      "source_dataset": "EB-ALFRED",
+      "transfer_axis": "object_transfer",
+      "experience_backend": "ai2thor",
+      "probe_backend": "ai2thor",
+      "experience_scene": "ai2thor::FloorPlan224",
+      "probe_scene": "ai2thor::FloorPlan21",
+      "shared_skill_family": "S04",
+      "primitive_jaccard": 0.8,
+      "object_jaccard": 0.0,
+      "matching_rule": "same_primary_scene_or_object_transfer_unique_anchor"
+    },
+    {
+      "pair_id": "323e5afb9fcd03a12d37",
+      "experience_task_id": "024f0f6a00587246b173332c",
+      "probe_task_id": "2a9f9fc6154bb4d05c69738e",
+      "source_dataset": "EB-ALFRED",
+      "transfer_axis": "object_transfer",
+      "experience_backend": "ai2thor",
+      "probe_backend": "ai2thor",
+      "experience_scene": "ai2thor::FloorPlan23",
+      "probe_scene": "ai2thor::FloorPlan309",
+      "shared_skill_family": "S04",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "same_primary_scene_or_object_transfer_anchor_reused"
+    },
+    {
+      "pair_id": "768e3694325c174a8bf4",
+      "experience_task_id": "78a6df9d17c48d835eb5061f",
+      "probe_task_id": "866991ed0feff64a9ad1c319",
+      "source_dataset": "EB-Habitat",
+      "transfer_axis": "object_transfer",
+      "experience_backend": "habitat_replicacad",
+      "probe_backend": "habitat_replicacad",
+      "experience_scene": "habitat_replicacad::v3_sc3_staging_00",
+      "probe_scene": "habitat_replicacad::v3_sc3_staging_01",
+      "shared_skill_family": "S04",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "same_primary_scene_or_object_transfer_unique_anchor"
+    },
+    {
+      "pair_id": "26fbe661768bfbfb2ef1",
+      "experience_task_id": "8132995f6c1233b67a77fc77",
+      "probe_task_id": "a8df749bb4964fa87151e000",
+      "source_dataset": "EB-Habitat",
+      "transfer_axis": "object_transfer",
+      "experience_backend": "habitat_replicacad",
+      "probe_backend": "habitat_replicacad",
+      "experience_scene": "habitat_replicacad::v3_sc3_staging_01",
+      "probe_scene": "habitat_replicacad::v3_sc3_staging_03",
+      "shared_skill_family": "S04",
+      "primitive_jaccard": 1.0,
+      "object_jaccard": 0.0,
+      "matching_rule": "same_primary_scene_or_object_transfer_unique_anchor"
+    }
+  ],
+  "experience_stream_order": [
+    "39a9f8a930eb004a155843c1",
+    "8ea46e8d0b384acee00f5984",
+    "7802f5fb304e2e4e21b38427",
+    "fda43d9972133290afc4e4f8",
+    "8901c7d48b4d1bd6f22c78a9",
+    "118ab8288a38e5aaa5fc0620",
+    "fd44b1790c66485aae012861",
+    "024f0f6a00587246b173332c",
+    "d46bfd9c78877123e3a33459",
+    "254490a0a79cf4400009b339",
+    "48f70d107f5b702a2eb39617",
+    "b4b66ccef4b6574a03487ec7",
+    "4a97f0840bafb152996f2e80",
+    "ac94d453797c68aa2ca35c40",
+    "af7d9cda2ce61e372c12e879",
+    "af42691cc783441286a66457",
+    "e0a791f31631dab6573c5e31",
+    "78a6df9d17c48d835eb5061f",
+    "79549635dc9c8e77c5cb5350",
+    "a625628e54f6da76a4839471",
+    "8132995f6c1233b67a77fc77",
+    "07e959ea67b68ed3096ea5b5",
+    "4c1a2c8453807a70b177d912",
+    "b2711b84d576de87f3a06e22",
+    "c328b6e02a5e37f4670f3f06",
+    "24623e5f57bf49ffcadf1744",
+    "5c41ee1d4160f8bbbc2aea18",
+    "cf68b1e84949b3893e84e45b",
+    "f1e99d709afa71fcf72e3312",
+    "d2aa0cdd7ecc9aad2e914919"
+  ]
+}

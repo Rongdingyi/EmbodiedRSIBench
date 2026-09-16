@@ -54,7 +54,7 @@ def snapshot_native_roots() -> dict[str, float]:
 
 
 def main() -> int:
-    protocol = yaml.safe_load((PROJECT / "configs" / "pilot150.yaml").read_text())
+    protocol = yaml.safe_load((PROJECT / "configs" / "pilot60.yaml").read_text())
     budgets = protocol["budgets"]
     records_by_source: dict[str, list[dict]] = defaultdict(list)
     for role in ("experience", "id", "transfer", "retention"):

@@ -1,18 +1,21 @@
 # Current State
 
 ## Last completed milestone
-G0-G6 all PASS on the relay endpoint; G7 (Pilot-150) aborted by user after
+G0-G6 all PASS on the relay endpoint. G7 protocol changed to Pilot-60 (v0.7);
+Pilot-150 aborted by user after
 ~3.2M tokens (39 partial S000 probe episodes, archived to
-`outputs/aborted_pilot150_20260916/`).
+`outputs/aborted_pilot150_20260916/` (predates Pilot-60).
 
 ## Status
 G0/G1/G2/G3/G4/G5/G6 ALL PASS (evidence in `outputs/preflight/`).
-G7 run was stopped mid-S000 by decision: full 4x225 pilot costs an estimated
-~85M tokens (~a few hundred CNY); alternatives discussed: dev-mode rehearsal
-(`--max-experience 15 --max-probes 15`, ~14M, non-canonical), baseline-only
-(baseline-only: `--method none`, ~21M = final baseline data), or the full pilot.
-A future canonical run must start from an empty `outputs/pilot150/` and use
-`--overwrite` only after archiving the previous attempt.
+Pilot v0.7 / Pilot-60 protocol: 30 experience (6/source) + 10 ID + 10
+transfer + 10 retention = 60 unique tasks, checkpoints S000 -> S030, 90
+episodes/method (360 total). Manifest: `manifests/pilot60.json`
+(`05b_build_pilot60.py`, audit PASS). Runner: `08_run_pilot60.py`
+(`outputs/pilot60/`), analysis: `09_analyze_pilot.py` (adds paired
+transitions), release audit: `10_audit_release.py` (30/10/10/10 + S030).
+A canonical run must start from an empty `outputs/pilot60/`; use `--overwrite`
+only after archiving a previous attempt.
 
 ## Regression evidence (all PASS)
 - none: 1 experience + 1 probe, probe state hash unchanged, clone/live/snapshot
@@ -59,7 +62,7 @@ A future canonical run must start from an empty `outputs/pilot150/` and use
 1. WorldMind now passes `observation=state_after` and `state_before=` (official
    semantics), `has_error` honoured; spy test asserts both arguments.
 2. Canonical runs fail closed on a non-empty output root (no silent state reuse).
-3. Release audit requires full Pilot-150 counts, `S075` summaries with matching
+3. Release audit requires full Pilot-60 counts, `S030` summaries with matching
    probe counts, and each Gate's own status.
 4. WorldMind updater errors surface as `rsi_update_error` + episode FAIL; G5
    asserts sidecar/component calls and an empty `errors.jsonl`.
@@ -69,5 +72,5 @@ A future canonical run must start from an empty `outputs/pilot150/` and use
 ## Next step
 1. `scripts/04_validate_adapters.py` (G3, fresh worker per task)
 2. `scripts/06_smoke_openeta.py` (G4)
-3. `scripts/07_smoke_rsi.py` (G5) -> then `08_run_pilot150.py` per method
+3. `scripts/07_smoke_rsi.py` (G5) -> then `08_run_pilot60.py` per method
 4. `09_analyze_pilot.py` + `10_audit_release.py`

@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""08_run_pilot150.py -- canonical Pilot-150 runner (P0/P1 amended).
+"""08_run_pilot60.py -- canonical Pilot-60 runner (Pilot v0.7).
 
 Uses the upstream `OpenEtaEpisodeRunner` through `run_episode`, enforces the
 OpenETA-turn / tool-call / environment-step budgets separately, advances the RSI
@@ -7,13 +7,14 @@ experience-stream counters (ACE), and writes the guide's per-condition layout
 including token accounting, leakage audit and three-state FINAL_STATUS.
 
 Usage:
-    python scripts/08_run_pilot150.py --method none
-    python scripts/08_run_pilot150.py --method none --max-experience 2 --max-probes 2
+    python scripts/08_run_pilot60.py --method none
+    python scripts/08_run_pilot60.py --method none --max-experience 2 --max-probes 2
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import sys
 import time
@@ -34,6 +35,7 @@ from benchmark.rsi.none import NoneRSI  # noqa: E402
 from benchmark.rsi.raw_memory import RawMemoryRSI  # noqa: E402
 from benchmark.rsi.worldmind import WorldMindRSI  # noqa: E402
 from benchmark.runner import gates  # noqa: E402
+from benchmark.utils import normalize_base_url  # noqa: E402
 
 METHODS = {"none": NoneRSI, "raw_memory": RawMemoryRSI, "ace_context": AceContextRSI,
            "worldmind": WorldMindRSI, "embodiskill": EmbodiSkillRSI}
@@ -41,7 +43,7 @@ SEED = 20260915
 
 
 def load_protocol() -> dict:
-    return yaml.safe_load((PROJECT / "configs" / "pilot150.yaml").read_text())
+    return yaml.safe_load((PROJECT / "configs" / "pilot60.yaml").read_text())
 
 
 def episode_config(protocol: dict, source: str) -> dict:
@@ -71,14 +73,18 @@ def run_probe_checkpoint(method, out_root: Path, checkpoint: str, manifest: dict
         ids = manifest[key]
         if max_probes:
             ids = ids[:max_probes]
-        for gid in ids:
+        for index, gid in enumerate(ids, 1):
             task = by_global_id(role)[gid]
-            probe_dir = out_root / "probes" / checkpoint / role / gid
+            # neutral directory names: artifact paths are planner-visible and
+            # must not contain the private global_task_id (G4 precedent)
+            task_dir = f"task_{index:03d}"
+            probe_dir = out_root / "probes" / checkpoint / role / task_dir
             adapter = make_adapter(task["source_dataset"])
             res = run_episode(task, adapter, clone, role=role, output_dir=probe_dir,
                               config=episode_config(protocol, task["source_dataset"]))
             results["tasks"][gid] = {
-                "role": role, "success": res.outcome.get("success"),
+                "role": role, "dir": f"{role}/{task_dir}",
+                "success": res.outcome.get("success"),
                 "turns": res.turns, "env_steps": res.env_steps,
                 "status": res.status, "error": res.error,
                 "leakage": res.leakage_violations,
@@ -93,6 +99,9 @@ def run_probe_checkpoint(method, out_root: Path, checkpoint: str, manifest: dict
     results["status"] = gates.PASS if (results["probe_state_unchanged"]
                                        and results["infra_errors"] == 0
                                        and results["leakage"] == 0) else gates.FAIL
+    (out_root / "probes" / checkpoint).mkdir(parents=True, exist_ok=True)
+    (out_root / "probes" / checkpoint / "summary.json").write_text(
+        json.dumps(results, indent=2) + "\n")
     return results
 
 
@@ -163,7 +172,8 @@ def main() -> int:
     parser.add_argument("--method", required=True, choices=sorted(METHODS))
     parser.add_argument("--max-experience", type=int, default=None)
     parser.add_argument("--max-probes", type=int, default=None)
-    parser.add_argument("--checkpoint-every", type=int, default=25)
+    parser.add_argument("--checkpoint-every", type=int, default=0,
+                        help="intermediate state snapshots; 0 = none (Pilot-60 has S000/S030 only)")
     parser.add_argument("--output-root", type=Path, default=None,
                         help="override the run directory (dev smokes must use a separate root)")
     parser.add_argument("--overwrite", action="store_true",
@@ -171,14 +181,14 @@ def main() -> int:
     args = parser.parse_args()
 
     protocol = load_protocol()
-    manifest = json.loads((PROJECT / "manifests" / "pilot150.json").read_text())
+    manifest = json.loads((PROJECT / "manifests" / "pilot60.json").read_text())
     method = METHODS[args.method]()
     if getattr(method, "BLOCKED", False):
         print(f"[{args.method}] BLOCKED: {method.BLOCK_REASON}")
         return 2
 
     out_root = (args.output_root if args.output_root is not None
-                else PROJECT / "outputs" / "pilot150" / args.method / f"seed_{SEED}")
+                else PROJECT / "outputs" / "pilot60" / args.method / f"seed_{SEED}")
     # canonical runs must start from an EMPTY persistent state (P0-2).
     if out_root.exists() and any(out_root.iterdir()) and not args.overwrite:
         raise SystemExit(
@@ -188,18 +198,20 @@ def main() -> int:
             "        use --output-root for dev smokes.")
     out_root.mkdir(parents=True, exist_ok=True)
     state_root = out_root / "rsi_state"
-    method.init_run({"state_root": str(state_root), "run_id": f"pilot150:{args.method}",
+    method.init_run({"state_root": str(state_root), "run_id": f"pilot60:{args.method}",
                      "total_steps": len(manifest["experience"])})
 
     (out_root / "config_resolved.yaml").write_text(
         (PROJECT / "configs" / "agent" / "openeta_frozen.yaml").read_text())
     (out_root / "provenance.json").write_text(json.dumps({
         "benchmark_version": "Core-v1.0",
-        "pilot_version": "Pilot-150-v0.1",
+        "pilot_version": "Pilot-60-v0.1",
         "seed": SEED,
-        "model": "deepseek-flash",
-        "model_provider": "DeepSeek official API",
-        "model_base_url": "https://api.deepseek.com",
+        "model": os.environ.get("DEEPSEEK_MODEL", "deepseek-flash"),
+        "model_provider": ("DeepSeek official API"
+                           if "deepseek.com" in os.environ.get("DEEPSEEK_BASE_URL", "")
+                           else "OpenAI-compatible relay"),
+        "model_base_url": normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", "")),
         "rsi_method": args.method,
         "openeta_commit": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
         "episode_orchestration": "upstream OpenEtaEpisodeRunner",
@@ -234,7 +246,7 @@ def main() -> int:
         "no infrastructure error": stream_info["infra_errors"] == 0,
         "no experience failure": stream_info["experience_failures"] == 0,
         "no leakage": stream_info["leakage"] == 0,
-        "final checkpoint is S075": final_checkpoint == f"S{len(manifest['experience']):03d}",
+        f"final checkpoint is {final_checkpoint}": final_checkpoint == f"S{len(manifest['experience']):03d}",
     }
     status = gates.PASS if all(checks.values()) else gates.FAIL
     metrics = {

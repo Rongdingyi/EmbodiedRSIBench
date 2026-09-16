@@ -13,7 +13,7 @@ PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 from benchmark.runner import gates  # noqa: E402
 OUT = PROJECT / "outputs" / "preflight"
-PILOT = PROJECT / "outputs" / "pilot150"
+PILOT = PROJECT / "outputs" / "pilot60"
 
 FAILS: list[str] = []
 
@@ -65,7 +65,7 @@ def main() -> int:
           str(api.get("status")))
 
     # pilot completion, two-level status (review amendment)
-    manifest_path = PROJECT / "manifests" / "pilot150.json"
+    manifest_path = PROJECT / "manifests" / "pilot60.json"
     manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
     expected_counts = {
         "experience": len(manifest.get("experience") or []),
@@ -90,7 +90,7 @@ def main() -> int:
                     continue
                 metrics = json.loads(metrics_file.read_text())
                 method_status[method_dir.name] = metrics.get("status", gates.FAIL)
-                # full-run completeness (P0-3): counts + final checkpoint S075
+                # full-run completeness (P0-3): counts + final checkpoint S030
                 complete = True
                 if expected_counts.get("experience") and metrics.get("experience") != expected_counts["experience"]:
                     complete = False
@@ -108,7 +108,7 @@ def main() -> int:
                                 if t.get("role") == role)
                         if expected_counts.get(role) and n != expected_counts[role]:
                             complete = False
-                check(f"{method_dir.name}: complete Pilot-150 run (counts + {final_name})",
+                check(f"{method_dir.name}: complete Pilot-60 run (counts + {final_name})",
                       complete, str(seed_dir))
                 if metrics.get("probe_state_unchanged") is False:
                     probe_mutations += 1
