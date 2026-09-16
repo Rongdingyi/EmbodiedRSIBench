@@ -1,0 +1,13 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## STRATEGIES & INSIGHTS
+
+[sai-00001] helpful=0 harmful=0 :: Track the agent's hand inventory and the goal completion state. After a successful Pick, immediately check whether the held object matches the target; if it does, stop acting and treat the task as complete, even if the trace later shows a failed or unnecessary action.
+[sai-00002] helpful=0 harmful=0 :: If the held object is not the target, drop or place it before attempting another Pick. Never attempt Pick while the hand is already occupied, because the action will fail with an InvalidOperationException.
+## FORMULAS & CALCULATIONS
+
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+[err-00003] helpful=0 harmful=0 :: Attempting an extra Pick after the target object is already in hand. This is redundant and can cause an invalid-action error; once the target is held, terminate instead of continuing.
+[err-00004] helpful=0 harmful=0 :: Failing to maintain internal state about hand contents and goal completion. A later failed action does not necessarily mean the overall task failed if the goal was already satisfied earlier.
+[/PERSISTENT EXPERIENCE GUIDANCE]

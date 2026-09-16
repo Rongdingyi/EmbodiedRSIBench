@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "terminated": false,
+  "truncated": true,
+  "num_steps": 8,
+  "env_steps": 8,
+  "status": "FAIL",
+  "infrastructure_error": null,
+  "upstream": {
+    "terminated": false,
+    "truncated": true,
+    "steps": 8,
+    "session_id": "497fb345-b036-47c4-97bd-476aabbd83b8",
+    "stop_reason": "max_turns",
+    "failure_reason": {},
+    "tool_calls": 8,
+    "runner_tokens": 76721
+  },
+  "rsi_update_error": "RuntimeError: WorldMind goal extraction failed: GoalExperienceModule.extract_experience() got an unexpected keyword argument 'success'"
+}

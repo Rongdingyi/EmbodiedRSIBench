@@ -1,0 +1,7 @@
+[raw_memory] S000 probe PASS (unchanged=True infra=0)
+[raw_memory] experience 1/30 39a9f8a930eb004a155843c1 success=False env_steps=8 state_changed=True (115s)
+[raw_memory] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=6 state_changed=True (222s)
+[raw_memory] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=8 state_changed=True (113s)
+[raw_memory] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=5 state_changed=True (273s)
+[raw_memory] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=True (108s)
+[raw_memory] experience 6/30 118ab8288a38e5aaa5fc0620 success=False env_steps=8 state_changed=True (191s)

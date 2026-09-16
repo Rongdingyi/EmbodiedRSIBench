@@ -1,0 +1,10 @@
+{
+  "success": false,
+  "terminated": false,
+  "truncated": false,
+  "num_steps": 0,
+  "env_steps": 7,
+  "status": "FAIL",
+  "infrastructure_error": "WorkerError: step failed: AssertionError: At least one of names, types, classes must be provided",
+  "upstream": {}
+}

@@ -83,7 +83,35 @@ class BenchmarkEpisodeEnvironment:
         parameters = request.get("parameters")
         if not isinstance(parameters, dict):
             parameters = {}
+        calls = parameters.get("calls")
+        if name in {"batch", "tool_batch"} or isinstance(calls, list):
+            batch = [call for call in (calls or []) if isinstance(call, dict)]
+            if batch:
+                return self._step_batch(batch)
+        return self._step_once(name, parameters)
 
+    def _step_batch(self, calls: list[dict]) -> StepResult:
+        """Execute a planner `tool_batch` as sequential environment steps.
+
+        Official semantic (agent/tools/sim_mcp.py): a batch is one runtime act
+        and terminal evidence inside it is absorbing, so execution stops at the
+        first terminating sub-call and the last executed observation is
+        returned for the turn.
+        """
+        result: StepResult | None = None
+        for call in calls:
+            name = str(call.get("name") or "")
+            parameters = call.get("parameters")
+            if not isinstance(parameters, dict):
+                parameters = {"value": parameters}
+            result = self._step_once(name, parameters)
+            if result.terminated or result.truncated:
+                break
+        if result is None:
+            raise ValueError("empty tool_batch action")
+        return result
+
+    def _step_once(self, name: str, parameters: dict) -> StepResult:
         # ---- WorldMind sidecar: action locked, feedback not yet observed
         state_before = self._public_view()
         sidecar = None

@@ -1,0 +1,25 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target-viewpoint evidence is missing from this turn: only the current scene camera is observable (current_view). The target render (frame_id=target_view, index 1) was not delivered as visible evidence, and no bound action can query camera pose or read the artifact. Please provide the target image (frame_id=target_view) or, equivalently, the target camera's pose relative to the current viewpoint (yaw/pitch offset and lateral/forward translation), so I can plan a grounded rotation/translation sequence instead of guessing."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4672,
+      "output_tokens": 2418,
+      "charged_tokens": 7090,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

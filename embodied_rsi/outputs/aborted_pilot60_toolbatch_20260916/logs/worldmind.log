@@ -1,0 +1,43 @@
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[worldmind] S000 probe FAIL (unchanged=True infra=1)
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[worldmind] experience 1/30 39a9f8a930eb004a155843c1 success=True env_steps=8 state_changed=True (342s)
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 2 process experience entries
+[worldmind] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=7 state_changed=True (236s)
+[WorldMind] INFO: Refinement completed for: Put away the Cup, Bowl, Pot and Mug...
+[ExperienceRetrievalModule] INFO: Loaded 2 process experience entries
+[worldmind] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=5 state_changed=False (166s)
+[WorldMind] INFO: Refinement completed for: Deliver a green round fruit to the intended a larg...
+[ProcessExperienceModule] INFO: Saved 2 process experiences

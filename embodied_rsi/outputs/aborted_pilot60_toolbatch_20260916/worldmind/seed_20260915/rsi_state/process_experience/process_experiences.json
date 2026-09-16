@@ -1,0 +1,23 @@
+[
+  {
+    "instruction": "I'm about to start cooking, could you please pick up a potato for me?",
+    "knowledge": [
+      "Experience: My prediction that the robot would move one meter forward was wrong because a stool was directly blocking its path, causing the move action to fail instead. Lesson: Before attempting to move, check the immediate path for obstacles and, if blocked, choose an alternative route or remove/avoid the obstruction rather than issuing a forward move.",
+      "Experience: My prediction that the robot would move 0.5 units ahead while holding the potato was wrong because a stool was blocking the robot's path. Lesson: Before attempting a move, always check for obstacles in the intended direction and plan an alternative route or clear the obstacle first.",
+      "Experience: My prediction that moving 0.5 units ahead would get me closer to the potato was wrong because a stool (Stool_c2b66393) was directly blocking the movement path. Lesson: Always check for obstacles in the intended movement direction before acting, and adjust the route or clear the obstruction instead of assuming movement will succeed."
+    ]
+  },
+  {
+    "instruction": "Prepare a mug of coffee, drink it, then wash and store the mug.",
+    "knowledge": [
+      "Experience: My prediction that the robot would be holding the mug after executing pickup was wrong because the pickup action failed with a StepError, likely due to an unmet precondition such as the mug not being detected, not being within reach, or the robot not being positioned correctly. Lesson: Before attempting a pickup, always verify that the target object exists, is reachable, and that all preconditions are satisfied; never assume a pickup succeeds without confirmation from the environment."
+    ]
+  },
+  {
+    "instruction": "Deliver a green round fruit to the intended a large gray piece of furniture with a backrest by physically moving it there.",
+    "knowledge": [
+      "Experience: My prediction that the robot had picked up the apple and was holding it was wrong because I attempted skill_33_pick_up_the_apple without first navigating to the apple or verifying that it was near the robot. Lesson: Before executing a pick-up action, confirm the target object is within reach by navigating to its location or checking proximity; do not assume an object is nearby just because its name is used in the action.",
+      "Experience: My prediction that the pick-up action would succeed was wrong because the environment rejected the action as invalid due to no nearby object. Lesson: Treat environment feedback about invalid actions as a signal to inspect preconditions such as object location and robot proximity before retrying."
+    ]
+  }
+]
