@@ -1,0 +1,6 @@
+{"prediction_error_reflected": 1}
+{"prediction_error_reflected": 0}
+{"prediction_error_reflected": 1}
+{"goal_extract_error": "TypeError: GoalExperienceModule.extract_experience() got an unexpected keyword argument 'success'"}
+{"prediction_error_reflected": 1}
+{"prediction_error_reflected": 1}

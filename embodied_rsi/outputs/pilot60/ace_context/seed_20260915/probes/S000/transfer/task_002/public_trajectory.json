@@ -1,0 +1,26 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I can see the current scene view, but the target_view image (frame_id=target_view, index 1) was not delivered as observable evidence in this turn, so I cannot compare camera position/angle. Please provide the target image rendering or describe the target viewpoint (e.g., relative position/direction to the current table viewpoint: closer/farther, left/right, higher/lower, or heading change in degrees).",
+        "blocking": true
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4671,
+      "output_tokens": 1142,
+      "charged_tokens": 5813,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

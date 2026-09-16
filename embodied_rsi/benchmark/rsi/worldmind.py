@@ -335,7 +335,6 @@ class WorldMindRSI(RSIMethod):
                 self.goal_module.extract_experience(
                     task_instruction=trajectory_public.get("instruction") or "",
                     trajectory=trajectory,
-                    success=True,
                 )
             except Exception as exc:  # noqa: BLE001
                 self.update_errors.append(f"goal_extract_error: {type(exc).__name__}: {exc}")

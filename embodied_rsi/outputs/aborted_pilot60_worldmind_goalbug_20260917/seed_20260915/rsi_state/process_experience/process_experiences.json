@@ -1,0 +1,16 @@
+[
+  {
+    "instruction": "I'm about to start cooking, could you please pick up a potato for me?",
+    "knowledge": [
+      "Experience: My prediction that moving 0.5 meters ahead would bring the robot closer to the potato was wrong because Stool_c2b66393 was directly blocking the path, causing the move to fail immediately. Lesson: Before issuing a forward move, always verify that the immediate path is clear of obstacles and replan if the target direction is blocked.",
+      "Experience: My prediction that Pick Potato would fail because the agent was blocked by a stool and likely not close enough was wrong because the Pick action returned ok. Lesson: A prior movement failure due to an obstacle does not imply manipulation failure; the target object may already be within reach, so verify object reachability or attempt the action before predicting failure."
+    ]
+  },
+  {
+    "instruction": "Prepare a mug of coffee, drink it, then wash and store the mug.",
+    "knowledge": [
+      "Experience: My prediction that the robot would find the mug was wrong because the `find` action failed with a StepError, indicating the mug was not discoverable in the current environment or the finding action was inappropriate from the initial state. Lesson: Do not assume a target object is immediately available or locatable; first search or explore plausible locations, and only attempt direct interaction after confirming the object has been observed.",
+      "Experience: My prediction that picking up the mug would fail was wrong because a preceding failed 'find mug' action does not imply the mug is unavailable or unpickable; the environment confirmed 'pickup mug -> ok'. Lesson: Do not infer that a manipulation action will fail solely from a failed search or locate action—search failures may be due to perception/query issues, so attempt plausible interactions and rely on actual environment feedback."
+    ]
+  }
+]

@@ -1,0 +1,94 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "mug"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4592,
+      "output_tokens": 220,
+      "charged_tokens": 4812,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "mug"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5620,
+      "output_tokens": 1388,
+      "charged_tokens": 7008,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "nightstand"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Nightstand. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6162,
+      "output_tokens": 1500,
+      "charged_tokens": 7662,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The environment reports that no \"Nightstand\" exists in this scene (authoritative receipt: \"Cannot find Nightstand. This object may not exist in this scene\"), and the current view shows only a desk, wall, door and floor. How should I proceed? Options: (1) the nightstand is elsewhere / has a different object-type name - give the name so I can locate it; (2) place the black mug on a specific alternative surface you name; (3) abandon the move. Also, my last acknowledged pick_up produced no attachment evidence, so please confirm whether I should be holding the mug or re-grasp it."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6445,
+      "output_tokens": 4736,
+      "charged_tokens": 11181,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]
