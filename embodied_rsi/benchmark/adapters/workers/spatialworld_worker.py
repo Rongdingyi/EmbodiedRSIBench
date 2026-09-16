@@ -189,6 +189,18 @@ class SpatialWorldWorker(Worker):
         if self.done:
             raise RuntimeError("episode already finished")
         self.steps += 1
+        if action == "EndTask":                 # terminal action (P0-6)
+            self.done = True
+            event = self.c.last_event
+            self._index_objects(event.metadata)
+            return {
+                "observation": self._observation(event, "EndTask -> episode finished"),
+                "action_success": True,
+                "reward_public": None,
+                "terminated": True,
+                "truncated": False,
+                "public_feedback": "EndTask -> episode finished",
+            }
         event = None
         error = ""
         try:
@@ -268,9 +280,6 @@ class SpatialWorldWorker(Worker):
                 raise ValueError(f"Manipulate action {thor_action!r} is not in the allowed set")
             return self._step_thor(dict(action=thor_action,
                                         objectId=self._resolve(parameters.get("object", ""))))
-        if action == "EndTask":
-            self.done = True
-            return None
         raise ValueError(f"unknown SpatialWorld action {action!r}")
 
     # ------------------------------------------------------------- evaluator

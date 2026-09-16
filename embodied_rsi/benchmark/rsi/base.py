@@ -29,8 +29,8 @@ class RSIMethod(ABC):
         self.update_enabled: bool = True
         self.run_ctx: dict = {}
         self.state_dir: Path | None = None
-        self.last_update_usage: dict | None = None
-        self.last_update_wall_s: float = 0.0
+        self._last_update_usage: dict | None = None
+        self._last_update_wall_s: float = 0.0
 
     # ------------------------------------------------------------------ hooks
     def init_run(self, run_ctx: dict) -> None:
@@ -70,6 +70,13 @@ class RSIMethod(ABC):
     def set_update_enabled(self, enabled: bool) -> None:
         self.update_enabled = bool(enabled)
 
+    def get_last_update_usage(self) -> dict | None:
+        """Tokens charged by the most recent after_episode update (or None)."""
+        return self._last_update_usage
+
+    def get_last_update_wall_s(self) -> float:
+        return float(self._last_update_wall_s)
+
     def advance_step(self, index: int, total: int) -> None:
         """Experience-stream counters consumed by ACE's curator prompts."""
         self.run_ctx["step"] = int(index)
@@ -86,13 +93,30 @@ class RSIMethod(ABC):
         self._reload_state()
 
     def clone_from_snapshot(self, snapshot_dir: Path) -> "RSIMethod":
-        """New instance + temporary copy of the snapshot, updates disabled."""
+        """New instance + temporary copy of the snapshot, updates disabled.
+
+        The temporary `state_root` must win over any state root inherited from the
+        live run context, otherwise the probe could write into live RSI state.
+        """
         clone = type(self)()
         tmp = Path(tempfile.mkdtemp(prefix=f"rsi_probe_{self.name}_"))
-        clone.run_ctx = {**self.run_ctx, "clone_of": self.name, "probe": True}
-        clone.init_run({"state_root": str(tmp), **clone.run_ctx})
+        clone_ctx = {
+            **self.run_ctx,
+            "clone_of": self.name,
+            "probe": True,
+            "state_root": str(tmp),
+        }
+        clone.init_run(clone_ctx)
         clone.load_snapshot(Path(snapshot_dir))
         clone.set_update_enabled(False)
+        # hard invariants (P0-1)
+        assert clone.state_dir.resolve() == tmp.resolve(), \
+            "clone state dir must be the temporary probe directory"
+        if self.state_dir is not None:
+            assert clone.state_dir.resolve() != self.state_dir.resolve(), \
+                "probe clone must not share the live state directory"
+        assert clone.state_dir.resolve() != Path(snapshot_dir).resolve(), \
+            "probe clone must not write into the snapshot directory"
         return clone
 
     # ------------------------------------------------------------------ utils

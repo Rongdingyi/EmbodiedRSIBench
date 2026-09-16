@@ -55,18 +55,44 @@ class EmbeddingFunction:
         return self(text)[0]
 
 
+class DeepSeekLLM:
+    """Official LLMCallable signature over the DeepSeek chat-completions API."""
+
+    def __init__(self, model: str = "deepseek-flash") -> None:
+        from openai import OpenAI
+
+        self.model = model
+        self.client = OpenAI(api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
+                             base_url="https://api.deepseek.com/v1")
+
+    def __call__(self, messages, temperature: float = 0.0, max_tokens: int = 2048,
+                 stop_strs=None, num_comps: int = 1) -> str:
+        response = self.client.chat.completions.create(
+            model=self.model,
+            messages=list(messages),
+            temperature=temperature,
+            max_tokens=max_tokens,
+        )
+        return response.choices[0].message.content or ""
+
+
 def build_skill(state_root: Path):
     from agentkit.skill.embodiskill_skill.EmbodiSkill import EmbodiSkill
 
+    # official dataclass fields: namespace / global_config / llm_model / embedding_func;
+    # persist_dir is derived in __post_init__ from global_config (P1-11).
     return EmbodiSkill(
-        persist_dir=str(state_root),
-        embedding_func=EmbeddingFunction(),
+        namespace="embodiskill_openeta",
         global_config={
+            "working_dir": str(state_root),
+            "persist_dir": str(state_root / "skill_state"),
             "task_name": "embodied_openeta",
             "current_epoch_id": 0,
             "hop": 1,
             "project_name": "EmbodiSkill",
         },
+        llm_model=DeepSeekLLM(),
+        embedding_func=EmbeddingFunction(),
     )
 
 
@@ -94,9 +120,8 @@ def manual_guidance(skill) -> str:
     parts = []
     for section in manual.get("sections", []) or []:
         title = section.get("title") or section.get("name") or ""
-        body = section.get("content") or section.get("text") or ""
-        if isinstance(body, list):
-            body = "\n".join(str(x) for x in body)
+        items = section.get("items") or []
+        body = "\n".join(f"- {item}" for item in items if str(item).strip())
         if title or body:
             parts.append(f"## {title}\n{body}".strip())
     notes = manual.get("execution_notes") or []

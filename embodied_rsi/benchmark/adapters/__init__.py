@@ -199,6 +199,9 @@ class EBHabitatAdapter(SubprocessAdapter):
             "source_task_id": task_record["source_task_id"],
             "instruction": task_record["instruction"],
             "physical_task_id": task_record["physical_task_id"],
+            # physical-signature join fields (P0-7)
+            "scene_id_raw": task_record.get("scene_id_raw"),
+            "raw_metadata": task_record.get("raw_metadata") or {},
         }
 
 

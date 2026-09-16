@@ -43,7 +43,7 @@ def one_legal_action(source: str, tools: list[dict]) -> tuple[str, dict]:
     by_name = {t["name"]: t for t in tools}
     pick = {
         "TVRBench": ("RotateRight", {}),
-        "SpatialWorld": ("rotate_right", {}),
+        "SpatialWorld": ("Rotate", {"direction": "right", "degrees": 90}),
         "AsgardBench": ("find", {"object": "CounterTop"}),
         "EB-ALFRED": ("find", {"object": "CounterTop"}),
         "EB-Habitat": (None, {}),

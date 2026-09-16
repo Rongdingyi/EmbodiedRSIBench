@@ -1,61 +1,56 @@
 # Current State
 
 ## Last completed milestone
-Post-review refactor (v0.4): canonical OpenETA episode runner, WorldMind timing,
-snapshot probe semantics, gate vocabulary, adapters, pilot manifest.
+v0.5 correctness cleanup (second review round, 12 items) + deterministic regression.
 
 ## Status
-G0/G1/G2 PASS. G3/G4/G5 must be RE-RUN with the refactored stack (the previous
-G3/G4 failures predate the fixes). G7 (Pilot-150) is still gated behind those.
+G0/G1/G2 PASS. Deterministic regression PASS (none/raw_memory/WorldMind/
+SpatialWorld EndTask/EB-Habitat fixed episodes). G3/G4/G5 must still be re-run
+on the refactored stack before Pilot-150.
 
-## Evidence
-- **G0 Dataset** `outputs/preflight/DATASET_AUDIT.json` = PASS
-- **G1 Freeze** `outputs/preflight/OPENETA_FREEZE.json` = PASS;
-  `manifests/openeta_freeze_manifest.json`
-- **G2 Model** `outputs/api_smoke/deepseek_flash.json` = PASS
-- **Upstream runner** verified on a real TVR episode: status=PASS, 3 turns,
-  3 env steps, upstream `stop_reason=max_turns`, `runner_tokens=29922`,
-  planner accounting populated (40.5k in / 45.2k out over 7 calls), leakage=0.
-- **Pilot-150 manifest** `manifests/pilot150.json` rebuilt:
-  experience TVR 23 / Spatial 13 / Asgard 13 / ALFRED 13 / Habitat 13;
-  ID 25 / Transfer 30 / Retention 20; physical sets disjoint.
-- **Tests** all PASS: freeze, gate status, snapshot reload (new-instance clone),
-  probe readonly, RSI isolation, observation allowlist, adapter equivalence.
+## Regression evidence (all PASS)
+- none: 1 experience + 1 probe, probe state hash unchanged, clone/live/snapshot
+  dirs provably distinct.
+- raw_memory: 1 experience, retrieval injection non-empty, usage accessor OK.
+- WorldMind: 1 experience, sidecar 467 tok (2 calls) accounted separately,
+  components 3256 tok (3 calls) via official LLMClient instrumentation,
+  request dump roles = [planner, worldmind_sidecar, worldmind_component].
+- SpatialWorld `EndTask`: terminated=True, action_success=True.
+- EB-Habitat: episodes 16 / 172 / 102 (and 218) now resolve via pickle-
+  authoritative physical signature; 70 tools, step ok, evaluator ok.
 
-## Key changes (review P0/P1)
-1. `benchmark/openeta_bridge/benchmark_environment.py` implements upstream
-   `EpisodeEnvironment`; `episode_runner.py` delegates the loop to
-   `OpenEtaEpisodeRunner`. Planner/prompts/pipeline remain upstream-unmodified.
-2. WorldMind sidecar runs after action lock, before `env.step`; process update
-   consumes the real feedback; sidecar never re-enters the planner.
-3. Two-phase environment preparation gives a live action schema before runtime
-   assembly (fixes EB-Habitat empty registry; worker fails loud on schema drift).
-4. `clone_from_snapshot` = new instance + temp copy + `update_enabled=False`.
-5. Gates are PASS/FAIL/BLOCKED; BLOCKED is never coerced to PASS; release status
-   is `FULL_PILOT_PASS` / `PIPELINE_PASS_WITH_BLOCKER` / `FAIL`.
-6. Retention anchors have no oracle pairing; pilot experience is deficit-filled
-   toward 15/source.
-7. SpatialWorld exposes the source abstraction `Move/Rotate/Tilt/ChangePosture/
-   Pick/Place/ChangeState/Manipulate/EndTask`.
-8. Strict observation allowlist + redacted `public_context_dump.jsonl` per
-   episode with leakage scan.
-9. Central accounting (`benchmark/runner/accounting.py`) → `token_usage.json`,
-   aggregated in `metrics.json` (planner/injection/updater/sidecar/env steps).
-10. EmbodiSkill: thin adapter implemented
-    (`benchmark/adapters/workers/embodiskill_worker.py`, official API path);
-    status POC_READY_UNVERIFIED, excluded from the pilot table until executed.
+## Key fixes this round
+1. `clone_from_snapshot` temp `state_root` wins (was overwritten by run_ctx);
+   tests assert clone != live != snapshot directories.
+2. `_last_update_usage` + `get_last_update_usage()` replaces the attribute/method
+   name collision; runner uses the accessor.
+3. `res.status != PASS` counts as an episode failure in the pilot runner, G4 and
+   G5; `rsi_update_error` can no longer be swallowed.
+4. WorldMind receives `task_instruction`, `state_before`, `state_after` — the
+   official process module no longer compares a prediction against a task id.
+5. G3 SpatialWorld smoke uses `Rotate`; SpatialWorld `EndTask` terminates.
+6. EB-Habitat: release index -> official pickle episode -> full signature
+   (scene + sampled_entities + start pose) -> unique dataset index (ids are never
+   keys). Instruction fallback removed.
+7. Release audit accepts PASS-or-BLOCKED for RSI smoke and two-level final
+   statuses in the exit code.
+8. Cost accounting: ACE official token fields + `max_tokens` for DeepSeek;
+   sidecar no longer double counted; official WorldMind `LLMClient._call_api`
+   instrumented (component tokens + per-request dumps).
+9. Request audit covers planner + ACE updater + WorldMind sidecar/components;
+   leakage sentinels are high precision (no bare-number false positives).
+10. EmbodiSkill PoC constructor uses official dataclass fields and renders
+    official `sections[].items`.
+11. `PILOT_RESULTS_BY_SKILL.csv` aggregates registry skill labels.
 
-## Known issues
-- G3/G4/G5 need a full re-run (hours); EB-Habitat episode lookup is the known
-  risk (see `BLOCKERS.md` B3: instruction/id join, physical-signature fallback
-  documented).
-- EmbodiSkill PoC needs its dependency environment (langchain-chroma /
-  sentence-transformers / finch).
-- Worker paths and data root are still machine-specific.
+## Known issues / upstream notes
+- WorldMind pinned commit has a broken package `__init__` (`parse_llm_output`
+  missing) — bridge loads official submodules by file (BLOCKERS.md B5).
+- EmbodiSkill PoC still needs its dependency env to execute (B1).
+- G3/G4/G5 and the pilot itself are simulator/API heavy; run on an idle machine.
 
 ## Next step
-1. `external/OpenETA/.venv/bin/python scripts/04_validate_adapters.py`   (G3)
-2. `external/OpenETA/.venv/bin/python scripts/06_smoke_openeta.py`       (G4)
-3. `external/OpenETA/.venv/bin/python scripts/07_smoke_rsi.py`           (G5)
-4. `external/OpenETA/.venv/bin/python scripts/08_run_pilot150.py --method none` etc.
-5. `scripts/09_analyze_pilot.py`, `scripts/10_audit_release.py`
+1. `scripts/04_validate_adapters.py` (G3, fresh worker per task)
+2. `scripts/06_smoke_openeta.py` (G4)
+3. `scripts/07_smoke_rsi.py` (G5) -> then `08_run_pilot150.py` per method
+4. `09_analyze_pilot.py` + `10_audit_release.py`

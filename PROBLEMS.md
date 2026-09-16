@@ -1,10 +1,31 @@
-# Current Problems & Status — Embodied RSI OpenETA Pilot (v0.4)
+# Current Problems & Status — Embodied RSI OpenETA Pilot (v0.5)
 
 Date: 2026-09-15 · Project: `embodied_rsi/` · Model: DeepSeek `deepseek-flash`
 
 Consolidates the post-review state. The review's P0/P1 items were implemented;
 the gates must be re-run before the pilot. Evidence paths are relative to
 `embodied_rsi/`.
+
+## 0. v0.5 review round — all 12 items addressed
+
+| # | Item | Fix |
+|---|---|---|
+| 1 | clone wrote into live state | `clone_ctx` puts temp `state_root` last + hard path assertions; test asserts clone/live/snapshot dirs differ |
+| 2 | `last_update_usage` name collision | renamed to `_last_update_usage` + `get_last_update_usage()`; runner uses the accessor |
+| 3 | update failures swallowed by gates | runner and G5/G6/G7 count `res.status != PASS`; any `rsi_update_error` fails the run |
+| 4 | WorldMind actual state was a task id | environment passes `task_instruction` + `state_before` + `state_after`; process module compares predicted vs real post-action state |
+| 5 | G3 SpatialWorld old tool name | validator now calls `Rotate {direction:right, degrees:90}` |
+| 6 | SpatialWorld `EndTask` didn't terminate | terminal branch returns `terminated=True, action_success=True` (verified) |
+| 7 | EB-Habitat alignment still broken | join is now pickle-authoritative (release index → official pickle episode → full signature incl. pose → unique dataset index); 4/4 previously failing episodes now pass |
+| 8 | release status self-contradiction | `rsi_smoke` accepts PASS-or-BLOCKED; exit code accepts `FULL_PILOT_PASS`/`PIPELINE_PASS_WITH_BLOCKER` |
+| 9 | cost accounting wrong/double counted | ACE reads official `prompt_num_tokens`/`response_num_tokens` and sends `max_tokens` (provider != "openai"); WorldMind sidecar no longer double counted; official `LLMClient._call_api` instrumented → discriminator/reflector/refiner tokens + request dumps captured (verified: sidecar 467 tok, components 3256 tok, roles in dump) |
+| 10 | request audit was planner-only | ACE updater client wrapped; WorldMind sidecar and components recorded; `private_reference_values` now high-precision (ids + canonical private JSON + identifier-like strings, no bare numbers) |
+| 11 | EmbodiSkill PoC constructor wrong | official dataclass fields (`namespace/global_config/llm_model/embedding_func`) + DeepSeek `LLMCallable`; manual guidance renders official `sections[].items` |
+| 12 | skill-family analysis placeholder | `PILOT_RESULTS_BY_SKILL.csv` aggregates registry skill labels per method/role/checkpoint |
+
+Deterministic regression (v0.5, all PASS): none exp+probe, raw_memory exp+retrieval,
+WorldMind 1 experience (sidecar+components accounted), SpatialWorld `EndTask`,
+EB-Habitat 4 previously-failing episodes. Unit tests: 7/7 PASS.
 
 ## 1. Gate summary (post-fix, gates NOT yet re-run)
 
@@ -13,7 +34,7 @@ the gates must be re-run before the pilot. Evidence paths are relative to
 | G0 Dataset | PASS | `outputs/preflight/DATASET_AUDIT.json` |
 | G1 OpenETA Freeze | PASS | `outputs/preflight/OPENETA_FREEZE.json` (pin, hashes, native SI off) |
 | G2 Model | PASS | `outputs/api_smoke/deepseek_flash.json` (text/vision/backend; no `chat_template_kwargs`) |
-| G3 Adapter | **must re-run** | Previous run: 16/100 crash (EB-Habitat alignment + TVR timeouts). Fixes below; re-run `scripts/04_validate_adapters.py` |
+| G3 Adapter | **must re-run** | Previous run: 16/100 crash. EB-Habitat join fixed and verified on 4 previously-failing episodes; validator now also fails on empty schema. Re-run `scripts/04_validate_adapters.py` |
 | G4 Baseline | **must re-run** | Now runs through the upstream episode runner; per-source budgets + accountant; re-run `scripts/06_smoke_openeta.py` |
 | G5 RSI Smoke | **must re-run** | Three-state gate; blocked method is BLOCKED, never PASS |
 | G6 Snapshot | PASS (unit) | `tests/test_snapshot_reload.py` under the new new-instance clone semantics |

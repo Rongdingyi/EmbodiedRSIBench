@@ -8,6 +8,7 @@ that the ReplicaCAD `data/` assets resolve.
 from __future__ import annotations
 
 import os
+import pickle
 import sys
 from pathlib import Path
 
@@ -18,6 +19,7 @@ from worker_base import Worker, encode_frame, serve  # noqa: E402
 ROOT = Path("/media/moxc/data/datasets/embodied/embodied_rsi_data")
 EB = ROOT / "sources" / "embodiedbench"
 EB_HAB = EB / "embodiedbench" / "envs" / "eb_habitat"
+PICKLE_DIR = EB_HAB / "datasets"
 
 sys.path.insert(0, str(EB))
 os.chdir(EB_HAB)
@@ -29,10 +31,70 @@ def _slug(text: str) -> str:
     return "_".join(text.replace("/", " ").split())[:60]
 
 
+def _canonical(obj):
+    """Order-stable JSON value for signature hashing."""
+    import json as _json
+
+    def walk(node):
+        if isinstance(node, dict):
+            return {str(k): walk(node[k]) for k in sorted(node.keys(), key=str)}
+        if isinstance(node, (list, tuple)):
+            return [walk(v) for v in node]
+        if hasattr(node, "tolist"):
+            return walk(node.tolist())
+        if hasattr(node, "item"):
+            return walk(node.item())
+        return node
+
+    return _json.dumps(walk(obj), sort_keys=True, ensure_ascii=False)
+
+
+def _attr(episode, name, default=None):
+    """Episode accessor that works for both pickle dicts and dataset objects."""
+    if isinstance(episode, dict):
+        return episode.get(name, default)
+    return getattr(episode, name, default)
+
+
+def _scene_key(scene_id) -> str:
+    import os as _os
+
+    scene = _os.path.basename(str(scene_id or ""))
+    return scene.replace(".scene_instance.json", "")
+
+
+def _episode_signature(episode, *, with_position: bool) -> tuple:
+    """(scene basename, canonical sampled_entities[, rounded start position])."""
+    scene = _scene_key(_attr(episode, "scene_id", ""))
+    sampled = _canonical(_attr(episode, "sampled_entities", None) or {})
+    if not with_position:
+        return (scene, sampled)
+    position = _attr(episode, "start_position", None)
+    try:
+        rounded = tuple(round(float(x), 4) for x in list(position or []))
+    except Exception:
+        rounded = ()
+    return (scene, sampled, rounded)
+
+
 class EBHabitatWorker(Worker):
     source = "eb_habitat"
 
     schema_hash: int = 0
+    match_rule: str = ""
+
+    @staticmethod
+    def _task_keys(task_record: dict):
+        raw = task_record.get("raw_metadata") or {}
+        scene_key = _scene_key(task_record.get("scene_id_raw"))
+        sampled = raw.get("sampled_entities")
+        sampled_key = _canonical(sampled) if sampled else ""
+        position = raw.get("start_position")
+        try:
+            position_key = tuple(round(float(x), 4) for x in list(position or []))
+        except Exception:
+            position_key = ()
+        return scene_key, sampled_key, position_key
 
     def __init__(self) -> None:
         self.env = None
@@ -82,30 +144,53 @@ class EBHabitatWorker(Worker):
         split = task_record["source_split"]
         expected_episode_id = str(task_record["source_task_id"])
         self.env = EBHabEnv(eval_set=split, resolution=320)
-        # EBHabEnv re-orders/normalizes its internal dataset, so resolve the
-        # episode by instruction text first (join key used by the release build),
-        # then by episode_id.
+        # EBHabEnv re-orders/renames its internal dataset, so the ONLY reliable
+        # join key is the physical signature already stored in the release:
+        # (scene basename, canonical sampled_entities, rounded start position).
         eps = self.env.dataset.episodes
-        indices = []
-        if task_record.get("instruction"):
-            indices = [i for i, e in enumerate(eps)
-                       if getattr(e, "instruction", None) == task_record["instruction"]]
-        if not indices and expected_episode_id:
-            ids = [str(getattr(ep, "episode_id", "")) for ep in eps]
-            if expected_episode_id in ids:
-                indices = [ids.index(expected_episode_id)]
-        if not indices:
+        # The release's source_entry_index addresses the OFFICIAL PICKLE order, so
+        # the pickle episode is the authoritative definition of this task instance.
+        index = int(task_record["source_entry_index"])
+        with open(PICKLE_DIR / f"{split}.pickle", "rb") as handle:
+            pickle_eps = pickle.load(handle)["all_eps"]
+        if not 0 <= index < len(pickle_eps):
+            raise RuntimeError(f"EB-Habitat pickle index {index} out of range for {split}")
+        reference = pickle_eps[index]
+        reference_id = str(_attr(reference, "episode_id"))
+        target = _episode_signature(reference, with_position=True)
+        indices = [i for i, e in enumerate(eps)
+                   if _episode_signature(e, with_position=True) == target]
+        match_rule = "pickle_signature+pose"
+        if len(indices) != 1:
+            # fall back to signature without pose only if it stays unique
+            target_np = _episode_signature(reference, with_position=False)
+            indices_np = [i for i, e in enumerate(eps)
+                          if _episode_signature(e, with_position=False) == target_np]
+            if len(indices_np) == 1:
+                indices, match_rule = indices_np, "pickle_signature_no_pose"
+        if len(indices) != 1:
+            reference_np = _episode_signature(reference, with_position=False)
+            candidates = [
+                {"index": i, "episode_id": _attr(eps[i], "episode_id"),
+                 "instruction": str(_attr(eps[i], "instruction", ""))[:60],
+                 "same_entities": _episode_signature(eps[i], with_position=False) == reference_np}
+                for i in range(len(eps))
+            ]
             raise RuntimeError(
-                f"EB-Habitat episode not found in split {split!r}: "
-                f"instruction={task_record.get('instruction')!r} "
-                f"episode_id={expected_episode_id}")
+                f"EB-Habitat dataset match failed in split {split!r} "
+                f"(reference_episode={reference_id}, index={index}, "
+                f"matches={len(indices)}, candidates={[c for c in candidates if c['same_entities']][:3]})")
         self.env._current_episode_num = indices[0]
+        self.match_rule = match_rule
         obs = self.env.reset()
-        actual = str(getattr(self.env.episode_data, "episode_id", ""))
-        if expected_episode_id and actual and actual != expected_episode_id:
+        # sanity: the loaded episode must share the reference physical signature
+        loaded_sig = _episode_signature(self.env.episode_data, with_position=False)
+        reference_sig = _episode_signature(reference, with_position=False)
+        if loaded_sig != reference_sig:
             raise RuntimeError(
-                f"EB-Habitat episode mismatch after reset: got {actual}, "
-                f"expected {expected_episode_id}")
+                f"EB-Habitat post-reset signature mismatch: loaded "
+                f"{_attr(self.env.episode_data, 'episode_id')} vs reference "
+                f"{reference_id}")
         self.actions_text = list(self.env.language_skill_set)
         if len(self.actions_text) != 70:
             raise RuntimeError(

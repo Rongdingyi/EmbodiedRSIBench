@@ -20,7 +20,16 @@ swapchain for a private Xvfb; episodes require a real X server (this machine
 `:1`). Mitigation: `scripts_render/00_pick_display.sh`; display failures are
 infrastructure errors, never method failures.
 
-## B3 — EB-Habitat episode lookup (open; gates must re-run)
+## B3 — EB-Habitat episode lookup (RESOLVED in v0.5, verification pending on full G3)
+
+The dataset re-orders/renames episodes, so the join is now pickle-authoritative:
+`source_entry_index` addresses the official pickle order; the pickle episode
+provides the full physical signature (scene + sampled_entities + start pose);
+the dataset index is the unique signature match; ids are never used as keys.
+Verified on 4 previously failing episodes (tools=70, step ok, evaluator ok).
+`scripts/04_validate_adapters.py` must still confirm the full 20-task sample.
+
+### Historical note (pre-v0.5)
 
 `EBHabEnv(eval_set=...)` re-orders/renames its internal dataset: neither
 `source_entry_index` (pickle order) nor `source_task_id` (pickle episode_id)
@@ -36,6 +45,15 @@ physical signature already stored in the release:
 Re-run `scripts/04_validate_adapters.py` (target crash rate ≤ 2%, schema
 failures = 0, leakage = 0) and `scripts/06_smoke_openeta.py` (RGB delivery ≥ 90%)
 after any change here.
+
+## B5 — WorldMind upstream packaging bug (workaround in bridge)
+
+At the pinned commit `712b0fd`, `worldmind_plugin/__init__.py` imports
+`parse_llm_output` while `utils.py` defines `parse_agent_output`, so
+`import worldmind_plugin` fails. The bridge loads the official submodules by
+file into a pre-registered package namespace (no upstream edits, no algorithm
+change). Reported here because a future WorldMind upgrade should fix it
+upstream.
 
 ## B4 — gate re-run cost
 

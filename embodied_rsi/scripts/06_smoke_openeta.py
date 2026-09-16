@@ -68,6 +68,7 @@ def main() -> int:
     rgb_delivered = 0
     episodes = 0
     infra_errors = 0
+    episode_failures = 0
     leakage_total = 0
 
     for source in sorted(records_by_source):
@@ -88,6 +89,8 @@ def main() -> int:
             )
             if res.error:
                 infra_errors += 1
+            if res.status != gates.PASS:
+                episode_failures += 1
             leakage_total += len(res.leakage_violations)
             dump = ep_dir / "public_context_dump.jsonl"
             has_image = False
@@ -116,6 +119,7 @@ def main() -> int:
     checks = {
         "all samples ran": episodes == len(results) and episodes > 0,
         "no infrastructure error": infra_errors == 0,
+        "no episode-level failure": episode_failures == 0,
         "rgb delivered to planner (>=90%)": rgb_delivered >= max(1, int(0.9 * episodes)),
         "no private leakage in requests": leakage_total == 0,
         "native self-improvement writes == 0": not native_writes,
@@ -124,6 +128,7 @@ def main() -> int:
     report = {
         "episodes": episodes,
         "infra_errors": infra_errors,
+        "episode_failures": episode_failures,
         "rgb_delivered": rgb_delivered,
         "tool_calls": total_tool_calls,
         "leakage_violations": leakage_total,

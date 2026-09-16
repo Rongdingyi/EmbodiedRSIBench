@@ -103,6 +103,7 @@ def run_experience_stream(method, out_root: Path, manifest: dict, protocol: dict
         stream = stream[:max_experience]
     updates = []
     infra_errors = 0
+    experience_failures = 0
     leakage = 0
     aggregate = {}
     for index, gid in enumerate(stream, 1):
@@ -124,6 +125,8 @@ def run_experience_stream(method, out_root: Path, manifest: dict, protocol: dict
             aggregate.get("rsi_injection_tokens", 0) + int(acc.get("rsi_injection_tokens") or 0))
         if res.error:
             infra_errors += 1
+        if res.status != gates.PASS:
+            experience_failures += 1
         leakage += len(res.leakage_violations)
         updates.append({
             "update_id": f"{method.name}:{gid}",
@@ -151,7 +154,8 @@ def run_experience_stream(method, out_root: Path, manifest: dict, protocol: dict
             method.snapshot(out_root / "states" / f"S{index:03d}")
     method.snapshot(out_root / "states" / f"S{len(stream):03d}")
     return {"updates": updates, "stream": stream, "infra_errors": infra_errors,
-            "leakage": leakage, "accounting": aggregate}
+            "experience_failures": experience_failures, "leakage": leakage,
+            "accounting": aggregate}
 
 
 def main() -> int:
@@ -207,7 +211,9 @@ def main() -> int:
 
     status = gates.FAIL
     if (s000["status"] == gates.PASS and s_final["status"] == gates.PASS
-            and stream_info["infra_errors"] == 0 and stream_info["leakage"] == 0):
+            and stream_info["infra_errors"] == 0
+            and stream_info["experience_failures"] == 0
+            and stream_info["leakage"] == 0):
         status = gates.PASS
     metrics = {
         "method": args.method,
@@ -216,6 +222,7 @@ def main() -> int:
         "state_updates": sum(1 for u in stream_info["updates"] if u["changed"]),
         "probe_state_unchanged": s000["probe_state_unchanged"] and s_final["probe_state_unchanged"],
         "infra_errors": stream_info["infra_errors"] + s000["infra_errors"] + s_final["infra_errors"],
+        "experience_failures": stream_info["experience_failures"],
         "leakage_violations": stream_info["leakage"] + s000["leakage"] + s_final["leakage"],
         "accounting": stream_info["accounting"],
         "updater_tokens": (stream_info["accounting"].get("rsi_update_input_tokens", 0)

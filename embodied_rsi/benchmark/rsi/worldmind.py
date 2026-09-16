@@ -30,6 +30,73 @@ BASE_URL = os.environ.get("DEEPSEEK_BASE_URL", "https://api.deepseek.com")
 MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 MAX_INJECTION_TOKENS = 8192
 
+# Instrumentation hook: the official modules construct their own LLMClients, so
+# we intercept LLMClient._call_api once (identical request, plus accounting).
+_ACTIVE_OWNER: "WorldMindRSI | None" = None
+_CLIENT_INSTRUMENTED = False
+
+
+def _ensure_worldmind_client_instrumented() -> None:
+    global _CLIENT_INSTRUMENTED
+    if _CLIENT_INSTRUMENTED:
+        return
+    from worldmind_plugin.llm_client import LLMClient
+
+    original = LLMClient._call_api
+
+    def instrumented(self, messages):
+        owner = _ACTIVE_OWNER
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model_name,
+                messages=messages,
+                temperature=self.temperature,
+                max_tokens=self.max_tokens,
+            )
+        except Exception as exc:  # noqa: BLE001 - mirror upstream error surface
+            if getattr(self, "logger", None) is not None:
+                self.logger.error(f"LLM API call failed: {exc}")
+            raise
+        text = response.choices[0].message.content
+        usage = getattr(response, "usage", None)
+        if owner is not None:
+            prompt = int(getattr(usage, "prompt_tokens", 0) or 0)
+            completion = int(getattr(usage, "completion_tokens", 0) or 0)
+            owner._goal_usage["prompt_tokens"] += prompt
+            owner._goal_usage["completion_tokens"] += completion
+            owner._goal_usage["calls"] += 1
+            accountant = (owner.run_ctx or {}).get("accountant")
+            if accountant is not None:
+                accountant.record_request_dump(
+                    url=f"{BASE_URL.rstrip('/')}/v1/chat/completions",
+                    body={"model": self.model_name, "messages": list(messages),
+                          "max_tokens": self.max_tokens},
+                    role="worldmind_component",
+                )
+                accountant.record_rsi_update(
+                    usage={"prompt_tokens": prompt, "completion_tokens": completion},
+                    calls=1,
+                )
+        return text
+
+    LLMClient._call_api = instrumented
+    LLMClient._openeta_original_call_api = original  # keep a handle for audits
+    _CLIENT_INSTRUMENTED = True
+
+
+def _state_text(state) -> str:
+    """Compact public state summary used for predicted-vs-actual comparison."""
+    if not isinstance(state, dict):
+        return ""
+    parts = []
+    if state.get("text_feedback"):
+        parts.append(str(state["text_feedback"]))
+    for key in ("visible_object_types", "image_roles"):
+        value = state.get(key)
+        if value:
+            parts.append(f"{key}={value}")
+    return "; ".join(parts)[:400]
+
 
 def _sidecar_predict(observation_text: str, action_text: str) -> dict:
     """Independent DeepSeek call predicting the abstract next state."""
@@ -56,7 +123,8 @@ def _sidecar_predict(observation_text: str, action_text: str) -> dict:
         payload = json.loads(response.read().decode())
     message = payload["choices"][0]["message"]
     text = (message.get("content") or message.get("reasoning_content") or "").strip()
-    return {"text": text, "usage": payload.get("usage", {}), "wall_s": time.time() - t0}
+    return {"text": text, "usage": payload.get("usage", {}),
+            "wall_s": time.time() - t0, "request_body": body}
 
 
 class WorldMindRSI(RSIMethod):
@@ -75,7 +143,40 @@ class WorldMindRSI(RSIMethod):
         self._goal_usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
 
     # ------------------------------------------------------------------ setup
+    @staticmethod
+    def _ensure_worldmind_importable() -> None:
+        """Load the official plugin submodules without its broken __init__.
+
+        Upstream packaging bug at the pinned commit 712b0fd:
+        `worldmind_plugin/__init__.py` imports `parse_llm_output` while
+        `utils.py` defines `parse_agent_output`, so `import worldmind_plugin`
+        fails. We pre-register the package namespace and load the official
+        submodules by file, leaving every module's code untouched.
+        """
+        import importlib.util
+        import sys
+        import types
+
+        if "worldmind_plugin.core" in sys.modules:
+            return
+        package = types.ModuleType("worldmind_plugin")
+        package.__path__ = [str(PLUGIN / "worldmind_plugin")]
+        sys.modules["worldmind_plugin"] = package
+        for name in ("utils", "prompts", "config", "llm_client",
+                     "state_summarizer", "discriminator", "reflector",
+                     "experience_refiner", "knowledge_manager", "core"):
+            module_name = f"worldmind_plugin.{name}"
+            if module_name in sys.modules:
+                continue
+            spec = importlib.util.spec_from_file_location(
+                module_name, PLUGIN / "worldmind_plugin" / f"{name}.py")
+            module = importlib.util.module_from_spec(spec)
+            sys.modules[module_name] = module
+            spec.loader.exec_module(module)
+
     def _build_modules(self) -> None:
+        self._ensure_worldmind_importable()
+        _ensure_worldmind_client_instrumented()
         from worldmind_plugin.config import WorldMindConfig
         from worldmind_plugin.core import (
             ExperienceRetrievalModule,
@@ -111,6 +212,8 @@ class WorldMindRSI(RSIMethod):
 
     # ------------------------------------------------------------------ hooks
     def before_episode(self, task_public_view: dict) -> RSIInjection:
+        global _ACTIVE_OWNER
+        _ACTIVE_OWNER = self
         self._pending_prediction = None
         self._pending_action = None
         try:
@@ -149,11 +252,18 @@ class WorldMindRSI(RSIMethod):
         self._sidecar_wall_s += float(result.get("wall_s") or 0.0)
         if accountant is not None:
             accountant.record_sidecar(usage=usage, wall_s=float(result.get("wall_s") or 0.0))
+            accountant.record_request_dump(          # P1-10: sidecar request audit
+                url=f"{BASE_URL.rstrip('/')}/v1/chat/completions",
+                body=result.get("request_body") or {},
+                role="worldmind_sidecar",
+            )
         self._pending_prediction = result.get("text") or ""
         self._pending_action = dict(action)
         return self._pending_prediction
 
     def after_step(self, step_public_record: dict) -> None:
+        global _ACTIVE_OWNER
+        _ACTIVE_OWNER = self
         if not self._guard_update() or self._pending_prediction is None:
             self._pending_prediction = None
             return
@@ -163,23 +273,28 @@ class WorldMindRSI(RSIMethod):
         action = self._pending_action or {}
         self._pending_prediction = None
         self._pending_action = None
+        instruction = str(step_public_record.get("task_instruction") or "")
         action_text = f"{action.get('name')} {json.dumps(action.get('parameters') or {})}".strip()
-        observation_text = f"instruction: {step_public_record.get('task', '')}"
+        state_before = _state_text(step_public_record.get("state_before"))
+        state_after = _state_text(step_public_record.get("state_after"))
         feedback = step_public_record.get("public_feedback") or ""
+        # predicted_state vs the ACTUAL post-action public state (not a task id)
         try:
             self.process_module.process_single_step(
-                task_instruction=step_public_record.get("task") or "",
+                task_instruction=instruction,
                 step=ProcessTrajectoryStep(
-                    observation=observation_text,
+                    observation=state_before,
                     action=action_text,
                     predicted_state=prediction,
-                    env_feedback=feedback,
+                    env_feedback=f"{state_after} | {feedback}".strip(" |"),
                 ),
             )
         except Exception as exc:  # noqa: BLE001
             self._log({"process_step_error": f"{type(exc).__name__}: {exc}"})
 
     def after_episode(self, trajectory_public: dict, outcome_public: dict) -> None:
+        global _ACTIVE_OWNER
+        _ACTIVE_OWNER = self
         if not self._guard_update():
             return
         from worldmind_plugin.core import GoalTrajectoryStep
@@ -203,12 +318,9 @@ class WorldMindRSI(RSIMethod):
         except Exception as exc:  # noqa: BLE001
             self._log({"reload_error": f"{type(exc).__name__}: {exc}"})
 
-    def last_update_usage(self) -> dict:
-        return {
-            "prompt_tokens": self._sidecar_usage["prompt_tokens"] + self._goal_usage["prompt_tokens"],
-            "completion_tokens": self._sidecar_usage["completion_tokens"] + self._goal_usage["completion_tokens"],
-            "calls": self._sidecar_usage["calls"] + self._goal_usage["calls"],
-        }
+    def get_last_update_usage(self) -> dict:
+        """Updater tokens EXCLUDING the sidecar (which is accounted separately)."""
+        return dict(self._goal_usage)
 
     def _log(self, record: dict) -> None:
         if self.state_dir is None:

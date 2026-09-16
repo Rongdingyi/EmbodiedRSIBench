@@ -26,18 +26,65 @@ MODEL = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
 TOKEN_BUDGET = 8192
 MAX_PLAYBOOK_TOKENS = 8192
 
+class _AuditedChatClient:
+    """Thin OpenAI-client proxy that records every ACE request (P1-10).
+
+    Delegates verbatim to the wrapped client; only adds the redacted dump.
+    """
+
+    def __init__(self, inner, owner: "AceContextRSI") -> None:
+        self._inner = inner
+        self._owner = owner
+
+    @property
+    def chat(self):
+        return self
+
+    @property
+    def completions(self):
+        return self
+
+    def create(self, **kwargs):
+        accountant = (self._owner.run_ctx or {}).get("accountant")
+        if accountant is not None:
+            accountant.record_request_dump(
+                url=f"{BASE_URL.rstrip('/')}/v1/chat/completions",
+                body={
+                    "model": kwargs.get("model"),
+                    "messages": kwargs.get("messages") or [],
+                    "max_tokens": kwargs.get("max_tokens") or kwargs.get("max_completion_tokens"),
+                },
+                role="ace_updater",
+            )
+        return self._inner.chat.completions.create(**kwargs)
+
+
 def _usage_from_infos(infos: list) -> dict:
-    """Sum prompt/completion tokens reported by ACE's timed_llm_call info dicts."""
+    """Sum tokens from ACE's timed_llm_call info dicts.
+
+    ACE reports the official field names `prompt_num_tokens` /
+    `response_num_tokens` (with a couple of legacy aliases).
+    """
     prompt = completion = 0
     calls = 0
     for info in infos:
         if not isinstance(info, dict):
             continue
-        usage = info.get("usage") if isinstance(info.get("usage"), dict) else info
-        if not isinstance(usage, dict):
-            continue
-        prompt += int(usage.get("prompt_tokens") or usage.get("input_tokens") or 0)
-        completion += int(usage.get("completion_tokens") or usage.get("output_tokens") or 0)
+        usage = info
+        if isinstance(info.get("usage"), dict):
+            usage = {**info, **info["usage"]}
+        prompt += int(
+            usage.get("prompt_num_tokens")
+            or usage.get("prompt_tokens")
+            or usage.get("input_tokens")
+            or 0
+        )
+        completion += int(
+            usage.get("response_num_tokens")
+            or usage.get("completion_tokens")
+            or usage.get("output_tokens")
+            or 0
+        )
         calls += 1
     return {"prompt_tokens": prompt, "completion_tokens": completion, "calls": calls}
 
@@ -66,10 +113,11 @@ class AceContextRSI(RSIMethod):
         if self._client is None:
             from openai import OpenAI
 
-            self._client = OpenAI(
+            inner = OpenAI(
                 api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
                 base_url=f"{BASE_URL.rstrip('/')}/v1",
             )
+            self._client = _AuditedChatClient(inner, self)
         return self._client
 
     def _paths(self) -> dict[str, Path]:
@@ -126,8 +174,10 @@ class AceContextRSI(RSIMethod):
         feedback = f"task {'succeeded' if success else 'failed'} in {outcome_public.get('num_steps')} steps"
 
         client = self._openai_client()
-        reflector = Reflector(client, "openai", MODEL)
-        curator = Curator(client, "openai", MODEL)
+        # provider id deliberately not "openai": ACE then sends `max_tokens`,
+        # which is what the DeepSeek Chat Completions schema documents.
+        reflector = Reflector(client, "deepseek", MODEL)
+        curator = Curator(client, "deepseek", MODEL)
 
         bullets_used = self.playbook
         t0 = time.time()
@@ -157,8 +207,8 @@ class AceContextRSI(RSIMethod):
             log_dir=str(paths["log_dir"]),
             next_global_id=next_id,
         )
-        self.last_update_wall_s = time.time() - t0
-        self.last_update_usage = _usage_from_infos([reflect_info, curate_info])
+        self._last_update_wall_s = time.time() - t0
+        self._last_update_usage = _usage_from_infos([reflect_info, curate_info])
         updated = new_playbook
         if not updated or updated == self.playbook:
             try:

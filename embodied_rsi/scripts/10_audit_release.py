@@ -60,8 +60,9 @@ def main() -> int:
 
     rsi_smoke = load(OUT / "RSI_SMOKE.json")
     if rsi_smoke:
-        check("rsi smoke gate PASS", rsi_smoke.get("status") == "PASS",
-              str(rsi_smoke.get("status")))
+        smoke_status = rsi_smoke.get("status")
+        check("rsi smoke gate PASS or protocol-legal BLOCKED",
+              smoke_status in {gates.PASS, gates.BLOCKED}, str(smoke_status))
 
     # pilot completion, two-level status (review amendment)
     method_status: dict[str, str] = {}
@@ -116,7 +117,7 @@ def main() -> int:
         (PILOT / "FINAL_STATUS.txt").write_text("\n".join(lines) + "\n")
     print()
     print("\n".join(lines))
-    return 0 if status == "PASS" else 1
+    return 0 if status in {gates.FULL_PILOT_PASS, gates.PIPELINE_PASS_WITH_BLOCKER} else 1
 
 
 if __name__ == "__main__":

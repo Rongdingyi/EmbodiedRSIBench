@@ -80,6 +80,9 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
         result_dir.mkdir(parents=True, exist_ok=True)
     accountant = Accountant(episode_dir=result_dir)
     artifact_dir = (result_dir / "artifacts") if result_dir else None
+    if rsi is not None:
+        # per-episode accountant, visible to RSI methods (ACE audit trail, P1-10)
+        rsi.run_ctx["accountant"] = accountant
 
     # 2. RSI.before_episode + shared-budget validation
     public_view = {
@@ -175,17 +178,17 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
         try:
             rsi.after_episode(_public_episode(task, public_trajectory, outcome),
                               _public_outcome(outcome))
-            usage = None
-            if hasattr(rsi, "last_update_usage"):
-                usage = rsi.last_update_usage()
-            accountant.record_rsi_update(usage=usage,
-                                         wall_s=float(getattr(rsi, "last_update_wall_s", 0.0)))
+            usage = rsi.get_last_update_usage() if hasattr(rsi, "get_last_update_usage") else None
+            wall_s = rsi.get_last_update_wall_s() if hasattr(rsi, "get_last_update_wall_s") else 0.0
+            accountant.record_rsi_update(usage=usage, wall_s=float(wall_s or 0.0))
         except Exception as exc:  # noqa: BLE001
             outcome["rsi_update_error"] = f"{type(exc).__name__}: {exc}"
             outcome["status"] = "FAIL"
 
-    # leakage audit over every model request made in this episode
-    violations = accountant.leakage_violations(env.private_reference_values)
+    # leakage audit over every model request made in this episode (P0-10/P1-10)
+    private_refs = _private_reference_values(task)
+    env.private_reference_values = private_refs
+    violations = accountant.leakage_violations(private_refs)
     accountant.write_dump()
 
     result = EpisodeResult(
@@ -219,6 +222,48 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
 
 
 # ------------------------------------------------------------------ helpers
+def _private_reference_values(task: dict) -> list[str]:
+    """High-precision leak sentinel values.
+
+    Only full identifiers and the canonical serialisation of the private metadata
+    are used: bare numbers (e.g. a pose component like ``0.0``) legitimately occur
+    in agent-visible text and would produce false positives.
+    """
+    import re
+
+    values: list[str] = []
+    for key in ("physical_task_id", "source_task_id", "global_task_id"):
+        value = task.get(key)
+        if isinstance(value, str) and value:
+            values.append(value)
+    private = task.get("private_eval_metadata") or {}
+    if private:
+        values.append(json.dumps(private, sort_keys=True, separators=(",", ":")))
+
+    identifier_like = re.compile(r"^[A-Za-z0-9_\-:.|]{8,}$")
+
+    def walk(node):
+        if isinstance(node, str):
+            if identifier_like.match(node):
+                values.append(node)
+        elif isinstance(node, dict):
+            for k, v in node.items():
+                if k not in ("outcome",):
+                    walk(v)
+        elif isinstance(node, list):
+            for item in node[:50]:
+                walk(item)
+
+    walk(private)
+    seen = set()
+    unique = []
+    for value in values:
+        if value not in seen:
+            seen.add(value)
+            unique.append(value)
+    return unique[:60]
+
+
 def _public_trajectory(upstream) -> list[dict]:
     from agent.runtime.episode import action_token_usage  # noqa: PLC0415
 

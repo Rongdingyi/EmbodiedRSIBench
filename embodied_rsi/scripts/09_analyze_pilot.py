@@ -90,7 +90,9 @@ def main() -> int:
                             continue
                         by_source_rows.append({
                             "method": method, "checkpoint": ckpt_name,
-                            "source": rec["source_dataset"], "role": role,
+                            "source": rec["source_dataset"],
+                            "skill_family": rec.get("skill_family_primary") or "",
+                            "role": role,
                             "success": t.get("success"), "turns": t.get("turns"),
                             "error": t.get("error") or "",
                         })
@@ -126,13 +128,16 @@ def main() -> int:
             writer.writerow([method, source, agg["n"], round(agg["success"] / agg["n"], 4)])
     with open(PILOT / "PILOT_RESULTS_BY_SKILL.csv", "w", newline="") as f:
         writer = csv.writer(f)
-        writer.writerow(["method", "skill_family", "role", "success_rate"])
+        writer.writerow(["method", "skill_family", "role", "checkpoint", "n", "success_rate"])
         skill_agg = defaultdict(lambda: [0, 0])
         for r in by_source_rows:
-            if r["success"] is None:
+            if r["success"] is None or not r.get("skill_family"):
                 continue
-            # no skill labels in probe summaries yet; emit header-only placeholder
-        writer.writerow([])
+            key = (r["method"], r["skill_family"], r["role"], r["checkpoint"])
+            skill_agg[key][0] += 1
+            skill_agg[key][1] += int(bool(r["success"]))
+        for (method, family, role, ckpt), (n, ok) in sorted(skill_agg.items()):
+            writer.writerow([method, family, role, ckpt, n, round(ok / n, 4)])
     with open(PILOT / "PILOT_COST.csv", "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=list(cost_rows[0].keys()) if cost_rows else
                                 ["method"])

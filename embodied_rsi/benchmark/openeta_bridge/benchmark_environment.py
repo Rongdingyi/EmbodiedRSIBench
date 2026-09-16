@@ -84,10 +84,11 @@ class BenchmarkEpisodeEnvironment:
             parameters = {}
 
         # ---- WorldMind sidecar: action locked, feedback not yet observed
+        state_before = self._public_view()
         sidecar = None
         if self.rsi is not None and hasattr(self.rsi, "predict_sidecar"):
             sidecar = self.rsi.predict_sidecar(
-                public_observation=self._public_view(),
+                public_observation=state_before,
                 action={"name": name, "parameters": parameters},
                 accountant=self.accountant,
             )
@@ -97,13 +98,16 @@ class BenchmarkEpisodeEnvironment:
         if self.accountant is not None:
             self.accountant.record_env_step()
 
-        # ---- RSI step hook (WorldMind process experience uses the real feedback)
+        # ---- RSI step hook: real instruction + before/after public states (P0-4)
         if self.rsi is not None:
+            state_after = self._public_view_of(outcome.observation)
             self.rsi.after_step({
-                "task": self.task.get("global_task_id"),
+                "task_instruction": self._last_public.instruction if self._last_public else "",
                 "role": self.task.get("role"),
                 "action": {"name": name, "parameters": parameters},
                 "predicted_state": sidecar,
+                "state_before": state_before,
+                "state_after": state_after,
                 "public_feedback": outcome.public_feedback,
                 "action_success": outcome.action_success,
                 "terminated": outcome.terminated,
@@ -145,12 +149,16 @@ class BenchmarkEpisodeEnvironment:
         return self.env_steps
 
     def _public_view(self) -> dict:
-        public = self._last_public
+        return self._public_view_of(self._last_public)
+
+    @staticmethod
+    def _public_view_of(public) -> dict:
         if public is None:
             return {}
         return {"instruction": public.instruction,
                 "text_feedback": public.text_feedback,
-                "public_metadata": dict(public.public_metadata)}
+                "public_metadata": {k: v for k, v in public.public_metadata.items()
+                                    if k in PUBLIC_METADATA_ALLOWLIST}}
 
     def _to_env_observation(self, public, *, step_idx: int) -> EnvObservation:
         from PIL import Image  # noqa: PLC0415

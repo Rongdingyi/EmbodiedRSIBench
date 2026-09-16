@@ -71,8 +71,10 @@ def main() -> int:
             adapter = make_adapter(task["source_dataset"])
             try:
                 res = run_episode(task, adapter, method, role="experience", config=BUDGET)
-                if res.error:
-                    evidence.setdefault("errors", []).append(f"exp {gid}: {res.error}")
+                if res.status != gates.PASS:
+                    evidence.setdefault("errors", []).append(
+                        f"exp {gid}: status={res.status} error={res.error} "
+                        f"rsi_update_error={res.outcome.get('rsi_update_error')}")
             except Exception as exc:  # noqa: BLE001
                 evidence.setdefault("errors", []).append(f"exp {gid}: {exc}")
             hashes.append(method.state_hash())
@@ -89,8 +91,9 @@ def main() -> int:
             try:
                 res = run_episode(task, adapter, clone, role="id", config=BUDGET)
                 probe_success.append(res.outcome.get("success"))
-                if res.error:
-                    evidence.setdefault("errors", []).append(f"probe {gid}: {res.error}")
+                if res.status != gates.PASS:
+                    evidence.setdefault("errors", []).append(
+                        f"probe {gid}: status={res.status} error={res.error}")
             except Exception as exc:  # noqa: BLE001
                 evidence.setdefault("errors", []).append(f"probe {gid}: {exc}")
         h1 = clone.state_hash()
