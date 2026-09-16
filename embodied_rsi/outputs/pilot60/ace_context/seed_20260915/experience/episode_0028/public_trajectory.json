@@ -1,0 +1,138 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Tomato"
+      }
+    },
+    "public_env_feedback": "find Tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5703,
+      "output_tokens": 209,
+      "charged_tokens": 5912,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Tomato"
+      }
+    },
+    "public_env_feedback": "pickup Tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13589,
+      "output_tokens": 577,
+      "charged_tokens": 14166,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "Tomato"
+      }
+    },
+    "public_env_feedback": "slice Tomato -> failed (<AsgardBench.objects.StepError object at 0x715622f87d30>)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7377,
+      "output_tokens": 160,
+      "charged_tokens": 7537,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Tomato"
+      }
+    },
+    "public_env_feedback": "pickup Tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15449,
+      "output_tokens": 7537,
+      "charged_tokens": 22986,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "Bowl"
+      }
+    },
+    "public_env_feedback": "put Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8384,
+      "output_tokens": 1580,
+      "charged_tokens": 9964,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "done",
+      "parameters": {}
+    },
+    "public_env_feedback": "Episode finished by agent.",
+    "action_success": true,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8099,
+      "output_tokens": 7668,
+      "charged_tokens": 15767,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

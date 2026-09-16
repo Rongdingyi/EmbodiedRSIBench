@@ -1,0 +1,194 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4939,
+      "output_tokens": 536,
+      "charged_tokens": 5475,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6012,
+      "output_tokens": 1610,
+      "charged_tokens": 7622,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 180.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6585,
+      "output_tokens": 566,
+      "charged_tokens": 7151,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "back",
+        "distance": 1.0
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6871,
+      "output_tokens": 649,
+      "charged_tokens": 7520,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7139,
+      "output_tokens": 932,
+      "charged_tokens": 8071,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 180.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7226,
+      "output_tokens": 268,
+      "charged_tokens": 7494,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 0.25
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7656,
+      "output_tokens": 1231,
+      "charged_tokens": 8887,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 180.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7350,
+      "output_tokens": 699,
+      "charged_tokens": 8049,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

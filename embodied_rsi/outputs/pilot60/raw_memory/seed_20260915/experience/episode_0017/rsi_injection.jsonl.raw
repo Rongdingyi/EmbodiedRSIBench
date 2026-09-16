@@ -1,0 +1,54 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- open -> Last action is invalid. Open action failed.
+- pick_up -> Last action is invalid. Fork is not visible because it is in DiningTable. Go there to pick the object instead.
+- find -> Last action executed successfully.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+
+[Episode 2]
+Task: Fry a potato slice and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find potato -> failed (<AsgardBench.objects.StepError object at 0x781ba468f940>)
+- open -> open fridge -> ok
+- pickup -> pickup potato -> ok
+- slice -> slice potato -> ok
+- find -> find frying pan -> ok
+- put -> put frying pan -> ok
+- find -> find stove -> ok
+- toggle_on -> toggle_on stove -> ok
+
+[Episode 3]
+Task: Make a slice of toast and serve it on a plate
+Outcome: Failure (steps: 7)
+Trajectory summary:
+- find -> find Bread -> ok
+- pickup -> pickup Bread -> ok
+- slice -> slice Bread -> failed (<AsgardBench.objects.StepError object at 0x785a0ebd05e0>)
+- pickup -> pickup Bread -> ok
+- put -> put Plate -> ok
+- find -> find toaster -> ok
+- ask_human -> 
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

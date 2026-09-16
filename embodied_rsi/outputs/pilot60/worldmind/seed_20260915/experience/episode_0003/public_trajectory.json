@@ -1,0 +1,186 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Cup"
+      }
+    },
+    "public_env_feedback": "find Cup -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5704,
+      "output_tokens": 372,
+      "charged_tokens": 6076,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Cup"
+      }
+    },
+    "public_env_feedback": "pickup Cup -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13589,
+      "output_tokens": 1754,
+      "charged_tokens": 15343,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put_away",
+      "parameters": {
+        "object": "Cup"
+      }
+    },
+    "public_env_feedback": "put_away Cup -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14883,
+      "output_tokens": 1497,
+      "charged_tokens": 16380,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Bowl"
+      }
+    },
+    "public_env_feedback": "pickup Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7775,
+      "output_tokens": 569,
+      "charged_tokens": 8344,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put_away",
+      "parameters": {
+        "object": "Bowl"
+      }
+    },
+    "public_env_feedback": "put_away Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8050,
+      "output_tokens": 558,
+      "charged_tokens": 8608,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Pot"
+      }
+    },
+    "public_env_feedback": "pickup Pot -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8136,
+      "output_tokens": 341,
+      "charged_tokens": 8477,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put_away",
+      "parameters": {
+        "object": "Pot"
+      }
+    },
+    "public_env_feedback": "put_away Pot -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8093,
+      "output_tokens": 182,
+      "charged_tokens": 8275,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Mug"
+      }
+    },
+    "public_env_feedback": "find Mug -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8057,
+      "output_tokens": 1182,
+      "charged_tokens": 9239,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

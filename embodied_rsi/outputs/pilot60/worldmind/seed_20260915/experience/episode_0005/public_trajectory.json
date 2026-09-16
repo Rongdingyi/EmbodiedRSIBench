@@ -1,0 +1,194 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4907,
+      "output_tokens": 1221,
+      "charged_tokens": 6128,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5968,
+      "output_tokens": 459,
+      "charged_tokens": 6427,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 0.5
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13139,
+      "output_tokens": 1889,
+      "charged_tokens": 15028,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6897,
+      "output_tokens": 637,
+      "charged_tokens": 7534,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7176,
+      "output_tokens": 1362,
+      "charged_tokens": 8538,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7620,
+      "output_tokens": 1288,
+      "charged_tokens": 8908,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "right",
+        "distance": 0.5
+      }
+    },
+    "public_env_feedback": "Move -> failed (Bed_c1955e80 is blocking Agent 0 from moving by (0.2500, 0.0000, 0.0000).)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7700,
+      "output_tokens": 1091,
+      "charged_tokens": 8791,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7330,
+      "output_tokens": 744,
+      "charged_tokens": 8074,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

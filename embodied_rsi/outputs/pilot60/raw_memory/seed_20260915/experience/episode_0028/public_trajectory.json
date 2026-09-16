@@ -1,0 +1,184 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "tomato"
+      }
+    },
+    "public_env_feedback": "find tomato -> failed (<AsgardBench.objects.StepError object at 0x7bc32d9d03a0>)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5705,
+      "output_tokens": 565,
+      "charged_tokens": 6270,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "bowl"
+      }
+    },
+    "public_env_feedback": "find bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6755,
+      "output_tokens": 1397,
+      "charged_tokens": 8152,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "tomato"
+      }
+    },
+    "public_env_feedback": "pickup tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14645,
+      "output_tokens": 663,
+      "charged_tokens": 15308,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "tomato"
+      }
+    },
+    "public_env_feedback": "slice tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7644,
+      "output_tokens": 901,
+      "charged_tokens": 8545,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "bowl"
+      }
+    },
+    "public_env_feedback": "put bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7904,
+      "output_tokens": 490,
+      "charged_tokens": 8394,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "tomato"
+      }
+    },
+    "public_env_feedback": "pickup tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8000,
+      "output_tokens": 3221,
+      "charged_tokens": 11221,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "bowl"
+      }
+    },
+    "public_env_feedback": "put bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8440,
+      "output_tokens": 3701,
+      "charged_tokens": 12141,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "done",
+      "parameters": {}
+    },
+    "public_env_feedback": "Episode finished by agent.",
+    "action_success": true,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8398,
+      "output_tokens": 3386,
+      "charged_tokens": 11784,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

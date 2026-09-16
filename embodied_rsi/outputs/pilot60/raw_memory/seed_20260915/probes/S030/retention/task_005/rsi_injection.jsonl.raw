@@ -1,0 +1,46 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Put a pan with an apple in it in the fridge.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- pick_up -> Last action is invalid. Apple is not visible because it is in DiningTable. Go there to pick the object instead.
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- find -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+- find -> Last action executed successfully.
+- open -> Last action executed successfully.
+
+[Episode 2]
+Task: Fry a potato slice and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find potato -> failed (<AsgardBench.objects.StepError object at 0x781ba468f940>)
+- open -> open fridge -> ok
+- pickup -> pickup potato -> ok
+- slice -> slice potato -> ok
+- find -> find frying pan -> ok
+- put -> put frying pan -> ok
+- find -> find stove -> ok
+- toggle_on -> toggle_on stove -> ok
+
+[Episode 3]
+Task: Make a slice of toast and serve it on a plate
+Outcome: Failure (steps: 7)
+Trajectory summary:
+- find -> find Bread -> ok
+- pickup -> pickup Bread -> ok
+- slice -> slice Bread -> failed (<AsgardBench.objects.StepError object at 0x785a0ebd05e0>)
+- pickup -> pickup Bread -> ok
+- put -> put Plate -> ok
+- find -> find toaster -> ok
+- ask_human -> 
+
+[Episode 4]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Failure (steps: 0)
+Trajectory summary:
+[/PERSISTENT EXPERIENCE GUIDANCE]

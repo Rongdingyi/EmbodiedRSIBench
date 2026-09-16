@@ -1,0 +1,186 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "find Apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5711,
+      "output_tokens": 169,
+      "charged_tokens": 5880,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "pickup Apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6742,
+      "output_tokens": 412,
+      "charged_tokens": 7154,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "slice Apple -> failed (<AsgardBench.objects.StepError object at 0x796d6598b9d0>)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14655,
+      "output_tokens": 421,
+      "charged_tokens": 15076,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "pickup Apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 23229,
+      "output_tokens": 10734,
+      "charged_tokens": 33963,
+      "sources": {
+        "provider": 3
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "Plate"
+      }
+    },
+    "public_env_feedback": "put Plate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8432,
+      "output_tokens": 2274,
+      "charged_tokens": 10706,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Bowl"
+      }
+    },
+    "public_env_feedback": "find Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8158,
+      "output_tokens": 1347,
+      "charged_tokens": 9505,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "pickup Apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8232,
+      "output_tokens": 5965,
+      "charged_tokens": 14197,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "Bowl"
+      }
+    },
+    "public_env_feedback": "put Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8566,
+      "output_tokens": 1507,
+      "charged_tokens": 10073,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

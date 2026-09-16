@@ -1,0 +1,186 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "bread"
+      }
+    },
+    "public_env_feedback": "find bread -> failed (<AsgardBench.objects.StepError object at 0x763d88f8ff10>)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5707,
+      "output_tokens": 472,
+      "charged_tokens": 6179,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "plate"
+      }
+    },
+    "public_env_feedback": "find plate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13629,
+      "output_tokens": 2759,
+      "charged_tokens": 16388,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "bread"
+      }
+    },
+    "public_env_feedback": "pickup bread -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7386,
+      "output_tokens": 585,
+      "charged_tokens": 7971,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "bread"
+      }
+    },
+    "public_env_feedback": "slice bread -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7658,
+      "output_tokens": 711,
+      "charged_tokens": 8369,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "plate"
+      }
+    },
+    "public_env_feedback": "put plate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7927,
+      "output_tokens": 190,
+      "charged_tokens": 8117,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "toaster"
+      }
+    },
+    "public_env_feedback": "find toaster -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8014,
+      "output_tokens": 7169,
+      "charged_tokens": 15183,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "bread"
+      }
+    },
+    "public_env_feedback": "pickup bread -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7967,
+      "output_tokens": 7990,
+      "charged_tokens": 15957,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "plate"
+      }
+    },
+    "public_env_feedback": "put plate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 16915,
+      "output_tokens": 12639,
+      "charged_tokens": 29554,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

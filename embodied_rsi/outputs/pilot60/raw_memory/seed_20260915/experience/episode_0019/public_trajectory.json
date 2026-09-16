@@ -1,0 +1,170 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_27_pick_up_the_plate",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12501,
+      "output_tokens": 474,
+      "charged_tokens": 12975,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_09_navigate_to_the_sink_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13601,
+      "output_tokens": 887,
+      "charged_tokens": 14488,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_06_navigate_to_the_table_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14168,
+      "output_tokens": 2737,
+      "charged_tokens": 16905,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_50_place_at_the_table_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14446,
+      "output_tokens": 1565,
+      "charged_tokens": 16011,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_27_pick_up_the_plate",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully and you are holding plate.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14754,
+      "output_tokens": 971,
+      "charged_tokens": 15725,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_50_place_at_the_table_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully and you are holding nothing.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15296,
+      "output_tokens": 1067,
+      "charged_tokens": 16363,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_19_pick_up_the_screwdriver",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully and you are holding screwdriver.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15382,
+      "output_tokens": 2079,
+      "charged_tokens": 17461,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_50_place_at_the_table_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully and you are holding nothing.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15034,
+      "output_tokens": 423,
+      "charged_tokens": 15457,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

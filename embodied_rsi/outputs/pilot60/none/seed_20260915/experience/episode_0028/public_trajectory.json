@@ -1,0 +1,115 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Tomato"
+      }
+    },
+    "public_env_feedback": "find Tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5703,
+      "output_tokens": 365,
+      "charged_tokens": 6068,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "Tomato"
+      }
+    },
+    "public_env_feedback": "slice Tomato -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6738,
+      "output_tokens": 1686,
+      "charged_tokens": 8424,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "TomatoSliced"
+      }
+    },
+    "public_env_feedback": "pickup TomatoSliced -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14641,
+      "output_tokens": 3513,
+      "charged_tokens": 18154,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "put",
+      "parameters": {
+        "object": "Bowl"
+      }
+    },
+    "public_env_feedback": "put Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 23163,
+      "output_tokens": 3468,
+      "charged_tokens": 26631,
+      "sources": {
+        "provider": 3
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "done",
+      "parameters": {}
+    },
+    "public_env_feedback": "Episode finished by agent.",
+    "action_success": true,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 8076,
+      "output_tokens": 6037,
+      "charged_tokens": 14113,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

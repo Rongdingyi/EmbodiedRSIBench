@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Could you help me out by picking up the pencil carefully and holding it securely?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Move -> Move -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Move -> Move -> failed (Bed_a715bf50 is blocking Agent 0 from moving by (0.0000, 0.0000, 0.2500).)
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+
+[Episode 2]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+
+[Episode 3]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+
+[Episode 4]
+Task: I'm putting things where they belong, so please pick up the credit card, carry it over, and set it down on the dresser neatly.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

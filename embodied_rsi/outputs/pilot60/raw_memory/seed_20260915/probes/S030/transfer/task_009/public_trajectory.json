@@ -1,0 +1,170 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_09_navigate_to_the_sink_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12468,
+      "output_tokens": 602,
+      "charged_tokens": 13070,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_34_pick_up_the_lemon",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13553,
+      "output_tokens": 1212,
+      "charged_tokens": 14765,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_10_navigate_to_the_right_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14121,
+      "output_tokens": 512,
+      "charged_tokens": 14633,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_09_navigate_to_the_sink_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14404,
+      "output_tokens": 7726,
+      "charged_tokens": 22130,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_53_place_at_the_sink_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15130,
+      "output_tokens": 994,
+      "charged_tokens": 16124,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_10_navigate_to_the_right_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14850,
+      "output_tokens": 2949,
+      "charged_tokens": 17799,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_34_pick_up_the_lemon",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 30907,
+      "output_tokens": 12510,
+      "charged_tokens": 43417,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_11_navigate_to_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15625,
+      "output_tokens": 5801,
+      "charged_tokens": 21426,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

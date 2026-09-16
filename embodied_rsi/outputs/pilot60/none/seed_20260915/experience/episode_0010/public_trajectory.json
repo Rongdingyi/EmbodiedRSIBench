@@ -1,0 +1,170 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_06_navigate_to_the_table_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12454,
+      "output_tokens": 489,
+      "charged_tokens": 12943,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_44_pick_up_the_mug",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13521,
+      "output_tokens": 624,
+      "charged_tokens": 14145,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_11_navigate_to_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 28287,
+      "output_tokens": 1029,
+      "charged_tokens": 29316,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_12_navigate_to_the_sofa",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14476,
+      "output_tokens": 760,
+      "charged_tokens": 15236,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_56_place_at_the_sofa",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14758,
+      "output_tokens": 326,
+      "charged_tokens": 15084,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_06_navigate_to_the_table_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14892,
+      "output_tokens": 975,
+      "charged_tokens": 15867,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_44_pick_up_the_mug",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 30981,
+      "output_tokens": 4800,
+      "charged_tokens": 35781,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_03_navigate_to_the_cabinet_4",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15553,
+      "output_tokens": 1565,
+      "charged_tokens": 17118,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

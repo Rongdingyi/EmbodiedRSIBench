@@ -1,0 +1,99 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "find apple -> failed (<AsgardBench.objects.StepError object at 0x7045fd3dc970>)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5710,
+      "output_tokens": 388,
+      "charged_tokens": 6098,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "fridge"
+      }
+    },
+    "public_env_feedback": "open fridge -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6763,
+      "output_tokens": 269,
+      "charged_tokens": 7032,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "pickup apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7271,
+      "output_tokens": 882,
+      "charged_tokens": 8153,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "talk",
+      "parameters": {
+        "message": "Planner could not produce a valid action request.",
+        "code": "planner_validation_failed",
+        "validation_errors": [
+          "Planner backend returned text without a <decision> element."
+        ],
+        "validation_attempts": 3
+      }
+    },
+    "public_env_feedback": "status_report",
+    "action_success": null,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 22875,
+      "output_tokens": 1632,
+      "charged_tokens": 24507,
+      "sources": {
+        "provider": 3
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

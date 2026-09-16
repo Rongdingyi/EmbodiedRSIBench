@@ -1,0 +1,170 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_11_navigate_to_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12479,
+      "output_tokens": 497,
+      "charged_tokens": 12976,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_40_pick_up_the_rubriks_cube",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13569,
+      "output_tokens": 972,
+      "charged_tokens": 14541,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_10_navigate_to_the_right_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14156,
+      "output_tokens": 4048,
+      "charged_tokens": 18204,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_11_navigate_to_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14439,
+      "output_tokens": 442,
+      "charged_tokens": 14881,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_55_place_at_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15178,
+      "output_tokens": 4635,
+      "charged_tokens": 19813,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_40_pick_up_the_rubriks_cube",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14878,
+      "output_tokens": 800,
+      "charged_tokens": 15678,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_11_navigate_to_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15444,
+      "output_tokens": 7674,
+      "charged_tokens": 23118,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_55_place_at_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 15526,
+      "output_tokens": 4320,
+      "charged_tokens": 19846,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

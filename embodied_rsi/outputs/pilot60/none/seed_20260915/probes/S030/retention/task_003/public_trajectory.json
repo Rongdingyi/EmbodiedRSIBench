@@ -1,0 +1,142 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 1.0
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4874,
+      "output_tokens": 382,
+      "charged_tokens": 5256,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 0.5
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5915,
+      "output_tokens": 310,
+      "charged_tokens": 6225,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 0.5
+      }
+    },
+    "public_env_feedback": "Move -> failed (Bed_b25ec7e7 is blocking Agent 0 from moving by (-0.2500, 0.0000, 0.0000).)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6466,
+      "output_tokens": 419,
+      "charged_tokens": 6885,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Pick",
+      "parameters": {
+        "object": "Laptop"
+      }
+    },
+    "public_env_feedback": "Pick -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6775,
+      "output_tokens": 551,
+      "charged_tokens": 7326,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "ChangeState",
+      "parameters": {
+        "object": "Laptop",
+        "state": "on"
+      }
+    },
+    "public_env_feedback": "ChangeState -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14117,
+      "output_tokens": 2914,
+      "charged_tokens": 17031,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "EndTask",
+      "parameters": {}
+    },
+    "public_env_feedback": "EndTask -> episode finished",
+    "action_success": true,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7204,
+      "output_tokens": 3771,
+      "charged_tokens": 10975,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

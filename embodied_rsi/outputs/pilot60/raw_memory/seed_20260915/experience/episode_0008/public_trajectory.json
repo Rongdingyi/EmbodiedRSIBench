@@ -1,0 +1,186 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "glass"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4607,
+      "output_tokens": 447,
+      "charged_tokens": 5054,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "pitcher"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5664,
+      "output_tokens": 461,
+      "charged_tokens": 6125,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "glass"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6209,
+      "output_tokens": 6395,
+      "charged_tokens": 12604,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "fridge"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Open action failed.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6819,
+      "output_tokens": 4465,
+      "charged_tokens": 11284,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "fork"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Fork is not visible because it is in DiningTable. Go there to pick the object instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13553,
+      "output_tokens": 3831,
+      "charged_tokens": 17384,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "fork"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6928,
+      "output_tokens": 878,
+      "charged_tokens": 7806,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "glass"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6974,
+      "output_tokens": 2728,
+      "charged_tokens": 9702,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "pitcher"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7433,
+      "output_tokens": 1624,
+      "charged_tokens": 9057,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

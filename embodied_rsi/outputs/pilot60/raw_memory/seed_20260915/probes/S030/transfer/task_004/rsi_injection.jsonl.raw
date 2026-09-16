@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+
+[Episode 2]
+Task: Could you help me out by picking up the pencil carefully and holding it securely?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Move -> Move -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Move -> Move -> failed (Bed_a715bf50 is blocking Agent 0 from moving by (0.0000, 0.0000, 0.2500).)
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+
+[Episode 3]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+
+[Episode 4]
+Task: Find a mug and move it to the sofa.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_44_pick_up_the_mug -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+- skill_56_place_at_the_sofa -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+[/PERSISTENT EXPERIENCE GUIDANCE]

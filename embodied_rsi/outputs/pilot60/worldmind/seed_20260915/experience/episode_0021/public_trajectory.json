@@ -1,0 +1,69 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_11_navigate_to_the_left_counter_in_the_kitchen",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12479,
+      "output_tokens": 2568,
+      "charged_tokens": 15047,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_40_pick_up_the_rubriks_cube",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13559,
+      "output_tokens": 1998,
+      "charged_tokens": 15557,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "message": "Planner provider request failed.",
+        "error_type": "ProviderProtocolError",
+        "provider_attempts": 3,
+        "provider_error_code": "transient_provider_failure",
+        "retryable": true
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "charged_tokens": 0,
+      "sources": {}
+    },
+    "rsi_aux_usage": {}
+  }
+]

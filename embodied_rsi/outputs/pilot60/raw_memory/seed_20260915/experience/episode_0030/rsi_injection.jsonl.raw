@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+
+[Episode 2]
+Task: I need to get ready for work. Please move the coffee from the bedside table to the desk.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Move -> Move -> failed (FP323:StandardWallSize.019 is blocking Agent 0 from moving by (-0.2500, 0.0000, 0.0000).)
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Move -> Move -> ok
+
+[Episode 3]
+Task: Move a spoon from the right counter to the right receptacle of the left counter.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+
+[Episode 4]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- open -> Last action is invalid. Open action failed.
+- pick_up -> Last action is invalid. Fork is not visible because it is in DiningTable. Go there to pick the object instead.
+- find -> Last action executed successfully.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+[/PERSISTENT EXPERIENCE GUIDANCE]

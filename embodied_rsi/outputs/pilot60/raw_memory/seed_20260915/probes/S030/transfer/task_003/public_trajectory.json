@@ -1,0 +1,25 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I cannot see the target image this turn. The observation metadata lists two camera artifacts (current_view and target_view), and image #1 shown to me is current_view (scene_primary, observation_step 0). The target_view frame required to \"reproduce the target viewpoint\" was not delivered as visual evidence, and no target camera pose/extrinsics or alignment metric was provided.\n\nPlease supply any one of the following so I can plan a grounded action instead of guessing:\n1) The rendered target_view image for this step (frame_id=target_view), or\n2) The target camera pose relative to the current camera (yaw/pitch offsets in degrees, plus translation in meters along the agent's forward/right axes), or\n3) The current camera pose and the target camera pose in a common frame (position + orientation), or\n4) An alignment metric/checker I can call to evaluate a candidate viewpoint.\n\nWith (1)-(4) I will immediately begin closed-loop adjustment (single RotateLeft/RotateRight/LookUp/LookDown/MoveAhead/MoveBack/MoveLeft/MoveRight action, then re-observe and re-compare) until the current view matches the target."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4674,
+      "output_tokens": 1707,
+      "charged_tokens": 6381,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

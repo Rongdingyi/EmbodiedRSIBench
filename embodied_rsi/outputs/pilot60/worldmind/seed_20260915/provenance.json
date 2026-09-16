@@ -1,0 +1,11 @@
+{
+  "benchmark_version": "Core-v1.0",
+  "pilot_version": "Pilot-60-v0.1",
+  "seed": 20260915,
+  "model": "deepseek-flash",
+  "model_provider": "OpenAI-compatible relay",
+  "model_base_url": "http://35.220.164.252:3888",
+  "rsi_method": "worldmind",
+  "openeta_commit": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
+  "episode_orchestration": "upstream OpenEtaEpisodeRunner"
+}

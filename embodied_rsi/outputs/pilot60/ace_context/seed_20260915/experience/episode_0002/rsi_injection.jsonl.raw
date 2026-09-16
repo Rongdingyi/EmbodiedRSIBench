@@ -1,0 +1,11 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## STRATEGIES & INSIGHTS
+
+[sai-00001] helpful=0 harmful=0 :: A failed movement action does not necessarily mean the overall task failed. If the target object is already reachable, attempt the Pick action; then verify the final state (e.g., object successfully picked) against the task goal before concluding success or failure.
+## FORMULAS & CALCULATIONS
+
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+[err-00002] helpful=0 harmful=0 :: Do not equate an intermediate failed Move or Navigate action with overall task failure when the target is still reachable and can be picked. Also avoid unnecessary ask_human actions after the task goal has already been achieved.
+[/PERSISTENT EXPERIENCE GUIDANCE]

@@ -1,0 +1,142 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "glass"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4606,
+      "output_tokens": 333,
+      "charged_tokens": 4939,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "fork"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5663,
+      "output_tokens": 558,
+      "charged_tokens": 6221,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "fork"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6173,
+      "output_tokens": 1248,
+      "charged_tokens": 7421,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "glass"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6437,
+      "output_tokens": 6739,
+      "charged_tokens": 13176,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "drawer"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Open action failed.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7068,
+      "output_tokens": 3622,
+      "charged_tokens": 10690,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "message": "Planner provider request failed.",
+        "error_type": "ProviderProtocolError",
+        "provider_attempts": 3,
+        "provider_error_code": "transient_provider_failure",
+        "retryable": true
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "charged_tokens": 0,
+      "sources": {}
+    },
+    "rsi_aux_usage": {}
+  }
+]

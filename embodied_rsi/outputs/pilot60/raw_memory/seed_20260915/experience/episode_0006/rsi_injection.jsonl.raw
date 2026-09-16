@@ -1,0 +1,44 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Deliver a green round fruit to the intended a large gray piece of furniture with a backrest by physically moving it there.
+Outcome: Failure (steps: 5)
+Trajectory summary:
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_30_pick_up_the_plum -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- ask_human -> 
+
+[Episode 2]
+Task: Put away the Cup, Bowl, Pot and Mug
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find mug -> failed (<AsgardBench.objects.StepError object at 0x75a48692eaa0>)
+- find -> find Mug -> ok
+- pickup -> pickup Mug -> ok
+- put_away -> put_away Mug -> ok
+- find -> find Cup -> ok
+- pickup -> pickup Cup -> ok
+- put_away -> put_away Cup -> ok
+- find -> find Bowl -> ok
+
+[Episode 3]
+Task: Prepare a mug of coffee, drink it, then wash and store the mug.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

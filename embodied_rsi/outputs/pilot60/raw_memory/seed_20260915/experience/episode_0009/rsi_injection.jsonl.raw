@@ -1,0 +1,39 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 2]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- open -> Last action is invalid. Open action failed.
+- pick_up -> Last action is invalid. Fork is not visible because it is in DiningTable. Go there to pick the object instead.
+- find -> Last action executed successfully.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+
+[Episode 3]
+Task: Prepare a mug of coffee, drink it, then wash and store the mug.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

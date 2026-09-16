@@ -1,0 +1,54 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Find a mug and move it to the sofa.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_44_pick_up_the_mug -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+- skill_56_place_at_the_sofa -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+
+[Episode 2]
+Task: Move a spoon from the right counter to the right receptacle of the left counter.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+
+[Episode 3]
+Task: Move a rubriks cube from the left counter to the right receptacle of the left counter.
+Outcome: Failure (steps: 7)
+Trajectory summary:
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_40_pick_up_the_rubriks_cube -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_09_navigate_to_the_sink_in_the_kitchen -> Last action executed successfully.
+- skill_53_place_at_the_sink_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_09_navigate_to_the_sink_in_the_kitchen -> Last action executed successfully.
+- ask_human -> 
+
+[Episode 4]
+Task: Move the plate to the black table, the screwdriver to the black table, and the cleanser to the black table.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_27_pick_up_the_plate -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_09_navigate_to_the_sink_in_the_kitchen -> Last action executed successfully.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_50_place_at_the_table_1 -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_27_pick_up_the_plate -> Last action executed successfully and you are holding plate.
+- skill_50_place_at_the_table_1 -> Last action executed successfully and you are holding nothing.
+- skill_19_pick_up_the_screwdriver -> Last action executed successfully and you are holding screwdriver.
+- skill_50_place_at_the_table_1 -> Last action executed successfully and you are holding nothing.
+[/PERSISTENT EXPERIENCE GUIDANCE]

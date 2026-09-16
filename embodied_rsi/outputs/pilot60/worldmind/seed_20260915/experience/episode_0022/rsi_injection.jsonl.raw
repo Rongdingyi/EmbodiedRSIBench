@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+For any object relocation task, obey manipulation preconditions. Before picking up an object, navigate to its location and confirm it is within the robot's reach; pick-up fails if the object is not near. Before placing an object, confirm the robot is actually holding the target object; if not, pick it up first. More generally, verify all preconditions (proximity, correct location, grasp state) before executing a skill, rather than assuming the action will succeed.
+
+## Preliminary Thinking
+1. Navigate to the bedside table where the coffee is located. 2. Confirm the coffee is within reach and visible; if not, adjust or navigate closer. 3. Execute the pick-up skill for the coffee. 4. Verify the robot is holding the coffee. 5. Navigate to the desk. 6. Execute the place skill to put the coffee on the desk. 7. Verify the coffee is on the desk and no longer held.
+[/PERSISTENT EXPERIENCE GUIDANCE]

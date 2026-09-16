@@ -1,0 +1,9 @@
+{
+  "success": false,
+  "num_steps": 8,
+  "final_pos_error": 2.7951,
+  "final_rot_error": 135.0,
+  "final_hor_error": 30.0,
+  "stopped": false,
+  "physical_task_id": "tvr:45f0c1eaeea6ec9e10207cde"
+}

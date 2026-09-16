@@ -77,3 +77,163 @@
 01:36:34 procs=4 display=ok total=120/360 | none:33/90(exp 3) S000=PASS | raw_memory:27/90(exp 0) | ace_context:28/90(exp 0) | worldmind:32/90(exp 2) S000=PASS
 01:37:34 procs=4 display=ok total=121/360 | none:34/90(exp 4) S000=PASS | raw_memory:27/90(exp 0) | ace_context:28/90(exp 0) | worldmind:32/90(exp 2) S000=PASS
 01:38:34 procs=4 display=ok total=122/360 | none:34/90(exp 4) S000=PASS | raw_memory:28/90(exp 0) | ace_context:28/90(exp 0) | worldmind:32/90(exp 2) S000=PASS
+01:39:34 procs=6 display=ok total=91/360 | none:34/90(exp 4) S000=PASS | raw_memory:28/90(exp 0) | ace_context:29/90(exp 0) | worldmind:0/90(exp 0)
+01:40:34 procs=5 display=ok total=93/360 | none:35/90(exp 5) S000=PASS | raw_memory:28/90(exp 0) | ace_context:29/90(exp 0) | worldmind:1/90(exp 0)
+01:41:35 procs=4 display=ok total=94/360 | none:35/90(exp 5) S000=PASS | raw_memory:29/90(exp 0) | ace_context:29/90(exp 0) | worldmind:1/90(exp 0)
+01:42:35 procs=4 display=ok total=96/360 | none:36/90(exp 6) S000=PASS | raw_memory:29/90(exp 0) | ace_context:30/90(exp 0) S000=PASS | worldmind:1/90(exp 0)
+01:43:35 procs=4 display=ok total=97/360 | none:36/90(exp 6) S000=PASS | raw_memory:29/90(exp 0) | ace_context:30/90(exp 0) S000=PASS | worldmind:2/90(exp 0)
+01:44:35 procs=4 display=ok total=98/360 | none:36/90(exp 6) S000=PASS | raw_memory:30/90(exp 0) S000=PASS | ace_context:30/90(exp 0) S000=PASS | worldmind:2/90(exp 0)
+01:45:35 procs=4 display=ok total=100/360 | none:36/90(exp 6) S000=PASS | raw_memory:31/90(exp 1) S000=PASS | ace_context:30/90(exp 0) S000=PASS | worldmind:3/90(exp 0)
+01:46:35 procs=4 display=ok total=102/360 | none:37/90(exp 7) S000=PASS | raw_memory:31/90(exp 1) S000=PASS | ace_context:31/90(exp 1) S000=PASS | worldmind:3/90(exp 0)
+01:47:35 procs=4 display=ok total=103/360 | none:37/90(exp 7) S000=PASS | raw_memory:32/90(exp 2) S000=PASS | ace_context:31/90(exp 1) S000=PASS | worldmind:3/90(exp 0)
+01:48:36 procs=4 display=ok total=104/360 | none:37/90(exp 7) S000=PASS | raw_memory:32/90(exp 2) S000=PASS | ace_context:32/90(exp 2) S000=PASS | worldmind:3/90(exp 0)
+01:49:36 procs=4 display=ok total=105/360 | none:37/90(exp 7) S000=PASS | raw_memory:32/90(exp 2) S000=PASS | ace_context:32/90(exp 2) S000=PASS | worldmind:4/90(exp 0)
+01:50:36 procs=4 display=ok total=109/360 | none:38/90(exp 8) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:33/90(exp 3) S000=PASS | worldmind:5/90(exp 0)
+01:51:36 procs=4 display=ok total=109/360 | none:38/90(exp 8) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:33/90(exp 3) S000=PASS | worldmind:5/90(exp 0)
+01:52:36 procs=4 display=ok total=110/360 | none:38/90(exp 8) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:33/90(exp 3) S000=PASS | worldmind:6/90(exp 0)
+01:53:36 procs=4 display=ok total=110/360 | none:38/90(exp 8) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:33/90(exp 3) S000=PASS | worldmind:6/90(exp 0)
+01:54:37 procs=4 display=ok total=112/360 | none:39/90(exp 9) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:34/90(exp 4) S000=PASS | worldmind:6/90(exp 0)
+01:55:37 procs=4 display=ok total=112/360 | none:39/90(exp 9) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:34/90(exp 4) S000=PASS | worldmind:6/90(exp 0)
+01:56:37 procs=4 display=ok total=113/360 | none:40/90(exp 10) S000=PASS | raw_memory:33/90(exp 3) S000=PASS | ace_context:34/90(exp 4) S000=PASS | worldmind:6/90(exp 0)
+01:57:37 procs=4 display=ok total=115/360 | none:40/90(exp 10) S000=PASS | raw_memory:34/90(exp 4) S000=PASS | ace_context:35/90(exp 5) S000=PASS | worldmind:6/90(exp 0)
+01:58:37 procs=4 display=ok total=116/360 | none:41/90(exp 11) S000=PASS | raw_memory:34/90(exp 4) S000=PASS | ace_context:35/90(exp 5) S000=PASS | worldmind:6/90(exp 0)
+01:59:37 procs=4 display=ok total=116/360 | none:41/90(exp 11) S000=PASS | raw_memory:34/90(exp 4) S000=PASS | ace_context:35/90(exp 5) S000=PASS | worldmind:6/90(exp 0)
+02:00:38 procs=4 display=ok total=119/360 | none:41/90(exp 11) S000=PASS | raw_memory:35/90(exp 5) S000=PASS | ace_context:36/90(exp 6) S000=PASS | worldmind:7/90(exp 0)
+02:01:38 procs=4 display=ok total=119/360 | none:41/90(exp 11) S000=PASS | raw_memory:35/90(exp 5) S000=PASS | ace_context:36/90(exp 6) S000=PASS | worldmind:7/90(exp 0)
+02:02:38 procs=4 display=ok total=121/360 | none:42/90(exp 12) S000=PASS | raw_memory:35/90(exp 5) S000=PASS | ace_context:36/90(exp 6) S000=PASS | worldmind:8/90(exp 0)
+02:03:38 procs=4 display=ok total=123/360 | none:42/90(exp 12) S000=PASS | raw_memory:36/90(exp 6) S000=PASS | ace_context:37/90(exp 7) S000=PASS | worldmind:8/90(exp 0)
+02:04:38 procs=4 display=ok total=123/360 | none:42/90(exp 12) S000=PASS | raw_memory:36/90(exp 6) S000=PASS | ace_context:37/90(exp 7) S000=PASS | worldmind:8/90(exp 0)
+02:05:38 procs=4 display=ok total=125/360 | none:43/90(exp 13) S000=PASS | raw_memory:36/90(exp 6) S000=PASS | ace_context:37/90(exp 7) S000=PASS | worldmind:9/90(exp 0)
+02:06:39 procs=4 display=ok total=126/360 | none:43/90(exp 13) S000=PASS | raw_memory:37/90(exp 7) S000=PASS | ace_context:37/90(exp 7) S000=PASS | worldmind:9/90(exp 0)
+02:07:39 procs=4 display=ok total=126/360 | none:43/90(exp 13) S000=PASS | raw_memory:37/90(exp 7) S000=PASS | ace_context:37/90(exp 7) S000=PASS | worldmind:9/90(exp 0)
+02:08:39 procs=4 display=ok total=129/360 | none:44/90(exp 14) S000=PASS | raw_memory:38/90(exp 8) S000=PASS | ace_context:38/90(exp 8) S000=PASS | worldmind:9/90(exp 0)
+02:09:39 procs=4 display=ok total=130/360 | none:44/90(exp 14) S000=PASS | raw_memory:38/90(exp 8) S000=PASS | ace_context:38/90(exp 8) S000=PASS | worldmind:10/90(exp 0)
+02:10:39 procs=4 display=ok total=131/360 | none:44/90(exp 14) S000=PASS | raw_memory:38/90(exp 8) S000=PASS | ace_context:38/90(exp 8) S000=PASS | worldmind:11/90(exp 0)
+02:11:39 procs=4 display=ok total=132/360 | none:45/90(exp 15) S000=PASS | raw_memory:38/90(exp 8) S000=PASS | ace_context:38/90(exp 8) S000=PASS | worldmind:11/90(exp 0)
+02:12:39 procs=4 display=ok total=132/360 | none:45/90(exp 15) S000=PASS | raw_memory:38/90(exp 8) S000=PASS | ace_context:38/90(exp 8) S000=PASS | worldmind:11/90(exp 0)
+02:13:40 procs=4 display=ok total=134/360 | none:46/90(exp 16) S000=PASS | raw_memory:38/90(exp 8) S000=PASS | ace_context:38/90(exp 8) S000=PASS | worldmind:12/90(exp 0)
+02:14:40 procs=4 display=ok total=137/360 | none:47/90(exp 17) S000=PASS | raw_memory:39/90(exp 9) S000=PASS | ace_context:39/90(exp 9) S000=PASS | worldmind:12/90(exp 0)
+02:15:40 procs=4 display=ok total=138/360 | none:47/90(exp 17) S000=PASS | raw_memory:39/90(exp 9) S000=PASS | ace_context:39/90(exp 9) S000=PASS | worldmind:13/90(exp 0)
+02:16:40 procs=4 display=ok total=139/360 | none:47/90(exp 17) S000=PASS | raw_memory:39/90(exp 9) S000=PASS | ace_context:40/90(exp 10) S000=PASS | worldmind:13/90(exp 0)
+02:17:40 procs=4 display=ok total=141/360 | none:47/90(exp 17) S000=PASS | raw_memory:40/90(exp 10) S000=PASS | ace_context:40/90(exp 10) S000=PASS | worldmind:14/90(exp 0)
+02:18:40 procs=4 display=ok total=143/360 | none:47/90(exp 17) S000=PASS | raw_memory:41/90(exp 11) S000=PASS | ace_context:40/90(exp 10) S000=PASS | worldmind:15/90(exp 0)
+02:19:41 procs=4 display=ok total=144/360 | none:47/90(exp 17) S000=PASS | raw_memory:41/90(exp 11) S000=PASS | ace_context:41/90(exp 11) S000=PASS | worldmind:15/90(exp 0)
+02:20:41 procs=4 display=ok total=147/360 | none:48/90(exp 18) S000=PASS | raw_memory:42/90(exp 12) S000=PASS | ace_context:41/90(exp 11) S000=PASS | worldmind:16/90(exp 0)
+02:21:41 procs=4 display=ok total=148/360 | none:48/90(exp 18) S000=PASS | raw_memory:43/90(exp 13) S000=PASS | ace_context:41/90(exp 11) S000=PASS | worldmind:16/90(exp 0)
+02:22:41 procs=4 display=ok total=150/360 | none:49/90(exp 19) S000=PASS | raw_memory:43/90(exp 13) S000=PASS | ace_context:42/90(exp 12) S000=PASS | worldmind:16/90(exp 0)
+02:23:41 procs=4 display=ok total=151/360 | none:49/90(exp 19) S000=PASS | raw_memory:43/90(exp 13) S000=PASS | ace_context:42/90(exp 12) S000=PASS | worldmind:17/90(exp 0)
+02:24:41 procs=4 display=ok total=152/360 | none:50/90(exp 20) S000=PASS | raw_memory:43/90(exp 13) S000=PASS | ace_context:42/90(exp 12) S000=PASS | worldmind:17/90(exp 0)
+02:25:42 procs=4 display=ok total=153/360 | none:50/90(exp 20) S000=PASS | raw_memory:43/90(exp 13) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:17/90(exp 0)
+02:26:42 procs=4 display=ok total=153/360 | none:50/90(exp 20) S000=PASS | raw_memory:43/90(exp 13) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:17/90(exp 0)
+02:27:42 procs=4 display=ok total=154/360 | none:50/90(exp 20) S000=PASS | raw_memory:44/90(exp 14) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:17/90(exp 0)
+02:28:42 procs=4 display=ok total=156/360 | none:51/90(exp 21) S000=PASS | raw_memory:44/90(exp 14) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:18/90(exp 0)
+02:29:42 procs=4 display=ok total=157/360 | none:52/90(exp 22) S000=PASS | raw_memory:44/90(exp 14) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:18/90(exp 0)
+02:30:42 procs=4 display=ok total=159/360 | none:53/90(exp 23) S000=PASS | raw_memory:45/90(exp 15) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:18/90(exp 0)
+02:31:43 procs=4 display=ok total=159/360 | none:53/90(exp 23) S000=PASS | raw_memory:45/90(exp 15) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:18/90(exp 0)
+02:32:43 procs=4 display=ok total=160/360 | none:53/90(exp 23) S000=PASS | raw_memory:45/90(exp 15) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:19/90(exp 0)
+02:33:43 procs=4 display=ok total=163/360 | none:54/90(exp 24) S000=PASS | raw_memory:47/90(exp 17) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:19/90(exp 0)
+02:34:43 procs=4 display=ok total=164/360 | none:54/90(exp 24) S000=PASS | raw_memory:47/90(exp 17) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:20/90(exp 0)
+02:35:43 procs=4 display=ok total=165/360 | none:55/90(exp 25) S000=PASS | raw_memory:47/90(exp 17) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:20/90(exp 0)
+02:36:44 procs=4 display=ok total=165/360 | none:55/90(exp 25) S000=PASS | raw_memory:47/90(exp 17) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:20/90(exp 0)
+02:37:44 procs=4 display=ok total=167/360 | none:55/90(exp 25) S000=PASS | raw_memory:48/90(exp 18) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:21/90(exp 0)
+02:38:44 procs=4 display=ok total=168/360 | none:56/90(exp 26) S000=PASS | raw_memory:48/90(exp 18) S000=PASS | ace_context:43/90(exp 13) S000=PASS | worldmind:21/90(exp 0)
+02:39:44 procs=4 display=ok total=169/360 | none:56/90(exp 26) S000=PASS | raw_memory:48/90(exp 18) S000=PASS | ace_context:44/90(exp 14) S000=PASS | worldmind:21/90(exp 0)
+02:40:44 procs=4 display=ok total=172/360 | none:57/90(exp 27) S000=PASS | raw_memory:49/90(exp 19) S000=PASS | ace_context:44/90(exp 14) S000=PASS | worldmind:22/90(exp 0)
+02:41:44 procs=4 display=ok total=173/360 | none:57/90(exp 27) S000=PASS | raw_memory:50/90(exp 20) S000=PASS | ace_context:44/90(exp 14) S000=PASS | worldmind:22/90(exp 0)
+02:42:45 procs=4 display=ok total=174/360 | none:57/90(exp 27) S000=PASS | raw_memory:50/90(exp 20) S000=PASS | ace_context:45/90(exp 15) S000=PASS | worldmind:22/90(exp 0)
+02:43:45 procs=4 display=ok total=175/360 | none:57/90(exp 27) S000=PASS | raw_memory:50/90(exp 20) S000=PASS | ace_context:45/90(exp 15) S000=PASS | worldmind:23/90(exp 0)
+02:44:45 procs=4 display=ok total=176/360 | none:58/90(exp 28) S000=PASS | raw_memory:50/90(exp 20) S000=PASS | ace_context:45/90(exp 15) S000=PASS | worldmind:23/90(exp 0)
+02:45:45 procs=4 display=ok total=179/360 | none:58/90(exp 28) S000=PASS | raw_memory:51/90(exp 21) S000=PASS | ace_context:46/90(exp 16) S000=PASS | worldmind:24/90(exp 0)
+02:46:45 procs=4 display=ok total=180/360 | none:58/90(exp 28) S000=PASS | raw_memory:51/90(exp 21) S000=PASS | ace_context:47/90(exp 17) S000=PASS | worldmind:24/90(exp 0)
+02:47:45 procs=4 display=ok total=182/360 | none:59/90(exp 29) S000=PASS | raw_memory:52/90(exp 22) S000=PASS | ace_context:47/90(exp 17) S000=PASS | worldmind:24/90(exp 0)
+02:48:46 procs=4 display=ok total=184/360 | none:60/90(exp 30) S000=PASS | raw_memory:52/90(exp 22) S000=PASS | ace_context:47/90(exp 17) S000=PASS | worldmind:25/90(exp 0)
+02:49:46 procs=4 display=ok total=185/360 | none:60/90(exp 30) S000=PASS | raw_memory:53/90(exp 23) S000=PASS | ace_context:47/90(exp 17) S000=PASS | worldmind:25/90(exp 0)
+02:50:46 procs=4 display=ok total=188/360 | none:61/90(exp 30) S000=PASS | raw_memory:53/90(exp 23) S000=PASS | ace_context:48/90(exp 18) S000=PASS | worldmind:26/90(exp 0)
+02:51:46 procs=4 display=ok total=188/360 | none:61/90(exp 30) S000=PASS | raw_memory:53/90(exp 23) S000=PASS | ace_context:48/90(exp 18) S000=PASS | worldmind:26/90(exp 0)
+02:52:46 procs=4 display=ok total=191/360 | none:62/90(exp 30) S000=PASS | raw_memory:54/90(exp 24) S000=PASS | ace_context:49/90(exp 19) S000=PASS | worldmind:26/90(exp 0)
+02:53:46 procs=4 display=ok total=191/360 | none:62/90(exp 30) S000=PASS | raw_memory:54/90(exp 24) S000=PASS | ace_context:49/90(exp 19) S000=PASS | worldmind:26/90(exp 0)
+02:54:47 procs=4 display=ok total=193/360 | none:63/90(exp 30) S000=PASS | raw_memory:54/90(exp 24) S000=PASS | ace_context:50/90(exp 20) S000=PASS | worldmind:26/90(exp 0)
+02:55:47 procs=4 display=ok total=195/360 | none:63/90(exp 30) S000=PASS | raw_memory:55/90(exp 25) S000=PASS | ace_context:50/90(exp 20) S000=PASS | worldmind:27/90(exp 0)
+02:56:47 procs=4 display=ok total=195/360 | none:63/90(exp 30) S000=PASS | raw_memory:55/90(exp 25) S000=PASS | ace_context:50/90(exp 20) S000=PASS | worldmind:27/90(exp 0)
+02:57:47 procs=4 display=ok total=196/360 | none:63/90(exp 30) S000=PASS | raw_memory:56/90(exp 26) S000=PASS | ace_context:50/90(exp 20) S000=PASS | worldmind:27/90(exp 0)
+02:58:47 procs=4 display=ok total=198/360 | none:64/90(exp 30) S000=PASS | raw_memory:56/90(exp 26) S000=PASS | ace_context:50/90(exp 20) S000=PASS | worldmind:28/90(exp 0)
+02:59:47 procs=4 display=ok total=200/360 | none:64/90(exp 30) S000=PASS | raw_memory:56/90(exp 26) S000=PASS | ace_context:51/90(exp 21) S000=PASS | worldmind:29/90(exp 0)
+03:00:48 procs=4 display=ok total=203/360 | none:65/90(exp 30) S000=PASS | raw_memory:57/90(exp 27) S000=PASS | ace_context:52/90(exp 22) S000=PASS | worldmind:29/90(exp 0)
+03:01:48 procs=4 display=ok total=203/360 | none:65/90(exp 30) S000=PASS | raw_memory:57/90(exp 27) S000=PASS | ace_context:52/90(exp 22) S000=PASS | worldmind:29/90(exp 0)
+03:02:48 procs=4 display=ok total=205/360 | none:65/90(exp 30) S000=PASS | raw_memory:58/90(exp 28) S000=PASS | ace_context:53/90(exp 23) S000=PASS | worldmind:29/90(exp 0)
+03:03:48 procs=4 display=ok total=207/360 | none:66/90(exp 30) S000=PASS | raw_memory:58/90(exp 28) S000=PASS | ace_context:53/90(exp 23) S000=PASS | worldmind:30/90(exp 0) S000=PASS
+03:04:48 procs=4 display=ok total=208/360 | none:66/90(exp 30) S000=PASS | raw_memory:58/90(exp 28) S000=PASS | ace_context:54/90(exp 24) S000=PASS | worldmind:30/90(exp 0) S000=PASS
+03:05:49 procs=4 display=ok total=209/360 | none:66/90(exp 30) S000=PASS | raw_memory:58/90(exp 28) S000=PASS | ace_context:54/90(exp 24) S000=PASS | worldmind:31/90(exp 1) S000=PASS
+03:06:49 procs=4 display=ok total=210/360 | none:66/90(exp 30) S000=PASS | raw_memory:59/90(exp 29) S000=PASS | ace_context:54/90(exp 24) S000=PASS | worldmind:31/90(exp 1) S000=PASS
+03:07:49 procs=4 display=ok total=213/360 | none:66/90(exp 30) S000=PASS | raw_memory:60/90(exp 30) S000=PASS | ace_context:55/90(exp 25) S000=PASS | worldmind:32/90(exp 2) S000=PASS
+03:08:49 procs=4 display=ok total=214/360 | none:67/90(exp 30) S000=PASS | raw_memory:60/90(exp 30) S000=PASS | ace_context:55/90(exp 25) S000=PASS | worldmind:32/90(exp 2) S000=PASS
+03:09:49 procs=4 display=ok total=214/360 | none:67/90(exp 30) S000=PASS | raw_memory:60/90(exp 30) S000=PASS | ace_context:55/90(exp 25) S000=PASS | worldmind:32/90(exp 2) S000=PASS
+03:10:49 procs=4 display=ok total=218/360 | none:68/90(exp 30) S000=PASS | raw_memory:61/90(exp 30) S000=PASS | ace_context:56/90(exp 26) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:11:50 procs=4 display=ok total=218/360 | none:68/90(exp 30) S000=PASS | raw_memory:61/90(exp 30) S000=PASS | ace_context:56/90(exp 26) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:12:50 procs=4 display=ok total=219/360 | none:68/90(exp 30) S000=PASS | raw_memory:62/90(exp 30) S000=PASS | ace_context:56/90(exp 26) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:13:50 procs=4 display=ok total=219/360 | none:68/90(exp 30) S000=PASS | raw_memory:62/90(exp 30) S000=PASS | ace_context:56/90(exp 26) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:14:50 procs=4 display=ok total=221/360 | none:68/90(exp 30) S000=PASS | raw_memory:63/90(exp 30) S000=PASS | ace_context:57/90(exp 27) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:15:50 procs=4 display=ok total=223/360 | none:69/90(exp 30) S000=PASS | raw_memory:64/90(exp 30) S000=PASS | ace_context:57/90(exp 27) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:16:50 procs=4 display=ok total=223/360 | none:69/90(exp 30) S000=PASS | raw_memory:64/90(exp 30) S000=PASS | ace_context:57/90(exp 27) S000=PASS | worldmind:33/90(exp 3) S000=PASS
+03:17:51 procs=4 display=ok total=225/360 | none:69/90(exp 30) S000=PASS | raw_memory:65/90(exp 30) S000=PASS | ace_context:57/90(exp 27) S000=PASS | worldmind:34/90(exp 4) S000=PASS
+03:18:51 procs=4 display=ok total=227/360 | none:69/90(exp 30) S000=PASS | raw_memory:65/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:35/90(exp 5) S000=PASS
+03:19:51 procs=4 display=ok total=228/360 | none:70/90(exp 30) S000=PASS | raw_memory:65/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:35/90(exp 5) S000=PASS
+03:20:51 procs=4 display=ok total=228/360 | none:70/90(exp 30) S000=PASS | raw_memory:65/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:35/90(exp 5) S000=PASS
+03:21:51 procs=4 display=ok total=229/360 | none:70/90(exp 30) S000=PASS | raw_memory:66/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:35/90(exp 5) S000=PASS
+03:22:52 procs=4 display=ok total=229/360 | none:70/90(exp 30) S000=PASS | raw_memory:66/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:35/90(exp 5) S000=PASS
+03:23:52 procs=4 display=ok total=231/360 | none:71/90(exp 30) S000=PASS | raw_memory:67/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:35/90(exp 5) S000=PASS
+03:24:52 procs=4 display=ok total=232/360 | none:71/90(exp 30) S000=PASS | raw_memory:67/90(exp 30) S000=PASS | ace_context:58/90(exp 28) S000=PASS | worldmind:36/90(exp 6) S000=PASS
+03:25:52 procs=4 display=ok total=234/360 | none:71/90(exp 30) S000=PASS | raw_memory:67/90(exp 30) S000=PASS | ace_context:59/90(exp 29) S000=PASS | worldmind:37/90(exp 7) S000=PASS
+03:26:52 procs=4 display=ok total=236/360 | none:72/90(exp 30) S000=PASS | raw_memory:67/90(exp 30) S000=PASS | ace_context:60/90(exp 30) S000=PASS | worldmind:37/90(exp 7) S000=PASS
+03:27:52 procs=4 display=ok total=236/360 | none:72/90(exp 30) S000=PASS | raw_memory:67/90(exp 30) S000=PASS | ace_context:60/90(exp 30) S000=PASS | worldmind:37/90(exp 7) S000=PASS
+03:28:53 procs=4 display=ok total=237/360 | none:72/90(exp 30) S000=PASS | raw_memory:68/90(exp 30) S000=PASS | ace_context:60/90(exp 30) S000=PASS | worldmind:37/90(exp 7) S000=PASS
+03:29:53 procs=4 display=ok total=239/360 | none:73/90(exp 30) S000=PASS | raw_memory:68/90(exp 30) S000=PASS | ace_context:61/90(exp 30) S000=PASS | worldmind:37/90(exp 7) S000=PASS
+03:30:53 procs=4 display=ok total=240/360 | none:74/90(exp 30) S000=PASS | raw_memory:68/90(exp 30) S000=PASS | ace_context:61/90(exp 30) S000=PASS | worldmind:37/90(exp 7) S000=PASS
+03:31:53 procs=4 display=ok total=241/360 | none:74/90(exp 30) S000=PASS | raw_memory:68/90(exp 30) S000=PASS | ace_context:61/90(exp 30) S000=PASS | worldmind:38/90(exp 8) S000=PASS
+03:32:53 procs=4 display=ok total=244/360 | none:75/90(exp 30) S000=PASS | raw_memory:69/90(exp 30) S000=PASS | ace_context:62/90(exp 30) S000=PASS | worldmind:38/90(exp 8) S000=PASS
+03:33:54 procs=4 display=ok total=246/360 | none:76/90(exp 30) S000=PASS | raw_memory:69/90(exp 30) S000=PASS | ace_context:62/90(exp 30) S000=PASS | worldmind:39/90(exp 9) S000=PASS
+03:34:54 procs=4 display=ok total=246/360 | none:76/90(exp 30) S000=PASS | raw_memory:69/90(exp 30) S000=PASS | ace_context:62/90(exp 30) S000=PASS | worldmind:39/90(exp 9) S000=PASS
+03:35:54 procs=4 display=ok total=248/360 | none:76/90(exp 30) S000=PASS | raw_memory:70/90(exp 30) S000=PASS | ace_context:63/90(exp 30) S000=PASS | worldmind:39/90(exp 9) S000=PASS
+03:36:54 procs=4 display=ok total=250/360 | none:77/90(exp 30) S000=PASS | raw_memory:70/90(exp 30) S000=PASS | ace_context:63/90(exp 30) S000=PASS | worldmind:40/90(exp 10) S000=PASS
+03:37:54 procs=4 display=ok total=251/360 | none:77/90(exp 30) S000=PASS | raw_memory:71/90(exp 30) S000=PASS | ace_context:63/90(exp 30) S000=PASS | worldmind:40/90(exp 10) S000=PASS
+03:38:55 procs=4 display=ok total=253/360 | none:78/90(exp 30) S000=PASS | raw_memory:71/90(exp 30) S000=PASS | ace_context:64/90(exp 30) S000=PASS | worldmind:40/90(exp 10) S000=PASS
+03:39:55 procs=4 display=ok total=254/360 | none:78/90(exp 30) S000=PASS | raw_memory:71/90(exp 30) S000=PASS | ace_context:64/90(exp 30) S000=PASS | worldmind:41/90(exp 11) S000=PASS
+03:40:55 procs=4 display=ok total=256/360 | none:79/90(exp 30) S000=PASS | raw_memory:71/90(exp 30) S000=PASS | ace_context:65/90(exp 30) S000=PASS | worldmind:41/90(exp 11) S000=PASS
+03:41:55 procs=4 display=ok total=257/360 | none:79/90(exp 30) S000=PASS | raw_memory:72/90(exp 30) S000=PASS | ace_context:65/90(exp 30) S000=PASS | worldmind:41/90(exp 11) S000=PASS
+03:42:55 procs=4 display=ok total=259/360 | none:79/90(exp 30) S000=PASS | raw_memory:73/90(exp 30) S000=PASS | ace_context:65/90(exp 30) S000=PASS | worldmind:42/90(exp 12) S000=PASS
+03:43:56 procs=4 display=ok total=262/360 | none:80/90(exp 30) S000=PASS | raw_memory:74/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:42/90(exp 12) S000=PASS
+03:44:56 procs=4 display=ok total=263/360 | none:80/90(exp 30) S000=PASS | raw_memory:74/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:43/90(exp 13) S000=PASS
+03:45:56 procs=4 display=ok total=263/360 | none:80/90(exp 30) S000=PASS | raw_memory:74/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:43/90(exp 13) S000=PASS
+03:46:56 procs=4 display=ok total=265/360 | none:81/90(exp 30) S000=PASS | raw_memory:75/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:43/90(exp 13) S000=PASS
+03:47:56 procs=4 display=ok total=267/360 | none:81/90(exp 30) S000=PASS | raw_memory:76/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:44/90(exp 14) S000=PASS
+03:48:57 procs=4 display=ok total=268/360 | none:82/90(exp 30) S000=PASS | raw_memory:76/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:44/90(exp 14) S000=PASS
+03:49:57 procs=4 display=ok total=270/360 | none:82/90(exp 30) S000=PASS | raw_memory:77/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:45/90(exp 15) S000=PASS
+03:50:57 procs=4 display=ok total=270/360 | none:82/90(exp 30) S000=PASS | raw_memory:77/90(exp 30) S000=PASS | ace_context:66/90(exp 30) S000=PASS | worldmind:45/90(exp 15) S000=PASS
+03:51:57 procs=4 display=ok total=271/360 | none:82/90(exp 30) S000=PASS | raw_memory:77/90(exp 30) S000=PASS | ace_context:67/90(exp 30) S000=PASS | worldmind:45/90(exp 15) S000=PASS
+03:52:57 procs=4 display=ok total=273/360 | none:83/90(exp 30) S000=PASS | raw_memory:77/90(exp 30) S000=PASS | ace_context:67/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:53:57 procs=4 display=ok total=273/360 | none:83/90(exp 30) S000=PASS | raw_memory:77/90(exp 30) S000=PASS | ace_context:67/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:54:58 procs=4 display=ok total=276/360 | none:84/90(exp 30) S000=PASS | raw_memory:78/90(exp 30) S000=PASS | ace_context:68/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:55:58 procs=4 display=ok total=277/360 | none:85/90(exp 30) S000=PASS | raw_memory:78/90(exp 30) S000=PASS | ace_context:68/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:56:58 procs=4 display=ok total=277/360 | none:85/90(exp 30) S000=PASS | raw_memory:78/90(exp 30) S000=PASS | ace_context:68/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:57:58 procs=4 display=ok total=277/360 | none:85/90(exp 30) S000=PASS | raw_memory:78/90(exp 30) S000=PASS | ace_context:68/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:58:58 procs=4 display=ok total=279/360 | none:86/90(exp 30) S000=PASS | raw_memory:79/90(exp 30) S000=PASS | ace_context:68/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+03:59:59 procs=4 display=ok total=280/360 | none:86/90(exp 30) S000=PASS | raw_memory:79/90(exp 30) S000=PASS | ace_context:69/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+04:00:59 procs=4 display=ok total=280/360 | none:86/90(exp 30) S000=PASS | raw_memory:79/90(exp 30) S000=PASS | ace_context:69/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+04:01:59 procs=4 display=ok total=282/360 | none:86/90(exp 30) S000=PASS | raw_memory:80/90(exp 30) S000=PASS | ace_context:70/90(exp 30) S000=PASS | worldmind:46/90(exp 16) S000=PASS
+04:02:59 procs=4 display=ok total=283/360 | none:86/90(exp 30) S000=PASS | raw_memory:80/90(exp 30) S000=PASS | ace_context:70/90(exp 30) S000=PASS | worldmind:47/90(exp 17) S000=PASS
+04:03:59 procs=4 display=ok total=284/360 | none:87/90(exp 30) S000=PASS | raw_memory:80/90(exp 30) S000=PASS | ace_context:70/90(exp 30) S000=PASS | worldmind:47/90(exp 17) S000=PASS
+04:04:59 procs=4 display=ok total=286/360 | none:87/90(exp 30) S000=PASS | raw_memory:81/90(exp 30) S000=PASS | ace_context:71/90(exp 30) S000=PASS | worldmind:47/90(exp 17) S000=PASS
+04:06:00 procs=4 display=ok total=286/360 | none:87/90(exp 30) S000=PASS | raw_memory:81/90(exp 30) S000=PASS | ace_context:71/90(exp 30) S000=PASS | worldmind:47/90(exp 17) S000=PASS
+04:07:00 procs=4 display=ok total=289/360 | none:88/90(exp 30) S000=PASS | raw_memory:81/90(exp 30) S000=PASS | ace_context:72/90(exp 30) S000=PASS | worldmind:48/90(exp 18) S000=PASS
+04:08:00 procs=4 display=ok total=289/360 | none:88/90(exp 30) S000=PASS | raw_memory:81/90(exp 30) S000=PASS | ace_context:72/90(exp 30) S000=PASS | worldmind:48/90(exp 18) S000=PASS
+04:09:00 procs=4 display=ok total=291/360 | none:88/90(exp 30) S000=PASS | raw_memory:82/90(exp 30) S000=PASS | ace_context:72/90(exp 30) S000=PASS | worldmind:49/90(exp 19) S000=PASS
+04:10:00 procs=4 display=ok total=293/360 | none:89/90(exp 30) S000=PASS | raw_memory:82/90(exp 30) S000=PASS | ace_context:73/90(exp 30) S000=PASS | worldmind:49/90(exp 19) S000=PASS
+04:11:01 procs=4 display=ok total=296/360 | none:89/90(exp 30) S000=PASS | raw_memory:83/90(exp 30) S000=PASS | ace_context:74/90(exp 30) S000=PASS | worldmind:50/90(exp 20) S000=PASS
+04:12:01 procs=3 display=ok total=299/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:84/90(exp 30) S000=PASS | ace_context:75/90(exp 30) S000=PASS | worldmind:50/90(exp 20) S000=PASS
+04:13:01 procs=3 display=ok total=300/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:84/90(exp 30) S000=PASS | ace_context:76/90(exp 30) S000=PASS | worldmind:50/90(exp 20) S000=PASS
+04:14:01 procs=3 display=ok total=302/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:85/90(exp 30) S000=PASS | ace_context:76/90(exp 30) S000=PASS | worldmind:51/90(exp 21) S000=PASS
+04:15:01 procs=3 display=ok total=302/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:85/90(exp 30) S000=PASS | ace_context:76/90(exp 30) S000=PASS | worldmind:51/90(exp 21) S000=PASS
+04:16:02 procs=3 display=ok total=305/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:86/90(exp 30) S000=PASS | ace_context:77/90(exp 30) S000=PASS | worldmind:52/90(exp 22) S000=PASS
+04:17:02 procs=3 display=ok total=305/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:86/90(exp 30) S000=PASS | ace_context:77/90(exp 30) S000=PASS | worldmind:52/90(exp 22) S000=PASS
+04:18:02 procs=3 display=ok total=306/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:86/90(exp 30) S000=PASS | ace_context:78/90(exp 30) S000=PASS | worldmind:52/90(exp 22) S000=PASS
+04:19:02 procs=3 display=ok total=306/360 | none:90/90(exp 30) S000=PASS S030=PASS | raw_memory:86/90(exp 30) S000=PASS | ace_context:78/90(exp 30) S000=PASS | worldmind:52/90(exp 22) S000=PASS

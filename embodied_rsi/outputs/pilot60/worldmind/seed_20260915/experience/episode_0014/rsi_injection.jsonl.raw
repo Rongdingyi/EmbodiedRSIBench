@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+Consolidated lessons: (1) Before attempting to pick up an object, verify it is within reach or visible in the current location; if not, navigate to its known location first. (2) Before attempting to place an object, verify the robot is already holding it; if not, perform the pick action first. (3) Always verify the outcome of each action (find, pick, place, rinse, etc.) from environment feedback; if a find/locate fails, treat the object as unavailable and search known locations. (4) Sequence tasks as: locate -> navigate -> pick -> manipulate (e.g., rinse) -> navigate -> place, checking preconditions and outcomes at each step.
+
+## Preliminary Thinking
+1. Locate the ladle (use find skill; if it fails, search likely locations such as sink, counter, or table). 2. Navigate to the ladle's location. 3. Pick up the ladle, ensuring it is within reach. 4. Navigate to a sink or water source if rinsing requires it. 5. Execute the rinse action on the ladle. 6. Navigate to the table. 7. Place the ladle on the table, ensuring the robot is still holding it. 8. Verify each step's success via feedback and adapt if any action fails.
+[/PERSISTENT EXPERIENCE GUIDANCE]

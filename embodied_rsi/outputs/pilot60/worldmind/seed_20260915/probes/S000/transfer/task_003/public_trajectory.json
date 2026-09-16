@@ -1,0 +1,72 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateRight",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateRight -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4671,
+      "output_tokens": 3041,
+      "charged_tokens": 7712,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 11767,
+      "output_tokens": 1919,
+      "charged_tokens": 13686,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "talk",
+      "parameters": {
+        "message": "Planner could not produce a valid action request.",
+        "code": "planner_validation_failed",
+        "validation_errors": [
+          "Planner backend returned text without a <decision> element."
+        ],
+        "validation_attempts": 3
+      }
+    },
+    "public_env_feedback": "status_report",
+    "action_success": null,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 19983,
+      "output_tokens": 8624,
+      "charged_tokens": 28607,
+      "sources": {
+        "provider": 3
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+Manipulation actions (pick, place) have strict preconditions: pick-up requires the target object to be within the robot's reach, so the robot must navigate to the object's location and verify proximity before attempting; place requires the robot to already be holding the target object, so a successful pick must occur first. Attempting these actions without satisfying preconditions leads to failure. For compound tasks, sequence actions correctly: navigate to the object, pick it up, navigate to the destination, then place it. Also ensure any prerequisite tasks (like tidying a surface) are completed before the final placement to avoid conflicts or obstructions.
+
+## Preliminary Thinking
+1. Navigate to the bed. 2. Tidy up the bed: remove any items or obstacles and arrange the bedding to create a clear, flat surface suitable for placing a book. 3. Navigate to the desk. 4. Verify the book is within reach, then execute a pick-up action to hold the book. 5. Navigate back to the bed. 6. Verify the robot is still holding the book, then place it on the tidied bed. 7. Optionally, verify the book is on the bed. Throughout, check preconditions: object proximity before pick, holding status before place.
+[/PERSISTENT EXPERIENCE GUIDANCE]

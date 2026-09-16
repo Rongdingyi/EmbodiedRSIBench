@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Move the plate to the black table, the screwdriver to the black table, and the cleanser to the black table.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_27_pick_up_the_plate -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_09_navigate_to_the_sink_in_the_kitchen -> Last action executed successfully.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_50_place_at_the_table_1 -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_27_pick_up_the_plate -> Last action executed successfully and you are holding plate.
+- skill_50_place_at_the_table_1 -> Last action executed successfully and you are holding nothing.
+- skill_19_pick_up_the_screwdriver -> Last action executed successfully and you are holding screwdriver.
+- skill_50_place_at_the_table_1 -> Last action executed successfully and you are holding nothing.
+
+[Episode 2]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+
+[Episode 3]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+
+[Episode 4]
+Task: Move a spoon from the right counter to the right receptacle of the left counter.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+[/PERSISTENT EXPERIENCE GUIDANCE]

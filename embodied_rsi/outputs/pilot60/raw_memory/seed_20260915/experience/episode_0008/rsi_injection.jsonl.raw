@@ -1,0 +1,44 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Put a pan with an apple in it in the fridge.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- pick_up -> Last action is invalid. Apple is not visible because it is in DiningTable. Go there to pick the object instead.
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- find -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+- find -> Last action executed successfully.
+- open -> Last action executed successfully.
+
+[Episode 2]
+Task: Deliver a green round fruit to the intended a large gray piece of furniture with a backrest by physically moving it there.
+Outcome: Failure (steps: 5)
+Trajectory summary:
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_30_pick_up_the_plum -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- ask_human -> 
+
+[Episode 3]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Tilt -> Tilt -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

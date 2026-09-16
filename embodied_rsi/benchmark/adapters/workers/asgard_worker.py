@@ -136,7 +136,19 @@ class AsgardWorker(Worker):
         if action not in ACTION_MAP:
             raise ValueError(f"illegal Asgard action {action!r}")
         object_type = str(parameters.get("object") or "")
-        specifier = Specifier(types=[object_type]) if object_type else Specifier()
+        # A missing required parameter is a planner mistake, not an infra
+        # crash: return a failed-step feedback so the agent can correct itself
+        # (and `Specifier()` with all-None args trips the source's own assert).
+        required_param = next((param for name, _desc, param in SKILLS if name == action), None)
+        if required_param and not object_type:
+            feedback = f"{action} rejected: missing required '{required_param}' parameter"
+            return {
+                "observation": self._observation(feedback),
+                "action_success": False, "reward_public": None,
+                "terminated": False, "truncated": self.steps >= MAX_STEPS,
+                "public_feedback": feedback,
+            }
+        specifier = Specifier(types=[object_type] if object_type else [])
         try:
             self.scenario.do(ACTION_MAP[action], specifier, "", [])
             ok = self.scenario.step_error is None

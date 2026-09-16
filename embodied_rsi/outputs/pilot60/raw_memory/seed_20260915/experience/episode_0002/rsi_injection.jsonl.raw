@@ -1,0 +1,16 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+[/PERSISTENT EXPERIENCE GUIDANCE]

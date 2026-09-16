@@ -1,0 +1,26 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target reference image for this viewpoint-reproduction episode is missing from my evidence: only the current_scene image (current_view) is available, while the target_view artifact (step000_1_target_view.png) was not rendered to me and no read/inspect tool exists in this session's tool list. Please supply the target viewpoint image (camera frame_id=target_view) so I can compare it with the current view and choose a grounded rotation/translation action, or confirm the target reference is intentionally unavailable.",
+        "blocking": true
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4668,
+      "output_tokens": 1735,
+      "charged_tokens": 6403,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]
