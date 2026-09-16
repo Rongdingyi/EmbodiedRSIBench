@@ -10,7 +10,7 @@ G0/G1/G2/G3/G4/G5/G6 ALL PASS (evidence in `outputs/preflight/`).
 G7 run was stopped mid-S000 by decision: full 4x225 pilot costs an estimated
 ~85M tokens (~a few hundred CNY); alternatives discussed: dev-mode rehearsal
 (`--max-experience 15 --max-probes 15`, ~14M, non-canonical), baseline-only
-(`-` `-method none`, ~21M = final baseline data), or the full pilot.
+(baseline-only: `--method none`, ~21M = final baseline data), or the full pilot.
 A future canonical run must start from an empty `outputs/pilot150/` and use
 `--overwrite` only after archiving the previous attempt.
 
