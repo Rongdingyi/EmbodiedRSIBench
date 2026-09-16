@@ -49,6 +49,7 @@ class BenchmarkEpisodeEnvironment:
         self._last_public = None
         self._closed = False
         self.private_reference_values: list[str] = []
+        self.rsi_step_errors: list[str] = []
 
     # ---------------------------------------------------- two-phase preparation
     def prepare(self) -> EnvObservation:
@@ -101,7 +102,7 @@ class BenchmarkEpisodeEnvironment:
         # ---- RSI step hook: real instruction + before/after public states (P0-4)
         if self.rsi is not None:
             state_after = self._public_view_of(outcome.observation)
-            self.rsi.after_step({
+            record = {
                 "task_instruction": self._last_public.instruction if self._last_public else "",
                 "role": self.task.get("role"),
                 "action": {"name": name, "parameters": parameters},
@@ -112,7 +113,12 @@ class BenchmarkEpisodeEnvironment:
                 "action_success": outcome.action_success,
                 "terminated": outcome.terminated,
                 "truncated": outcome.truncated,
-            })
+            }
+            try:
+                self.rsi.after_step(record)
+            except Exception as exc:  # noqa: BLE001 - surfaces as rsi_update_error
+                self.rsi_step_errors.append(
+                    f"after_step: {type(exc).__name__}: {exc}")
 
         terminated = bool(outcome.terminated)
         truncated = bool(outcome.truncated)

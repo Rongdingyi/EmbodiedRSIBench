@@ -180,10 +180,15 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
                               _public_outcome(outcome))
             usage = rsi.get_last_update_usage() if hasattr(rsi, "get_last_update_usage") else None
             wall_s = rsi.get_last_update_wall_s() if hasattr(rsi, "get_last_update_wall_s") else 0.0
-            accountant.record_rsi_update(usage=usage, wall_s=float(wall_s or 0.0))
+            calls = int((usage or {}).get("calls") or 0)
+            accountant.record_rsi_update(usage=usage, wall_s=float(wall_s or 0.0), calls=calls)
         except Exception as exc:  # noqa: BLE001
             outcome["rsi_update_error"] = f"{type(exc).__name__}: {exc}"
             outcome["status"] = "FAIL"
+
+    if env.rsi_step_errors:
+        outcome["rsi_update_error"] = "; ".join(env.rsi_step_errors[:3])
+        outcome["status"] = "FAIL"
 
     # leakage audit over every model request made in this episode (P0-10/P1-10)
     private_refs = _private_reference_values(task)

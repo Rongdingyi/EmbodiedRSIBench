@@ -46,25 +46,33 @@ def main() -> int:
     check("model gate PASS", api.get("status") == "PASS", str(api.get("status")))
 
     adapters = load(OUT / "ADAPTER_VALIDATION.json")
-    if adapters:
-        check("adapter crash rate < 2%", adapters.get("crash_rate", 1.0) < 0.02,
-              str(adapters.get("crash_rate")))
-        check("adapter leakage == 0", not adapters.get("leakage_hits"),
-              str(adapters.get("leakage_hits")[:2]))
-    else:
-        check("adapter validation artifact present", False, "ADAPTER_VALIDATION.json missing")
+    check("G3 adapter gate PASS", adapters.get("status") == "PASS",
+          str(adapters.get("status")))
 
     baseline = load(OUT / "OPENETA_BASELINE.json")
-    if baseline:
-        check("baseline gate PASS", baseline.get("status") == "PASS", str(baseline.get("status")))
+    check("G4 baseline gate PASS", baseline.get("status") == "PASS",
+          str(baseline.get("status")))
 
     rsi_smoke = load(OUT / "RSI_SMOKE.json")
-    if rsi_smoke:
-        smoke_status = rsi_smoke.get("status")
-        check("rsi smoke gate PASS or protocol-legal BLOCKED",
-              smoke_status in {gates.PASS, gates.BLOCKED}, str(smoke_status))
+    smoke_status = rsi_smoke.get("status")
+    check("G5 RSI smoke gate PASS or protocol-legal BLOCKED",
+          smoke_status in {gates.PASS, gates.BLOCKED}, str(smoke_status))
+    check("G0 dataset gate PASS (status)", dataset.get("status") == "PASS",
+          str(dataset.get("status")))
+    check("G1 freeze gate PASS (status)", freeze.get("status") == "PASS",
+          str(freeze.get("status")))
+    check("G2 model gate PASS (status)", api.get("status") == "PASS",
+          str(api.get("status")))
 
     # pilot completion, two-level status (review amendment)
+    manifest_path = PROJECT / "manifests" / "pilot150.json"
+    manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    expected_counts = {
+        "experience": len(manifest.get("experience") or []),
+        "id": len(manifest.get("id_probe") or []),
+        "transfer": len(manifest.get("transfer_probe") or []),
+        "retention": len(manifest.get("retention_probe") or []),
+    }
     method_status: dict[str, str] = {}
     probe_mutations = 0
     snapshot_failures = 0
@@ -78,9 +86,30 @@ def main() -> int:
             for seed_dir in method_dir.glob("seed_*"):
                 metrics_file = seed_dir / "metrics.json"
                 if not metrics_file.exists():
+                    check(f"{method_dir.name}: metrics.json present", False, str(seed_dir))
                     continue
                 metrics = json.loads(metrics_file.read_text())
                 method_status[method_dir.name] = metrics.get("status", gates.FAIL)
+                # full-run completeness (P0-3): counts + final checkpoint S075
+                complete = True
+                if expected_counts.get("experience") and metrics.get("experience") != expected_counts["experience"]:
+                    complete = False
+                if metrics.get("full_run") is False:
+                    complete = False
+                final_name = f"S{expected_counts.get('experience', 0):03d}"
+                summary_file = seed_dir / "probes" / final_name / "summary.json"
+                if expected_counts.get("experience") and not summary_file.exists():
+                    complete = False
+                if complete and summary_file.exists():
+                    summary = json.loads(summary_file.read_text())
+                    for role, key in (("id", "id_probe"), ("transfer", "transfer_probe"),
+                                      ("retention", "retention_probe")):
+                        n = sum(1 for t in (summary.get("tasks") or {}).values()
+                                if t.get("role") == role)
+                        if expected_counts.get(role) and n != expected_counts[role]:
+                            complete = False
+                check(f"{method_dir.name}: complete Pilot-150 run (counts + {final_name})",
+                      complete, str(seed_dir))
                 if metrics.get("probe_state_unchanged") is False:
                     probe_mutations += 1
                 if metrics.get("probe_state_unchanged") is None:

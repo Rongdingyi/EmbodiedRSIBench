@@ -1,10 +1,26 @@
-# Current Problems & Status — Embodied RSI OpenETA Pilot (v0.5)
+# Current Problems & Status — Embodied RSI OpenETA Pilot (v0.6)
 
 Date: 2026-09-15 · Project: `embodied_rsi/` · Model: DeepSeek `deepseek-flash`
 
 Consolidates the post-review state. The review's P0/P1 items were implemented;
 the gates must be re-run before the pilot. Evidence paths are relative to
 `embodied_rsi/`.
+
+## 0.1 v0.6 review round — all 6 items addressed
+
+| # | Item | Fix |
+|---|---|---|
+| 1 | WorldMind compared prediction vs pre-action state | `process_single_step(step=ProcessTrajectoryStep(observation=state_after, ...), state_before=state_before)`; `has_error` from the official return is honoured. Deterministic spy test `tests/test_worldmind_timing.py` asserts the exact arguments |
+| 2 | canonical run could reuse old RSI state | `08_run_pilot150.py` fails closed when the output root is non-empty (no auto-delete); `--output-root` for dev smokes, `--overwrite` for explicit resume |
+| 3 | final audit could accept a small smoke as a full method | audit now requires `experience == 75`, full probe counts (25/30/20), `S075` summary present with matching task counts, and `full_run` — plus each Gate's own `status == PASS` (G5: PASS-or-BLOCKED) |
+| 4 | WorldMind updater errors were swallowed | env records `after_step` exceptions into `rsi_step_errors` → `rsi_update_error` + episode status FAIL; WorldMind `strict_updates=True` re-raises official `has_error`/goal/reload failures; G5 asserts `sidecar_calls > 0`, component calls recorded, `errors.jsonl` empty |
+| 5 | accounting double count + wrong call counts | instrumentation now only dumps requests + accumulates per-episode usage; the runner is the single recorder, with `calls=usage["calls"]`; usage windows reset in `before_episode` |
+| 6 | EmbodiSkill manual rendering | worker calls the official `get_active_manual_text()` (fallback renders official `sections[].items`) |
+
+Verification this round: `tests/test_worldmind_timing.py` PASS (sidecar ran once
+pre-step, `observation=state_after` + `state_before` kwarg asserted, accountant
+single-authority), fail-closed run refused a non-empty output root, 8/8 unit
+tests PASS.
 
 ## 0. v0.5 review round — all 12 items addressed
 

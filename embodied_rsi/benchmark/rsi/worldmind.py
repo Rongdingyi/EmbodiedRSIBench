@@ -34,6 +34,7 @@ MAX_INJECTION_TOKENS = 8192
 # we intercept LLMClient._call_api once (identical request, plus accounting).
 _ACTIVE_OWNER: "WorldMindRSI | None" = None
 _CLIENT_INSTRUMENTED = False
+ZERO_USAGE = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
 
 
 def _ensure_worldmind_client_instrumented() -> None:
@@ -62,9 +63,9 @@ def _ensure_worldmind_client_instrumented() -> None:
         if owner is not None:
             prompt = int(getattr(usage, "prompt_tokens", 0) or 0)
             completion = int(getattr(usage, "completion_tokens", 0) or 0)
-            owner._goal_usage["prompt_tokens"] += prompt
-            owner._goal_usage["completion_tokens"] += completion
-            owner._goal_usage["calls"] += 1
+            owner._component_usage["prompt_tokens"] += prompt
+            owner._component_usage["completion_tokens"] += completion
+            owner._component_usage["calls"] += 1
             accountant = (owner.run_ctx or {}).get("accountant")
             if accountant is not None:
                 accountant.record_request_dump(
@@ -73,10 +74,8 @@ def _ensure_worldmind_client_instrumented() -> None:
                           "max_tokens": self.max_tokens},
                     role="worldmind_component",
                 )
-                accountant.record_rsi_update(
-                    usage={"prompt_tokens": prompt, "completion_tokens": completion},
-                    calls=1,
-                )
+            # accounting authority is the runner: it records
+            # get_last_update_usage() exactly once per episode.
         return text
 
     LLMClient._call_api = instrumented
@@ -138,9 +137,11 @@ class WorldMindRSI(RSIMethod):
         self.retrieval_module = None
         self._pending_prediction: str | None = None
         self._pending_action: dict | None = None
-        self._sidecar_usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
+        self._sidecar_usage = dict(ZERO_USAGE)
         self._sidecar_wall_s = 0.0
-        self._goal_usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
+        self._component_usage = dict(ZERO_USAGE)
+        self.strict_updates = True
+        self.update_errors: list[str] = []
 
     # ------------------------------------------------------------------ setup
     @staticmethod
@@ -216,6 +217,11 @@ class WorldMindRSI(RSIMethod):
         _ACTIVE_OWNER = self
         self._pending_prediction = None
         self._pending_action = None
+        # per-episode usage windows (P1 accounting)
+        self._sidecar_usage = dict(ZERO_USAGE)
+        self._component_usage = dict(ZERO_USAGE)
+        self._sidecar_wall_s = 0.0
+        self.update_errors = []
         try:
             result = self.retrieval_module.retrieve(
                 task_instruction=task_public_view.get("instruction") or "",
@@ -278,19 +284,27 @@ class WorldMindRSI(RSIMethod):
         state_before = _state_text(step_public_record.get("state_before"))
         state_after = _state_text(step_public_record.get("state_after"))
         feedback = step_public_record.get("public_feedback") or ""
-        # predicted_state vs the ACTUAL post-action public state (not a task id)
+        # Official semantics: state_after = step.observation, state_before is the
+        # explicit kwarg; discriminator compares prediction vs state_after (P0-1).
         try:
-            self.process_module.process_single_step(
+            has_error, _experiences = self.process_module.process_single_step(
                 task_instruction=instruction,
                 step=ProcessTrajectoryStep(
-                    observation=state_before,
+                    observation=state_after,
                     action=action_text,
                     predicted_state=prediction,
-                    env_feedback=f"{state_after} | {feedback}".strip(" |"),
+                    env_feedback=feedback,
                 ),
+                state_before=state_before,
             )
+            if has_error:
+                raise RuntimeError("WorldMind process updater reported an internal error")
         except Exception as exc:  # noqa: BLE001
+            message = f"process_step_error: {type(exc).__name__}: {exc}"
+            self.update_errors.append(message)
             self._log({"process_step_error": f"{type(exc).__name__}: {exc}"})
+            if self.strict_updates:
+                raise
 
     def after_episode(self, trajectory_public: dict, outcome_public: dict) -> None:
         global _ACTIVE_OWNER
@@ -312,15 +326,22 @@ class WorldMindRSI(RSIMethod):
                     success=True,
                 )
             except Exception as exc:  # noqa: BLE001
+                self.update_errors.append(f"goal_extract_error: {type(exc).__name__}: {exc}")
                 self._log({"goal_extract_error": f"{type(exc).__name__}: {exc}"})
+                if self.strict_updates:
+                    raise RuntimeError(f"WorldMind goal extraction failed: {exc}") from exc
         try:
             self.retrieval_module.reload_experiences()
         except Exception as exc:  # noqa: BLE001
+            self.update_errors.append(f"reload_error: {type(exc).__name__}: {exc}")
             self._log({"reload_error": f"{type(exc).__name__}: {exc}"})
+            if self.strict_updates:
+                raise RuntimeError(f"WorldMind experience reload failed: {exc}") from exc
 
     def get_last_update_usage(self) -> dict:
-        """Updater tokens EXCLUDING the sidecar (which is accounted separately)."""
-        return dict(self._goal_usage)
+        """This episode's component tokens, excluding the sidecar (accounted
+        separately by the environment's sidecar hook)."""
+        return dict(self._component_usage)
 
     def _log(self, record: dict) -> None:
         if self.state_dir is None:

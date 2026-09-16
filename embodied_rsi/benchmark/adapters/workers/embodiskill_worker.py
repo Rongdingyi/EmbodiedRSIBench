@@ -115,19 +115,19 @@ def convert_episode(skill, trajectory_public: dict, outcome_public: dict) -> dic
 
 
 def manual_guidance(skill) -> str:
-    """Current official manual text used as the shared context injection."""
+    """Official active-manual text used as the shared context injection."""
+    getter = getattr(skill, "get_active_manual_text", None)
+    if callable(getter):
+        return str(getter())
+    # minimal fallback: official manual sections use `items` (P1-11)
     manual = getattr(skill, "manual_state", None) or {}
     parts = []
     for section in manual.get("sections", []) or []:
-        title = section.get("title") or section.get("name") or ""
+        title = section.get("title") or ""
         items = section.get("items") or []
         body = "\n".join(f"- {item}" for item in items if str(item).strip())
         if title or body:
             parts.append(f"## {title}\n{body}".strip())
-    notes = manual.get("execution_notes") or []
-    if notes:
-        parts.append("## EXECUTION NOTES\n" + "\n".join(
-            f"- {n.get('text') or n}" if isinstance(n, dict) else f"- {n}" for n in notes))
     return "\n\n".join(parts)
 
 

@@ -164,6 +164,10 @@ def main() -> int:
     parser.add_argument("--max-experience", type=int, default=None)
     parser.add_argument("--max-probes", type=int, default=None)
     parser.add_argument("--checkpoint-every", type=int, default=25)
+    parser.add_argument("--output-root", type=Path, default=None,
+                        help="override the run directory (dev smokes must use a separate root)")
+    parser.add_argument("--overwrite", action="store_true",
+                        help="explicitly allow writing into an existing run directory")
     args = parser.parse_args()
 
     protocol = load_protocol()
@@ -173,7 +177,15 @@ def main() -> int:
         print(f"[{args.method}] BLOCKED: {method.BLOCK_REASON}")
         return 2
 
-    out_root = PROJECT / "outputs" / "pilot150" / args.method / f"seed_{SEED}"
+    out_root = (args.output_root if args.output_root is not None
+                else PROJECT / "outputs" / "pilot150" / args.method / f"seed_{SEED}")
+    # canonical runs must start from an EMPTY persistent state (P0-2).
+    if out_root.exists() and any(out_root.iterdir()) and not args.overwrite:
+        raise SystemExit(
+            f"[FAIL] canonical run output already exists: {out_root}\n"
+            "        canonical runs must start from empty RSI state.\n"
+            "        delete it, or pass --overwrite for an explicit resume, or\n"
+            "        use --output-root for dev smokes.")
     out_root.mkdir(parents=True, exist_ok=True)
     state_root = out_root / "rsi_state"
     method.init_run({"state_root": str(state_root), "run_id": f"pilot150:{args.method}",
@@ -209,15 +221,27 @@ def main() -> int:
     print(f"[{args.method}] {final_checkpoint} probe {s_final['status']} "
           f"(unchanged={s_final['probe_state_unchanged']} infra={s_final['infra_errors']})")
 
-    status = gates.FAIL
-    if (s000["status"] == gates.PASS and s_final["status"] == gates.PASS
-            and stream_info["infra_errors"] == 0
-            and stream_info["experience_failures"] == 0
-            and stream_info["leakage"] == 0):
-        status = gates.PASS
+    full_run = (args.max_experience is None and args.max_probes is None)
+    checks = {
+        "experience count == manifest": len(stream_info["updates"]) == len(manifest["experience"]),
+        "S000 probe PASS": s000["status"] == gates.PASS,
+        f"{final_checkpoint} probe PASS": s_final["status"] == gates.PASS,
+        "probe task counts == manifest": all(
+            sum(1 for t in summary["tasks"].values() if t["role"] == role) == len(manifest[key])
+            for summary in (s000, s_final)
+            for role, key in (("id", "id_probe"), ("transfer", "transfer_probe"),
+                              ("retention", "retention_probe"))),
+        "no infrastructure error": stream_info["infra_errors"] == 0,
+        "no experience failure": stream_info["experience_failures"] == 0,
+        "no leakage": stream_info["leakage"] == 0,
+        "final checkpoint is S075": final_checkpoint == f"S{len(manifest['experience']):03d}",
+    }
+    status = gates.PASS if all(checks.values()) else gates.FAIL
     metrics = {
         "method": args.method,
         "status": status,
+        "full_run": full_run,
+        "checks": checks,
         "experience": len(stream_info["updates"]),
         "state_updates": sum(1 for u in stream_info["updates"] if u["changed"]),
         "probe_state_unchanged": s000["probe_state_unchanged"] and s_final["probe_state_unchanged"],

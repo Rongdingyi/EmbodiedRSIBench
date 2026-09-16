@@ -1,12 +1,12 @@
 # Current State
 
 ## Last completed milestone
-v0.5 correctness cleanup (second review round, 12 items) + deterministic regression.
+v0.6 correctness cleanup (third review round, 6 items) + deterministic tests.
 
 ## Status
-G0/G1/G2 PASS. Deterministic regression PASS (none/raw_memory/WorldMind/
-SpatialWorld EndTask/EB-Habitat fixed episodes). G3/G4/G5 must still be re-run
-on the refactored stack before Pilot-150.
+G0/G1/G2 PASS. v0.5 regression PASS + v0.6 fixes verified by unit/argument-level
+tests (8/8 PASS). G3/G4/G5 must still be re-run on the refactored stack before
+Pilot-150 — the committed gate JSONs are still the old FAIL evidence.
 
 ## Regression evidence (all PASS)
 - none: 1 experience + 1 probe, probe state hash unchanged, clone/live/snapshot
@@ -48,6 +48,17 @@ on the refactored stack before Pilot-150.
   missing) — bridge loads official submodules by file (BLOCKERS.md B5).
 - EmbodiSkill PoC still needs its dependency env to execute (B1).
 - G3/G4/G5 and the pilot itself are simulator/API heavy; run on an idle machine.
+
+## v0.6 fixes
+1. WorldMind now passes `observation=state_after` and `state_before=` (official
+   semantics), `has_error` honoured; spy test asserts both arguments.
+2. Canonical runs fail closed on a non-empty output root (no silent state reuse).
+3. Release audit requires full Pilot-150 counts, `S075` summaries with matching
+   probe counts, and each Gate's own status.
+4. WorldMind updater errors surface as `rsi_update_error` + episode FAIL; G5
+   asserts sidecar/component calls and an empty `errors.jsonl`.
+5. Accounting single authority (runner), `calls` from usage, per-episode reset.
+6. EmbodiSkill worker uses the official `get_active_manual_text()`.
 
 ## Next step
 1. `scripts/04_validate_adapters.py` (G3, fresh worker per task)

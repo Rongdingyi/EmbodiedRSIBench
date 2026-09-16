@@ -66,11 +66,21 @@ def main() -> int:
         exp_ids = manifest["experience"][:N_EXPERIENCE]
         probe_ids = manifest["id_probe"][:N_PROBES]
         start = time.time()
+        accounting_total = {"sidecar_calls": 0, "component_calls": 0,
+                            "planner_calls": 0, "simulator_steps": 0}
         for gid in exp_ids:
             task = by_global_id("experience")[gid]
             adapter = make_adapter(task["source_dataset"])
             try:
                 res = run_episode(task, adapter, method, role="experience", config=BUDGET)
+                accounting_total["sidecar_calls"] += int(
+                    res.accounting.get("worldmind_prediction_sidecar_calls") or 0)
+                accounting_total["component_calls"] += int(
+                    res.accounting.get("rsi_update_calls") or 0)
+                accounting_total["planner_calls"] += int(
+                    res.accounting.get("planner_calls") or 0)
+                accounting_total["simulator_steps"] += int(
+                    res.accounting.get("simulator_steps") or 0)
                 if res.status != gates.PASS:
                     evidence.setdefault("errors", []).append(
                         f"exp {gid}: status={res.status} error={res.error} "
@@ -78,6 +88,7 @@ def main() -> int:
             except Exception as exc:  # noqa: BLE001
                 evidence.setdefault("errors", []).append(f"exp {gid}: {exc}")
             hashes.append(method.state_hash())
+        evidence["accounting"] = accounting_total
         # frozen probes: snapshot clone, read-only
         snapshot = pilot_dir / name / "snapshots" / "after_smoke"
         method.snapshot(snapshot)
@@ -124,6 +135,11 @@ def main() -> int:
         if name == "worldmind":
             files = [str(p.relative_to(state_root)) for p in state_root.rglob("*") if p.is_file()]
             evidence["state_files"] = files[:12]
+            errors_file = state_root / "errors.jsonl"
+            evidence["updater_errors"] = (errors_file.read_text().strip()
+                                          if errors_file.exists() else "")
+            evidence["sidecar_calls"] = accounting_total["sidecar_calls"]
+            evidence["component_calls"] = accounting_total["component_calls"]
         audits[name] = evidence
         print(f"[{name}] probes_unchanged={evidence.get('probe_state_unchanged')} "
               f"evidence={ {k: v for k, v in evidence.items() if k in ('state_unchanged','episodes_stored','retrieval_nonempty','playbook_changed')} }")
@@ -140,6 +156,10 @@ def main() -> int:
             ok = ok and ev.get("retrieval_nonempty") is True
         if name == "ace_context":
             ok = ok and ev.get("playbook_changed") is True
+        if name == "worldmind":
+            ok = (ok and ev.get("sidecar_calls", 0) > 0
+                  and ev.get("component_calls", 0) > 0
+                  and not (ev.get("updater_errors") or "").strip())
         checks[name] = gates.PASS if ok else gates.FAIL
     status = gates.combine(checks)
     report = {"checks": checks, "methods": audits, "status": status}
