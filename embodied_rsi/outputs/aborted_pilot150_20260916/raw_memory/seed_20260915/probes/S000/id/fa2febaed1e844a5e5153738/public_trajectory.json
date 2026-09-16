@@ -1,0 +1,170 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4694,
+      "output_tokens": 1198,
+      "charged_tokens": 5892,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5872,
+      "output_tokens": 2450,
+      "charged_tokens": 8322,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13195,
+      "output_tokens": 2396,
+      "charged_tokens": 15591,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6921,
+      "output_tokens": 2710,
+      "charged_tokens": 9631,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7196,
+      "output_tokens": 2921,
+      "charged_tokens": 10117,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14691,
+      "output_tokens": 2182,
+      "charged_tokens": 16873,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7476,
+      "output_tokens": 5414,
+      "charged_tokens": 12890,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7439,
+      "output_tokens": 2326,
+      "charged_tokens": 9765,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

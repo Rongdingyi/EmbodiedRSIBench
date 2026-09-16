@@ -1,0 +1,170 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4687,
+      "output_tokens": 1371,
+      "charged_tokens": 6058,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateRight",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateRight -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5853,
+      "output_tokens": 2925,
+      "charged_tokens": 8778,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6517,
+      "output_tokens": 1750,
+      "charged_tokens": 8267,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14397,
+      "output_tokens": 2094,
+      "charged_tokens": 16491,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14435,
+      "output_tokens": 1215,
+      "charged_tokens": 15650,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveAhead",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveAhead -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7722,
+      "output_tokens": 1624,
+      "charged_tokens": 9346,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7425,
+      "output_tokens": 1256,
+      "charged_tokens": 8681,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "LookUp",
+      "parameters": {}
+    },
+    "public_env_feedback": "LookUp -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7880,
+      "output_tokens": 845,
+      "charged_tokens": 8725,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

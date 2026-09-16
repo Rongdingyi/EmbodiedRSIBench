@@ -1,0 +1,109 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "LookDown",
+      "parameters": {}
+    },
+    "public_env_feedback": "LookDown -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4692,
+      "output_tokens": 871,
+      "charged_tokens": 5563,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 11843,
+      "output_tokens": 4025,
+      "charged_tokens": 15868,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6651,
+      "output_tokens": 2010,
+      "charged_tokens": 8661,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateRight",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateRight -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 20964,
+      "output_tokens": 2605,
+      "charged_tokens": 23569,
+      "sources": {
+        "provider": 3
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target reference image (target_view / scene_secondary) is missing from my observation even though the packet lists it, and I have no tool that can read it. Please provide the target_view image for the current step, or give me the target camera pose (position offset and yaw/pitch change relative to the current_view pose). Without that reference I can only search blindly, which the last four zero-reward steps confirm is unproductive."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7345,
+      "output_tokens": 1589,
+      "charged_tokens": 8934,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

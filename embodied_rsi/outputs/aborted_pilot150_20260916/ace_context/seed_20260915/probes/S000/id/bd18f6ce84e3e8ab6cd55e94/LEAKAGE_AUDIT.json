@@ -1,0 +1,16 @@
+{
+  "violations": [
+    "request[0]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[1]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[2]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[3]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[4]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[5]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[6]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[7]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[8]: private value 'bd18f6ce84e3e8ab6cd55e94'",
+    "request[9]: private value 'bd18f6ce84e3e8ab6cd55e94'"
+  ],
+  "requests": 10,
+  "status": "FAIL"
+}

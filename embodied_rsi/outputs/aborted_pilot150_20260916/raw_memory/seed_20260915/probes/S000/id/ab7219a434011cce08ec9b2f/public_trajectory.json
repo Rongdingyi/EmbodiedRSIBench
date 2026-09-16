@@ -1,0 +1,88 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "LookDown",
+      "parameters": {}
+    },
+    "public_env_feedback": "LookDown -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 9517,
+      "output_tokens": 1532,
+      "charged_tokens": 11049,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateRight",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateRight -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12063,
+      "output_tokens": 8545,
+      "charged_tokens": 20608,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveAhead",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveAhead -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6753,
+      "output_tokens": 1490,
+      "charged_tokens": 8243,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target image for this \"reproduce the target viewpoint\" task is not visible to me — I only receive the current scene view each step, and no configured tool can read the target_view artifact. Please provide/attach the target-view image (frame_id=target_view) so I can compare it against my current view and plan the correct rotation and translation to match its position and camera angle."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7024,
+      "output_tokens": 1567,
+      "charged_tokens": 8591,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

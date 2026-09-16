@@ -1,0 +1,12 @@
+{
+  "violations": [
+    "request[0]: private value 'f134df32bf68a7ae14043bdf'",
+    "request[1]: private value 'f134df32bf68a7ae14043bdf'",
+    "request[2]: private value 'f134df32bf68a7ae14043bdf'",
+    "request[3]: private value 'f134df32bf68a7ae14043bdf'",
+    "request[4]: private value 'f134df32bf68a7ae14043bdf'",
+    "request[5]: private value 'f134df32bf68a7ae14043bdf'"
+  ],
+  "requests": 6,
+  "status": "FAIL"
+}

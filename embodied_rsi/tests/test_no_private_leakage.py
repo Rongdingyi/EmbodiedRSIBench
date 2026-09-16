@@ -28,18 +28,18 @@ def _scan(node, path, hits):
 def test_observation_and_requests_clean():
     from benchmark.registry.loader import load_role
     from benchmark.adapters import make_adapter
-    from benchmark.openeta_bridge.build_runtime import build_runtime
-    from benchmark.openeta_bridge.episode_runner import to_env_observation
+    from benchmark.openeta_bridge.benchmark_environment import BenchmarkEpisodeEnvironment
 
     rec = [r for r in load_role("id") if r["source_dataset"] == "TVRBench"][0]
     adapter = make_adapter("TVRBench")
+    env = BenchmarkEpisodeEnvironment(adapter, rec)
     obs = adapter.reset(rec)
     hits = []
     _scan(obs.public_metadata, "public_metadata", hits)
     assert not hits, f"private keys in public observation: {hits}"
     # tool specs + env observation metadata are the only planner-visible payload
     tools = adapter.build_tool_specs(rec)
-    env_obs = to_env_observation(obs, step_idx=0)
+    env_obs = env._to_env_observation(obs, step_idx=0)
     hits = []
     _scan(json.loads(json.dumps(env_obs.to_dict(), default=str)), "env_obs", hits)
     assert not hits, f"private keys in planner observation: {hits}"

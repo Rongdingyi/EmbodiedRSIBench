@@ -1,0 +1,11 @@
+{
+  "benchmark_version": "Core-v1.0",
+  "pilot_version": "Pilot-150-v0.1",
+  "seed": 20260915,
+  "model": "deepseek-flash",
+  "model_provider": "DeepSeek official API",
+  "model_base_url": "https://api.deepseek.com",
+  "rsi_method": "none",
+  "openeta_commit": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
+  "episode_orchestration": "upstream OpenEtaEpisodeRunner"
+}

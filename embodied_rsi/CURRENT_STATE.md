@@ -1,12 +1,18 @@
 # Current State
 
 ## Last completed milestone
-v0.6 correctness cleanup (third review round, 6 items) + deterministic tests.
+G0-G6 all PASS on the relay endpoint; G7 (Pilot-150) aborted by user after
+~3.2M tokens (39 partial S000 probe episodes, archived to
+`outputs/aborted_pilot150_20260916/`).
 
 ## Status
-G0/G1/G2 PASS. v0.5 regression PASS + v0.6 fixes verified by unit/argument-level
-tests (8/8 PASS). G3/G4/G5 must still be re-run on the refactored stack before
-Pilot-150 — the committed gate JSONs are still the old FAIL evidence.
+G0/G1/G2/G3/G4/G5/G6 ALL PASS (evidence in `outputs/preflight/`).
+G7 run was stopped mid-S000 by decision: full 4x225 pilot costs an estimated
+~85M tokens (~a few hundred CNY); alternatives discussed: dev-mode rehearsal
+(`--max-experience 15 --max-probes 15`, ~14M, non-canonical), baseline-only
+(`-` `-method none`, ~21M = final baseline data), or the full pilot.
+A future canonical run must start from an empty `outputs/pilot150/` and use
+`--overwrite` only after archiving the previous attempt.
 
 ## Regression evidence (all PASS)
 - none: 1 experience + 1 probe, probe state hash unchanged, clone/live/snapshot

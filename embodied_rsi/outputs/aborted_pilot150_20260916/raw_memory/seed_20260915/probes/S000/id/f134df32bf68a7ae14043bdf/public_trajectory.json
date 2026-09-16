@@ -1,0 +1,109 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4690,
+      "output_tokens": 861,
+      "charged_tokens": 5551,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5860,
+      "output_tokens": 2303,
+      "charged_tokens": 8163,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateRight",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateRight -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13153,
+      "output_tokens": 2881,
+      "charged_tokens": 16034,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6908,
+      "output_tokens": 2645,
+      "charged_tokens": 9553,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I do not have the target image in my current evidence — only the current_view camera (frame_id=current_view, observation_step=4) is available, while the target_view artifact (index 1, role scene_secondary) was not passed to me and no artifact-read/vision tool is bound, so I cannot inspect it myself. Could you provide the target viewpoint image (or describe the target camera position and heading relative to the current corner/door scene)? With that reference I can compute the needed translation and rotation and continue issuing MoveAhead/MoveBack/MoveLeft/MoveRight and RotateLeft/RotateRight actions. For context, my current view is a close-up of a wall corner with a lamp/mirror area on the left and a wooden door on the right above dark blue carpet, and the latest trusted environment receipt is reward 0.0, terminated=false after MoveBack, MoveBack, RotateRight, RotateLeft."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7178,
+      "output_tokens": 3474,
+      "charged_tokens": 10652,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

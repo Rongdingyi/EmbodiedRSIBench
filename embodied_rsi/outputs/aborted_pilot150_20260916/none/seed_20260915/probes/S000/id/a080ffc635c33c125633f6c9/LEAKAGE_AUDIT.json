@@ -1,0 +1,14 @@
+{
+  "violations": [
+    "request[0]: private value 'a080ffc635c33c125633f6c9'",
+    "request[1]: private value 'a080ffc635c33c125633f6c9'",
+    "request[2]: private value 'a080ffc635c33c125633f6c9'",
+    "request[3]: private value 'a080ffc635c33c125633f6c9'",
+    "request[4]: private value 'a080ffc635c33c125633f6c9'",
+    "request[5]: private value 'a080ffc635c33c125633f6c9'",
+    "request[6]: private value 'a080ffc635c33c125633f6c9'",
+    "request[7]: private value 'a080ffc635c33c125633f6c9'"
+  ],
+  "requests": 8,
+  "status": "FAIL"
+}

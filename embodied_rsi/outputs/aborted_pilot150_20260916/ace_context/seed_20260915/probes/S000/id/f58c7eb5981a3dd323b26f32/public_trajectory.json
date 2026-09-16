@@ -1,0 +1,109 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveAhead",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveAhead -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4692,
+      "output_tokens": 1757,
+      "charged_tokens": 6449,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5868,
+      "output_tokens": 1255,
+      "charged_tokens": 7123,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateRight",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateRight -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6536,
+      "output_tokens": 1002,
+      "charged_tokens": 7538,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "MoveBack",
+      "parameters": {}
+    },
+    "public_env_feedback": "MoveBack -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6807,
+      "output_tokens": 3586,
+      "charged_tokens": 10393,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I can only see the current scene image in my evidence; the target image (camera artifact \"target_view\") is not visible to me, so I cannot compare poses. Please provide the target_view image for this episode (or the target camera pose / relative translation+rotation from the current viewpoint) so I can plan the correct Move/Rotate actions instead of continuing to guess."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7075,
+      "output_tokens": 1389,
+      "charged_tokens": 8464,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]
