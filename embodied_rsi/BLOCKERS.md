@@ -13,12 +13,22 @@ of the agent environment on purpose.
 C4 stays out of the pilot table until the PoC runs and produces the four official
 reflection categories. Audit: `outputs/preflight/EMBODISKILL_CALL_PATH.md`.
 
-## B2 — EB-ALFRED rendering needs the machine's physical X display
+## B2 — EB-ALFRED rendering needs the machine's physical X display (OPEN)
 
 The 2018 AI2-THOR build presents through NVIDIA Vulkan, which cannot create a
-swapchain for a private Xvfb; episodes require a real X server (this machine
-`:1`). Mitigation: `scripts_render/00_pick_display.sh`; display failures are
-infrastructure errors, never method failures.
+swapchain for a private Xvfb; episodes require a real X server. Display
+failures are infrastructure errors, never method failures.
+
+State as of 2026-09-16 20:00: gdm restarted and the physical X server was
+renumbered `:1` -> `:0`; the only socket we can reach is gdm's, which requires
+an Xauthority we cannot read. `:99` Xvfb re-tested the same evening: the Unity
+player aborts (SIGABRT, exit -6) -- Xvfb remains unusable for EB-ALFRED.
+
+Need: a session on the physical display that authorises us, e.g. as the
+console user `xhost +SI:localuser:rongdingyi` (then `_pick_display()` picks
+`:0`). Impact: 6 of the 30 probe tasks per Pilot-60 checkpoint and 6 of the 30
+experience episodes are EB-ALFRED; Pilot-60 attempt #1 was invalidated by this
+(see `outputs/aborted_pilot60_displayfail_20260916/`).
 
 ## B3 — EB-Habitat episode lookup (RESOLVED in v0.5, verification pending on full G3)
 
