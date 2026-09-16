@@ -174,8 +174,12 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
         "upstream": upstream_summary,
     }
 
-    # RSI update (experience only; probes run with update disabled by caller)
-    if rsi is not None and role == "experience":
+    # RSI update (experience only; probes run with update disabled by caller).
+    # Infrastructure-failed episodes are not valid learning signals and are
+    # skipped so a safe (0-step) retry cannot double-update RSI state.
+    if rsi is not None and role == "experience" and error:
+        outcome["rsi_update_skipped"] = "infrastructure_error"
+    if rsi is not None and role == "experience" and not error:
         try:
             rsi.after_episode(_public_episode(task, public_trajectory, outcome),
                               _public_outcome(outcome))

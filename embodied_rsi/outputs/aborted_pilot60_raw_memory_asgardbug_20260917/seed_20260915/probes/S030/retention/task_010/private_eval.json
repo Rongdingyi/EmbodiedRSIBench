@@ -1,0 +1,23 @@
+{
+  "success": false,
+  "partial": null,
+  "measures": {
+    "num_steps": 8,
+    "was_prev_action_invalid": true,
+    "predicate_task_success": false,
+    "lang_goal": "Transport all plate and put them on the right counter.",
+    "task_progress": 0.125,
+    "subgoal_reward": 0.0,
+    "num_invalid_actions": 5,
+    "action": "place(receptacle_aabb_Tbl1_Top1_frl_apartment_table_01)",
+    "env_feedback": "Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.",
+    "env_step": 8,
+    "action_id": 50,
+    "action_description": "place at the table 1",
+    "reasoning": "",
+    "instruction": "Transport all plate and put them on the right counter.",
+    "last_action_success": 0.0,
+    "task_success": false
+  },
+  "physical_task_id": "ebh:f44f391a645cfba6cbba885e"
+}

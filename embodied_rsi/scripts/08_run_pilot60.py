@@ -131,9 +131,20 @@ def run_experience_stream(method, out_root: Path, manifest: dict, protocol: dict
         ep_dir.mkdir(parents=True, exist_ok=True)
         method.advance_step(index, len(stream))       # ACE curator counters (P1-7)
         before = method.state_hash()
-        adapter = make_adapter(task["source_dataset"])
-        res = run_episode(task, adapter, method, role="experience", output_dir=ep_dir,
-                          config=episode_config(protocol, task["source_dataset"]))
+        # infra failures with 0 env steps leave no RSI trace (learning is
+        # skipped for infra-failed episodes), so they can be retried safely
+        attempts = 0
+        res = None
+        while attempts < 3:
+            attempts += 1
+            adapter = make_adapter(task["source_dataset"])
+            res = run_episode(task, adapter, method, role="experience", output_dir=ep_dir,
+                              config=episode_config(protocol, task["source_dataset"]))
+            if not res.error:
+                break
+            if res.env_steps > 0 or method.state_hash() != before:
+                break
+            print(f"[experience retry {attempts}/3] {gid} {str(res.error)[:90]}")
         after = method.state_hash()
         acc = res.accounting
         for key in ("planner_input_tokens", "planner_output_tokens", "planner_calls",
@@ -160,6 +171,7 @@ def run_experience_stream(method, out_root: Path, manifest: dict, protocol: dict
             "env_steps": res.env_steps,
             "status": res.status,
             "infrastructure_error": res.error,
+            "attempts": attempts,
             "leakage": res.leakage_violations,
             "accounting": acc,
             "wall_s": round(res.wall_time_s, 1),

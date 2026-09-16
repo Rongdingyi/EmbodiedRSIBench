@@ -1,0 +1,34 @@
+{
+  "method": "raw_memory",
+  "status": "FAIL",
+  "full_run": true,
+  "checks": {
+    "experience count == manifest": true,
+    "S000 probe PASS": true,
+    "S030 probe PASS": true,
+    "probe task counts == manifest": true,
+    "infrastructure crash rate < 2%": false,
+    "no experience failure": false,
+    "no leakage": true,
+    "final checkpoint is S030": true
+  },
+  "experience": 30,
+  "state_updates": 30,
+  "probe_state_unchanged": true,
+  "infra_errors": 2,
+  "experience_failures": 2,
+  "leakage_violations": 0,
+  "accounting": {
+    "planner_input_tokens": 2424332,
+    "planner_output_tokens": 707243,
+    "planner_calls": 283,
+    "rsi_update_input_tokens": 0,
+    "rsi_update_output_tokens": 0,
+    "worldmind_prediction_sidecar_tokens": 0,
+    "simulator_steps": 206,
+    "rsi_injection_tokens": 15938
+  },
+  "updater_tokens": 0,
+  "env_steps": 206,
+  "wall_s": 16118.6
+}

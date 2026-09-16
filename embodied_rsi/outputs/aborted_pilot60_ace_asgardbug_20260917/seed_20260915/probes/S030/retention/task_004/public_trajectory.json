@@ -1,0 +1,194 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4938,
+      "output_tokens": 570,
+      "charged_tokens": 5508,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6012,
+      "output_tokens": 428,
+      "charged_tokens": 6440,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6580,
+      "output_tokens": 1463,
+      "charged_tokens": 8043,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 1.0
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7213,
+      "output_tokens": 546,
+      "charged_tokens": 7759,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7137,
+      "output_tokens": 471,
+      "charged_tokens": 7608,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 0.5
+      }
+    },
+    "public_env_feedback": "Move -> failed (Box_4d23394f is blocking Agent 0 from moving by (0.2500, 0.0000, 0.0000).)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7576,
+      "output_tokens": 1165,
+      "charged_tokens": 8741,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "left",
+        "degrees": 90.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7321,
+      "output_tokens": 1591,
+      "charged_tokens": 8912,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 180.0
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7708,
+      "output_tokens": 1273,
+      "charged_tokens": 8981,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

@@ -1,0 +1,186 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4582,
+      "output_tokens": 289,
+      "charged_tokens": 4871,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5611,
+      "output_tokens": 788,
+      "charged_tokens": 6399,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Slice action failed",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6142,
+      "output_tokens": 813,
+      "charged_tokens": 6955,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Robot is currently holding Apple",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6417,
+      "output_tokens": 959,
+      "charged_tokens": 7376,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "fridge"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7048,
+      "output_tokens": 1249,
+      "charged_tokens": 8297,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "fridge"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13657,
+      "output_tokens": 1521,
+      "charged_tokens": 15178,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "microwave"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6951,
+      "output_tokens": 7389,
+      "charged_tokens": 14340,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "microwave"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7010,
+      "output_tokens": 3492,
+      "charged_tokens": 10502,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

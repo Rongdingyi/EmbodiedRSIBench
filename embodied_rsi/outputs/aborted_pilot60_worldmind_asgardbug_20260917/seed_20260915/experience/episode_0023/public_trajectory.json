@@ -1,0 +1,192 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Rotate",
+      "parameters": {
+        "direction": "right",
+        "degrees": 90
+      }
+    },
+    "public_env_feedback": "Rotate -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4898,
+      "output_tokens": 321,
+      "charged_tokens": 5219,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 1.0
+      }
+    },
+    "public_env_feedback": "Move -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5946,
+      "output_tokens": 497,
+      "charged_tokens": 6443,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Pick",
+      "parameters": {
+        "object": "CreditCard"
+      }
+    },
+    "public_env_feedback": "Pick -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 13089,
+      "output_tokens": 1060,
+      "charged_tokens": 14149,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Pick",
+      "parameters": {
+        "object": "CreditCard"
+      }
+    },
+    "public_env_feedback": "Pick -> failed (InvalidOperationException: Agent hand has something in it already! Can't pick up anything else. trace:   at UnityStandardAssets.Characters.FirstPerson.PhysicsRemoteFPSAgentController.pickupObject (SimObjPhysics target, System.Boolean forceAction, System.Boolean manualInteract, System.Boolean markActionFinished) [0x0003c] in <686694aeb00e4f03b2b15637c42c1442>:0 \n  at UnityStandardAssets.Characters.FirstPerson.PhysicsRemoteFPSAgentController.PickupObject (System.String objectId, System.Boolean forceAction, System.Boolean manualInteract) [0x00009] in <686694aeb00e4f03b2b15637c42c1442>:0 \n  at (wrapper managed-to-native) System.Reflection.MonoMethod.InternalInvoke(System.Reflection.MonoMethod,object,object[],System.Exception&)\n  at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00032] in <695d1cc93cca45069c528c15c9fdd749>:0 )",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6870,
+      "output_tokens": 4897,
+      "charged_tokens": 11767,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Tilt",
+      "parameters": {
+        "direction": "down",
+        "degrees": 30.0
+      }
+    },
+    "public_env_feedback": "Tilt -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7417,
+      "output_tokens": 1817,
+      "charged_tokens": 9234,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Move",
+      "parameters": {
+        "direction": "ahead",
+        "distance": 0.5
+      }
+    },
+    "public_env_feedback": "Move -> failed (Desk_86f41333 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7226,
+      "output_tokens": 1906,
+      "charged_tokens": 9132,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "Pick",
+      "parameters": {
+        "object": "CreditCard"
+      }
+    },
+    "public_env_feedback": "Pick -> failed (InvalidOperationException: Agent hand has something in it already! Can't pick up anything else. trace:   at UnityStandardAssets.Characters.FirstPerson.PhysicsRemoteFPSAgentController.pickupObject (SimObjPhysics target, System.Boolean forceAction, System.Boolean manualInteract, System.Boolean markActionFinished) [0x0003c] in <686694aeb00e4f03b2b15637c42c1442>:0 \n  at UnityStandardAssets.Characters.FirstPerson.PhysicsRemoteFPSAgentController.PickupObject (System.String objectId, System.Boolean forceAction, System.Boolean manualInteract) [0x00009] in <686694aeb00e4f03b2b15637c42c1442>:0 \n  at (wrapper managed-to-native) System.Reflection.MonoMethod.InternalInvoke(System.Reflection.MonoMethod,object,object[],System.Exception&)\n  at System.Reflection.MonoMethod.Invoke (System.Object obj, System.Reflection.BindingFlags invokeAttr, System.Reflection.Binder binder, System.Object[] parameters, System.Globalization.CultureInfo culture) [0x00032] in <695d1cc93cca45069c528c15c9fdd749>:0 )",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7329,
+      "output_tokens": 4127,
+      "charged_tokens": 11456,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "message": "Planner provider request failed.",
+        "error_type": "ProviderProtocolError",
+        "provider_attempts": 3,
+        "provider_error_code": "transient_provider_failure",
+        "retryable": true
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "charged_tokens": 0,
+      "sources": {}
+    },
+    "rsi_aux_usage": {}
+  }
+]

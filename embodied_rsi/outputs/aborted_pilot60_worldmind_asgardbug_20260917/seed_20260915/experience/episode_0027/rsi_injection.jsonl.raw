@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+The retrieved process experiences all describe the same two sequencing failures: attempting pick-up before navigating to/reaching the object, and attempting place before confirming the robot is holding the object. Consolidated lessons: (1) Before any pick-up or manipulation, locate the target object and navigate until it is within interaction distance; verify reachability before executing pick-up. (2) Before any place action, confirm the robot is actually holding the target object; if not, perform pick-up first. (3) Treat pick-and-place as a verified sequence: navigate -> verify reachable -> pick -> verify held -> navigate/place -> verify placed. Do not assume a prior skill succeeded without checking its preconditions and feedback.
+
+## Preliminary Thinking
+1. Locate the toy airplane and identify its current position. 2. Navigate to the toy airplane until it is within interaction distance. 3. Verify the airplane is reachable, then execute pick-up. 4. Verify the robot is holding the toy airplane. 5. Navigate to the right counter. 6. Confirm the right counter placement location is reachable and suitable. 7. Execute the place action on the right counter. 8. Verify the toy airplane is no longer held and is located on the right counter.
+[/PERSISTENT EXPERIENCE GUIDANCE]

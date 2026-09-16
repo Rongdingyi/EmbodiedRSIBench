@@ -1,0 +1,15 @@
+{
+  "planner_input_tokens": 90577,
+  "planner_output_tokens": 55585,
+  "planner_calls": 13,
+  "planner_wall_s": 298.222,
+  "rsi_injection_tokens": 0,
+  "rsi_update_input_tokens": 7032,
+  "rsi_update_output_tokens": 4748,
+  "rsi_update_calls": 11,
+  "rsi_update_wall_s": 0.0,
+  "worldmind_prediction_sidecar_tokens": 2251,
+  "worldmind_prediction_sidecar_calls": 7,
+  "embedding_calls": 0,
+  "simulator_steps": 7
+}

@@ -1,0 +1,186 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4586,
+      "output_tokens": 225,
+      "charged_tokens": 4811,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5616,
+      "output_tokens": 1421,
+      "charged_tokens": 7037,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "slice",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Slice action failed",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6151,
+      "output_tokens": 478,
+      "charged_tokens": 6629,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pick_up",
+      "parameters": {
+        "object": "apple"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Robot is currently holding Apple",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12967,
+      "output_tokens": 3724,
+      "charged_tokens": 16691,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 5,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "refrigerator"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Refrigerator. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7170,
+      "output_tokens": 2104,
+      "charged_tokens": 9274,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 6,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "fridge"
+      }
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6919,
+      "output_tokens": 657,
+      "charged_tokens": 7576,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 7,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "open",
+      "parameters": {
+        "object": "refrigerator"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Refrigerator to open. Find the object before opening it",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6964,
+      "output_tokens": 3877,
+      "charged_tokens": 10841,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 8,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "refrigerator"
+      }
+    },
+    "public_env_feedback": "Last action is invalid. Cannot find Refrigerator. This object may not exist in this scene. Try to explore other instances instead.",
+    "action_success": false,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14187,
+      "output_tokens": 5189,
+      "charged_tokens": 19376,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]
