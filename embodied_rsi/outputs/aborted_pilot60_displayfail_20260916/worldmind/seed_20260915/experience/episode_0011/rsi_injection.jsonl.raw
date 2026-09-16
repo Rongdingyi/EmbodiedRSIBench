@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+Movement, pick-up, and place actions all have preconditions that must be verified before execution. Movement commands should not be assumed to succeed: before moving toward a target, check that the intended path is clear; if an obstacle such as a stool blocks it, navigate around it, remove it, or replan. Pick-up actions require the target object to exist, be reachable, and be near the robot; if it is not nearby or reachable, navigate to its location first. Place actions require the robot to already be holding the target object; if not, perform a successful pick-up first. Failure to satisfy these preconditions causes actions to fail, so treat them as gating conditions and recover by re-checking state, navigating appropriately, or replanning.
+
+## Preliminary Thinking
+1) Identify the target object(s) and destination from the task. 2) For any movement, first check the path for obstacles; if blocked, replan a clear route or remove/move the obstruction. 3) Before pick-up, confirm the object exists, is visible or known, and is within reach; if not, navigate to the object's location. 4) Before placing, confirm the robot is holding the target object; if not, execute a successful pick-up first. 5) After each action, verify the expected state (location changed, object held, object placed) and, on failure, re-check preconditions and replan rather than blindly repeating the same command.
+[/PERSISTENT EXPERIENCE GUIDANCE]

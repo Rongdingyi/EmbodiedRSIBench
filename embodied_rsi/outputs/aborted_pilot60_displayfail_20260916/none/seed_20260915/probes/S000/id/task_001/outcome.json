@@ -1,0 +1,10 @@
+{
+  "success": null,
+  "terminated": false,
+  "truncated": false,
+  "num_steps": 0,
+  "env_steps": 0,
+  "status": "FAIL",
+  "infrastructure_error": "WorkerError: worker timed out after 300s on reset",
+  "upstream": {}
+}

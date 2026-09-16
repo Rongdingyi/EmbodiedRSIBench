@@ -1,0 +1,10 @@
+{
+  "success": null,
+  "terminated": false,
+  "truncated": false,
+  "num_steps": 0,
+  "env_steps": 0,
+  "status": "FAIL",
+  "infrastructure_error": "WorkerError: reset failed: AssertionError: Invalid DISPLAY :1 - cannot find X server with xdpyinfo",
+  "upstream": {}
+}

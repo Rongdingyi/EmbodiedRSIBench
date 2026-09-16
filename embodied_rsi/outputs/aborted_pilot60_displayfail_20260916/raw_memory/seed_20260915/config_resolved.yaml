@@ -1,0 +1,29 @@
+# Canonical frozen OpenETA agent configuration (Pilot v0.3).
+# Only environment adapters, tool registries of source actions, and external
+# self-evolution modules are project-owned; planner/episode-loop code is pinned.
+openeta:
+  repo: external/OpenETA
+  commit: 7d4a0a1522ba8ebbd362bde880bad81d2a98f15e
+  python: ">=3.10"
+  invoke: "uv run --project external/OpenETA python"
+
+freeze:
+  native_self_improvement: false
+  native_auto_apply: false
+  native_iterate_allowed: false
+  cross_session_openeta_memory: false
+  enabled_tool_policy: benchmark_source_actions_only
+  web_tools_enabled: false
+  python_exec_enabled: false
+
+planner_context:
+  recent_conversation_action_groups: 4
+  recent_transition_observations: 3
+  max_selected_skills: 3
+  max_skill_content_chars: 8000
+  auto_compact_enabled: true
+
+budget:
+  max_rsi_injection_tokens: 8192
+  planner_max_output_tokens: 8192
+  max_validation_retries: 2

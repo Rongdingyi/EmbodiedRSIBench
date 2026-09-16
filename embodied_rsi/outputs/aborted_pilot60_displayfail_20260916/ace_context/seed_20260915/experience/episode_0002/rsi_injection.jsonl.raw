@@ -1,0 +1,12 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## STRATEGIES & INSIGHTS
+
+[sai-00001] helpful=0 harmful=0 :: After a successful Pick action, treat the hand as occupied. Before attempting another Pick, either place/drop the held object or skip the Pick and proceed to the next subgoal.
+[sai-00002] helpful=0 harmful=0 :: Evaluate overall task success by whether the target object was acquired or placed, not by whether every intermediate action succeeded; a failed later action after target acquisition does not necessarily invalidate overall success.
+## FORMULAS & CALCULATIONS
+
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+[err-00003] helpful=0 harmful=0 :: Attempting another Pick while already holding an object causes an InvalidOperationException. Track hand/inventory state after each Pick to avoid redundant failed actions.
+[/PERSISTENT EXPERIENCE GUIDANCE]

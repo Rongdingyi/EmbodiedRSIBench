@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+The retrieved process experiences highlight three consistent failure modes: (1) pickup fails when the target object is not nearby, reachable, or visually confirmed; (2) place fails when the robot is not already holding the target object; and (3) movement fails when an obstacle blocks the intended path. General principles: before any pick action, verify the object exists, is within reach, and navigate to it if necessary; before any place action, confirm the robot is successfully holding the object; before any movement, check that the path is clear and replan around or remove obstructions. Do not assume these actions will succeed without verifying their preconditions.
+
+## Preliminary Thinking
+1. Locate the pan with an apple in it and the fridge. 2. Navigate toward the pan with the apple, first checking that the path is clear; if blocked, replan around the obstacle. 3. Once near the pan with the apple, verify it is reachable and within the robot's grasp. 4. Pick up the pan with the apple. 5. Verify the robot is holding the pan with the apple. 6. Navigate to the fridge, again checking the path for obstacles and replanning if needed. 7. Open the fridge if it is closed. 8. Confirm the robot is still holding the pan with the apple and that the fridge interior is reachable. 9. Place the pan with the apple inside the fridge. 10. Verify that the pan with the apple has been successfully placed in the fridge.
+[/PERSISTENT EXPERIENCE GUIDANCE]

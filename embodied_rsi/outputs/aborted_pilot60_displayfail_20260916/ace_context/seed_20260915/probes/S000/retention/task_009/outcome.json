@@ -1,0 +1,19 @@
+{
+  "success": false,
+  "terminated": true,
+  "truncated": false,
+  "num_steps": 2,
+  "env_steps": 1,
+  "status": "PASS",
+  "infrastructure_error": null,
+  "upstream": {
+    "terminated": true,
+    "truncated": false,
+    "steps": 2,
+    "session_id": "eea51474-d3d9-4e3d-8fc7-bd9f873a70c1",
+    "stop_reason": "task_complete",
+    "failure_reason": {},
+    "tool_calls": 1,
+    "runner_tokens": 28140
+  }
+}

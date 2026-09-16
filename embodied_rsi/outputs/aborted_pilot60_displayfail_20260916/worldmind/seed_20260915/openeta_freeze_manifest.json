@@ -1,0 +1,28 @@
+{
+  "repo_commit": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
+  "pinned_commit": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
+  "git_worktree_clean": true,
+  "diff_vs_pin": "",
+  "critical_file_sha256": {
+    "agent/runtime/planner.py": "4cb17c9d70bf9768d42cc034a62f0a9fff5ecea61f5f8fc81208027780605e09",
+    "agent/runtime/episode.py": "d60e1025499c809409e840b633a1cdf0f2093ca62b8007ea1bfece68526ad640",
+    "agent/runtime/runtime.py": "9e76f39fcc9d2d2f00dee2299de7345d329a0fda898f203beadbfb19d337866b",
+    "agent/runtime/runtime_assembly.py": "7d4414be29ca8b9548872422cc534589caf8bd11aa7c64617a2ecaff3956958a",
+    "agent/runtime/self_improvement.py": "4ef012bd34c1d4c9b82d20d728eb4f1ac61a8e91840a7af7d941fda2d89cb09b",
+    "agent/runtime/memory.py": "1960e152f16e34cca77594d981a34c345555bab2ca6136604266e3a99f75f53d",
+    "agent/runtime/planner_prompts.py": "2d91b6ce2dc1e0f02a00925614378e22a3d42eee2679049007a1f5d8fd2bf6c7",
+    "agent/runtime/actions.py": "b86d50c21910d4e7918f8814a1d3a959f5075d04ca553e92f617d64348da1569",
+    "agent/runtime/pipeline.py": "4f287ddfb8a3a60f210590518257dd14711ed088dfb88468f39be9f6a8749081",
+    "agent/backends/planner.py": "f5c10ac1471762922b9fc630737bd22934cac3885b4f295b2383239f0ce0caa6",
+    "adapter/protocol.py": "4197869260ef113a505589c94e36a753a6d2f8ced07c1eb704989dfe05cd312f"
+  },
+  "planner_prompt_sha256": "6d1882a07bff2ef18b9b1a1be7f46af9cf7252873293f07ed304cafede0a9ed0",
+  "planner_prompt_chars": 3811,
+  "native_self_improvement": false,
+  "native_auto_apply": false,
+  "native_iterate_allowed": false,
+  "cross_session_openeta_memory": false,
+  "enabled_tool_policy": "benchmark_source_actions_only",
+  "web_tools_enabled": false,
+  "python_exec_enabled": false
+}

@@ -1,0 +1,21 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Prepare a mug of coffee, drink it, then wash and store the mug.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 2]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

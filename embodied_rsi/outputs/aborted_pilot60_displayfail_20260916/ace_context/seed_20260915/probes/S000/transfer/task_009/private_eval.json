@@ -1,0 +1,23 @@
+{
+  "success": false,
+  "partial": null,
+  "measures": {
+    "num_steps": 8,
+    "was_prev_action_invalid": true,
+    "predicate_task_success": false,
+    "lang_goal": "Deliver a small red object with green top to the intended a large gray piece of furniture with a backrest by physically moving it there.",
+    "task_progress": 0.25,
+    "subgoal_reward": 0.0,
+    "num_invalid_actions": 4,
+    "action": "pick_lemon(robot_0)",
+    "env_feedback": "Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.",
+    "env_step": 8,
+    "action_id": 34,
+    "action_description": "pick up the lemon",
+    "reasoning": "",
+    "instruction": "Deliver a small red object with green top to the intended a large gray piece of furniture with a backrest by physically moving it there.",
+    "last_action_success": 0.0,
+    "task_success": false
+  },
+  "physical_task_id": "ebh:2190ea7cd84d6ad17594f14e"
+}

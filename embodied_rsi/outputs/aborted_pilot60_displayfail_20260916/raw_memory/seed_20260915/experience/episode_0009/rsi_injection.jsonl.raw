@@ -1,0 +1,38 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Failure (steps: 7)
+Trajectory summary:
+- find -> find apple -> failed (<AsgardBench.objects.StepError object at 0x70e9ddba89a0>)
+- open -> open fridge -> ok
+- pickup -> pickup apple -> ok
+- slice -> slice apple -> ok
+- put -> put plate -> ok
+- put -> put bowl -> ok
+- done -> Episode finished by agent.
+
+[Episode 2]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 3]
+Task: Prepare a mug of coffee, drink it, then wash and store the mug.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

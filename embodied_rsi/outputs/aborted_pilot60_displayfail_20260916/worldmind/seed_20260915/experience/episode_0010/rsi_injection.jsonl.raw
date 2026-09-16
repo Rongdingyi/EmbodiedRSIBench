@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+Merged lessons: Never assume an action's preconditions are met. Before pickup, confirm the target mug exists in the environment, is visible/reachable/nearby, and that the robot is at or can navigate to its location; if not, search or navigate first. Before move, verify the path is clear and replan around obstacles. Before place, confirm the robot is actually holding the mug, ideally after a verified successful pickup; if not, pick it up first. Check action outcomes and recover by re-observing and replanning rather than repeating failed actions.
+
+## Preliminary Thinking
+1) Locate the mug: scan the environment; if not visible, search likely surfaces or navigate through rooms until found. 2) Confirm the mug is reachable and the robot is near it. 3) Pick up the mug and verify the robot is holding it. 4) Locate the sofa and plan a path; check for obstacles and replan or navigate around them. 5) Once at the sofa, ensure still holding the mug, then place it on the sofa. 6) Verify the mug is on the sofa. If any step fails, re-check preconditions such as existence, reachability, holding, and clear path before retrying.
+[/PERSISTENT EXPERIENCE GUIDANCE]

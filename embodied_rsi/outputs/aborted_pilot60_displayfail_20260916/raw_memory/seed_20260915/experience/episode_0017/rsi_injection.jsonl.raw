@@ -1,0 +1,47 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 2]
+Task: Fry a potato slice and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find potato -> failed (<AsgardBench.objects.StepError object at 0x7e8cf7517940>)
+- find -> find lettuce -> ok
+- pickup -> pickup potato -> ok
+- slice -> slice potato -> ok
+- find -> find fryingpan -> ok
+- put -> put fryingpan -> ok
+- find -> find stove -> ok
+- toggle_on -> toggle_on stove -> ok
+
+[Episode 3]
+Task: Make a slice of toast and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find bread -> failed (<AsgardBench.objects.StepError object at 0x79787bfb40d0>)
+- find -> find plate -> ok
+- pickup -> pickup bread -> ok
+- slice -> slice bread -> ok
+- put -> put plate -> ok
+- find -> find toaster -> ok
+- pickup -> pickup bread -> ok
+- put -> put toaster -> ok
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

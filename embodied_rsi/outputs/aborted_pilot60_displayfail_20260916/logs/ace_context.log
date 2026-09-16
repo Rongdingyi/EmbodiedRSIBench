@@ -1,0 +1,175 @@
+[ace_context] S000 probe FAIL (unchanged=True infra=7)
+Warning: sentence-transformers or faiss not available for bulletpoint analysis.
+Install with: pip install sentence-transformers faiss-cpu
+[REFLECTOR] Starting call reflect_39a9f8a930eb004a155843c1...
+[REFLECTOR] Call reflect_39a9f8a930eb004a155843c1 completed in 10.94s
+[LOG] reflector call logged to reflector_reflect_39a9f8a930eb004a155843c1_20260916_211640_989.json
+[CURATOR] Starting call curate_39a9f8a930eb004a155843c1...
+[CURATOR] Call curate_39a9f8a930eb004a155843c1 completed in 7.76s
+[LOG] curator call logged to curator_curate_39a9f8a930eb004a155843c1_20260916_211648_752.json
+✅ Curator JSON schema validated successfully: 3 operations
+  Added bullet sai-00001 to section strategies_and_insights
+  Added bullet sai-00002 to section strategies_and_insights
+  Added bullet err-00003 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 1/30 39a9f8a930eb004a155843c1 success=True env_steps=8 state_changed=True (146s)
+[REFLECTOR] Starting call reflect_8ea46e8d0b384acee00f5984...
+[REFLECTOR] Call reflect_8ea46e8d0b384acee00f5984 completed in 12.31s
+[LOG] reflector call logged to reflector_reflect_8ea46e8d0b384acee00f5984_20260916_211912_272.json
+[CURATOR] Starting call curate_8ea46e8d0b384acee00f5984...
+[CURATOR] Call curate_8ea46e8d0b384acee00f5984 completed in 11.37s
+[LOG] curator call logged to curator_curate_8ea46e8d0b384acee00f5984_20260916_211923_639.json
+✅ Curator JSON schema validated successfully: 3 operations
+  Added bullet sai-00004 to section strategies_and_insights
+  Added bullet sai-00005 to section strategies_and_insights
+  Added bullet err-00006 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=6 state_changed=True (155s)
+[REFLECTOR] Starting call reflect_7802f5fb304e2e4e21b38427...
+[REFLECTOR] Call reflect_7802f5fb304e2e4e21b38427 completed in 22.31s
+[LOG] reflector call logged to reflector_reflect_7802f5fb304e2e4e21b38427_20260916_212133_997.json
+[CURATOR] Starting call curate_7802f5fb304e2e4e21b38427...
+[CURATOR] Call curate_7802f5fb304e2e4e21b38427 completed in 9.16s
+[LOG] curator call logged to curator_curate_7802f5fb304e2e4e21b38427_20260916_212143_156.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=8 state_changed=True (140s)
+[REFLECTOR] Starting call reflect_fda43d9972133290afc4e4f8...
+[REFLECTOR] Call reflect_fda43d9972133290afc4e4f8 completed in 20.61s
+[LOG] reflector call logged to reflector_reflect_fda43d9972133290afc4e4f8_20260916_212538_920.json
+[CURATOR] Starting call curate_fda43d9972133290afc4e4f8...
+[CURATOR] Call curate_fda43d9972133290afc4e4f8 completed in 2.57s
+[LOG] curator call logged to curator_curate_fda43d9972133290afc4e4f8_20260916_212541_488.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=5 state_changed=True (238s)
+[REFLECTOR] Starting call reflect_8901c7d48b4d1bd6f22c78a9...
+[REFLECTOR] Call reflect_8901c7d48b4d1bd6f22c78a9 completed in 20.49s
+[LOG] reflector call logged to reflector_reflect_8901c7d48b4d1bd6f22c78a9_20260916_212803_071.json
+[CURATOR] Starting call curate_8901c7d48b4d1bd6f22c78a9...
+[CURATOR] Call curate_8901c7d48b4d1bd6f22c78a9 completed in 4.99s
+[LOG] curator call logged to curator_curate_8901c7d48b4d1bd6f22c78a9_20260916_212808_068.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=True (147s)
+[REFLECTOR] Starting call reflect_118ab8288a38e5aaa5fc0620...
+[REFLECTOR] Call reflect_118ab8288a38e5aaa5fc0620 completed in 18.17s
+[LOG] reflector call logged to reflector_reflect_118ab8288a38e5aaa5fc0620_20260916_212829_093.json
+[CURATOR] Starting call curate_118ab8288a38e5aaa5fc0620...
+[CURATOR] Call curate_118ab8288a38e5aaa5fc0620 completed in 6.51s
+[LOG] curator call logged to curator_curate_118ab8288a38e5aaa5fc0620_20260916_212835_607.json
+✅ Curator JSON schema validated successfully: 1 operations
+  Added bullet sai-00007 to section strategies_and_insights
+  - ADD: No reason given
+[ace_context] experience 6/30 118ab8288a38e5aaa5fc0620 success=None env_steps=0 state_changed=True (27s)
+[REFLECTOR] Starting call reflect_fd44b1790c66485aae012861...
+[REFLECTOR] Call reflect_fd44b1790c66485aae012861 completed in 22.31s
+[LOG] reflector call logged to reflector_reflect_fd44b1790c66485aae012861_20260916_213143_913.json
+[CURATOR] Starting call curate_fd44b1790c66485aae012861...
+[CURATOR] Call curate_fd44b1790c66485aae012861 completed in 21.65s
+[LOG] curator call logged to curator_curate_fd44b1790c66485aae012861_20260916_213205_565.json
+❌ Curator JSON parsing failed: Failed to extract valid JSON from curator response
+📄 Raw curator response preview: ...
+📝 Curator failure logged to: /data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/pilot60/ace_context/seed_20260915/rsi_state/llm_logs/curator_failures.txt
+⏭️  Skipping curator operation due to invalid JSON format
+[ace_context] experience 7/30 fd44b1790c66485aae012861 success=False env_steps=8 state_changed=True (210s)
+[REFLECTOR] Starting call reflect_024f0f6a00587246b173332c...
+[REFLECTOR] Call reflect_024f0f6a00587246b173332c completed in 21.02s
+[LOG] reflector call logged to reflector_reflect_024f0f6a00587246b173332c_20260916_213229_535.json
+[CURATOR] Starting call curate_024f0f6a00587246b173332c...
+[CURATOR] Call curate_024f0f6a00587246b173332c completed in 11.89s
+[LOG] curator call logged to curator_curate_024f0f6a00587246b173332c_20260916_213241_424.json
+✅ Curator JSON schema validated successfully: 1 operations
+  Added bullet sai-00008 to section strategies_and_insights
+  - ADD: No reason given
+[ace_context] experience 8/30 024f0f6a00587246b173332c success=None env_steps=0 state_changed=True (35s)
+[REFLECTOR] Starting call reflect_d46bfd9c78877123e3a33459...
+[REFLECTOR] Call reflect_d46bfd9c78877123e3a33459 completed in 22.09s
+[LOG] reflector call logged to reflector_reflect_d46bfd9c78877123e3a33459_20260916_213512_622.json
+[CURATOR] Starting call curate_d46bfd9c78877123e3a33459...
+[CURATOR] Call curate_d46bfd9c78877123e3a33459 completed in 5.13s
+[LOG] curator call logged to curator_curate_d46bfd9c78877123e3a33459_20260916_213517_756.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 9/30 d46bfd9c78877123e3a33459 success=False env_steps=7 state_changed=True (156s)
+[REFLECTOR] Starting call reflect_254490a0a79cf4400009b339...
+[REFLECTOR] Call reflect_254490a0a79cf4400009b339 completed in 22.22s
+[LOG] reflector call logged to reflector_reflect_254490a0a79cf4400009b339_20260916_213657_296.json
+[CURATOR] Starting call curate_254490a0a79cf4400009b339...
+[CURATOR] Call curate_254490a0a79cf4400009b339 completed in 8.84s
+[LOG] curator call logged to curator_curate_254490a0a79cf4400009b339_20260916_213706_133.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 10/30 254490a0a79cf4400009b339 success=False env_steps=8 state_changed=True (108s)
+[REFLECTOR] Starting call reflect_48f70d107f5b702a2eb39617...
+[REFLECTOR] Call reflect_48f70d107f5b702a2eb39617 completed in 20.51s
+[LOG] reflector call logged to reflector_reflect_48f70d107f5b702a2eb39617_20260916_213912_247.json
+[CURATOR] Starting call curate_48f70d107f5b702a2eb39617...
+[CURATOR] Call curate_48f70d107f5b702a2eb39617 completed in 2.14s
+[LOG] curator call logged to curator_curate_48f70d107f5b702a2eb39617_20260916_213914_390.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 11/30 48f70d107f5b702a2eb39617 success=False env_steps=8 state_changed=True (128s)
+[REFLECTOR] Starting call reflect_b4b66ccef4b6574a03487ec7...
+[REFLECTOR] Call reflect_b4b66ccef4b6574a03487ec7 completed in 22.06s
+[LOG] reflector call logged to reflector_reflect_b4b66ccef4b6574a03487ec7_20260916_214125_069.json
+[CURATOR] Starting call curate_b4b66ccef4b6574a03487ec7...
+[CURATOR] Call curate_b4b66ccef4b6574a03487ec7 completed in 5.48s
+[LOG] curator call logged to curator_curate_b4b66ccef4b6574a03487ec7_20260916_214130_553.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 12/30 b4b66ccef4b6574a03487ec7 success=False env_steps=8 state_changed=True (136s)
+[REFLECTOR] Starting call reflect_4a97f0840bafb152996f2e80...
+[REFLECTOR] Call reflect_4a97f0840bafb152996f2e80 completed in 21.20s
+[LOG] reflector call logged to reflector_reflect_4a97f0840bafb152996f2e80_20260916_214415_645.json
+[CURATOR] Starting call curate_4a97f0840bafb152996f2e80...
+[CURATOR] Call curate_4a97f0840bafb152996f2e80 completed in 2.34s
+[LOG] curator call logged to curator_curate_4a97f0840bafb152996f2e80_20260916_214417_985.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 13/30 4a97f0840bafb152996f2e80 success=False env_steps=5 state_changed=True (167s)
+[REFLECTOR] Starting call reflect_ac94d453797c68aa2ca35c40...
+[REFLECTOR] Call reflect_ac94d453797c68aa2ca35c40 completed in 16.77s
+[LOG] reflector call logged to reflector_reflect_ac94d453797c68aa2ca35c40_20260916_214437_375.json
+[CURATOR] Starting call curate_ac94d453797c68aa2ca35c40...
+[CURATOR] Call curate_ac94d453797c68aa2ca35c40 completed in 21.04s
+[LOG] curator call logged to curator_curate_ac94d453797c68aa2ca35c40_20260916_214458_413.json
+❌ Curator JSON parsing failed: Failed to extract valid JSON from curator response
+📄 Raw curator response preview: ...
+📝 Curator failure logged to: /data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/pilot60/ace_context/seed_20260915/rsi_state/llm_logs/curator_failures.txt
+⏭️  Skipping curator operation due to invalid JSON format
+[ace_context] experience 14/30 ac94d453797c68aa2ca35c40 success=None env_steps=0 state_changed=True (40s)
+[REFLECTOR] Starting call reflect_af7d9cda2ce61e372c12e879...
+[REFLECTOR] Call reflect_af7d9cda2ce61e372c12e879 completed in 21.29s
+[LOG] reflector call logged to reflector_reflect_af7d9cda2ce61e372c12e879_20260916_214736_701.json
+[CURATOR] Starting call curate_af7d9cda2ce61e372c12e879...
+[CURATOR] Call curate_af7d9cda2ce61e372c12e879 completed in 2.25s
+[LOG] curator call logged to curator_curate_af7d9cda2ce61e372c12e879_20260916_214738_955.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 15/30 af7d9cda2ce61e372c12e879 success=False env_steps=8 state_changed=True (161s)
+[REFLECTOR] Starting call reflect_af42691cc783441286a66457...
+[REFLECTOR] Call reflect_af42691cc783441286a66457 completed in 21.58s
+[LOG] reflector call logged to reflector_reflect_af42691cc783441286a66457_20260916_215017_342.json
+[CURATOR] Starting call curate_af42691cc783441286a66457...
+[CURATOR] Call curate_af42691cc783441286a66457 completed in 3.01s
+[LOG] curator call logged to curator_curate_af42691cc783441286a66457_20260916_215020_353.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 16/30 af42691cc783441286a66457 success=False env_steps=8 state_changed=True (161s)
+[REFLECTOR] Starting call reflect_e0a791f31631dab6573c5e31...
+[REFLECTOR] Call reflect_e0a791f31631dab6573c5e31 completed in 11.63s
+[LOG] reflector call logged to reflector_reflect_e0a791f31631dab6573c5e31_20260916_215035_246.json
+[CURATOR] Starting call curate_e0a791f31631dab6573c5e31...
+[CURATOR] Call curate_e0a791f31631dab6573c5e31 completed in 11.83s
+[LOG] curator call logged to curator_curate_e0a791f31631dab6573c5e31_20260916_215047_073.json
+✅ Curator JSON schema validated successfully: 1 operations
+  Added bullet sai-00009 to section strategies_and_insights
+  - ADD: No reason given
+[ace_context] experience 17/30 e0a791f31631dab6573c5e31 success=None env_steps=0 state_changed=True (26s)
+[REFLECTOR] Starting call reflect_78a6df9d17c48d835eb5061f...
+[REFLECTOR] Call reflect_78a6df9d17c48d835eb5061f completed in 21.33s
+[LOG] reflector call logged to reflector_reflect_78a6df9d17c48d835eb5061f_20260916_215345_711.json
+[CURATOR] Starting call curate_78a6df9d17c48d835eb5061f...
+[CURATOR] Call curate_78a6df9d17c48d835eb5061f completed in 9.93s
+[LOG] curator call logged to curator_curate_78a6df9d17c48d835eb5061f_20260916_215355_641.json
+✅ Curator JSON schema validated successfully: 2 operations
+  Added bullet sai-00010 to section strategies_and_insights
+  Added bullet err-00011 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 18/30 78a6df9d17c48d835eb5061f success=False env_steps=2 state_changed=True (189s)

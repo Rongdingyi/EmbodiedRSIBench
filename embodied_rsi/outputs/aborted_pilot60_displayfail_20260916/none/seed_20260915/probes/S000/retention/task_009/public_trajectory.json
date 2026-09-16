@@ -1,0 +1,92 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_12_navigate_to_the_sofa",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 12467,
+      "output_tokens": 454,
+      "charged_tokens": 12921,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_05_navigate_to_the_chair_1",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 27175,
+      "output_tokens": 5340,
+      "charged_tokens": 32515,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "skill_12_navigate_to_the_sofa",
+      "parameters": {}
+    },
+    "public_env_feedback": "Last action executed successfully.",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 28503,
+      "output_tokens": 7617,
+      "charged_tokens": 36120,
+      "sources": {
+        "provider": 2
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "task_complete",
+      "parameters": {
+        "summary": "Arrived at the large gray sofa with a backrest; visual evidence confirms the robot is at the matching target furniture.",
+        "target_object": "gray sofa (large gray piece of furniture with a backrest)",
+        "evidence_refs": [
+          "current_observation:3:current_view"
+        ]
+      }
+    },
+    "public_env_feedback": "task_complete",
+    "action_success": null,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 14985,
+      "output_tokens": 4960,
+      "charged_tokens": 19945,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

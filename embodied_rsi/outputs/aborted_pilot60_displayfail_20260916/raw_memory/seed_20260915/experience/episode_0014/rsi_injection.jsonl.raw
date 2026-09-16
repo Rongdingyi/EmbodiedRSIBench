@@ -1,0 +1,45 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Find a mug and move it to the sofa.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_44_pick_up_the_mug -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+- skill_56_place_at_the_sofa -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_44_pick_up_the_mug -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+
+[Episode 2]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 0)
+Trajectory summary:
+
+[Episode 3]
+Task: Deliver a green round fruit to the intended a large gray piece of furniture with a backrest by physically moving it there.
+Outcome: Failure (steps: 6)
+Trajectory summary:
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+- skill_56_place_at_the_sofa -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- ask_human -> 
+
+[Episode 4]
+Task: I'd like to read the book on my desk before bed. Please tidy up the bed first, then bring the book and place it on the bed for me.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

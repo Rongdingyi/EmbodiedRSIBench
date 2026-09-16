@@ -29,7 +29,7 @@ probe_update_enabled: false                  # frozen probes, state hash must no
 budgets:
   openeta_turns: 8
   openeta_tool_calls: 40
-  episode_timeout_s: 900
+  episode_timeout_s: 1200
   planner_max_output_tokens: 8192
   max_total_tokens: 2000000
   max_env_steps:

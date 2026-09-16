@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+Before acting, verify preconditions instead of assuming success. For pickup: confirm the target object exists, is visible, reachable, and in the current location before attempting to grasp it. For movement: check that the intended path is clear of obstacles before issuing a move command. If an action fails, diagnose likely causes such as object absence, unreachability, or an obstruction, then navigate around, remove, or replan rather than retrying blindly.
+
+## Preliminary Thinking
+For each item (Cup, Bowl, Pot, Mug): 1) Locate and confirm the item is present and reachable; navigate to its location if needed. 2) Check the path to the item and to its storage location for obstacles; clear or replan around any blockage. 3) Attempt pickup only after verification, and confirm the robot is holding the item. 4) Move to the storage location using a verified clear path, place the item, and confirm release/placement. 5) If any step fails, re-check object presence/reachability and path clearance before retrying or replanning. 6) Repeat for the next item until all four objects are put away.
+[/PERSISTENT EXPERIENCE GUIDANCE]

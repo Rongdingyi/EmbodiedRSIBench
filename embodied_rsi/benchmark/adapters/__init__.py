@@ -47,7 +47,7 @@ class SubprocessAdapter(BenchmarkEnvAdapter):
     worker_env: dict = {}
     worker_cwd: Path | None = None
 
-    op_timeout_s = 300.0
+    op_timeout_s = 600.0
 
     def __init__(self) -> None:
         self.worker = SimulatorWorker(

@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+The available process experiences are redundant: both describe a failure where a forward movement prediction was wrong because a stool blocked the robot's path. The key consolidated lesson is that movement commands should not be issued under the assumption that the path is clear. Before moving toward any target, verify the intended path for obstacles. If an obstruction is found, respond by navigating around it, removing it, or replanning the route instead of retrying or assuming forward motion will succeed.
+
+## Preliminary Thinking
+1. Locate the mug, coffee supplies, water source, and heating equipment. 2. Before each movement toward the mug, coffee, water, heater, sink, or storage location, scan the intended path for obstacles such as stools or clutter. 3. If a path is blocked, navigate around the obstacle, clear it if safe, or choose an alternate route. 4. Prepare the coffee by placing the mug appropriately, adding coffee and water, and heating it as needed. 5. Drink the coffee. 6. Wash the mug at the sink, dry it if necessary, and store it in its designated location. 7. If any move action fails, do not assume the next identical move will work; stop and replan around the detected blockage.
+[/PERSISTENT EXPERIENCE GUIDANCE]
