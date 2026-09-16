@@ -1,0 +1,7 @@
+[AsgardBench] done: 20 tasks
+[EB-ALFRED] done: 20 tasks
+[EB-Habitat] done: 20 tasks
+[SpatialWorld] done: 20 tasks
+[TVRBench] done: 20 tasks
+
+G3 ADAPTER GATE: PASS  (total=100 crashes=0 crash_rate=0.000 schema_failures=0 leakage=0)

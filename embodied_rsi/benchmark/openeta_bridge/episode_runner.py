@@ -134,8 +134,9 @@ def run_episode(task: dict, adapter: BenchmarkEnvAdapter, rsi, *,
             max_total_tokens=int(cfg["max_total_tokens"]),
             recovery_turns_per_branch=int(cfg["recovery_turns_per_branch"]),
             max_recovery_turns=int(cfg["max_recovery_turns"]),
-            metadata={"global_task_id": task["global_task_id"], "role": role,
-                      "source_dataset": task["source_dataset"]},
+            # internal benchmark identifiers (task id / role / dataset) stay in
+            # our logs; they must never enter the agent's memory or prompt.
+            metadata={},
         )
         public_trajectory = _public_trajectory(upstream)
         upstream_summary = {
@@ -245,7 +246,9 @@ def _private_reference_values(task: dict) -> list[str]:
     if private:
         values.append(json.dumps(private, sort_keys=True, separators=(",", ":")))
 
-    identifier_like = re.compile(r"^[A-Za-z0-9_\-:.|]{8,}$")
+    # identifier-like only: a plain dictionary word that also occurs in the
+    # public instruction (e.g. "Microwave") must NOT be treated as private.
+    identifier_like = re.compile(r"^[A-Za-z0-9_\-:.|]*[0-9_:|.\-][A-Za-z0-9_\-:.|]{6,}$")
 
     def walk(node):
         if isinstance(node, str):

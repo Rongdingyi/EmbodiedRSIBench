@@ -43,6 +43,9 @@ class SimulatorWorker:
             [python, str(self.script)],
             stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
             text=False, cwd=str(cwd) if cwd else None, env=full_env, bufsize=0,
+            # own process group so the simulator child (Unity) dies with the
+            # worker even when the worker is killed on timeout (leak guard)
+            start_new_session=True,
         )
         self._id = 0
         self._lines: queue.Queue = queue.Queue()
@@ -81,9 +84,24 @@ class SimulatorWorker:
             raise WorkerError(f"{op} failed: {resp.get('error')}")
         return resp.get("result", {})
 
-    def kill(self) -> None:
+    def _kill_process_group(self, sig: int) -> None:
+        import signal
+
         try:
-            self.proc.kill()
+            os.killpg(os.getpgid(self.proc.pid), sig)
+        except Exception:
+            try:
+                self.proc.send_signal(signal.Signals(sig))
+            except Exception:
+                pass
+
+    def kill(self) -> None:
+        """Kill the worker AND its simulator children (Unity) via the group."""
+        import signal
+
+        self._kill_process_group(signal.SIGKILL)
+        try:
+            self.proc.wait(timeout=5)
         except Exception:
             pass
 
@@ -115,12 +133,14 @@ class SimulatorWorker:
         except Exception:
             pass
         finally:
+            import signal
+
             try:
-                self.proc.terminate()
+                self._kill_process_group(signal.SIGTERM)
                 self.proc.wait(timeout=10)
             except Exception:
                 try:
-                    self.proc.kill()
+                    self._kill_process_group(signal.SIGKILL)
                     self.proc.wait(timeout=5)
                 except Exception:
                     pass

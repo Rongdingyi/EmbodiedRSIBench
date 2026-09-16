@@ -63,6 +63,8 @@ def main() -> int:
 
     before = snapshot_native_roots()
     results = []
+    episode_index: dict[str, str] = {}
+    episode_counter = 0
     invalid_actions = 0
     total_tool_calls = 0
     rgb_delivered = 0
@@ -76,10 +78,14 @@ def main() -> int:
                         key=lambda r: rank(r["global_task_id"]))[:SAMPLES_PER_SOURCE]
         for rec in sample:
             episodes += 1
+            episode_counter += 1
             rsi = NoneRSI()
             rsi.init_run({"state_root": str(OUT / "smoke_state" / "none"), "run_id": "g4"})
             adapter = make_adapter(source)
-            ep_dir = OUT / "openeta_baseline" / rec["global_task_id"]
+            # neutral dir name: artifact paths are visible to the planner, so they
+            # must not carry benchmark identifiers (mapping kept in a side file)
+            ep_dir = OUT / "openeta_baseline" / f"ep{episode_counter:03d}"
+            episode_index[str(ep_dir)] = rec["global_task_id"]
             res = run_episode(
                 rec, adapter, rsi, role=rec["role"], output_dir=ep_dir,
                 config={"max_turns": 4, "max_tool_calls": 16, "timeout_s": 600,
@@ -138,6 +144,9 @@ def main() -> int:
         "results": results,
     }
     (OUT / "OPENETA_BASELINE.json").write_text(json.dumps(report, indent=2) + "\n")
+    (OUT / "OPENETA_BASELINE_EPISODE_INDEX.json").write_text(
+        json.dumps({"note": "maps neutral episode dirs to task ids (never model-visible)",
+                    "map": episode_index}, indent=2) + "\n")
     for name, ok in checks.items():
         print(f"[{'ok' if ok else 'FAIL'}] {name}")
     print(f"\nG4 OPENETA BASELINE GATE: {status}")
