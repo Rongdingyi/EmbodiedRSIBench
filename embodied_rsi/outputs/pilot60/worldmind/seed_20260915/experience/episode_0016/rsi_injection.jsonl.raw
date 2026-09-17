@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+Before moving toward a target, verify the intended path is clear and plan to navigate around obstacles rather than assuming forward movement will succeed. Movement obstruction does not imply the target object is unreachable; check the object's actual proximity to the agent before predicting pickup failure. Before attempting to pick up an object, ensure the robot's hand is empty; if not, place or drop any held object first. If a find action fails, do not assume the target is present or visible; instead, explore alternate locations or confirm object availability before relying on discovery.
+
+## Preliminary Thinking
+1. If the object's location is unknown, attempt to find it; if the find action fails, explore the environment or check alternate locations. 2. Before moving toward the object, check for obstacles along the path and plan a clear route, navigating around obstacles if necessary. 3. Once near the object, verify it is within reach before attempting to pick; do not infer unreachability from movement obstruction alone. 4. Ensure the robot's hand is empty; if holding an object, place or drop it first. 5. Attempt to pick up the object. If pick fails, re-check proximity and hand state.
+[/PERSISTENT EXPERIENCE GUIDANCE]

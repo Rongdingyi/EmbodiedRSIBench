@@ -1,0 +1,23 @@
+{
+  "success": false,
+  "partial": null,
+  "measures": {
+    "num_steps": 3,
+    "was_prev_action_invalid": false,
+    "predicate_task_success": false,
+    "lang_goal": "Deliver a small red object with green top to the intended a large gray piece of furniture with a backrest by physically moving it there.",
+    "task_progress": 0.0,
+    "subgoal_reward": 0.0,
+    "num_invalid_actions": 0,
+    "action": "nav(receptacle_aabb_Sofa_frl_apartment_sofa)",
+    "env_feedback": "Last action executed successfully.",
+    "env_step": 3,
+    "action_id": 12,
+    "action_description": "navigate to the sofa",
+    "reasoning": "",
+    "instruction": "Deliver a small red object with green top to the intended a large gray piece of furniture with a backrest by physically moving it there.",
+    "last_action_success": 1.0,
+    "task_success": false
+  },
+  "physical_task_id": "ebh:85ac758786303c8fa9216a1d"
+}

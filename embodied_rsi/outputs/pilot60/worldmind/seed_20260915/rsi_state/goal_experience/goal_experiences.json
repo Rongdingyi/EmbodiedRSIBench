@@ -1,0 +1,6 @@
+[
+  {
+    "instruction": "Place a newspaper on a couch.",
+    "goal_experience": "To place an object on a target surface, first locate the object (e.g., newspaper), then pick it up. Next, locate the target surface (e.g., couch); if the first search fails because the named target instance is unavailable, explore other instances or retry rather than stopping. Once both the held object and a valid target location are available, execute put_down to place the object on the target. Success is indicated by successful find and pick_up for the object, successful find of the target surface, and a final successful put_down."
+  }
+]

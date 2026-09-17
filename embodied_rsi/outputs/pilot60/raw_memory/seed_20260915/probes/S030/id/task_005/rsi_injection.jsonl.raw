@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Put away the Cup, Bowl, Pot and Mug
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find Cup -> ok
+- find -> find Pot -> ok
+- find -> find Cup -> ok
+- pickup -> pickup Cup -> ok
+- put_away -> put_away Cup -> ok
+- pickup -> pickup Bowl -> ok
+- put_away -> put_away Bowl -> ok
+- find -> find Pot -> ok
+
+[Episode 2]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Success (steps: 8)
+Trajectory summary:
+- find -> find Apple -> ok
+- slice -> slice Apple -> ok
+- pickup -> pickup Apple -> failed (<AsgardBench.objects.StepError object at 0x797e82df9ea0>)
+- pickup -> pickup Apple -> ok
+- find -> find Plate -> ok
+- put -> put Plate -> ok
+- find -> find AppleSliced -> ok
+- find -> find Bowl -> ok
+
+[Episode 3]
+Task: Slice the Tomato and put a piece in the Bowl
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find tomato -> failed (<AsgardBench.objects.StepError object at 0x7b73b3dd8130>)
+- find -> find bowl -> ok
+- pickup -> pickup tomato -> ok
+- slice -> slice tomato -> ok
+- put -> put bowl -> ok
+- find -> find tomato -> ok
+- pickup -> pickup tomato -> ok
+- put -> put bowl -> ok
+
+[Episode 4]
+Task: Fry a potato slice and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find potato -> failed (<AsgardBench.objects.StepError object at 0x741f14323040>)
+- find -> find fridge -> ok
+- open -> open fridge -> ok
+- find -> find potato -> ok
+- pickup -> pickup potato -> ok
+- slice -> slice potato -> ok
+- find -> find pan -> ok
+- put -> put pan -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

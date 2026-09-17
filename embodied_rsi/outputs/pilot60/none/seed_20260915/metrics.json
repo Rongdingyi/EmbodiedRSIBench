@@ -1,0 +1,34 @@
+{
+  "method": "none",
+  "status": "PASS",
+  "full_run": true,
+  "checks": {
+    "experience count == manifest": true,
+    "S000 probe PASS": true,
+    "S030 probe PASS": true,
+    "probe task counts == manifest": true,
+    "infrastructure crash rate < 2%": true,
+    "no experience failure": true,
+    "no leakage": true,
+    "final checkpoint is S030": true
+  },
+  "experience": 30,
+  "state_updates": 0,
+  "probe_state_unchanged": true,
+  "infra_errors": 0,
+  "experience_failures": 0,
+  "leakage_violations": 0,
+  "accounting": {
+    "planner_input_tokens": 2394660,
+    "planner_output_tokens": 689845,
+    "planner_calls": 295,
+    "rsi_update_input_tokens": 0,
+    "rsi_update_output_tokens": 0,
+    "worldmind_prediction_sidecar_tokens": 0,
+    "simulator_steps": 213,
+    "rsi_injection_tokens": 0
+  },
+  "updater_tokens": 0,
+  "env_steps": 213,
+  "wall_s": 14821.0
+}

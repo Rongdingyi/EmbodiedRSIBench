@@ -1,0 +1,40 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I cannot reproduce the target viewpoint because the target image was not delivered with this turn. The observation packet advertises two camera artifacts (frame_id=current_view index 0 and frame_id=target_view index 1), but only current_view was provided as visual evidence, and no target or current camera pose is exposed (robot.base_pose = null). Please provide the target_view image (artifact step000_1_target_view.png) and, if available, the target/current camera poses (position + yaw/pitch) or the relative transform. With that evidence I can plan bounded viewpoint actions (rotate/move) and verify convergence; without it, any motion I command is unverifiable.",
+        "evidence_needed": [
+          "target_view image (frame_id=target_view, index 1, 640x480 png)",
+          "target camera pose (position and orientation) or current-to-target relative transform",
+          "current camera pose (robot base_pose / camera calibration) if target pose is not given directly"
+        ],
+        "blocked_actions": [
+          "MoveAhead",
+          "MoveBack",
+          "MoveLeft",
+          "MoveRight",
+          "RotateLeft",
+          "RotateRight",
+          "LookUp",
+          "LookDown"
+        ]
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4667,
+      "output_tokens": 2854,
+      "charged_tokens": 7521,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

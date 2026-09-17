@@ -1,0 +1,26 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I can only see the current scene frame; the target reference image (frame_id=target_view, role=scene_secondary) was not delivered as visual evidence, and no read/image-inspection tool is bound in this session. Please provide the target_view image (or its observable contents: which part of the kitchen is centered, apparent distance to the counter, left/right of door frame, etc.) so I can compute the required rotation and translation instead of moving blindly.",
+        "reason": "target_view reference image unavailable in current observations"
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4672,
+      "output_tokens": 1929,
+      "charged_tokens": 6601,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

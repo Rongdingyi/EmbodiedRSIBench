@@ -1,0 +1,29 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Prepare a mug of coffee, drink it, then wash and store the mug.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find mug -> failed (<AsgardBench.objects.StepError object at 0x71d5013d1c30>)
+- find -> find cup -> ok
+- pickup -> pickup mug -> ok
+- put -> put coffee_maker -> ok
+- toggle_on -> toggle_on coffee_maker -> ok
+- pickup -> pickup mug -> ok
+- drink -> drink  -> ok
+- clean -> clean mug -> ok
+
+[Episode 2]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

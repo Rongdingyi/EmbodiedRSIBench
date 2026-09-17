@@ -1,0 +1,27 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target viewpoint image is missing from this turn's evidence. I can see only the current scene (frame_id=\"current_view\"), while metadata lists a second artifact frame_id=\"target_view\" (role=scene_secondary, path .../step000_1_target_view.png). Please supply that target_view image (or a readable reference to it) so I can compare it against the current observation and plan the correct move/rotate/look actions.",
+        "missing_evidence": "frame_id=target_view (scene_secondary) target image not attached to this planner turn",
+        "blocked_tools": "MoveAhead, MoveBack, MoveLeft, MoveRight, RotateLeft, RotateRight, LookUp, LookDown"
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4672,
+      "output_tokens": 2434,
+      "charged_tokens": 7106,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

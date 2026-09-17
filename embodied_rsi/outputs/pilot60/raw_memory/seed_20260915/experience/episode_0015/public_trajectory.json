@@ -1,0 +1,89 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "LookDown",
+      "parameters": {}
+    },
+    "public_env_feedback": "LookDown -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4668,
+      "output_tokens": 1374,
+      "charged_tokens": 6042,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5820,
+      "output_tokens": 4127,
+      "charged_tokens": 9947,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "RotateLeft",
+      "parameters": {}
+    },
+    "public_env_feedback": "RotateLeft -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6470,
+      "output_tokens": 2436,
+      "charged_tokens": 8906,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I cannot see the target viewpoint image for this episode. My observation packet for step 3 only renders the current view (frame_id=current_view, role=scene_primary); the target_view artifact is referenced but not provided as inspectable visual evidence, and I have no tool to read the artifact file. Could you provide the target_view image (or a description of the target camera pose: relative yaw/pitch change and forward/back/left/right offset from my current view)? I will then continue matching it with MoveAhead/MoveBack/MoveLeft/MoveRight/RotateLeft/RotateRight/LookUp/LookDown.",
+        "reason": "Missing target-view evidence needed to compute viewpoint error"
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 6742,
+      "output_tokens": 2693,
+      "charged_tokens": 9435,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

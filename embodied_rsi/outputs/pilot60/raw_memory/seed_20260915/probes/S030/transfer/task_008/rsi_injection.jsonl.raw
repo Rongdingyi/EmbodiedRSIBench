@@ -1,0 +1,52 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Place a glass with a fork in it on the table in front of a glass pitcher.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- find -> Last action is invalid. Cannot find GlassPitcher. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Pitcher. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Bottle. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action is invalid. Cannot find Glass. This object may not exist in this scene. Try to explore other instances instead.
+
+[Episode 2]
+Task: Put a pan with an apple in it in the fridge.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- find -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+- find -> Last action executed successfully.
+- open -> Last action executed successfully.
+- find -> Last action executed successfully.
+
+[Episode 3]
+Task: Place a newspaper on a couch.
+Outcome: Success (steps: 5)
+Trajectory summary:
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- find -> Last action is invalid. Cannot find Couch. This object may not exist in this scene. Try to explore other instances instead.
+- find -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+
+[Episode 4]
+Task: Make a slice of toast and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find bread -> failed (<AsgardBench.objects.StepError object at 0x700e4fdebe80>)
+- find -> find fridge -> ok
+- find -> find bread -> ok
+- pickup -> pickup bread -> ok
+- slice -> slice bread -> ok
+- find -> find plate -> ok
+- put -> put plate -> ok
+- done -> Episode finished by agent.
+[/PERSISTENT EXPERIENCE GUIDANCE]

@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+To move an object to a target surface, follow a precondition-aware sequence: first locate the object and the target surface; navigate to the object's location before attempting pick_up, since manipulation skills require proximity and reachable grasping range; execute pick_up and verify the robot is actually holding the object before proceeding. If the object is not found or the pick fails, retry or explore other instances/locations rather than stopping. Next, locate the target surface; if the named target instance is unavailable, explore alternative valid instances or retry. Navigate to the target surface, then execute put_down only after confirming the robot is still holding the object. Success is indicated by successful find and pick_up of the object, successful find of the target surface, and successful put_down.
+
+## Preliminary Thinking
+1. Find the black mug on the desk. 2. If not already near it, navigate to the desk/mug location. 3. Pick up the black mug. 4. Verify the robot is holding the mug; if not, retry after ensuring proximity/reachability. 5. Find the nightstand. 6. If not already near it, navigate to the nightstand. 7. Place the mug on the nightstand using put_down only while holding it. 8. Verify the mug is successfully placed on the nightstand.
+[/PERSISTENT EXPERIENCE GUIDANCE]

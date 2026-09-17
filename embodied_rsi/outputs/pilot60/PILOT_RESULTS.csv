@@ -1,0 +1,5 @@
+method,seed,experience,initial_id,final_id,id_gain,id_n,initial_transfer,final_transfer,transfer_gain,transfer_n,initial_retention,final_retention,retention_gain,updater_tokens,env_steps,probe_state_unchanged
+ace_context,seed_20260915,30,0.0,0.0,0.0,10,0.0,0.0,0.0,10,0.1,0.0,-0.1,268166,225,True
+none,seed_20260915,30,0.1,0.0,-0.1,10,0.0,0.0,0.0,10,0.1,0.0,-0.1,0,213,True
+raw_memory,seed_20260915,30,0.0,0.0,0.0,10,0.0,0.0,0.0,10,0.2,0.1,-0.1,0,215,True
+worldmind,seed_20260915,30,0.0,0.1,0.1,10,0.0,0.0,0.0,10,0.0,0.1,0.1,318804,222,True

@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Put a heated tomato slice on the counter near the coffee maker.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- find -> Last action executed successfully.
+- pick_up -> Last action is invalid. Tomato is not visible because it is in CounterTop_2. Go there to pick the object instead.
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- slice -> Last action is invalid. Slice action failed
+- pick_up -> Last action is invalid. Robot is currently holding Tomato
+- find -> Last action executed successfully.
+
+[Episode 2]
+Task: Slice the Tomato and put a piece in the Bowl
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find tomato -> failed (<AsgardBench.objects.StepError object at 0x7b73b3dd8130>)
+- find -> find bowl -> ok
+- pickup -> pickup tomato -> ok
+- slice -> slice tomato -> ok
+- put -> put bowl -> ok
+- find -> find tomato -> ok
+- pickup -> pickup tomato -> ok
+- put -> put bowl -> ok
+
+[Episode 3]
+Task: Make a slice of toast and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find bread -> failed (<AsgardBench.objects.StepError object at 0x700e4fdebe80>)
+- find -> find fridge -> ok
+- find -> find bread -> ok
+- pickup -> pickup bread -> ok
+- slice -> slice bread -> ok
+- find -> find plate -> ok
+- put -> put plate -> ok
+- done -> Episode finished by agent.
+
+[Episode 4]
+Task: Fry a potato slice and serve it on a plate
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find potato -> failed (<AsgardBench.objects.StepError object at 0x741f14323040>)
+- find -> find fridge -> ok
+- open -> open fridge -> ok
+- find -> find potato -> ok
+- pickup -> pickup potato -> ok
+- slice -> slice potato -> ok
+- find -> find pan -> ok
+- put -> put pan -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

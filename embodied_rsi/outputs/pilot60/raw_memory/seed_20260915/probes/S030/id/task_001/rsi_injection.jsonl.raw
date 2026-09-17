@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: I'm about to start cooking, could you please pick up a potato for me?
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Rotate -> Rotate -> ok
+- Move -> Move -> ok
+- Move -> Move -> failed (Stool_c2b66393 is blocking Agent 0 from moving by (0.0000, 0.0000, -0.2500).)
+- Move -> Move -> ok
+
+[Episode 2]
+Task: Prepare a mug of coffee, drink it, then wash and store the mug.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find mug -> failed (<AsgardBench.objects.StepError object at 0x71d5013d1c30>)
+- find -> find cup -> ok
+- pickup -> pickup mug -> ok
+- put -> put coffee_maker -> ok
+- toggle_on -> toggle_on coffee_maker -> ok
+- pickup -> pickup mug -> ok
+- drink -> drink  -> ok
+- clean -> clean mug -> ok
+
+[Episode 3]
+Task: Put away the Cup, Bowl, Pot and Mug
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find Cup -> ok
+- find -> find Pot -> ok
+- find -> find Cup -> ok
+- pickup -> pickup Cup -> ok
+- put_away -> put_away Cup -> ok
+- pickup -> pickup Bowl -> ok
+- put_away -> put_away Bowl -> ok
+- find -> find Pot -> ok
+
+[Episode 4]
+Task: Deliver a green round fruit to the intended a large gray piece of furniture with a backrest by physically moving it there.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_06_navigate_to_the_table_1 -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+- skill_56_place_at_the_sofa -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_33_pick_up_the_apple -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_12_navigate_to_the_sofa -> Last action executed successfully.
+- skill_56_place_at_the_sofa -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+[/PERSISTENT EXPERIENCE GUIDANCE]

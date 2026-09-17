@@ -1,0 +1,129 @@
+[
+  {
+    "instruction": "I'm about to start cooking, could you please pick up a potato for me?",
+    "knowledge": [
+      "Experience: My prediction that moving forward 1.0 unit would get closer to the potato was wrong because a stool was directly blocking the agent's path, causing the move to fail. Lesson: Before moving toward a target, verify that the intended path is clear and plan to navigate around obstacles rather than assuming forward movement will succeed.",
+      "Experience: My prediction that moving ahead 0.5 units would bring the robot closer to the potato was wrong because the path was blocked by Stool_c2b66393, causing the Move action to fail immediately. Lesson: Before moving toward a target, check for obstacles along the intended path and choose a clear route or adjust the movement plan instead of assuming the path is unobstructed.",
+      "Experience: My prediction that Pick would fail because the potato was not within reach due to the stool blocking movement was wrong because the movement obstruction did not necessarily mean the potato was outside the pick interaction range; the potato was already close enough to pick successfully. Lesson: Do not infer that an object is unreachable from a movement obstruction alone; check the object's actual proximity to the agent before predicting pickup failure.",
+      "Experience: My prediction that the robot would pick up the potato was wrong because the robot's hand already contained another object, and the pick action failed with an InvalidOperationException. Lesson: Before attempting to pick up an object, always verify that the robot's hand is empty or free the hand by placing/dropping any held object first."
+    ]
+  },
+  {
+    "instruction": "Put away the Cup, Bowl, Pot and Mug",
+    "knowledge": [
+      "Experience: My prediction that the find action would locate the bowl was wrong because the action failed with a StepError, indicating the bowl was not discoverable in the current environment or the find skill could not identify it. Lesson: When a find action fails, do not assume the target object is present or visible; instead, explore the environment, check alternate locations, or confirm object availability before relying on discovery."
+    ]
+  },
+  {
+    "instruction": "Deliver a green round fruit to the intended a large gray piece of furniture with a backrest by physically moving it there.",
+    "knowledge": [
+      "Experience: My prediction that the robot had picked up the apple was wrong because the robot attempted to pick an object that was not near it, so the pick-up action was invalid. Lesson: Before attempting to pick up an object, verify that the robot has navigated to the object's location and is close enough to interact with it.",
+      "Experience: My prediction that the robot would pick up and hold the green apple was wrong because the robot was not near the apple, and the pick-up action failed its proximity precondition. Lesson: Before executing a pick-up action, first navigate to the target object or verify that it is within reach; never assume an object is held unless the pick-up action succeeds.",
+      "Experience: My prediction that the green round fruit had been placed at the sofa was wrong because the place action was executed while the robot was not holding the fruit, violating the place action's precondition. Lesson: Before attempting to place an object, always verify that the robot is currently holding that object and perform a pick action first if needed.",
+      "Experience: My prediction that the robot would be holding the apple after executing pick_up_the_apple was wrong because the apple was not near the robot, so the pick action was invalid and could not succeed. Lesson: Before attempting to pick up an object, verify that the object is within reach or navigate to its location first."
+    ]
+  },
+  {
+    "instruction": "Put a pan with an apple in it in the fridge.",
+    "knowledge": [
+      "Experience: My prediction that the fridge would open was wrong because the open action was invalid and failed in the environment, so I incorrectly assumed success without confirming the result. Lesson: Always verify that an action is applicable to the target object and check the environment feedback before assuming the action succeeded."
+    ]
+  },
+  {
+    "instruction": "Place a glass with a fork in it on the table in front of a glass pitcher.",
+    "knowledge": [
+      "Experience: My prediction that the robot would locate a glass was wrong because the 'find' action was invalid since no object named Glass exists in the scene. Lesson: Before searching for a specific object, verify that the object exists in the environment or explore available object instances; if the exact object is unavailable, adapt by searching for alternatives or valid labels instead of assuming it is present."
+    ]
+  },
+  {
+    "instruction": "Make a slice of toast and serve it on a plate",
+    "knowledge": [
+      "Experience: My prediction that the bread would be found was wrong because the first action 'find bread' returned a StepError instead of locating the object. Lesson: Do not assume a search or find action will succeed when the object's location and action validity are unverified; inspect the environment/action feedback first and adapt by exploring known storage locations or using valid skills before proceeding."
+    ]
+  },
+  {
+    "instruction": "Fry a potato slice and serve it on a plate",
+    "knowledge": [
+      "Experience: My prediction that the potato had been located was wrong because the find action failed with a StepError, indicating the object was not immediately discoverable or the search method was invalid in this state. Lesson: Never assume a target object is present or locatable after a failed search; verify the environment and search plausible containers or alternate locations before proceeding."
+    ]
+  },
+  {
+    "instruction": "Rinse off a ladle and move it to the table.",
+    "knowledge": [
+      "Experience: My prediction that the ladle had been located was wrong because the ladle was not directly visible—it was likely inside a receptacle or otherwise occluded—so the find action was invalid. Lesson: When searching for an object, do not assume it is visible or directly findable; first check likely containers or occluding receptacles by opening or inspecting them, then search for the object."
+    ]
+  },
+  {
+    "instruction": "Reproduce the target viewpoint: match the target image's position and camera angle.",
+    "knowledge": [
+      "Experience: My prediction that the robot would move one step forward and get closer to the target viewpoint was wrong because the MoveAhead action was blocked, meaning the forward path was obstructed or the agent was at a navigational boundary. Lesson: Before issuing a forward movement in spatial navigation tasks, verify that the path is clear or be prepared to rotate/adjust direction when MoveAhead is blocked."
+    ]
+  },
+  {
+    "instruction": "Place a newspaper on a couch.",
+    "knowledge": [
+      "Experience: My prediction that the robot had located the couch was wrong because the find action was invalid and the environment reported that Couch may not exist in the scene. Lesson: Before searching for a target object, verify that it exists in the environment or explore alternative names/instances; do not assume objects mentioned in the task are present with the exact expected label."
+    ]
+  },
+  {
+    "instruction": "Move a spoon from the right counter to the right receptacle of the left counter.",
+    "knowledge": [
+      "Experience: My prediction that the spoon would be in the robot's gripper after executing pick_up_the_spoon was wrong because the robot was not near the spoon; the spoon was on the right counter and no navigation action had moved the robot to it. Lesson: Before attempting to pick up or manipulate an object, ensure the robot is already at the object's location; if not, navigate to the object first.",
+      "Experience: My prediction that the spoon was placed in the right receptacle of the left counter was wrong because the robot attempted to place an object while not holding anything. Lesson: Always verify that the robot is currently holding the target object before executing a place action, and ensure the pick action has been successfully completed first."
+    ]
+  },
+  {
+    "instruction": "Move the plate to the black table, the screwdriver to the black table, and the cleanser to the black table.",
+    "knowledge": [
+      "Experience: My prediction that the robot had picked up the plate was wrong because the robot attempted skill_27_pick_up_the_plate without first navigating to the plate, and the environment reported that the robot cannot pick up an object that is not near it. Lesson: Always navigate to or verify proximity to the target object before invoking a pick-up action.",
+      "Experience: My prediction that the object would be placed on the black table was wrong because the robot was not holding any object when skill_50_place_at_the_table_1 was executed. Lesson: Before executing a place action, verify the robot is currently holding the target object (e.g., via gripper state or a confirmed pick action), and do not assume holding status from a prior successful action or from the instruction alone.",
+      "Experience: My prediction that the robot would be holding the cleanser after executing pick_up_the_cleanser was wrong because the cleanser was not near the robot; the agent attempted a pick-up skill without first navigating to or verifying proximity to the target object. Lesson: Before attempting to pick up any object, ensure the robot has navigated to and is within interaction range of the target object, or first locate and navigate to it."
+    ]
+  },
+  {
+    "instruction": "Could you help me out by picking up the pencil carefully and holding it securely?",
+    "knowledge": [
+      "Experience: My prediction that moving ahead would bring the robot closer to the pencil was wrong because Bed_a715bf50 blocked the path at the current position, causing the move to fail entirely. Lesson: Before executing a forward move, verify that the intended path is clear of obstacles; if blocked, replan by changing direction or navigating around the obstruction instead of assuming movement will succeed."
+    ]
+  },
+  {
+    "instruction": "Move a rubriks cube from the left counter to the right receptacle of the left counter.",
+    "knowledge": [
+      "Experience: My prediction that the robot would be holding the rubriks cube after executing skill_40_pick_up_the_rubriks_cube was wrong because the cube was not near the robot, so the pick-up action was invalid. Lesson: Before attempting to pick up an object, navigate to its location and verify it is within the robot's reachable grasping range; never assume a manipulation skill will succeed without satisfying its proximity precondition.",
+      "Experience: My prediction that the rubik's cube would be placed at the left counter/right receptacle after executing skill_55_place_at_the_left_counter_in_the_kitchen was wrong because the robot was not holding the rubik's cube, so the place action was invalid. Lesson: Before executing any placement skill, verify that the robot has already successfully picked up the target object; placement actions require the robot to be holding an object.",
+      "Experience: My prediction that the robot would pick up the rubriks cube and be holding it was wrong because the cube was not near the robot, so the pick action was invalid. Lesson: Before attempting to pick an object, verify that the robot is at the object's location or close enough to reach it; navigate to the object first if it is not nearby."
+    ]
+  },
+  {
+    "instruction": "I need to get ready for work. Please move the coffee from the bedside table to the desk.",
+    "knowledge": [
+      "Experience: My prediction that the robot would move 0.5 units forward was wrong because a wall (FP323:StandardWallSize.019) was blocking the path. Lesson: Always check for obstacles or walls before attempting to move, and verify that the intended path is clear."
+    ]
+  },
+  {
+    "instruction": "I'm putting things where they belong, so please pick up the credit card, carry it over, and set it down on the dresser neatly.",
+    "knowledge": [
+      "Experience: My prediction that the robot would move 0.5 units ahead successfully was wrong because Desk_86f41333 was blocking the agent's path, causing the move to fail. Lesson: Before predicting or executing a movement action, check for nearby obstacles and do not assume the path is clear just because a previous move succeeded.",
+      "Experience: My prediction that moving ahead 0.25 would bring the robot closer to the credit card was wrong because Desk_86f41333 blocked the movement along the intended vector (0.0000, 0.0000, -0.2500), causing the move to fail. Lesson: Before issuing a movement command, check that the intended path is clear of obstacles, and if movement is blocked, replan around or away from the obstruction instead of assuming positional progress."
+    ]
+  },
+  {
+    "instruction": "Put a heated chunk of apple in the fridge.",
+    "knowledge": [
+      "Experience: My prediction that the apple would be sliced was wrong because the slice action was rejected as invalid, indicating that its preconditions were not met (e.g., the apple was not accessible, not held, or no slicing tool was available). Lesson: Before executing an action on an object, verify that the object is present/accessible and that all action preconditions (tool, location, state) are satisfied; if an action fails as invalid, reassess the world state instead of assuming the intended effect occurred."
+    ]
+  },
+  {
+    "instruction": "Put a heated tomato slice on the counter near the coffee maker.",
+    "knowledge": [
+      "Experience: My prediction that the tomato had been sliced was wrong because the slice action failed, likely because the tomato was not available or a required precondition/tool was missing. Lesson: Always verify that the target object is present and all necessary preconditions are satisfied before executing an action and predicting its success."
+    ]
+  },
+  {
+    "instruction": "I have washed the spoon and fork; please remove them from the sink and place them on the countertop.",
+    "knowledge": [
+      "Experience: My prediction that executing Move ahead 0.5 would bring the robot 0.5 units closer to the sink was wrong because DiningTable_faa04a7c blocked the path and the Move action failed due to collision. Lesson: Before moving forward, verify the intended path is clear of obstacles; if blocked, replan by rotating or selecting a different direction instead of assuming movement will succeed.",
+      "Experience: My prediction that moving ahead after a successful Rotate action would make progress toward the sink was wrong because the new heading still faced an obstacle, causing the Move action to fail. Lesson: After changing orientation, re-check the environment and confirm the forward path is unobstructed before committing to a forward move."
+    ]
+  }
+]

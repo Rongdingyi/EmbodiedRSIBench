@@ -1,0 +1,118 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "tool_batch",
+      "parameters": {
+        "calls": [
+          {
+            "name": "find",
+            "parameters": {
+              "object": "Apple"
+            }
+          },
+          {
+            "name": "find",
+            "parameters": {
+              "object": "Plate"
+            }
+          },
+          {
+            "name": "find",
+            "parameters": {
+              "object": "Bowl"
+            }
+          }
+        ]
+      }
+    },
+    "public_env_feedback": "find Bowl -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 5710,
+      "output_tokens": 318,
+      "charged_tokens": 6028,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 2,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "find",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "find Apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7021,
+      "output_tokens": 221,
+      "charged_tokens": 7242,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 3,
+    "chosen_action": {
+      "action_type": "tool_call",
+      "name": "pickup",
+      "parameters": {
+        "object": "Apple"
+      }
+    },
+    "public_env_feedback": "pickup Apple -> ok",
+    "action_success": true,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 7589,
+      "output_tokens": 1898,
+      "charged_tokens": 9487,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  },
+  {
+    "step_idx": 4,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "talk",
+      "parameters": {
+        "message": "Planner could not produce a valid action request.",
+        "code": "planner_validation_failed",
+        "validation_errors": [
+          "Planner backend returned text without a <decision> element."
+        ],
+        "validation_attempts": 3
+      }
+    },
+    "public_env_feedback": "status_report",
+    "action_success": null,
+    "terminated": true,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 23070,
+      "output_tokens": 965,
+      "charged_tokens": 24035,
+      "sources": {
+        "provider": 3
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

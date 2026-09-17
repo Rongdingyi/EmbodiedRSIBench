@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+For object placement tasks such as placing a newspaper on a couch, use a locate-pick-locate-place loop: find the object, pick it up, find the target surface, then put it down. Do not stop when a find action fails; instead, retry, explore other instances or locations, and confirm availability. Before picking, ensure the robot hand is empty; if it is holding something, place or drop that object first. Before moving toward an object or target, check for obstacles and route around them; a movement obstruction does not by itself mean the object is out of reach, so verify actual proximity before predicting pickup failure. Success is indicated by successful find and pick_up for the object, successful find of the target surface, and a final successful put_down.
+
+## Preliminary Thinking
+1) Find the newspaper; if it is not found, retry or search other likely locations/instances. 2) Verify the robot hand is empty; if not, place or drop any held object first. 3) Pick up the newspaper, navigating around blocking obstacles and checking actual proximity rather than assuming blockage means unreachable. 4) Find the couch; if the named couch instance is unavailable, explore other couch instances or retry. 5) Move to a valid couch location while avoiding obstacles. 6) Put down the newspaper on the couch and verify that put_down succeeds.
+[/PERSISTENT EXPERIENCE GUIDANCE]

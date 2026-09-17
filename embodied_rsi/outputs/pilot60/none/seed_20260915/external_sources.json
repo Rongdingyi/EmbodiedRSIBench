@@ -1,0 +1,26 @@
+{
+  "OpenETA": {
+    "repo": "https://github.com/OpenMOSS/OpenETA",
+    "commit": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
+    "head": "7d4a0a1522ba8ebbd362bde880bad81d2a98f15e",
+    "clean": true
+  },
+  "ACE": {
+    "repo": "https://github.com/ace-agent/ace",
+    "commit": "82709de050e1db6e6ef2f07bcb0393560b94992a",
+    "head": "82709de050e1db6e6ef2f07bcb0393560b94992a",
+    "clean": true
+  },
+  "WorldMind": {
+    "repo": "https://github.com/zjunlp/WorldMind",
+    "commit": "712b0fd53b4bd6a1948603f087a1e9f25a5adaea",
+    "head": "712b0fd53b4bd6a1948603f087a1e9f25a5adaea",
+    "clean": true
+  },
+  "EmbodiSkill": {
+    "repo": "https://github.com/air-embodied-brain/EmbodiSkill",
+    "commit": "760126030eab1d33ec6a6f30988f0f1fb58df3a7",
+    "head": "760126030eab1d33ec6a6f30988f0f1fb58df3a7",
+    "clean": true
+  }
+}

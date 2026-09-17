@@ -1,0 +1,12 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## STRATEGIES & INSIGHTS
+
+[sai-00001] helpful=0 harmful=0 :: After any action that satisfies the task goal (e.g., a successful Pick of the requested object), immediately issue EndTask. Continuing with further actions is unnecessary and risks undoing the goal.
+[sai-00002] helpful=0 harmful=0 :: Explicitly track hand/object state: if the agent is already holding the target object, the goal is likely complete. Do not attempt additional Pick actions unless the task requires holding multiple objects.
+## FORMULAS & CALCULATIONS
+
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+[err-00003] helpful=0 harmful=0 :: Continuing to act after goal completion (e.g., extra Move or Pick actions) wastes steps and can fail due to blocked paths or a full hand. Always check goal satisfaction after each successful action and stop when done.
+[/PERSISTENT EXPERIENCE GUIDANCE]

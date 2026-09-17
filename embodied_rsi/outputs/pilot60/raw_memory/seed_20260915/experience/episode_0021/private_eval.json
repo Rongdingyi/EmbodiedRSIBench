@@ -1,0 +1,23 @@
+{
+  "success": false,
+  "partial": null,
+  "measures": {
+    "num_steps": 3,
+    "was_prev_action_invalid": false,
+    "predicate_task_success": false,
+    "lang_goal": "Move a spatula from the right counter to the right receptacle of the left counter.",
+    "task_progress": 0.0,
+    "subgoal_reward": 0.0,
+    "num_invalid_actions": 1,
+    "action": "nav(receptacle_aabb_drawer_left_top_frl_apartment_kitchen_counter)",
+    "env_feedback": "Last action executed successfully.",
+    "env_step": 3,
+    "action_id": 14,
+    "action_description": "navigate to the left drawer of the kitchen counter",
+    "reasoning": "",
+    "instruction": "Move a spatula from the right counter to the right receptacle of the left counter.",
+    "last_action_success": 1.0,
+    "task_success": false
+  },
+  "physical_task_id": "ebh:0e5ac0ca7d2ffcc7b1b361c1"
+}

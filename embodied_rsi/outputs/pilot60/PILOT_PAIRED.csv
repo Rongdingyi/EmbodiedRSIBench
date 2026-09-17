@@ -1,0 +1,13 @@
+method,seed,role,n,fail_to_success,success_to_fail,success_to_success,fail_to_fail,net_gain
+ace_context,seed_20260915,id,10,0,0,0,10,0
+ace_context,seed_20260915,transfer,10,0,0,0,10,0
+ace_context,seed_20260915,retention,10,0,1,0,9,-1
+none,seed_20260915,id,10,0,1,0,9,-1
+none,seed_20260915,transfer,10,0,0,0,10,0
+none,seed_20260915,retention,10,0,1,0,9,-1
+raw_memory,seed_20260915,id,10,0,0,0,10,0
+raw_memory,seed_20260915,transfer,10,0,0,0,10,0
+raw_memory,seed_20260915,retention,10,0,1,1,8,-1
+worldmind,seed_20260915,id,10,1,0,0,9,1
+worldmind,seed_20260915,transfer,10,0,0,0,10,0
+worldmind,seed_20260915,retention,10,1,0,0,9,1

@@ -1,0 +1,25 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target image needed to solve this task was not delivered in my evidence bundle. I can see only the current-scene frame (frame_id=current_view). Please provide the target viewpoint image (frame_id=target_view, listed at .../artifacts/step000_1_target_view.png) as an actual image, or confirm the relative camera pose (translation/rotation) from the current view to the target view. Without it I cannot ground a direction or magnitude for the next move."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4668,
+      "output_tokens": 1447,
+      "charged_tokens": 6115,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Success (steps: 8)
+Trajectory summary:
+- find -> find Apple -> ok
+- slice -> slice Apple -> ok
+- pickup -> pickup Apple -> failed (<AsgardBench.objects.StepError object at 0x797e82df9ea0>)
+- pickup -> pickup Apple -> ok
+- find -> find Plate -> ok
+- put -> put Plate -> ok
+- find -> find AppleSliced -> ok
+- find -> find Bowl -> ok
+
+[Episode 2]
+Task: Put a pan with an apple in it in the fridge.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- find -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+- find -> Last action executed successfully.
+- open -> Last action executed successfully.
+- find -> Last action executed successfully.
+
+[Episode 3]
+Task: Put a heated chunk of apple in the fridge.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- slice -> Last action is invalid. Slice action failed
+- find -> Last action executed successfully.
+- find -> Last action executed successfully.
+- open -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+- close -> Last action executed successfully.
+
+[Episode 4]
+Task: Slice the Tomato and put a piece in the Bowl
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find tomato -> failed (<AsgardBench.objects.StepError object at 0x7b73b3dd8130>)
+- find -> find bowl -> ok
+- pickup -> pickup tomato -> ok
+- slice -> slice tomato -> ok
+- put -> put bowl -> ok
+- find -> find tomato -> ok
+- pickup -> pickup tomato -> ok
+- put -> put bowl -> ok
+[/PERSISTENT EXPERIENCE GUIDANCE]

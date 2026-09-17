@@ -29,113 +29,253 @@
 [WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
 [ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
 [worldmind] S000 probe PASS (unchanged=True infra=0)
-[worldmind] experience 1/30 39a9f8a930eb004a155843c1 success=False env_steps=8 state_changed=False (126s)
-[worldmind] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=6 state_changed=True (154s)
-[worldmind] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=8 state_changed=False (151s)
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ProcessExperienceModule] INFO: Saved 1 process experiences
+[GoalExperienceModule] WARNING: Failed to parse extraction response
 [ExperienceRetrievalModule] INFO: Loaded 1 process experience entries
-[worldmind] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=8 state_changed=True (397s)
-[WorldMind] INFO: Refinement completed for: I'd like to read the book on my desk before bed. P...
+[worldmind] experience 1/30 39a9f8a930eb004a155843c1 success=True env_steps=6 state_changed=True (365s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Prepare a mug of coffee, drink it, then wash and s...
+[ExperienceRetrievalModule] INFO: Loaded 1 process experience entries
+[worldmind] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=8 state_changed=True (163s)
+[WorldMind] INFO: Refinement completed for: Put away the Cup, Bowl, Pot and Mug...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ExperienceRetrievalModule] INFO: Loaded 2 process experience entries
-[worldmind] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=True (114s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
+[worldmind] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=8 state_changed=True (149s)
+[WorldMind] INFO: Refinement completed for: Deliver a green round fruit to the intended a larg...
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 3 process experience entries
+[worldmind] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=8 state_changed=True (249s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: I'd like to read the book on my desk before bed. P...
+[ExperienceRetrievalModule] INFO: Loaded 3 process experience entries
+[worldmind] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=False (101s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
 [WorldMind] INFO: Refinement completed for: Put a pan with an apple in it in the fridge....
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 3 process experience entries
-[worldmind] experience 6/30 118ab8288a38e5aaa5fc0620 success=False env_steps=8 state_changed=True (353s)
+[ExperienceRetrievalModule] INFO: Loaded 4 process experience entries
+[worldmind] experience 6/30 118ab8288a38e5aaa5fc0620 success=False env_steps=8 state_changed=True (266s)
 [WorldMind] WARNING: Failed to parse result: No closing brace
 [WorldMind] INFO: Refinement completed for: Slice the Apple and put a piece in the Plate and B...
-[ExperienceRetrievalModule] INFO: Loaded 3 process experience entries
-[worldmind] experience 7/30 fd44b1790c66485aae012861 success=False env_steps=3 state_changed=True (70s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
+[ExperienceRetrievalModule] INFO: Loaded 4 process experience entries
+[worldmind] experience 7/30 fd44b1790c66485aae012861 success=False env_steps=5 state_changed=False (134s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
 [WorldMind] INFO: Refinement completed for: Place a glass with a fork in it on the table in fr...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ProcessExperienceModule] INFO: Saved 1 process experiences
-[ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 4 process experience entries
-[worldmind] experience 8/30 024f0f6a00587246b173332c success=False env_steps=8 state_changed=True (316s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
+[ExperienceRetrievalModule] INFO: Loaded 5 process experience entries
+[worldmind] experience 8/30 024f0f6a00587246b173332c success=False env_steps=3 state_changed=True (213s)
 [WorldMind] INFO: Refinement completed for: Make a slice of toast and serve it on a plate...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 5 process experience entries
-[worldmind] experience 9/30 d46bfd9c78877123e3a33459 success=False env_steps=6 state_changed=True (150s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
-[WorldMind] INFO: Refinement completed for: Find a mug and move it to the sofa....
-[ProcessExperienceModule] INFO: Saved 1 process experiences
-[ProcessExperienceModule] INFO: Saved 1 process experiences
-[ProcessExperienceModule] INFO: Saved 1 process experiences
 [ExperienceRetrievalModule] INFO: Loaded 6 process experience entries
-[worldmind] experience 10/30 254490a0a79cf4400009b339 success=False env_steps=8 state_changed=True (146s)
+[worldmind] experience 9/30 d46bfd9c78877123e3a33459 success=False env_steps=8 state_changed=True (247s)
+[WorldMind] INFO: Refinement completed for: Find a mug and move it to the sofa....
+[ExperienceRetrievalModule] INFO: Loaded 6 process experience entries
+[worldmind] experience 10/30 254490a0a79cf4400009b339 success=False env_steps=7 state_changed=False (304s)
 [WorldMind] WARNING: Failed to parse result: No closing brace
 [WorldMind] INFO: Refinement completed for: ...
 [ExperienceRetrievalModule] INFO: Loaded 6 process experience entries
-[worldmind] experience 11/30 48f70d107f5b702a2eb39617 success=False env_steps=8 state_changed=False (190s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
+[worldmind] experience 11/30 48f70d107f5b702a2eb39617 success=False env_steps=8 state_changed=False (155s)
 [WorldMind] INFO: Refinement completed for: Fry a potato slice and serve it on a plate...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ExperienceRetrievalModule] INFO: Loaded 7 process experience entries
-[worldmind] experience 12/30 b4b66ccef4b6574a03487ec7 success=False env_steps=8 state_changed=True (202s)
+[worldmind] experience 12/30 b4b66ccef4b6574a03487ec7 success=False env_steps=8 state_changed=True (241s)
 [WorldMind] INFO: Refinement completed for: ...
 [ExperienceRetrievalModule] INFO: Loaded 7 process experience entries
-[worldmind] experience 13/30 4a97f0840bafb152996f2e80 success=False env_steps=5 state_changed=False (97s)
+[worldmind] experience 13/30 4a97f0840bafb152996f2e80 success=False env_steps=8 state_changed=False (203s)
 [WorldMind] INFO: Refinement completed for: Rinse off a ladle and move it to the table....
-[ExperienceRetrievalModule] INFO: Loaded 7 process experience entries
-[worldmind] experience 14/30 ac94d453797c68aa2ca35c40 success=False env_steps=2 state_changed=False (169s)
-[WorldMind] INFO: Refinement completed for: ...
-[ProcessExperienceModule] INFO: Saved 1 process experiences
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ExperienceRetrievalModule] INFO: Loaded 8 process experience entries
-[worldmind] experience 15/30 af7d9cda2ce61e372c12e879 success=False env_steps=8 state_changed=True (155s)
+[worldmind] experience 14/30 ac94d453797c68aa2ca35c40 success=False env_steps=8 state_changed=True (274s)
 [WorldMind] INFO: Refinement completed for: ...
 [ExperienceRetrievalModule] INFO: Loaded 8 process experience entries
-[worldmind] experience 16/30 af42691cc783441286a66457 success=False env_steps=8 state_changed=False (144s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
+[worldmind] experience 15/30 af7d9cda2ce61e372c12e879 success=False env_steps=8 state_changed=False (218s)
+[WorldMind] INFO: Refinement completed for: ...
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 9 process experience entries
+[worldmind] experience 16/30 af42691cc783441286a66457 success=False env_steps=8 state_changed=True (250s)
 [WorldMind] INFO: Refinement completed for: Place a newspaper on a couch....
-[ExperienceRetrievalModule] INFO: Loaded 8 process experience entries
-[worldmind] experience 17/30 e0a791f31631dab6573c5e31 success=None env_steps=0 state_changed=False (606s)
-[WorldMind] WARNING: Failed to parse result: No closing brace
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[GoalExperienceModule] INFO: Saved goal experience
+[GoalExperienceModule] INFO: Extracted goal experience for: Place a newspaper on a couch....
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 10 process experience entries
+[worldmind] experience 17/30 e0a791f31631dab6573c5e31 success=True env_steps=5 state_changed=True (88s)
 [WorldMind] INFO: Refinement completed for: Move a spoon from the right counter to the right r...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ProcessExperienceModule] INFO: Saved 2 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 9 process experience entries
-[worldmind] experience 18/30 78a6df9d17c48d835eb5061f success=False env_steps=8 state_changed=True (278s)
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 11 process experience entries
+[worldmind] experience 18/30 78a6df9d17c48d835eb5061f success=False env_steps=6 state_changed=True (394s)
 [WorldMind] INFO: Refinement completed for: Move the plate to the black table, the screwdriver...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 10 process experience entries
-[worldmind] experience 19/30 79549635dc9c8e77c5cb5350 success=False env_steps=8 state_changed=True (134s)
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 12 process experience entries
+[worldmind] experience 19/30 79549635dc9c8e77c5cb5350 success=False env_steps=8 state_changed=True (222s)
+[WorldMind] WARNING: Failed to parse result: No closing brace
 [WorldMind] INFO: Refinement completed for: Could you help me out by picking up the pencil car...
-[ExperienceRetrievalModule] INFO: Loaded 10 process experience entries
-[worldmind] experience 20/30 a625628e54f6da76a4839471 success=False env_steps=8 state_changed=True (107s)
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 13 process experience entries
+[worldmind] experience 20/30 a625628e54f6da76a4839471 success=False env_steps=8 state_changed=True (118s)
+[WorldMind] WARNING: Failed to parse result: No closing brace
 [WorldMind] INFO: Refinement completed for: Move a rubriks cube from the left counter to the r...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 11 process experience entries
-[worldmind] experience 21/30 8132995f6c1233b67a77fc77 success=False env_steps=2 state_changed=True (173s)
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 14 process experience entries
+[worldmind] experience 21/30 8132995f6c1233b67a77fc77 success=False env_steps=6 state_changed=True (405s)
+[WorldMind] WARNING: Failed to parse result: No closing brace
 [WorldMind] INFO: Refinement completed for: I need to get ready for work. Please move the coff...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 12 process experience entries
-[worldmind] experience 22/30 07e959ea67b68ed3096ea5b5 success=False env_steps=8 state_changed=True (124s)
-[WorldMind] WARNING: Failed to parse result: No JSON found
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 15 process experience entries
+[worldmind] experience 22/30 07e959ea67b68ed3096ea5b5 success=False env_steps=8 state_changed=True (189s)
+[WorldMind] WARNING: Failed to parse result: No closing brace
 [WorldMind] INFO: Refinement completed for: I'm putting things where they belong, so please pi...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
 [ProcessExperienceModule] INFO: Saved 1 process experiences
-[ExperienceRetrievalModule] INFO: Loaded 13 process experience entries
-[worldmind] experience 23/30 4c1a2c8453807a70b177d912 success=False env_steps=7 state_changed=True (406s)
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 16 process experience entries
+[worldmind] experience 23/30 4c1a2c8453807a70b177d912 success=False env_steps=8 state_changed=True (165s)
 [WorldMind] INFO: Refinement completed for: ...
-[ExperienceRetrievalModule] INFO: Loaded 13 process experience entries
-[worldmind] experience 24/30 b2711b84d576de87f3a06e22 success=False env_steps=8 state_changed=False (141s)
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 16 process experience entries
+[worldmind] experience 24/30 b2711b84d576de87f3a06e22 success=False env_steps=8 state_changed=False (183s)
 [WorldMind] WARNING: Failed to parse result: No JSON found
 [WorldMind] INFO: Refinement completed for: Put a heated chunk of apple in the fridge....
-[ExperienceRetrievalModule] INFO: Loaded 13 process experience entries
-[worldmind] experience 25/30 c328b6e02a5e37f4670f3f06 success=False env_steps=8 state_changed=True (170s)
-[WorldMind] INFO: Refinement completed for: ...
-[ExperienceRetrievalModule] INFO: Loaded 13 process experience entries
-[worldmind] experience 26/30 24623e5f57bf49ffcadf1744 success=False env_steps=8 state_changed=False (150s)
-[WorldMind] INFO: Refinement completed for: Find a toy airplane and move it to the right count...
 [ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 17 process experience entries
+[worldmind] experience 25/30 c328b6e02a5e37f4670f3f06 success=False env_steps=8 state_changed=True (190s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: ...
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 17 process experience entries
+[worldmind] experience 26/30 24623e5f57bf49ffcadf1744 success=False env_steps=8 state_changed=False (210s)
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: Find a toy airplane and move it to the right count...
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 17 process experience entries
+[worldmind] experience 27/30 5c41ee1d4160f8bbbc2aea18 success=False env_steps=8 state_changed=False (247s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Slice the Tomato and put a piece in the Bowl...
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 17 process experience entries
+[worldmind] experience 28/30 cf68b1e84949b3893e84e45b success=False env_steps=8 state_changed=True (362s)
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Put a heated tomato slice on the counter near the ...
+[ProcessExperienceModule] INFO: Saved 1 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 18 process experience entries
+[worldmind] experience 29/30 f1e99d709afa71fcf72e3312 success=False env_steps=8 state_changed=True (231s)
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: I have washed the spoon and fork; please remove th...
 [ProcessExperienceModule] INFO: Saved 2 process experiences
-[ProcessExperienceModule] INFO: Saved 2 process experiences
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 19 process experience entries
+[worldmind] experience 30/30 d2aa0cdd7ecc9aad2e914919 success=False env_steps=8 state_changed=True (114s)
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindDiscriminator initialized with model: deepseek-flash
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: WorldMindReflector initialized with model: deepseek-flash
+[ProcessExperienceModule] INFO: ProcessExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[GoalExperienceModule] INFO: GoalExperienceModule initialized
+[WorldMind] INFO: LLMClient initialized: model=deepseek-flash, multimodal=False
+[WorldMind] INFO: ExperienceRefiner initialized with model: deepseek-flash
+[ExperienceRetrievalModule] INFO: Loaded 1 goal experiences
+[ExperienceRetrievalModule] INFO: Loaded 19 process experience entries
+[ExperienceRetrievalModule] INFO: ExperienceRetrievalModule initialized
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: I'm about to put my watch on; please place it on t...
+[WorldMind] INFO: Refinement completed for: The pencil on the table is broken; please throw it...
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: Put away the Bowl and Plate...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Slice the Apple and put a piece in the Plate and B...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Put a cooked slice of tomato on a kitchen counter....
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Place a wet sponge inside the bathtub....
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Transfer an block to the designated left receptacl...
+[WorldMind] INFO: Refinement completed for: Move one of the pear items to the indicated sofa....
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: I'm going out. Please take a keychain and wait for...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: I want to relax. Please fetch the apple in the kit...
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: A dishsponge is broken. Please throw it into a tra...
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: Put a metal pot with a potato slice in it on a whi...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: place a cup with a pen in it on top of the cabinet...
+[WorldMind] INFO: Refinement completed for: Locate a yellow round fruit and deliver it to the ...
+[WorldMind] INFO: Refinement completed for: On the left counter there is a banana, move it to ...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: ...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Could you help me out by picking up the laptop, tu...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: I am heading out to work. Could you do me a quick ...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Cook an egg in a pan and serve it on a plate....
+[WorldMind] INFO: Refinement completed for: Make a slice of toast and serve it on a plate...
+[WorldMind] WARNING: Failed to parse result: No JSON found
+[WorldMind] INFO: Refinement completed for: Put a warm apple slice in the refrigerator. ...
+[WorldMind] INFO: Refinement completed for: Move a black mug from the desk to the nightstand....
+[WorldMind] WARNING: Failed to parse result: No closing brace
+[WorldMind] INFO: Refinement completed for: Head to a large gray piece of furniture with a bac...
+[WorldMind] INFO: Refinement completed for: Transfer all ball to the brown table....
+[worldmind] S030 probe PASS (unchanged=True infra=0)
+{
+  "method": "worldmind",
+  "status": "PASS",
+  "full_run": true,
+  "checks": {
+    "experience count == manifest": true,
+    "S000 probe PASS": true,
+    "S030 probe PASS": true,
+    "probe task counts == manifest": true,
+    "infrastructure crash rate < 2%": true,
+    "no experience failure": true,
+    "no leakage": true,
+    "final checkpoint is S030": true
+  },
+  "experience": 30,
+  "state_updates": 21,
+  "probe_state_unchanged": true,
+  "infra_errors": 0,
+  "experience_failures": 0,
+  "leakage_violations": 0,
+  "updater_tokens": 318804,
+  "env_steps": 222,
+  "wall_s": 16327.9
+}

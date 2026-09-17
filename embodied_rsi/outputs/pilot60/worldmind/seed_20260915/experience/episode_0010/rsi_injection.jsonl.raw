@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+In embodied tasks, actions frequently fail when preconditions are unverified. Do not assume a find action will locate an object, that a pick-up will succeed without proximity, or that other actions (like open) are valid in the current environment. Always check action feedback and environment state before proceeding. For find failures, explore alternate locations or confirm object availability. For pick actions, navigate to the object first and ensure it is within reach. If an action fails, adapt by exploring or reassessing rather than assuming success.
+
+## Preliminary Thinking
+1. Attempt to find the mug using the find skill. If it fails, systematically explore likely locations (e.g., kitchen counters, tables, shelves) until the mug is located. 2. Once found, navigate to the mug to ensure the robot is within reach. 3. Attempt to pick up the mug, verifying success (e.g., the mug is held). If pick fails, adjust position and retry. 4. Navigate to the sofa. 5. Place the mug on the sofa, verifying success. Throughout, monitor action outcomes and adapt if any step fails, such as re-exploring or repositioning.
+[/PERSISTENT EXPERIENCE GUIDANCE]

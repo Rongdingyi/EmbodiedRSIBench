@@ -1,0 +1,55 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+Previous relevant experiences:
+
+[Episode 1]
+Task: Slice the Tomato and put a piece in the Bowl
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> find tomato -> failed (<AsgardBench.objects.StepError object at 0x7b73b3dd8130>)
+- find -> find bowl -> ok
+- pickup -> pickup tomato -> ok
+- slice -> slice tomato -> ok
+- put -> put bowl -> ok
+- find -> find tomato -> ok
+- pickup -> pickup tomato -> ok
+- put -> put bowl -> ok
+
+[Episode 2]
+Task: Put a heated chunk of apple in the fridge.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- find -> Last action executed successfully.
+- pick_up -> Last action executed successfully.
+- slice -> Last action is invalid. Slice action failed
+- find -> Last action executed successfully.
+- find -> Last action executed successfully.
+- open -> Last action executed successfully.
+- put_down -> Last action executed successfully.
+- close -> Last action executed successfully.
+
+[Episode 3]
+Task: Slice the Apple and put a piece in the Plate and Bowl
+Outcome: Success (steps: 8)
+Trajectory summary:
+- find -> find Apple -> ok
+- slice -> slice Apple -> ok
+- pickup -> pickup Apple -> failed (<AsgardBench.objects.StepError object at 0x797e82df9ea0>)
+- pickup -> pickup Apple -> ok
+- find -> find Plate -> ok
+- put -> put Plate -> ok
+- find -> find AppleSliced -> ok
+- find -> find Bowl -> ok
+
+[Episode 4]
+Task: Move a spoon from the right counter to the right receptacle of the left counter.
+Outcome: Failure (steps: 8)
+Trajectory summary:
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_11_navigate_to_the_left_counter_in_the_kitchen -> Last action executed successfully.
+- skill_55_place_at_the_left_counter_in_the_kitchen -> Last action is invalid. Robot cannot place any object when not holding something. Please pick the object before place it.
+- skill_10_navigate_to_the_right_counter_in_the_kitchen -> Last action executed successfully.
+- skill_26_pick_up_the_spoon -> Last action is invalid. Robot cannot pick any object that is not near the robot. Navigate to other place to find the object.
+- ask_human ->
+[/PERSISTENT EXPERIENCE GUIDANCE]

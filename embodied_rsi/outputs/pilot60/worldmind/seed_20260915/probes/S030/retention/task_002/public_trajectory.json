@@ -1,0 +1,27 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "The target reference image needed for this viewpoint-matching task is missing from my visual evidence: the camera packet lists current_view (scene_primary) and target_view (scene_secondary), but only the current_scene frame (dark refrigeration unit on the left, dark tiled wall with a framed picture on the right) was delivered. Please provide the target_view image (or its camera pose: position and yaw/pitch relative to the current camera). Alternatively, confirm that I should explore the scene blindly with single-step viewpoint actions until I judge the view resembles the target.",
+        "missing_evidence": "frame_id=target_view (role=scene_secondary) — goal image or its camera pose (translation + orientation) in the current frame.",
+        "proposed_actions_if_unavailable": "Single atomic viewpoint actions with re-observation after each: e.g. RotateLeft to sweep the scene, comparing each new current_view against the target if it becomes available."
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4674,
+      "output_tokens": 2029,
+      "charged_tokens": 6703,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

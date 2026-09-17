@@ -1,296 +1,345 @@
-[probe retry 1/3] S000 id/task_005 WorkerError: worker timed out after 600s on reset
 [ace_context] S000 probe PASS (unchanged=True infra=0)
 Warning: sentence-transformers or faiss not available for bulletpoint analysis.
 Install with: pip install sentence-transformers faiss-cpu
 [REFLECTOR] Starting call reflect_39a9f8a930eb004a155843c1...
-[REFLECTOR] Call reflect_39a9f8a930eb004a155843c1 completed in 8.66s
-[LOG] reflector call logged to reflector_reflect_39a9f8a930eb004a155843c1_20260917_014535_873.json
+[REFLECTOR] Call reflect_39a9f8a930eb004a155843c1 completed in 13.68s
+[LOG] reflector call logged to reflector_reflect_39a9f8a930eb004a155843c1_20260917_102014_671.json
 [CURATOR] Starting call curate_39a9f8a930eb004a155843c1...
-[CURATOR] Call curate_39a9f8a930eb004a155843c1 completed in 9.87s
-[LOG] curator call logged to curator_curate_39a9f8a930eb004a155843c1_20260917_014545_746.json
-✅ Curator JSON schema validated successfully: 2 operations
+[CURATOR] Call curate_39a9f8a930eb004a155843c1 completed in 8.81s
+[LOG] curator call logged to curator_curate_39a9f8a930eb004a155843c1_20260917_102023_480.json
+✅ Curator JSON schema validated successfully: 3 operations
   Added bullet sai-00001 to section strategies_and_insights
-  Added bullet err-00002 to section common_mistakes_to_avoid
+  Added bullet sai-00002 to section strategies_and_insights
+  Added bullet err-00003 to section common_mistakes_to_avoid
   - ADD: No reason given
   - ADD: No reason given
-[ace_context] experience 1/30 39a9f8a930eb004a155843c1 success=True env_steps=6 state_changed=True (211s)
+  - ADD: No reason given
+[ace_context] experience 1/30 39a9f8a930eb004a155843c1 success=True env_steps=5 state_changed=True (342s)
 [REFLECTOR] Starting call reflect_8ea46e8d0b384acee00f5984...
-[REFLECTOR] Call reflect_8ea46e8d0b384acee00f5984 completed in 13.45s
-[LOG] reflector call logged to reflector_reflect_8ea46e8d0b384acee00f5984_20260917_014733_811.json
+[REFLECTOR] Call reflect_8ea46e8d0b384acee00f5984 completed in 22.99s
+[LOG] reflector call logged to reflector_reflect_8ea46e8d0b384acee00f5984_20260917_102258_258.json
 [CURATOR] Starting call curate_8ea46e8d0b384acee00f5984...
-[CURATOR] Call curate_8ea46e8d0b384acee00f5984 completed in 7.09s
-[LOG] curator call logged to curator_curate_8ea46e8d0b384acee00f5984_20260917_014740_904.json
-✅ Curator JSON schema validated successfully: 2 operations
-  Added bullet sai-00003 to section strategies_and_insights
-  Added bullet err-00004 to section common_mistakes_to_avoid
-  - ADD: No reason given
-  - ADD: No reason given
-[ace_context] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=5 state_changed=True (115s)
-[REFLECTOR] Starting call reflect_7802f5fb304e2e4e21b38427...
-[REFLECTOR] Call reflect_7802f5fb304e2e4e21b38427 completed in 19.74s
-[LOG] reflector call logged to reflector_reflect_7802f5fb304e2e4e21b38427_20260917_014953_653.json
-[CURATOR] Starting call curate_7802f5fb304e2e4e21b38427...
-[CURATOR] Call curate_7802f5fb304e2e4e21b38427 completed in 8.96s
-[LOG] curator call logged to curator_curate_7802f5fb304e2e4e21b38427_20260917_015002_616.json
-✅ Curator JSON schema validated successfully: 2 operations
+[CURATOR] Call curate_8ea46e8d0b384acee00f5984 completed in 14.70s
+[LOG] curator call logged to curator_curate_8ea46e8d0b384acee00f5984_20260917_102312_958.json
+✅ Curator JSON schema validated successfully: 3 operations
+  Added bullet sai-00004 to section strategies_and_insights
   Added bullet sai-00005 to section strategies_and_insights
   Added bullet err-00006 to section common_mistakes_to_avoid
   - ADD: No reason given
   - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=8 state_changed=True (169s)
+[REFLECTOR] Starting call reflect_7802f5fb304e2e4e21b38427...
+[REFLECTOR] Call reflect_7802f5fb304e2e4e21b38427 completed in 21.54s
+[LOG] reflector call logged to reflector_reflect_7802f5fb304e2e4e21b38427_20260917_102525_000.json
+[CURATOR] Starting call curate_7802f5fb304e2e4e21b38427...
+[CURATOR] Call curate_7802f5fb304e2e4e21b38427 completed in 10.03s
+[LOG] curator call logged to curator_curate_7802f5fb304e2e4e21b38427_20260917_102535_029.json
+✅ Curator JSON schema validated successfully: 0 operations
 [ace_context] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=8 state_changed=True (142s)
 [REFLECTOR] Starting call reflect_fda43d9972133290afc4e4f8...
-[REFLECTOR] Call reflect_fda43d9972133290afc4e4f8 completed in 21.33s
-[LOG] reflector call logged to reflector_reflect_fda43d9972133290afc4e4f8_20260917_015351_336.json
+[REFLECTOR] Call reflect_fda43d9972133290afc4e4f8 completed in 22.67s
+[LOG] reflector call logged to reflector_reflect_fda43d9972133290afc4e4f8_20260917_102921_369.json
 [CURATOR] Starting call curate_fda43d9972133290afc4e4f8...
-[CURATOR] Call curate_fda43d9972133290afc4e4f8 completed in 12.64s
-[LOG] curator call logged to curator_curate_fda43d9972133290afc4e4f8_20260917_015403_980.json
-✅ Curator JSON schema validated successfully: 5 operations
+[CURATOR] Call curate_fda43d9972133290afc4e4f8 completed in 10.82s
+[LOG] curator call logged to curator_curate_fda43d9972133290afc4e4f8_20260917_102932_194.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=4 state_changed=True (237s)
+[REFLECTOR] Starting call reflect_8901c7d48b4d1bd6f22c78a9...
+[REFLECTOR] Call reflect_8901c7d48b4d1bd6f22c78a9 completed in 21.95s
+[LOG] reflector call logged to reflector_reflect_8901c7d48b4d1bd6f22c78a9_20260917_103231_473.json
+[CURATOR] Starting call curate_8901c7d48b4d1bd6f22c78a9...
+[CURATOR] Call curate_8901c7d48b4d1bd6f22c78a9 completed in 3.67s
+[LOG] curator call logged to curator_curate_8901c7d48b4d1bd6f22c78a9_20260917_103235_143.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=True (183s)
+[REFLECTOR] Starting call reflect_118ab8288a38e5aaa5fc0620...
+[REFLECTOR] Call reflect_118ab8288a38e5aaa5fc0620 completed in 21.81s
+[LOG] reflector call logged to reflector_reflect_118ab8288a38e5aaa5fc0620_20260917_103517_406.json
+[CURATOR] Starting call curate_118ab8288a38e5aaa5fc0620...
+[CURATOR] Call curate_118ab8288a38e5aaa5fc0620 completed in 3.85s
+[LOG] curator call logged to curator_curate_118ab8288a38e5aaa5fc0620_20260917_103521_262.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 6/30 118ab8288a38e5aaa5fc0620 success=False env_steps=8 state_changed=True (166s)
+[REFLECTOR] Starting call reflect_fd44b1790c66485aae012861...
+[REFLECTOR] Call reflect_fd44b1790c66485aae012861 completed in 22.63s
+[LOG] reflector call logged to reflector_reflect_fd44b1790c66485aae012861_20260917_104222_138.json
+[CURATOR] Starting call curate_fd44b1790c66485aae012861...
+[CURATOR] Call curate_fd44b1790c66485aae012861 completed in 10.14s
+[LOG] curator call logged to curator_curate_fd44b1790c66485aae012861_20260917_104232_281.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 7/30 fd44b1790c66485aae012861 success=False env_steps=8 state_changed=True (431s)
+[REFLECTOR] Starting call reflect_024f0f6a00587246b173332c...
+[REFLECTOR] Call reflect_024f0f6a00587246b173332c completed in 22.02s
+[LOG] reflector call logged to reflector_reflect_024f0f6a00587246b173332c_20260917_104454_467.json
+[CURATOR] Starting call curate_024f0f6a00587246b173332c...
+[CURATOR] Call curate_024f0f6a00587246b173332c completed in 9.34s
+[LOG] curator call logged to curator_curate_024f0f6a00587246b173332c_20260917_104503_805.json
+✅ Curator JSON schema validated successfully: 4 operations
   Added bullet sai-00007 to section strategies_and_insights
   Added bullet sai-00008 to section strategies_and_insights
   Added bullet err-00009 to section common_mistakes_to_avoid
   Added bullet err-00010 to section common_mistakes_to_avoid
-  Added bullet err-00011 to section common_mistakes_to_avoid
   - ADD: No reason given
   - ADD: No reason given
   - ADD: No reason given
   - ADD: No reason given
-  - ADD: No reason given
-[ace_context] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=5 state_changed=True (241s)
-[REFLECTOR] Starting call reflect_8901c7d48b4d1bd6f22c78a9...
-[REFLECTOR] Call reflect_8901c7d48b4d1bd6f22c78a9 completed in 21.43s
-[LOG] reflector call logged to reflector_reflect_8901c7d48b4d1bd6f22c78a9_20260917_015638_996.json
-[CURATOR] Starting call curate_8901c7d48b4d1bd6f22c78a9...
-[CURATOR] Call curate_8901c7d48b4d1bd6f22c78a9 completed in 17.36s
-[LOG] curator call logged to curator_curate_8901c7d48b4d1bd6f22c78a9_20260917_015656_357.json
-✅ Curator JSON schema validated successfully: 3 operations
+[ace_context] experience 8/30 024f0f6a00587246b173332c success=False env_steps=8 state_changed=True (151s)
+[REFLECTOR] Starting call reflect_d46bfd9c78877123e3a33459...
+[REFLECTOR] Call reflect_d46bfd9c78877123e3a33459 completed in 22.76s
+[LOG] reflector call logged to reflector_reflect_d46bfd9c78877123e3a33459_20260917_104808_734.json
+[CURATOR] Starting call curate_d46bfd9c78877123e3a33459...
+[CURATOR] Call curate_d46bfd9c78877123e3a33459 completed in 10.98s
+[LOG] curator call logged to curator_curate_d46bfd9c78877123e3a33459_20260917_104819_714.json
+✅ Curator JSON schema validated successfully: 5 operations
+  Added bullet sai-00011 to section strategies_and_insights
   Added bullet sai-00012 to section strategies_and_insights
   Added bullet sai-00013 to section strategies_and_insights
   Added bullet err-00014 to section common_mistakes_to_avoid
+  Added bullet err-00015 to section common_mistakes_to_avoid
   - ADD: No reason given
   - ADD: No reason given
   - ADD: No reason given
-[ace_context] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=True (172s)
-[REFLECTOR] Starting call reflect_118ab8288a38e5aaa5fc0620...
-[REFLECTOR] Call reflect_118ab8288a38e5aaa5fc0620 completed in 20.43s
-[LOG] reflector call logged to reflector_reflect_118ab8288a38e5aaa5fc0620_20260917_020000_175.json
-[CURATOR] Starting call curate_118ab8288a38e5aaa5fc0620...
-[CURATOR] Call curate_118ab8288a38e5aaa5fc0620 completed in 9.26s
-[LOG] curator call logged to curator_curate_118ab8288a38e5aaa5fc0620_20260917_020009_432.json
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 9/30 d46bfd9c78877123e3a33459 success=False env_steps=8 state_changed=True (196s)
+[REFLECTOR] Starting call reflect_254490a0a79cf4400009b339...
+[REFLECTOR] Call reflect_254490a0a79cf4400009b339 completed in 23.01s
+[LOG] reflector call logged to reflector_reflect_254490a0a79cf4400009b339_20260917_104945_711.json
+[CURATOR] Starting call curate_254490a0a79cf4400009b339...
+[CURATOR] Call curate_254490a0a79cf4400009b339 completed in 3.62s
+[LOG] curator call logged to curator_curate_254490a0a79cf4400009b339_20260917_104949_332.json
 ✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 6/30 118ab8288a38e5aaa5fc0620 success=False env_steps=8 state_changed=True (193s)
-[REFLECTOR] Starting call reflect_fd44b1790c66485aae012861...
-[REFLECTOR] Call reflect_fd44b1790c66485aae012861 completed in 19.81s
-[LOG] reflector call logged to reflector_reflect_fd44b1790c66485aae012861_20260917_020254_471.json
-[CURATOR] Starting call curate_fd44b1790c66485aae012861...
-[CURATOR] Call curate_fd44b1790c66485aae012861 completed in 10.25s
-[LOG] curator call logged to curator_curate_fd44b1790c66485aae012861_20260917_020304_727.json
+[ace_context] experience 10/30 254490a0a79cf4400009b339 success=False env_steps=8 state_changed=True (89s)
+[REFLECTOR] Starting call reflect_48f70d107f5b702a2eb39617...
+[REFLECTOR] Call reflect_48f70d107f5b702a2eb39617 completed in 20.92s
+[LOG] reflector call logged to reflector_reflect_48f70d107f5b702a2eb39617_20260917_105202_825.json
+[CURATOR] Starting call curate_48f70d107f5b702a2eb39617...
+[CURATOR] Call curate_48f70d107f5b702a2eb39617 completed in 2.10s
+[LOG] curator call logged to curator_curate_48f70d107f5b702a2eb39617_20260917_105204_925.json
 ✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 7/30 fd44b1790c66485aae012861 success=False env_steps=3 state_changed=True (175s)
-[REFLECTOR] Starting call reflect_024f0f6a00587246b173332c...
-[REFLECTOR] Call reflect_024f0f6a00587246b173332c completed in 20.82s
-[LOG] reflector call logged to reflector_reflect_024f0f6a00587246b173332c_20260917_020827_468.json
-[CURATOR] Starting call curate_024f0f6a00587246b173332c...
-[CURATOR] Call curate_024f0f6a00587246b173332c completed in 8.48s
-[LOG] curator call logged to curator_curate_024f0f6a00587246b173332c_20260917_020835_952.json
-✅ Curator JSON schema validated successfully: 3 operations
-  Added bullet sai-00015 to section strategies_and_insights
+[ace_context] experience 11/30 48f70d107f5b702a2eb39617 success=False env_steps=8 state_changed=True (136s)
+[REFLECTOR] Starting call reflect_b4b66ccef4b6574a03487ec7...
+[REFLECTOR] Call reflect_b4b66ccef4b6574a03487ec7 completed in 22.65s
+[LOG] reflector call logged to reflector_reflect_b4b66ccef4b6574a03487ec7_20260917_105609_558.json
+[CURATOR] Starting call curate_b4b66ccef4b6574a03487ec7...
+[CURATOR] Call curate_b4b66ccef4b6574a03487ec7 completed in 10.24s
+[LOG] curator call logged to curator_curate_b4b66ccef4b6574a03487ec7_20260917_105619_799.json
+✅ Curator JSON schema validated successfully: 2 operations
   Added bullet sai-00016 to section strategies_and_insights
   Added bullet err-00017 to section common_mistakes_to_avoid
   - ADD: No reason given
   - ADD: No reason given
-  - ADD: No reason given
-[ace_context] experience 8/30 024f0f6a00587246b173332c success=False env_steps=5 state_changed=True (331s)
-[REFLECTOR] Starting call reflect_d46bfd9c78877123e3a33459...
-[REFLECTOR] Call reflect_d46bfd9c78877123e3a33459 completed in 20.47s
-[LOG] reflector call logged to reflector_reflect_d46bfd9c78877123e3a33459_20260917_021344_669.json
-[CURATOR] Starting call curate_d46bfd9c78877123e3a33459...
-[CURATOR] Call curate_d46bfd9c78877123e3a33459 completed in 9.56s
-[LOG] curator call logged to curator_curate_d46bfd9c78877123e3a33459_20260917_021354_231.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 9/30 d46bfd9c78877123e3a33459 success=False env_steps=8 state_changed=True (318s)
-[REFLECTOR] Starting call reflect_254490a0a79cf4400009b339...
-[REFLECTOR] Call reflect_254490a0a79cf4400009b339 completed in 19.07s
-[LOG] reflector call logged to reflector_reflect_254490a0a79cf4400009b339_20260917_021553_402.json
-[CURATOR] Starting call curate_254490a0a79cf4400009b339...
-[CURATOR] Call curate_254490a0a79cf4400009b339 completed in 11.46s
-[LOG] curator call logged to curator_curate_254490a0a79cf4400009b339_20260917_021604_864.json
-✅ Curator JSON schema validated successfully: 1 operations
-  Added bullet err-00018 to section common_mistakes_to_avoid
-  - ADD: No reason given
-[ace_context] experience 10/30 254490a0a79cf4400009b339 success=False env_steps=8 state_changed=True (130s)
-[REFLECTOR] Starting call reflect_48f70d107f5b702a2eb39617...
-[REFLECTOR] Call reflect_48f70d107f5b702a2eb39617 completed in 21.07s
-[LOG] reflector call logged to reflector_reflect_48f70d107f5b702a2eb39617_20260917_021850_419.json
-[CURATOR] Starting call curate_48f70d107f5b702a2eb39617...
-[CURATOR] Call curate_48f70d107f5b702a2eb39617 completed in 2.76s
-[LOG] curator call logged to curator_curate_48f70d107f5b702a2eb39617_20260917_021853_185.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 11/30 48f70d107f5b702a2eb39617 success=False env_steps=8 state_changed=True (168s)
-[REFLECTOR] Starting call reflect_b4b66ccef4b6574a03487ec7...
-[REFLECTOR] Call reflect_b4b66ccef4b6574a03487ec7 completed in 20.74s
-[LOG] reflector call logged to reflector_reflect_b4b66ccef4b6574a03487ec7_20260917_022209_809.json
-[CURATOR] Starting call curate_b4b66ccef4b6574a03487ec7...
-[CURATOR] Call curate_b4b66ccef4b6574a03487ec7 completed in 11.13s
-[LOG] curator call logged to curator_curate_b4b66ccef4b6574a03487ec7_20260917_022220_941.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 12/30 b4b66ccef4b6574a03487ec7 success=False env_steps=8 state_changed=True (208s)
+[ace_context] experience 12/30 b4b66ccef4b6574a03487ec7 success=False env_steps=8 state_changed=True (255s)
 [REFLECTOR] Starting call reflect_4a97f0840bafb152996f2e80...
-[REFLECTOR] Call reflect_4a97f0840bafb152996f2e80 completed in 19.25s
-[LOG] reflector call logged to reflector_reflect_4a97f0840bafb152996f2e80_20260917_022521_660.json
+[REFLECTOR] Call reflect_4a97f0840bafb152996f2e80 completed in 22.49s
+[LOG] reflector call logged to reflector_reflect_4a97f0840bafb152996f2e80_20260917_110014_476.json
 [CURATOR] Starting call curate_4a97f0840bafb152996f2e80...
-[CURATOR] Call curate_4a97f0840bafb152996f2e80 completed in 2.26s
-[LOG] curator call logged to curator_curate_4a97f0840bafb152996f2e80_20260917_022523_923.json
+[CURATOR] Call curate_4a97f0840bafb152996f2e80 completed in 2.39s
+[LOG] curator call logged to curator_curate_4a97f0840bafb152996f2e80_20260917_110016_875.json
 ✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 13/30 4a97f0840bafb152996f2e80 success=False env_steps=8 state_changed=True (183s)
+[ace_context] experience 13/30 4a97f0840bafb152996f2e80 success=False env_steps=8 state_changed=True (237s)
 [REFLECTOR] Starting call reflect_ac94d453797c68aa2ca35c40...
-[REFLECTOR] Call reflect_ac94d453797c68aa2ca35c40 completed in 16.35s
-[LOG] reflector call logged to reflector_reflect_ac94d453797c68aa2ca35c40_20260917_023928_571.json
+[REFLECTOR] Call reflect_ac94d453797c68aa2ca35c40 completed in 21.70s
+[LOG] reflector call logged to reflector_reflect_ac94d453797c68aa2ca35c40_20260917_110800_966.json
 [CURATOR] Starting call curate_ac94d453797c68aa2ca35c40...
-[CURATOR] Call curate_ac94d453797c68aa2ca35c40 completed in 12.99s
-[LOG] curator call logged to curator_curate_ac94d453797c68aa2ca35c40_20260917_023941_565.json
-✅ Curator JSON schema validated successfully: 2 operations
-  Added bullet sai-00019 to section strategies_and_insights
-  Added bullet err-00020 to section common_mistakes_to_avoid
-  - ADD: No reason given
-  - ADD: No reason given
-[ace_context] experience 14/30 ac94d453797c68aa2ca35c40 success=None env_steps=6 state_changed=True (857s)
+[CURATOR] Call curate_ac94d453797c68aa2ca35c40 completed in 7.41s
+[LOG] curator call logged to curator_curate_ac94d453797c68aa2ca35c40_20260917_110808_378.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 14/30 ac94d453797c68aa2ca35c40 success=False env_steps=8 state_changed=True (471s)
 [REFLECTOR] Starting call reflect_af7d9cda2ce61e372c12e879...
-[REFLECTOR] Call reflect_af7d9cda2ce61e372c12e879 completed in 19.63s
-[LOG] reflector call logged to reflector_reflect_af7d9cda2ce61e372c12e879_20260917_024144_367.json
+[REFLECTOR] Call reflect_af7d9cda2ce61e372c12e879 completed in 20.61s
+[LOG] reflector call logged to reflector_reflect_af7d9cda2ce61e372c12e879_20260917_111149_311.json
 [CURATOR] Starting call curate_af7d9cda2ce61e372c12e879...
-[CURATOR] Call curate_af7d9cda2ce61e372c12e879 completed in 1.70s
-[LOG] curator call logged to curator_curate_af7d9cda2ce61e372c12e879_20260917_024146_070.json
+[CURATOR] Call curate_af7d9cda2ce61e372c12e879 completed in 2.90s
+[LOG] curator call logged to curator_curate_af7d9cda2ce61e372c12e879_20260917_111152_214.json
 ✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 15/30 af7d9cda2ce61e372c12e879 success=False env_steps=5 state_changed=True (124s)
+[ace_context] experience 15/30 af7d9cda2ce61e372c12e879 success=False env_steps=8 state_changed=True (224s)
 [REFLECTOR] Starting call reflect_af42691cc783441286a66457...
-[REFLECTOR] Call reflect_af42691cc783441286a66457 completed in 19.91s
-[LOG] reflector call logged to reflector_reflect_af42691cc783441286a66457_20260917_024455_521.json
+[REFLECTOR] Call reflect_af42691cc783441286a66457 completed in 22.26s
+[LOG] reflector call logged to reflector_reflect_af42691cc783441286a66457_20260917_111358_248.json
 [CURATOR] Starting call curate_af42691cc783441286a66457...
-[CURATOR] Call curate_af42691cc783441286a66457 completed in 1.55s
-[LOG] curator call logged to curator_curate_af42691cc783441286a66457_20260917_024457_074.json
+[CURATOR] Call curate_af42691cc783441286a66457 completed in 2.04s
+[LOG] curator call logged to curator_curate_af42691cc783441286a66457_20260917_111400_294.json
 ✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 16/30 af42691cc783441286a66457 success=False env_steps=8 state_changed=True (191s)
+[ace_context] experience 16/30 af42691cc783441286a66457 success=False env_steps=8 state_changed=True (128s)
 [REFLECTOR] Starting call reflect_e0a791f31631dab6573c5e31...
-[REFLECTOR] Call reflect_e0a791f31631dab6573c5e31 completed in 18.71s
-[LOG] reflector call logged to reflector_reflect_e0a791f31631dab6573c5e31_20260917_024616_182.json
-[CURATOR] Starting call curate_e0a791f31631dab6573c5e31...
-[CURATOR] Call curate_e0a791f31631dab6573c5e31 completed in 4.07s
-[LOG] curator call logged to curator_curate_e0a791f31631dab6573c5e31_20260917_024620_250.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 17/30 e0a791f31631dab6573c5e31 success=True env_steps=5 state_changed=True (83s)
-[REFLECTOR] Starting call reflect_78a6df9d17c48d835eb5061f...
-[REFLECTOR] Call reflect_78a6df9d17c48d835eb5061f completed in 20.43s
-[LOG] reflector call logged to reflector_reflect_78a6df9d17c48d835eb5061f_20260917_025029_521.json
-[CURATOR] Starting call curate_78a6df9d17c48d835eb5061f...
-[CURATOR] Call curate_78a6df9d17c48d835eb5061f completed in 5.19s
-[LOG] curator call logged to curator_curate_78a6df9d17c48d835eb5061f_20260917_025034_714.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 18/30 78a6df9d17c48d835eb5061f success=False env_steps=5 state_changed=True (254s)
-[REFLECTOR] Starting call reflect_79549635dc9c8e77c5cb5350...
-[REFLECTOR] Call reflect_79549635dc9c8e77c5cb5350 completed in 20.73s
-[LOG] reflector call logged to reflector_reflect_79549635dc9c8e77c5cb5350_20260917_025202_900.json
-[CURATOR] Starting call curate_79549635dc9c8e77c5cb5350...
-[CURATOR] Call curate_79549635dc9c8e77c5cb5350 completed in 4.78s
-[LOG] curator call logged to curator_curate_79549635dc9c8e77c5cb5350_20260917_025207_682.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 19/30 79549635dc9c8e77c5cb5350 success=False env_steps=8 state_changed=True (93s)
-[REFLECTOR] Starting call reflect_a625628e54f6da76a4839471...
-[REFLECTOR] Call reflect_a625628e54f6da76a4839471 completed in 19.90s
-[LOG] reflector call logged to reflector_reflect_a625628e54f6da76a4839471_20260917_025402_469.json
-[CURATOR] Starting call curate_a625628e54f6da76a4839471...
-[CURATOR] Call curate_a625628e54f6da76a4839471 completed in 14.41s
-[LOG] curator call logged to curator_curate_a625628e54f6da76a4839471_20260917_025416_879.json
-✅ Curator JSON schema validated successfully: 2 operations
-  Added bullet sai-00021 to section strategies_and_insights
-  Added bullet err-00022 to section common_mistakes_to_avoid
-  - ADD: No reason given
-  - ADD: No reason given
-[ace_context] experience 20/30 a625628e54f6da76a4839471 success=False env_steps=8 state_changed=True (129s)
-[REFLECTOR] Starting call reflect_8132995f6c1233b67a77fc77...
-[REFLECTOR] Call reflect_8132995f6c1233b67a77fc77 completed in 18.81s
-[LOG] reflector call logged to reflector_reflect_8132995f6c1233b67a77fc77_20260917_025857_351.json
-[CURATOR] Starting call curate_8132995f6c1233b67a77fc77...
-[CURATOR] Call curate_8132995f6c1233b67a77fc77 completed in 4.48s
-[LOG] curator call logged to curator_curate_8132995f6c1233b67a77fc77_20260917_025901_835.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 21/30 8132995f6c1233b67a77fc77 success=False env_steps=8 state_changed=True (285s)
-[REFLECTOR] Starting call reflect_07e959ea67b68ed3096ea5b5...
-[REFLECTOR] Call reflect_07e959ea67b68ed3096ea5b5 completed in 19.62s
-[LOG] reflector call logged to reflector_reflect_07e959ea67b68ed3096ea5b5_20260917_030029_211.json
-[CURATOR] Starting call curate_07e959ea67b68ed3096ea5b5...
-[CURATOR] Call curate_07e959ea67b68ed3096ea5b5 completed in 3.74s
-[LOG] curator call logged to curator_curate_07e959ea67b68ed3096ea5b5_20260917_030032_957.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 22/30 07e959ea67b68ed3096ea5b5 success=False env_steps=8 state_changed=True (91s)
-[REFLECTOR] Starting call reflect_4c1a2c8453807a70b177d912...
-[REFLECTOR] Call reflect_4c1a2c8453807a70b177d912 completed in 18.78s
-[LOG] reflector call logged to reflector_reflect_4c1a2c8453807a70b177d912_20260917_030209_366.json
-[CURATOR] Starting call curate_4c1a2c8453807a70b177d912...
-[CURATOR] Call curate_4c1a2c8453807a70b177d912 completed in 2.88s
-[LOG] curator call logged to curator_curate_4c1a2c8453807a70b177d912_20260917_030212_244.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 23/30 4c1a2c8453807a70b177d912 success=False env_steps=8 state_changed=True (99s)
-[REFLECTOR] Starting call reflect_b2711b84d576de87f3a06e22...
-[REFLECTOR] Call reflect_b2711b84d576de87f3a06e22 completed in 19.13s
-[LOG] reflector call logged to reflector_reflect_b2711b84d576de87f3a06e22_20260917_030408_292.json
+[REFLECTOR] Call reflect_e0a791f31631dab6573c5e31 completed in 19.06s
+[LOG] reflector call logged to reflector_reflect_e0a791f31631dab6573c5e31_20260917_111509_901.json
 Warning: Failed to extract bullet tags: Expecting value: line 1 column 1 (char 0)
-[CURATOR] Starting call curate_b2711b84d576de87f3a06e22...
-[CURATOR] Call curate_b2711b84d576de87f3a06e22 completed in 7.85s
-[LOG] curator call logged to curator_curate_b2711b84d576de87f3a06e22_20260917_030416_146.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 24/30 b2711b84d576de87f3a06e22 success=False env_steps=8 state_changed=True (124s)
-[REFLECTOR] Starting call reflect_c328b6e02a5e37f4670f3f06...
-[REFLECTOR] Call reflect_c328b6e02a5e37f4670f3f06 completed in 20.85s
-[LOG] reflector call logged to reflector_reflect_c328b6e02a5e37f4670f3f06_20260917_030632_977.json
-[CURATOR] Starting call curate_c328b6e02a5e37f4670f3f06...
-[CURATOR] Call curate_c328b6e02a5e37f4670f3f06 completed in 20.48s
-[LOG] curator call logged to curator_curate_c328b6e02a5e37f4670f3f06_20260917_030653_462.json
-❌ Curator JSON parsing failed: Failed to extract valid JSON from curator response
-📄 Raw curator response preview: ...
-📝 Curator failure logged to: /data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/pilot60/ace_context/seed_20260915/rsi_state/llm_logs/curator_failures.txt
-⏭️  Skipping curator operation due to invalid JSON format
-[ace_context] experience 25/30 c328b6e02a5e37f4670f3f06 success=False env_steps=8 state_changed=True (157s)
-[REFLECTOR] Starting call reflect_24623e5f57bf49ffcadf1744...
-[REFLECTOR] Call reflect_24623e5f57bf49ffcadf1744 completed in 20.30s
-[LOG] reflector call logged to reflector_reflect_24623e5f57bf49ffcadf1744_20260917_030951_969.json
-[CURATOR] Starting call curate_24623e5f57bf49ffcadf1744...
-[CURATOR] Call curate_24623e5f57bf49ffcadf1744 completed in 1.92s
-[LOG] curator call logged to curator_curate_24623e5f57bf49ffcadf1744_20260917_030953_888.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 26/30 24623e5f57bf49ffcadf1744 success=False env_steps=7 state_changed=True (180s)
-[REFLECTOR] Starting call reflect_5c41ee1d4160f8bbbc2aea18...
-[REFLECTOR] Call reflect_5c41ee1d4160f8bbbc2aea18 completed in 20.50s
-[LOG] reflector call logged to reflector_reflect_5c41ee1d4160f8bbbc2aea18_20260917_031427_023.json
-[CURATOR] Starting call curate_5c41ee1d4160f8bbbc2aea18...
-[CURATOR] Call curate_5c41ee1d4160f8bbbc2aea18 completed in 7.30s
-[LOG] curator call logged to curator_curate_5c41ee1d4160f8bbbc2aea18_20260917_031434_326.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 27/30 5c41ee1d4160f8bbbc2aea18 success=False env_steps=8 state_changed=True (280s)
-[REFLECTOR] Starting call reflect_cf68b1e84949b3893e84e45b...
-[REFLECTOR] Call reflect_cf68b1e84949b3893e84e45b completed in 20.46s
-[LOG] reflector call logged to reflector_reflect_cf68b1e84949b3893e84e45b_20260917_031804_454.json
-[CURATOR] Starting call curate_cf68b1e84949b3893e84e45b...
-[CURATOR] Call curate_cf68b1e84949b3893e84e45b completed in 5.84s
-[LOG] curator call logged to curator_curate_cf68b1e84949b3893e84e45b_20260917_031810_300.json
-✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 28/30 cf68b1e84949b3893e84e45b success=False env_steps=6 state_changed=True (216s)
-[REFLECTOR] Starting call reflect_f1e99d709afa71fcf72e3312...
-[REFLECTOR] Call reflect_f1e99d709afa71fcf72e3312 completed in 20.96s
-[LOG] reflector call logged to reflector_reflect_f1e99d709afa71fcf72e3312_20260917_032458_904.json
-[CURATOR] Starting call curate_f1e99d709afa71fcf72e3312...
-[CURATOR] Call curate_f1e99d709afa71fcf72e3312 completed in 19.07s
-[LOG] curator call logged to curator_curate_f1e99d709afa71fcf72e3312_20260917_032517_978.json
+[CURATOR] Starting call curate_e0a791f31631dab6573c5e31...
+[CURATOR] Call curate_e0a791f31631dab6573c5e31 completed in 20.62s
+[LOG] curator call logged to curator_curate_e0a791f31631dab6573c5e31_20260917_111530_521.json
 ✅ Curator JSON schema validated successfully: 2 operations
-  Added bullet sai-00023 to section strategies_and_insights
-  Added bullet err-00024 to section common_mistakes_to_avoid
+  Added bullet sai-00018 to section strategies_and_insights
+  Added bullet sai-00019 to section strategies_and_insights
   - ADD: No reason given
   - ADD: No reason given
-[ace_context] experience 29/30 f1e99d709afa71fcf72e3312 success=False env_steps=6 state_changed=True (427s)
-[REFLECTOR] Starting call reflect_d2aa0cdd7ecc9aad2e914919...
-[REFLECTOR] Call reflect_d2aa0cdd7ecc9aad2e914919 completed in 20.09s
-[LOG] reflector call logged to reflector_reflect_d2aa0cdd7ecc9aad2e914919_20260917_032647_801.json
-[CURATOR] Starting call curate_d2aa0cdd7ecc9aad2e914919...
-[CURATOR] Call curate_d2aa0cdd7ecc9aad2e914919 completed in 3.38s
-[LOG] curator call logged to curator_curate_d2aa0cdd7ecc9aad2e914919_20260917_032651_182.json
+[ace_context] experience 17/30 e0a791f31631dab6573c5e31 success=True env_steps=5 state_changed=True (90s)
+[REFLECTOR] Starting call reflect_78a6df9d17c48d835eb5061f...
+[REFLECTOR] Call reflect_78a6df9d17c48d835eb5061f completed in 21.36s
+[LOG] reflector call logged to reflector_reflect_78a6df9d17c48d835eb5061f_20260917_112051_827.json
+[CURATOR] Starting call curate_78a6df9d17c48d835eb5061f...
+[CURATOR] Call curate_78a6df9d17c48d835eb5061f completed in 8.58s
+[LOG] curator call logged to curator_curate_78a6df9d17c48d835eb5061f_20260917_112100_407.json
 ✅ Curator JSON schema validated successfully: 0 operations
-[ace_context] experience 30/30 d2aa0cdd7ecc9aad2e914919 success=False env_steps=8 state_changed=True (93s)
+[ace_context] experience 18/30 78a6df9d17c48d835eb5061f success=False env_steps=8 state_changed=True (330s)
+[REFLECTOR] Starting call reflect_79549635dc9c8e77c5cb5350...
+[REFLECTOR] Call reflect_79549635dc9c8e77c5cb5350 completed in 21.07s
+[LOG] reflector call logged to reflector_reflect_79549635dc9c8e77c5cb5350_20260917_112243_161.json
+[CURATOR] Starting call curate_79549635dc9c8e77c5cb5350...
+[CURATOR] Call curate_79549635dc9c8e77c5cb5350 completed in 12.72s
+[LOG] curator call logged to curator_curate_79549635dc9c8e77c5cb5350_20260917_112255_885.json
+✅ Curator JSON schema validated successfully: 2 operations
+  Added bullet sai-00020 to section strategies_and_insights
+  Added bullet err-00021 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 19/30 79549635dc9c8e77c5cb5350 success=False env_steps=8 state_changed=True (115s)
+[REFLECTOR] Starting call reflect_a625628e54f6da76a4839471...
+[REFLECTOR] Call reflect_a625628e54f6da76a4839471 completed in 20.19s
+[LOG] reflector call logged to reflector_reflect_a625628e54f6da76a4839471_20260917_112509_635.json
+[CURATOR] Starting call curate_a625628e54f6da76a4839471...
+[CURATOR] Call curate_a625628e54f6da76a4839471 completed in 3.72s
+[LOG] curator call logged to curator_curate_a625628e54f6da76a4839471_20260917_112513_356.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 20/30 a625628e54f6da76a4839471 success=False env_steps=8 state_changed=True (137s)
+[REFLECTOR] Starting call reflect_8132995f6c1233b67a77fc77...
+[REFLECTOR] Call reflect_8132995f6c1233b67a77fc77 completed in 21.07s
+[LOG] reflector call logged to reflector_reflect_8132995f6c1233b67a77fc77_20260917_112835_057.json
+[CURATOR] Starting call curate_8132995f6c1233b67a77fc77...
+[CURATOR] Call curate_8132995f6c1233b67a77fc77 completed in 9.29s
+[LOG] curator call logged to curator_curate_8132995f6c1233b67a77fc77_20260917_112844_351.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 21/30 8132995f6c1233b67a77fc77 success=False env_steps=3 state_changed=True (211s)
+[REFLECTOR] Starting call reflect_07e959ea67b68ed3096ea5b5...
+[REFLECTOR] Call reflect_07e959ea67b68ed3096ea5b5 completed in 20.12s
+[LOG] reflector call logged to reflector_reflect_07e959ea67b68ed3096ea5b5_20260917_113042_352.json
+[CURATOR] Starting call curate_07e959ea67b68ed3096ea5b5...
+[CURATOR] Call curate_07e959ea67b68ed3096ea5b5 completed in 2.22s
+[LOG] curator call logged to curator_curate_07e959ea67b68ed3096ea5b5_20260917_113044_576.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 22/30 07e959ea67b68ed3096ea5b5 success=False env_steps=8 state_changed=True (120s)
+[REFLECTOR] Starting call reflect_4c1a2c8453807a70b177d912...
+[REFLECTOR] Call reflect_4c1a2c8453807a70b177d912 completed in 19.58s
+[LOG] reflector call logged to reflector_reflect_4c1a2c8453807a70b177d912_20260917_113207_824.json
+[CURATOR] Starting call curate_4c1a2c8453807a70b177d912...
+[CURATOR] Call curate_4c1a2c8453807a70b177d912 completed in 16.94s
+[LOG] curator call logged to curator_curate_4c1a2c8453807a70b177d912_20260917_113224_764.json
+✅ Curator JSON schema validated successfully: 2 operations
+  Added bullet sai-00022 to section strategies_and_insights
+  Added bullet err-00023 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 23/30 4c1a2c8453807a70b177d912 success=False env_steps=8 state_changed=True (100s)
+[REFLECTOR] Starting call reflect_b2711b84d576de87f3a06e22...
+[REFLECTOR] Call reflect_b2711b84d576de87f3a06e22 completed in 20.78s
+[LOG] reflector call logged to reflector_reflect_b2711b84d576de87f3a06e22_20260917_113451_560.json
+[CURATOR] Starting call curate_b2711b84d576de87f3a06e22...
+[CURATOR] Call curate_b2711b84d576de87f3a06e22 completed in 8.86s
+[LOG] curator call logged to curator_curate_b2711b84d576de87f3a06e22_20260917_113500_422.json
+✅ Curator JSON schema validated successfully: 3 operations
+  Added bullet sai-00024 to section strategies_and_insights
+  Added bullet sai-00025 to section strategies_and_insights
+  Added bullet err-00026 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 24/30 b2711b84d576de87f3a06e22 success=False env_steps=8 state_changed=True (156s)
+[REFLECTOR] Starting call reflect_c328b6e02a5e37f4670f3f06...
+[REFLECTOR] Call reflect_c328b6e02a5e37f4670f3f06 completed in 19.94s
+[LOG] reflector call logged to reflector_reflect_c328b6e02a5e37f4670f3f06_20260917_113913_859.json
+[CURATOR] Starting call curate_c328b6e02a5e37f4670f3f06...
+[CURATOR] Call curate_c328b6e02a5e37f4670f3f06 completed in 6.01s
+[LOG] curator call logged to curator_curate_c328b6e02a5e37f4670f3f06_20260917_113919_870.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 25/30 c328b6e02a5e37f4670f3f06 success=False env_steps=8 state_changed=True (259s)
+[REFLECTOR] Starting call reflect_24623e5f57bf49ffcadf1744...
+[REFLECTOR] Call reflect_24623e5f57bf49ffcadf1744 completed in 19.63s
+[LOG] reflector call logged to reflector_reflect_24623e5f57bf49ffcadf1744_20260917_114229_191.json
+[CURATOR] Starting call curate_24623e5f57bf49ffcadf1744...
+[CURATOR] Call curate_24623e5f57bf49ffcadf1744 completed in 2.26s
+[LOG] curator call logged to curator_curate_24623e5f57bf49ffcadf1744_20260917_114231_452.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 26/30 24623e5f57bf49ffcadf1744 success=False env_steps=8 state_changed=True (191s)
+[REFLECTOR] Starting call reflect_5c41ee1d4160f8bbbc2aea18...
+[REFLECTOR] Call reflect_5c41ee1d4160f8bbbc2aea18 completed in 21.00s
+[LOG] reflector call logged to reflector_reflect_5c41ee1d4160f8bbbc2aea18_20260917_114500_143.json
+[CURATOR] Starting call curate_5c41ee1d4160f8bbbc2aea18...
+[CURATOR] Call curate_5c41ee1d4160f8bbbc2aea18 completed in 8.72s
+[LOG] curator call logged to curator_curate_5c41ee1d4160f8bbbc2aea18_20260917_114508_867.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 27/30 5c41ee1d4160f8bbbc2aea18 success=False env_steps=8 state_changed=True (157s)
+[REFLECTOR] Starting call reflect_cf68b1e84949b3893e84e45b...
+[REFLECTOR] Call reflect_cf68b1e84949b3893e84e45b completed in 20.37s
+[LOG] reflector call logged to reflector_reflect_cf68b1e84949b3893e84e45b_20260917_115146_130.json
+[CURATOR] Starting call curate_cf68b1e84949b3893e84e45b...
+[CURATOR] Call curate_cf68b1e84949b3893e84e45b completed in 11.59s
+[LOG] curator call logged to curator_curate_cf68b1e84949b3893e84e45b_20260917_115157_719.json
+✅ Curator JSON schema validated successfully: 5 operations
+  Added bullet sai-00027 to section strategies_and_insights
+  Added bullet sai-00028 to section strategies_and_insights
+  Added bullet sai-00029 to section strategies_and_insights
+  Added bullet err-00030 to section common_mistakes_to_avoid
+  Added bullet err-00031 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 28/30 cf68b1e84949b3893e84e45b success=False env_steps=8 state_changed=True (409s)
+[REFLECTOR] Starting call reflect_f1e99d709afa71fcf72e3312...
+[REFLECTOR] Call reflect_f1e99d709afa71fcf72e3312 completed in 20.43s
+[LOG] reflector call logged to reflector_reflect_f1e99d709afa71fcf72e3312_20260917_115547_972.json
+[CURATOR] Starting call curate_f1e99d709afa71fcf72e3312...
+[CURATOR] Call curate_f1e99d709afa71fcf72e3312 completed in 13.79s
+[LOG] curator call logged to curator_curate_f1e99d709afa71fcf72e3312_20260917_115601_759.json
+✅ Curator JSON schema validated successfully: 7 operations
+  Added bullet sai-00032 to section strategies_and_insights
+  Added bullet sai-00033 to section strategies_and_insights
+  Added bullet sai-00034 to section strategies_and_insights
+  Added bullet sai-00035 to section strategies_and_insights
+  Added bullet err-00036 to section common_mistakes_to_avoid
+  Added bullet err-00037 to section common_mistakes_to_avoid
+  Added bullet err-00038 to section common_mistakes_to_avoid
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+  - ADD: No reason given
+[ace_context] experience 29/30 f1e99d709afa71fcf72e3312 success=False env_steps=8 state_changed=True (244s)
+[REFLECTOR] Starting call reflect_d2aa0cdd7ecc9aad2e914919...
+[REFLECTOR] Call reflect_d2aa0cdd7ecc9aad2e914919 completed in 20.10s
+[LOG] reflector call logged to reflector_reflect_d2aa0cdd7ecc9aad2e914919_20260917_115731_027.json
+[CURATOR] Starting call curate_d2aa0cdd7ecc9aad2e914919...
+[CURATOR] Call curate_d2aa0cdd7ecc9aad2e914919 completed in 12.55s
+[LOG] curator call logged to curator_curate_d2aa0cdd7ecc9aad2e914919_20260917_115743_577.json
+✅ Curator JSON schema validated successfully: 0 operations
+[ace_context] experience 30/30 d2aa0cdd7ecc9aad2e914919 success=False env_steps=8 state_changed=True (102s)
+[ace_context] S030 probe PASS (unchanged=True infra=0)
+{
+  "method": "ace_context",
+  "status": "PASS",
+  "full_run": true,
+  "checks": {
+    "experience count == manifest": true,
+    "S000 probe PASS": true,
+    "S030 probe PASS": true,
+    "probe task counts == manifest": true,
+    "infrastructure crash rate < 2%": true,
+    "no experience failure": true,
+    "no leakage": true,
+    "final checkpoint is S030": true
+  },
+  "experience": 30,
+  "state_updates": 30,
+  "probe_state_unchanged": true,
+  "infra_errors": 0,
+  "experience_failures": 0,
+  "leakage_violations": 0,
+  "updater_tokens": 268166,
+  "env_steps": 225,
+  "wall_s": 16089.1
+}

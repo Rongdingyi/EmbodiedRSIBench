@@ -1,0 +1,25 @@
+[
+  {
+    "step_idx": 1,
+    "chosen_action": {
+      "action_type": "response",
+      "name": "ask_human",
+      "parameters": {
+        "question": "I can't find a watch in my current view, and my gripper is empty — I don't see any watch to pick up. Could you clarify: (1) is there a watch in the scene, and where is it (which surface/room)? and (2) which seat should it go on — I currently see a sofa and an ottoman, but no obvious chair? Also, you mentioned you're about to put your watch on, so did you mean for me to place a different item, or should I wait until the watch is available?"
+      }
+    },
+    "public_env_feedback": "",
+    "action_success": null,
+    "terminated": false,
+    "truncated": false,
+    "planner_usage": {
+      "input_tokens": 4859,
+      "output_tokens": 1043,
+      "charged_tokens": 5902,
+      "sources": {
+        "provider": 1
+      }
+    },
+    "rsi_aux_usage": {}
+  }
+]

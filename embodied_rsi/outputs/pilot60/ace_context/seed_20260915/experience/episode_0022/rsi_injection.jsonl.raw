@@ -1,0 +1,30 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## STRATEGIES & INSIGHTS
+
+[sai-00001] helpful=0 harmful=0 :: After any action that satisfies the task goal (e.g., a successful Pick of the requested object), immediately issue EndTask. Continuing with further actions is unnecessary and risks undoing the goal.
+[sai-00002] helpful=0 harmful=0 :: Explicitly track hand/object state: if the agent is already holding the target object, the goal is likely complete. Do not attempt additional Pick actions unless the task requires holding multiple objects.
+[sai-00004] helpful=0 harmful=0 :: For tasks with multiple sequential goals (e.g., prepare, consume, clean, store), explicitly decompose into ordered subgoals and track completion of each. Do not issue EndTask until the final subgoal is achieved.
+[sai-00005] helpful=0 harmful=0 :: Holding a target object may be an intermediate state in a multi-step task, not the overall goal. Continue with remaining actions (e.g., drink, wash, store) before ending.
+[sai-00007] helpful=0 harmful=0 :: For goals that specify a contained object (e.g., 'a glass with a fork in it'), treat containment as a subgoal: pick up the contained object and place it inside the container before moving or placing the container. Verify containment afterward.
+[sai-00008] helpful=0 harmful=0 :: For relative placement goals (e.g., 'on the table in front of a glass pitcher'), identify the reference object and the required spatial relation. Place the target object at a location that satisfies both the surface constraint and the relative position, not merely anywhere on the surface.
+[sai-00011] helpful=0 harmful=0 :: For cooking tasks that transform an object (e.g., bread into toast), identify the required appliance and the correct action sequence: place the raw item inside the appliance, activate it, wait for the transformed state, then retrieve the cooked item. Do not assume the raw item satisfies the goal.
+[sai-00012] helpful=0 harmful=0 :: After activating an appliance that takes time (e.g., a toaster), wait for the state change to complete before attempting to remove the item. Removing it early may leave the object uncooked and fail the task.
+[sai-00013] helpful=0 harmful=0 :: When the task says to 'serve' food on a plate, treat placing the finished food item onto the plate as a required final subgoal. Ensure the plate is on a stable surface and the food is resting on it before issuing EndTask.
+[sai-00016] helpful=0 harmful=0 :: For frying tasks (e.g., frying a potato slice), the required transformation uses a pan on a stove: place the pan on the stove, put the raw slice in the pan, turn on the heat, wait until the slice is fried, then retrieve it. Treat the raw slice as incomplete until fried.
+[sai-00018] helpful=0 harmful=0 :: For 'Place X on Y' tasks, picking up X is only an intermediate subgoal. The final required action is putting X down on Y; verify X is on Y before issuing EndTask.
+[sai-00019] helpful=0 harmful=0 :: If a Find action for the target object or destination fails, do not abort the task. The target may be at another location; retry Find or search other plausible locations until found, then continue with the placement.
+[sai-00020] helpful=0 harmful=0 :: For tasks that list multiple objects to be moved to the same destination (e.g., 'move A, B, and C to Y'), treat each object as an independent subgoal. After placing each, verify it is on Y; do not issue EndTask until every listed object is on Y.
+## FORMULAS & CALCULATIONS
+
+## CODE SNIPPETS & TEMPLATES
+
+## COMMON MISTAKES TO AVOID
+[err-00003] helpful=0 harmful=0 :: Continuing to act after goal completion (e.g., extra Move or Pick actions) wastes steps and can fail due to blocked paths or a full hand. Always check goal satisfaction after each successful action and stop when done.
+[err-00006] helpful=0 harmful=0 :: Prematurely ending a multi-step task after an early subgoal (e.g., after preparing or picking up the mug) leaves the overall task incomplete. Verify the full sequence is done before stopping.
+[err-00009] helpful=0 harmful=0 :: Placing an object without checking its relative position to a specified reference object (e.g., anywhere on the table instead of in front of the pitcher) can fail the task. Always confirm the required spatial relation before ending.
+[err-00010] helpful=0 harmful=0 :: Moving a container before ensuring any required contained object is inside it may cause the contained object to be left behind or dropped. Complete containment before transporting the container.
+[err-00014] helpful=0 harmful=0 :: Placing raw bread directly on a plate without first toasting it fails tasks that require making toast. Always perform the cooking transformation before serving.
+[err-00015] helpful=0 harmful=0 :: Picking up the food item from the appliance before the cooking process finishes (e.g., removing bread before it becomes toast) results in an uncooked object and an incomplete task.
+[err-00017] helpful=0 harmful=0 :: Serving a raw potato slice on the plate before frying it, or removing it from the pan before the fried state is reached, fails the task. Always complete the frying transformation before plating.
+[err-00021] helpful=0 harmful=0 :: Ending the task after moving only some of the listed objects to the destination. All objects named in the instruction must be moved to the target location before stopping.
+[/PERSISTENT EXPERIENCE GUIDANCE]

@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+To deliver an object to a target location, first locate the object and do not assume it is directly visible or findable; check likely containers and occluding receptacles by opening or inspecting them, then search again. Before attempting to pick up the object, navigate to its location and verify it is within reach, because pick_up actions fail if the robot is not near the object. Only treat the object as held after pick_up succeeds. Before placing the object, locate the target surface and verify the robot is currently holding the object; if the target search fails, explore other instances or retry rather than stopping. Success requires successful find and pick_up of the object, successful find of the target surface, and a final successful put_down.
+
+## Preliminary Thinking
+1. Search for the yellow round fruit by checking visible surfaces first, then likely containers or occluding receptacles such as fruit bowls, counters, tables, fridge, or cupboards; open/inspect containers if the fruit is not directly visible. 2. After locating the fruit, navigate to it, verify it is within reach, and execute pick_up. 3. Confirm the robot is holding the fruit before proceeding. 4. Locate the sink; if the first search fails, explore other sink instances or retry. 5. Navigate to the sink, verify the fruit is still held, then execute put_down to place the fruit at/in the sink. 6. Confirm the final placement was successful.
+[/PERSISTENT EXPERIENCE GUIDANCE]

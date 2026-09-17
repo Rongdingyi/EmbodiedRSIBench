@@ -1,0 +1,56 @@
+[none] S000 probe PASS (unchanged=True infra=0)
+[none] experience 1/30 39a9f8a930eb004a155843c1 success=False env_steps=8 state_changed=False (172s)
+[none] experience 2/30 8ea46e8d0b384acee00f5984 success=False env_steps=8 state_changed=False (180s)
+[none] experience 3/30 7802f5fb304e2e4e21b38427 success=False env_steps=8 state_changed=False (112s)
+[none] experience 4/30 fda43d9972133290afc4e4f8 success=False env_steps=6 state_changed=False (354s)
+[none] experience 5/30 8901c7d48b4d1bd6f22c78a9 success=False env_steps=8 state_changed=False (145s)
+[none] experience 6/30 118ab8288a38e5aaa5fc0620 success=False env_steps=8 state_changed=False (191s)
+[none] experience 7/30 fd44b1790c66485aae012861 success=False env_steps=7 state_changed=False (391s)
+[none] experience 8/30 024f0f6a00587246b173332c success=False env_steps=8 state_changed=False (260s)
+[none] experience 9/30 d46bfd9c78877123e3a33459 success=False env_steps=9 state_changed=False (138s)
+[none] experience 10/30 254490a0a79cf4400009b339 success=False env_steps=8 state_changed=False (82s)
+[none] experience 11/30 48f70d107f5b702a2eb39617 success=False env_steps=3 state_changed=False (132s)
+[none] experience 12/30 b4b66ccef4b6574a03487ec7 success=False env_steps=8 state_changed=False (199s)
+[none] experience 13/30 4a97f0840bafb152996f2e80 success=False env_steps=8 state_changed=False (190s)
+[none] experience 14/30 ac94d453797c68aa2ca35c40 success=False env_steps=2 state_changed=False (159s)
+[none] experience 15/30 af7d9cda2ce61e372c12e879 success=False env_steps=8 state_changed=False (197s)
+[none] experience 16/30 af42691cc783441286a66457 success=False env_steps=8 state_changed=False (180s)
+[none] experience 17/30 e0a791f31631dab6573c5e31 success=True env_steps=5 state_changed=False (49s)
+[none] experience 18/30 78a6df9d17c48d835eb5061f success=False env_steps=2 state_changed=False (152s)
+[none] experience 19/30 79549635dc9c8e77c5cb5350 success=False env_steps=8 state_changed=False (96s)
+[none] experience 20/30 a625628e54f6da76a4839471 success=False env_steps=8 state_changed=False (59s)
+[none] experience 21/30 8132995f6c1233b67a77fc77 success=False env_steps=4 state_changed=False (199s)
+[none] experience 22/30 07e959ea67b68ed3096ea5b5 success=False env_steps=8 state_changed=False (131s)
+[none] experience 23/30 4c1a2c8453807a70b177d912 success=False env_steps=8 state_changed=False (80s)
+[none] experience 24/30 b2711b84d576de87f3a06e22 success=False env_steps=8 state_changed=False (141s)
+[none] experience 25/30 c328b6e02a5e37f4670f3f06 success=False env_steps=7 state_changed=False (438s)
+[none] experience 26/30 24623e5f57bf49ffcadf1744 success=False env_steps=8 state_changed=False (174s)
+[none] experience 27/30 5c41ee1d4160f8bbbc2aea18 success=False env_steps=8 state_changed=False (152s)
+[none] experience 28/30 cf68b1e84949b3893e84e45b success=False env_steps=8 state_changed=False (263s)
+[none] experience 29/30 f1e99d709afa71fcf72e3312 success=False env_steps=8 state_changed=False (163s)
+[none] experience 30/30 d2aa0cdd7ecc9aad2e914919 success=False env_steps=8 state_changed=False (53s)
+[none] S030 probe PASS (unchanged=True infra=0)
+{
+  "method": "none",
+  "status": "PASS",
+  "full_run": true,
+  "checks": {
+    "experience count == manifest": true,
+    "S000 probe PASS": true,
+    "S030 probe PASS": true,
+    "probe task counts == manifest": true,
+    "infrastructure crash rate < 2%": true,
+    "no experience failure": true,
+    "no leakage": true,
+    "final checkpoint is S030": true
+  },
+  "experience": 30,
+  "state_updates": 0,
+  "probe_state_unchanged": true,
+  "infra_errors": 0,
+  "experience_failures": 0,
+  "leakage_violations": 0,
+  "updater_tokens": 0,
+  "env_steps": 213,
+  "wall_s": 14821.0
+}

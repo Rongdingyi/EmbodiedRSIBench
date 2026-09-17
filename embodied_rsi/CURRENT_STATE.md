@@ -1,10 +1,10 @@
 # Current State
 
 ## Last completed milestone
-G0-G6 all PASS on the relay endpoint. G7 protocol changed to Pilot-60 (v0.7);
-Pilot-150 aborted by user after
-~3.2M tokens (39 partial S000 probe episodes, archived to
-`outputs/aborted_pilot150_20260916/` (predates Pilot-60).
+G7 Pilot-60 COMPLETE: all four primary conditions PASS with zero infra
+errors / zero leakage / zero probe mutation. Release audit:
+`PIPELINE_PASS_WITH_BLOCKER` (C4 embodiskill BLOCKED per protocol).
+`outputs/FINAL_STATUS.txt`, `outputs/pilot60/PILOT_REPORT.md`.
 
 ## Status
 G0/G1/G2/G3/G4/G5/G6 ALL PASS (evidence in `outputs/preflight/`).

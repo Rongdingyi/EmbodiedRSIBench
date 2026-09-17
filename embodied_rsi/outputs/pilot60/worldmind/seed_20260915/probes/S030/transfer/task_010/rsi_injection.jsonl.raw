@@ -1,0 +1,7 @@
+[PERSISTENT EXPERIENCE GUIDANCE]
+## Consolidated Experience from Similar Tasks
+To move an object successfully, first locate the object and ensure the robot is at or within reach of it before attempting pick_up. Never assume a manipulation skill will work without satisfying its proximity precondition. After pick_up, verify that the robot is actually holding the object; never attempt a place action unless the object is confirmed in the gripper. Then locate the target location, and if the named target instance is unavailable or the first search fails, explore other instances or retry rather than stopping. Once the object is held and a valid target location is found, execute put_down. Successful execution is indicated by a successful find and pick_up for the object, successful find of the target location, and a final successful put_down.
+
+## Preliminary Thinking
+1. Locate the banana on the left counter. 2. Navigate to the banana until it is within the robot's reachable grasping range. 3. Execute pick_up on the banana, then verify the robot is holding it. 4. Locate the sink and identify the target area to its right. 5. If necessary, navigate so the target area is reachable. 6. Execute put_down to place the banana to the right of the sink, then verify placement. If the sink or right-side target cannot be found initially, search for it again or explore relevant alternatives rather than stopping. Do not attempt any place action unless the banana is confirmed to be held.
+[/PERSISTENT EXPERIENCE GUIDANCE]
