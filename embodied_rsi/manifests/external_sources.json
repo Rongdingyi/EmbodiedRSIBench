@@ -22,5 +22,10 @@
     "commit": "760126030eab1d33ec6a6f30988f0f1fb58df3a7",
     "head": "760126030eab1d33ec6a6f30988f0f1fb58df3a7",
     "clean": true
+  },
+  "EmbodiedBench": {
+    "repo": "https://github.com/EmbodiedBench/EmbodiedBench",
+    "commit": "9be4e980e9cd6bcb38373cd4aab7c32724bdd401",
+    "purpose": "canonical agent architecture reference only"
   }
 }

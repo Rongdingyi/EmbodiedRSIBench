@@ -1,0 +1,14 @@
+{
+  "agent_name": "canonical_multimodal_react_v1",
+  "architecture": "multimodal_react_planner_executor",
+  "reference": "EmbodiedBench/VLMPlanner",
+  "reference_repo": "https://github.com/EmbodiedBench/EmbodiedBench",
+  "reference_commit": "9be4e980e9cd6bcb38373cd4aab7c32724bdd401",
+  "reference_file": "embodiedbench/planner/vlm_planner.py",
+  "protocol_rule": "one planner decision -> exactly one real environment action",
+  "migration_base_commit": "56ad3aaba4fe9c0d2cc11e6903f08bde1fab5543",
+  "notes": [
+    "The canonical runtime does not import the EmbodiedBench package; this pin is an architecture reference.",
+    "Frozen OpenETA substrate remains available as the historical/reference track (benchmark/openeta_bridge/)."
+  ]
+}
