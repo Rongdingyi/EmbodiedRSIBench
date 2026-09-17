@@ -25,7 +25,7 @@ import sys
 import traceback
 from pathlib import Path
 
-PROJECT = Path("/data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi")
+PROJECT = Path(__file__).resolve().parents[3]
 EMBODISKILL_REPO = PROJECT / "external" / "EmbodiSkill"
 sys.path.insert(0, str(EMBODISKILL_REPO))
 
@@ -56,7 +56,11 @@ class EmbeddingFunction:
 
 
 class DeepSeekLLM:
-    """Official LLMCallable signature over the DeepSeek chat-completions API."""
+    """Official LLMCallable signature over the DeepSeek chat-completions API.
+
+    Every request is recorded for the request audit (model/messages/max_tokens
+    only; never the API key) and token usage is accumulated per episode.
+    """
 
     def __init__(self, model: str = "deepseek-flash") -> None:
         from openai import OpenAI
@@ -67,15 +71,29 @@ class DeepSeekLLM:
             base = base[: -len("/v1")].rstrip("/")
         self.client = OpenAI(api_key=os.environ.get("DEEPSEEK_API_KEY", ""),
                              base_url=f"{base}/v1")
+        self.usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
+        self.request_records: list[dict] = []
+
+    def reset_usage(self) -> None:
+        self.usage = {"prompt_tokens": 0, "completion_tokens": 0, "calls": 0}
+        self.request_records = []
 
     def __call__(self, messages, temperature: float = 0.0, max_tokens: int = 2048,
                  stop_strs=None, num_comps: int = 1) -> str:
+        self.request_records.append({"model": self.model,
+                                     "messages": list(messages),
+                                     "max_tokens": max_tokens})
         response = self.client.chat.completions.create(
             model=self.model,
             messages=list(messages),
             temperature=temperature,
             max_tokens=max_tokens,
         )
+        usage = getattr(response, "usage", None)
+        if usage is not None:
+            self.usage["prompt_tokens"] += int(getattr(usage, "prompt_tokens", 0) or 0)
+            self.usage["completion_tokens"] += int(getattr(usage, "completion_tokens", 0) or 0)
+        self.usage["calls"] += 1
         return response.choices[0].message.content or ""
 
 
@@ -85,11 +103,11 @@ def build_skill(state_root: Path):
     # official dataclass fields: namespace / global_config / llm_model / embedding_func;
     # persist_dir is derived in __post_init__ from global_config (P1-11).
     return EmbodiSkill(
-        namespace="embodiskill_openeta",
+        namespace="embodiskill_canonical_react",
         global_config={
             "working_dir": str(state_root),
             "persist_dir": str(state_root / "skill_state"),
-            "task_name": "embodied_openeta",
+            "task_name": "embodied_rsi_canonical",
             "current_epoch_id": 0,
             "hop": 1,
             "project_name": "EmbodiSkill",
@@ -100,7 +118,10 @@ def build_skill(state_root: Path):
 
 
 def convert_episode(skill, trajectory_public: dict, outcome_public: dict) -> dict:
-    """OpenETA public trajectory -> official StateChain -> official reflection."""
+    """Canonical public trajectory -> official StateChain -> official reflection."""
+    llm = getattr(skill, "llm_model", None)
+    if hasattr(llm, "reset_usage"):
+        llm.reset_usage()
     instruction = trajectory_public.get("instruction") or ""
     skill.init_task_context(task_main=instruction, task_description=instruction)
     for index, item in enumerate(trajectory_public.get("actions") or []):
@@ -113,8 +134,12 @@ def convert_episode(skill, trajectory_public: dict, outcome_public: dict) -> dic
     mas_message = skill.save_task_context(label=success, feedback=feedback)
     reflection = skill.reflect_episode(mas_message)
     revision = skill.revise_manual(epoch_id=0, success_rate=1.0 if success else 0.0)
-    return {"reflection": reflection, "revision": revision,
-            "manual_version": int(getattr(skill, "manual_state", {}).get("version", 0))}
+    result = {"reflection": reflection, "revision": revision,
+              "manual_version": int(getattr(skill, "manual_state", {}).get("version", 0))}
+    if llm is not None:
+        result["usage"] = dict(getattr(llm, "usage", {}) or {})
+        result["request_records"] = list(getattr(llm, "request_records", []) or [])
+    return result
 
 
 def manual_guidance(skill) -> str:
