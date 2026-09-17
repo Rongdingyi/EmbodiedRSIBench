@@ -28,7 +28,11 @@ from benchmark.adapters.base import BenchmarkEnvAdapter
 # model-visible observation allowlist (P1-3): instruction, RGB, official feedback
 PUBLIC_METADATA_ALLOWLIST = {"image_roles"}
 
-ROLE_MAP = {"current_view": "scene_primary", "target_view": "scene_secondary"}
+# The upstream planner attaches only primary cameras (scene_primary /
+# wrist_primary). The guide requires the TVR target image to reach the model
+# (sections 11.1/1375), so the target view must be a second primary camera;
+# evidence_id/frame_id ("target_view") keeps it distinguishable.
+ROLE_MAP = {"current_view": "scene_primary", "target_view": "scene_primary"}
 
 
 class BenchmarkEpisodeEnvironment:
