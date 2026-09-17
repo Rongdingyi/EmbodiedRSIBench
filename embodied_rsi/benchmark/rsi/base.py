@@ -3,7 +3,8 @@
 Hard rules:
   * an RSIMethod never holds a simulator object;
   * it reads only public task / trajectory / feedback / outcome data;
-  * it cannot touch the environment, tool registry, evaluator or OpenETA core;
+  * it cannot touch the canonical agent internals, simulator, action schema,
+    private evaluator, or benchmark task selector;
   * all cross-episode state lives in its own `rsi_state/` directory.
 
 Snapshot semantics (P0-4): a clone is always a **new instance** operating on a
@@ -19,7 +20,7 @@ import tempfile
 from abc import ABC, abstractmethod
 from pathlib import Path
 
-from benchmark.openeta_bridge.context_injection import RSIInjection, make_injection
+from benchmark.rsi.context import RSIInjection, make_injection
 
 
 class RSIMethod(ABC):
@@ -47,8 +48,9 @@ class RSIMethod(ABC):
                         accountant=None) -> str | None:
         """Optional pre-step prediction (WorldMind).
 
-        Runs after OpenETA has locked the action and before the environment
-        executes it; the result never returns to the planner (guide 20.2).
+        Runs after the canonical agent has selected and validated the action,
+        and before the environment executes it; the result never returns to the
+        planner (guide 20.2).
         """
         return None
 

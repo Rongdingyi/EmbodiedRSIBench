@@ -30,7 +30,7 @@ from benchmark.adapters.base import BenchmarkEnvAdapter  # noqa: E402
 from benchmark.openeta_bridge.benchmark_environment import (  # noqa: E402
     BenchmarkEpisodeEnvironment,
 )
-from benchmark.openeta_bridge.context_injection import (  # noqa: E402
+from benchmark.rsi.context import (  # noqa: E402
     RSIInjection,
     log_injection,
     make_injection,

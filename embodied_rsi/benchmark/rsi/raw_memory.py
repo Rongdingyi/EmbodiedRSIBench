@@ -11,7 +11,7 @@ import re
 from collections import Counter
 from pathlib import Path
 
-from benchmark.openeta_bridge.context_injection import RSIInjection, count_tokens, make_injection
+from benchmark.rsi.context import RSIInjection, count_tokens, make_injection
 from benchmark.rsi.base import RSIMethod
 
 TOP_K = 4

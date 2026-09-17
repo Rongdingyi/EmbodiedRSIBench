@@ -18,7 +18,7 @@ import time
 import urllib.request
 from pathlib import Path
 
-from benchmark.openeta_bridge.context_injection import RSIInjection, count_tokens, make_injection
+from benchmark.rsi.context import RSIInjection, count_tokens, make_injection
 from benchmark.rsi.base import RSIMethod
 from benchmark.utils import chat_completions_url, normalize_base_url
 

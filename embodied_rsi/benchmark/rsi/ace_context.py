@@ -13,7 +13,7 @@ import sys
 import time
 from pathlib import Path
 
-from benchmark.openeta_bridge.context_injection import RSIInjection, count_tokens, make_injection
+from benchmark.rsi.context import RSIInjection, count_tokens, make_injection
 from benchmark.rsi.base import RSIMethod
 
 PROJECT = Path(__file__).resolve().parents[2]

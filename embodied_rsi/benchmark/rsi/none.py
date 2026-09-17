@@ -4,7 +4,7 @@ from __future__ import annotations
 import hashlib
 from pathlib import Path
 
-from benchmark.openeta_bridge.context_injection import RSIInjection, make_injection
+from benchmark.rsi.context import RSIInjection, make_injection
 from benchmark.rsi.base import RSIMethod
 
 
