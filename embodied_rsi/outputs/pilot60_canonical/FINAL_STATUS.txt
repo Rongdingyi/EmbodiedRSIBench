@@ -1,0 +1,6 @@
+FINAL_STATUS: FAIL
+METHOD_STATUS: {}
+- calibration engineering invariants PASS: missing /data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/canonical_calibration/CALIBRATION_REPORT.json
+- missing artifact: /data/users/rongdingyi/programs/benchmarks/EmbodiedRSIBench/embodied_rsi/outputs/preflight/RSI_SMOKE_CANONICAL.json
+- canonical RSI smoke PASS or protocol-legal BLOCKED: None
+- all primary conditions completed: missing: ['ace_context', 'none', 'raw_memory', 'worldmind']

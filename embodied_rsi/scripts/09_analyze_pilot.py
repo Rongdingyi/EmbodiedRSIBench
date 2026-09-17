@@ -10,6 +10,7 @@ Reads outputs/pilot150/*/seed_*/ and produces:
 """
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 import sys
@@ -20,7 +21,8 @@ PROJECT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT))
 from benchmark.registry.loader import by_global_id  # noqa: E402
 
-PILOT = PROJECT / "outputs" / "pilot60"
+PILOT = PROJECT / "outputs" / "pilot60_canonical"
+PROTOCOL = PROJECT / "configs" / "pilot60_canonical.yaml"
 
 
 def load_probe_summary(root: Path, checkpoint: str) -> dict:
@@ -58,7 +60,15 @@ def success_rate(summary: dict, role: str) -> tuple[float | None, int]:
     return sum(1 for t in scored if t["success"]) / len(scored), len(scored)
 
 
-def main() -> int:
+def main(argv: list[str] | None = None) -> int:
+    global PILOT, PROTOCOL
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--root", type=Path, default=PILOT,
+                        help="run root (canonical or historical)")
+    parser.add_argument("--protocol", type=Path, default=PROTOCOL)
+    args = parser.parse_args(argv)
+    PILOT = args.root
+    PROTOCOL = args.protocol
     methods = sorted(p.name for p in PILOT.iterdir() if p.is_dir()) if PILOT.exists() else []
     rows = []
     paired_rows = []
@@ -99,6 +109,11 @@ def main() -> int:
                 "updater_tokens": metrics.get("updater_tokens"),
                 "env_steps": metrics.get("env_steps"),
                 "probe_state_unchanged": metrics.get("probe_state_unchanged"),
+                "planner_calls": metrics.get("planner_calls"),
+                "planner_tokens": ((metrics.get("planner_input_tokens") or 0)
+                                   + (metrics.get("planner_output_tokens") or 0)) or None,
+                "planner_validation_retries": metrics.get("planner_validation_retries"),
+                "planner_protocol_failures": metrics.get("planner_protocol_failures"),
             })
             # by source / by skill
             for role, key in (("id", "initial_id"), ("transfer", "initial_transfer"),
@@ -186,6 +201,23 @@ def main() -> int:
             c=fmt(r["id_gain"]), d=fmt(r["initial_transfer"]), e=fmt(r["final_transfer"]),
             f=fmt(r["transfer_gain"]), g=fmt(r["final_retention"]),
             h=r["probe_state_unchanged"]))
+    stop_reasons = defaultdict(int)
+    for method in methods:
+        for seed_dir in (PILOT / method).glob("seed_*"):
+            for ckpt in sorted((seed_dir / "probes").glob("S*")) if (seed_dir / "probes").exists() else []:
+                summary_path = ckpt / "summary.json"
+                if not summary_path.exists():
+                    continue
+                summary = json.loads(summary_path.read_text())
+                for task in (summary.get("tasks") or {}).values():
+                    reason = task.get("stop_reason")
+                    if reason:
+                        stop_reasons[(method, reason)] += 1
+    if stop_reasons:
+        lines += ["", "## Stop reasons (probe episodes)",
+                  "| Method | Stop reason | n |", "|---|---|---:|"]
+        for (method, reason), n in sorted(stop_reasons.items()):
+            lines.append(f"| {method} | {reason} | {n} |")
     lines += ["", "## Paired transitions (S000 -> Sfinal)",
               "",
               "Same frozen tasks at both checkpoints; a task counts only when both runs "

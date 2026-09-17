@@ -1,0 +1,21 @@
+{
+  "agent_config_sha256": "f421a6268ba1329c7434fe92d9bee703bbce03d43ef9ee5ba7493f43f4840fc0",
+  "agent_name": "canonical_multimodal_react_v1",
+  "critical_file_sha256": {
+    "benchmark/agent/action_schema.py": "dad335299d58b944afce436df3ec55a4b322453dce980f914de72aae2207d5d6",
+    "benchmark/agent/backend.py": "758da206c61e8e326467584b0461facb0a308c24d18be7b41280615c02105ccf",
+    "benchmark/agent/episode_runner.py": "e90e8e82a6824933fcc27d677894f17648408c5ebabbec03693773821e57cbb0",
+    "benchmark/agent/prompt.py": "f19016b1f0f7a081691c2ac95dc1084ce9cf6cad7a95f0f5e338479519af4491",
+    "benchmark/agent/react_agent.py": "4b54dc34835750dc706b536b43f73480f27030d3aa91f2a872cb1d35bba6abe2",
+    "benchmark/agent/working_memory.py": "63357696f6dfd1eb4c7d4b427e1fabcbc6b498eace1ee645134aaf0f3136b619",
+    "configs/agent/canonical_react.yaml": "260efa152824c27b1edf523df6ac4ac49592394642a7f593f0350ce47722998c"
+  },
+  "cross_episode_agent_memory": false,
+  "forbidden_import_violations": [],
+  "one_action_per_turn": true,
+  "reference": "EmbodiedBench/VLMPlanner",
+  "reference_commit": "9be4e980e9cd6bcb38373cd4aab7c32724bdd401",
+  "rsi_only_persistent_state": true,
+  "status": "PASS",
+  "system_prompt_sha256": "a4ba82a6ff4b4f1259795a09503cf1d6908700022b35a4342e84729f61cd020d"
+}

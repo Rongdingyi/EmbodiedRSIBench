@@ -1,0 +1,41 @@
+agent_name: canonical_multimodal_react_v1
+architecture: multimodal_react_planner_executor
+reference: embodiedbench_vlmplanner
+reference_commit: 9be4e980e9cd6bcb38373cd4aab7c32724bdd401
+
+planner:
+  temperature: 0.0
+  max_output_tokens: 2048
+  max_validation_retries: 2
+  max_images: 2
+  json_mode: prompt_only
+
+observation:
+  current_images_only: true
+  include_public_feedback: true
+  include_public_metadata: false
+  include_target_image_when_source_exposes_it: true
+
+working_memory:
+  include_action_history: true
+  include_feedback_history: true
+  include_reasoning_history: false
+  max_history_tokens: 12000
+  truncation: drop_oldest_steps_deterministically
+  model_generated_summary: false
+
+execution:
+  one_environment_action_per_turn: true
+  random_fallback_action: false
+  trust_agent_success_claim: false
+
+rsi:
+  max_injection_tokens: 8192
+  single_shared_injection_slot: true
+
+recovery:
+  deterministic_json_extract: true
+  planner_retry_on_invalid_json: true
+  planner_retry_on_invalid_action: true
+  stuck_warning_after_identical_actions: 3
+  auto_choose_recovery_action: false

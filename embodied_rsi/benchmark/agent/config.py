@@ -109,7 +109,7 @@ class ProtocolConfig:
 
 def load_protocol_config(path: Path, *, repo_root: Path | None = None) -> ProtocolConfig:
     raw = yaml.safe_load(Path(path).read_text()) or {}
-    root = Path(repo_root) if repo_root is not None else Path(path).resolve().parents[2]
+    root = Path(repo_root) if repo_root is not None else Path(path).resolve().parents[1]
     agent_path = root / (raw.get("agent", {}) or {}).get(
         "config", "configs/agent/canonical_react.yaml")
     budgets_raw = raw.get("budgets") or {}
