@@ -89,6 +89,15 @@ class FakeBackend:
         return {"content": content, "usage": {"prompt_tokens": 7, "completion_tokens": 3}}
 
 
+def make_test_agent(responses, *, config=None):
+    """Runner-ready canonical agent with a scripted fake backend (no API)."""
+    from benchmark.agent.config import AgentConfig
+    from benchmark.agent.react_agent import CanonicalMultimodalReActAgent
+
+    return CanonicalMultimodalReActAgent(
+        backend=FakeBackend(list(responses)), config=config or AgentConfig())
+
+
 def make_protocol(max_actions: int = 5, timeout_s: float = 60.0) -> ProtocolConfig:
     return ProtocolConfig(
         budgets=ProtocolBudgets(max_agent_actions={"fake": max_actions},

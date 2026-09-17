@@ -18,7 +18,8 @@ import time
 import urllib.request
 from pathlib import Path
 
-from benchmark.rsi.context import RSIInjection, count_tokens, make_injection
+from benchmark.rsi.context import (RSIInjection, count_tokens, make_injection,
+                                   truncate_to_token_budget)
 from benchmark.rsi.base import RSIMethod
 from benchmark.utils import chat_completions_url, normalize_base_url
 
@@ -85,13 +86,23 @@ def _ensure_worldmind_client_instrumented() -> None:
 
 
 def _state_text(state) -> str:
-    """Compact public state summary used for predicted-vs-actual comparison."""
+    """Compact public state summary used for predicted-vs-actual comparison.
+
+    Reads only allowlisted public fields: the runner passes image_roles inside
+    `public_metadata`, so it must be looked up there (not at the top level).
+    """
     if not isinstance(state, dict):
         return ""
     parts = []
     if state.get("text_feedback"):
         parts.append(str(state["text_feedback"]))
-    for key in ("visible_object_types", "image_roles"):
+    metadata = state.get("public_metadata")
+    if isinstance(metadata, dict):
+        for key in ("image_roles", "visible_object_types"):
+            value = metadata.get(key)
+            if value:
+                parts.append(f"{key}={value}")
+    for key in ("image_roles", "visible_object_types"):
         value = state.get(key)
         if value:
             parts.append(f"{key}={value}")
@@ -238,8 +249,7 @@ class WorldMindRSI(RSIMethod):
         text = (result or {}).get("formatted_prompt") or ""
         if not text.strip():
             return make_injection("")
-        if count_tokens(text) > MAX_INJECTION_TOKENS:
-            text = text[: MAX_INJECTION_TOKENS * 3]
+        text = truncate_to_token_budget(text, MAX_INJECTION_TOKENS)
         return make_injection(text, provenance_ids=(result or {}).get("experience_ids") or [])
 
     def predict_sidecar(self, *, public_observation: dict, action: dict,

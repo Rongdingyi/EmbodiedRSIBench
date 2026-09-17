@@ -8,7 +8,7 @@ sys.path.insert(0, str(PROJECT))
 from benchmark.agent.prompt import NONE_GUIDANCE, build_turn_prompt  # noqa: E402
 from benchmark.rsi.context import OPEN_TAG, CLOSE_TAG, make_injection  # noqa: E402
 
-SLOT_ORDER = ["## Task", "## Persistent cross-episode guidance",
+SLOT_ORDER = ["## Task", "## Visual inputs", "## Persistent cross-episode guidance",
               "## Current public environment feedback", "## Current-episode action history",
               "## Legal actions", "## Optional recovery note"]
 

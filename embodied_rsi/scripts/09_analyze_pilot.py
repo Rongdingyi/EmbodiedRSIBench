@@ -39,7 +39,7 @@ def paired_transitions(first: dict, last: dict, role: str) -> dict:
               "success_to_success": 0, "fail_to_fail": 0}
     for gid, a in tasks0.items():
         b = tasks1.get(gid)
-        if not b or a.get("success") is None or b.get("success") is None:
+        if not b or not episode_counts_as_scored(a) or not episode_counts_as_scored(b):
             continue
         counts["n"] += 1
         if bool(a["success"]) == bool(b["success"]):
@@ -52,9 +52,16 @@ def paired_transitions(first: dict, last: dict, role: str) -> dict:
     return counts
 
 
+def episode_counts_as_scored(task: dict) -> bool:
+    """Protocol/infra-failed episodes never enter a success-rate denominator."""
+    if task.get("status") != "PASS":
+        return False
+    return task.get("success") is not None
+
+
 def success_rate(summary: dict, role: str) -> tuple[float | None, int]:
     tasks = [t for t in (summary.get("tasks") or {}).values() if t.get("role") == role]
-    scored = [t for t in tasks if t.get("success") is not None]
+    scored = [t for t in tasks if episode_counts_as_scored(t)]
     if not scored:
         return None, 0
     return sum(1 for t in scored if t["success"]) / len(scored), len(scored)
@@ -72,6 +79,7 @@ def main(argv: list[str] | None = None) -> int:
     methods = sorted(p.name for p in PILOT.iterdir() if p.is_dir()) if PILOT.exists() else []
     rows = []
     paired_rows = []
+    excluded_rows = []
     by_source_rows = []
     by_skill_rows = []
     cost_rows = []
@@ -93,6 +101,19 @@ def main(argv: list[str] | None = None) -> int:
                 gain = (p1 - p0) if (p0 is not None and p1 is not None) else None
                 return p0, p1, gain, n0, n1
 
+            excluded = []
+            for ckpt_name, summary in (("S000", first), ("S030", last)) if first or last else ():
+                for gid, task in (summary.get("tasks") or {}).items():
+                    if task.get("status") != "PASS":
+                        excluded.append({
+                            "method": method, "seed": seed_dir.name, "checkpoint": ckpt_name,
+                            "role": task.get("role"), "task": gid,
+                            "status": task.get("status"),
+                            "stop_reason": task.get("stop_reason") or "",
+                            "error": task.get("error") or "",
+                            "attempts": task.get("attempts"),
+                        })
+            excluded_rows.extend(excluded)
             id0, id1, idg, idn0, idn1 = gains(first, last, "id")
             tr0, tr1, trg, trn0, trn1 = gains(first, last, "transfer")
             rt0, rt1, rtg, rtn0, rtn1 = gains(first, last, "retention")
@@ -114,6 +135,7 @@ def main(argv: list[str] | None = None) -> int:
                                    + (metrics.get("planner_output_tokens") or 0)) or None,
                 "planner_validation_retries": metrics.get("planner_validation_retries"),
                 "planner_protocol_failures": metrics.get("planner_protocol_failures"),
+                "excluded_tasks": len(excluded),
             })
             # by source / by skill
             for role, key in (("id", "initial_id"), ("transfer", "initial_transfer"),
@@ -182,6 +204,12 @@ def main(argv: list[str] | None = None) -> int:
                                 ["method"])
         writer.writeheader()
         writer.writerows(cost_rows)
+    with open(PILOT / "PILOT_EXCLUDED.csv", "w", newline="") as f:
+        fields = ["method", "seed", "checkpoint", "role", "task", "status",
+                  "stop_reason", "error", "attempts"]
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        writer.writerows(excluded_rows)
     with open(PILOT / "PILOT_PAIRED.csv", "w", newline="") as f:
         writer = csv.DictWriter(
             f, fieldnames=["method", "seed", "role", "n", "fail_to_success",
@@ -218,6 +246,19 @@ def main(argv: list[str] | None = None) -> int:
                   "| Method | Stop reason | n |", "|---|---|---:|"]
         for (method, reason), n in sorted(stop_reasons.items()):
             lines.append(f"| {method} | {reason} | {n} |")
+    lines += ["", "## Excluded from success rates (non-PASS episodes)",
+              "Protocol/infrastructure-failed episodes are counted here, never as task failures.",
+              "",
+              "| Method | Checkpoint | Role | n excluded |",
+              "|---|---|---|---:|"]
+    excl_agg = defaultdict(int)
+    for row in excluded_rows:
+        excl_agg[(row["method"], row["checkpoint"], row["role"] or "-")] += 1
+    if excl_agg:
+        for (method, ckpt, role), n in sorted(excl_agg.items()):
+            lines.append(f"| {method} | {ckpt} | {role} | {n} |")
+    else:
+        lines.append("| - | - | - | 0 |")
     lines += ["", "## Paired transitions (S000 -> Sfinal)",
               "",
               "Same frozen tasks at both checkpoints; a task counts only when both runs "

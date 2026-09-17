@@ -41,6 +41,15 @@ Required JSON schema:
 """.strip()
 
 NONE_GUIDANCE = "(none)"
+NO_IMAGES_TEXT = "(no image inputs)"
+
+
+def render_visual_inputs(roles: list[str] | None) -> str:
+    """Roles come from the source's allowlisted `image_roles` only."""
+    cleaned = [str(role) for role in (roles or []) if str(role).strip()]
+    if not cleaned:
+        return NO_IMAGES_TEXT
+    return "\n".join(f"Image {index}: {role}" for index, role in enumerate(cleaned, 1))
 
 
 def render_rsi_slot(injection: RSIInjection | None) -> str:
@@ -59,12 +68,16 @@ def build_turn_prompt(
     public_feedback: str,
     rsi_injection: RSIInjection | None,
     stuck_warning: str = "",
+    visual_inputs_text: str = "",
 ) -> str:
     """Fixed-order user prompt; identical skeleton for every RSI method."""
     schema = json.dumps(tool_specs, ensure_ascii=False, indent=2)
     return "\n".join([
         "## Task",
         instruction or "",
+        "",
+        "## Visual inputs",
+        visual_inputs_text or NO_IMAGES_TEXT,
         "",
         "## Persistent cross-episode guidance",
         render_rsi_slot(rsi_injection),

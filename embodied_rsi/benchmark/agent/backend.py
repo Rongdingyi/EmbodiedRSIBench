@@ -14,6 +14,9 @@ import requests
 from benchmark.utils import chat_completions_url, normalize_base_url
 
 
+DEFAULT_BASE_URL = "https://api.deepseek.com"
+
+
 class PlannerProtocolError(RuntimeError):
     """Planner protocol failure (API failure or exhausted validation retries)."""
 
@@ -27,10 +30,21 @@ class CanonicalVLMBackend:
         self.max_http_retries = max_http_retries
         self.backoff_s = backoff_s
         self.model = os.environ.get("DEEPSEEK_MODEL", "deepseek-flash")
-        base = normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", ""))
+        base = normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", "") or DEFAULT_BASE_URL)
+        if not base:
+            raise PlannerProtocolError(
+                "DEEPSEEK_BASE_URL is required (no usable default host resolved)")
+        json_mode = getattr(self.config, "json_mode", "prompt_only")
+        if json_mode != "prompt_only":
+            raise PlannerProtocolError(
+                f"unsupported planner.json_mode={json_mode!r}; the canonical backend "
+                "only implements prompt-only JSON")
         self.base_url = base
         self.url = chat_completions_url(base)
         self._api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+        if not self._api_key:
+            raise PlannerProtocolError(
+                "DEEPSEEK_API_KEY is required for the canonical planner backend")
 
     def complete(
         self,

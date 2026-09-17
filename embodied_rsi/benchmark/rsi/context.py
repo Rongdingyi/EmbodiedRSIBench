@@ -55,6 +55,25 @@ def count_tokens(text: str) -> int:
         return max(1, len(text) // 4)
 
 
+def truncate_to_token_budget(text: str, max_tokens: int = MAX_RSI_INJECTION_TOKENS) -> str:
+    """Deterministically shrink text until the wrapped guidance fits the budget.
+
+    Uses binary search over characters with the same token counter that
+    `make_injection` asserts on, so the result can never trip the assertion.
+    """
+    text = text or ""
+    if not text or count_tokens(wrap_guidance(text)) <= max_tokens:
+        return text
+    low, high = 0, len(text)
+    while low < high:
+        mid = (low + high + 1) // 2
+        if count_tokens(wrap_guidance(text[:mid])) <= max_tokens:
+            low = mid
+        else:
+            high = mid - 1
+    return text[:low]
+
+
 def wrap_guidance(text: str) -> str:
     text = (text or "").strip()
     if not text:

@@ -41,6 +41,25 @@ METHODS = {"none": NoneRSI, "raw_memory": RawMemoryRSI, "ace_context": AceContex
            "worldmind": WorldMindRSI, "embodiskill": EmbodiSkillRSI}
 
 
+def prepare_run_root(out_root: Path, *, delete_existing: bool) -> None:
+    """Fail-closed run root: non-empty roots abort unless deletion is explicit.
+
+    A canonical run must start from EMPTY RSI state. `--delete-existing-run`
+    really removes the previous root (state, logs, metrics) instead of merely
+    allowing writes into it, so a re-run can never read or append old state.
+    """
+    out_root = Path(out_root)
+    if out_root.exists():
+        if delete_existing:
+            shutil.rmtree(out_root)
+        elif any(out_root.iterdir()):
+            raise SystemExit(
+                f"[FAIL] canonical run output already exists: {out_root}\n"
+                "        canonical runs must start from empty RSI state.\n"
+                "        archive it, pass --delete-existing-run, or use --output-root.")
+    out_root.mkdir(parents=True, exist_ok=True)
+
+
 def repo_commit() -> str:
     try:
         return subprocess.run(["git", "-C", str(PROJECT), "rev-parse", "HEAD"],
@@ -189,7 +208,10 @@ def main() -> int:
     parser.add_argument("--max-probes", type=int, default=None)
     parser.add_argument("--output-root", type=Path, default=None,
                         help="override the run directory (dev smokes use a separate root)")
-    parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--delete-existing-run", action="store_true",
+                        help="delete a previous run root before starting (destructive)")
+    parser.add_argument("--overwrite", action="store_true",
+                        help="deprecated alias of --delete-existing-run")
     args = parser.parse_args()
 
     protocol = load_protocol_config(PROJECT / "configs" / "pilot60_canonical.yaml")
@@ -202,20 +224,46 @@ def main() -> int:
     out_root = (args.output_root if args.output_root is not None
                 else PROJECT / "outputs" / "pilot60_canonical" / args.method
                 / f"seed_{protocol.seed}")
-    if out_root.exists() and any(out_root.iterdir()) and not args.overwrite:
-        raise SystemExit(
-            f"[FAIL] canonical run output already exists: {out_root}\n"
-            "        canonical runs must start from empty RSI state.\n"
-            "        archive it, pass --overwrite, or use --output-root (dev smokes).")
-    out_root.mkdir(parents=True, exist_ok=True)
+    if args.overwrite and not args.delete_existing_run:
+        print("warning: --overwrite is deprecated; use --delete-existing-run")
+    prepare_run_root(out_root, delete_existing=args.delete_existing_run or args.overwrite)
     method.init_run({"state_root": str(out_root / "rsi_state"),
                      "run_id": f"pilot60_canonical:{args.method}",
                      "total_steps": len(manifest["experience"])})
 
+    from dataclasses import asdict
+
     freeze = build_freeze(PROJECT)
     (out_root / "canonical_agent_freeze.json").write_text(freeze_to_json(freeze))
-    (out_root / "config_resolved.yaml").write_text(
+    (out_root / "agent_config_source.yaml").write_text(
         (PROJECT / "configs" / "agent" / "canonical_react.yaml").read_text())
+    protocol_dict = asdict(protocol)
+    protocol_dict.pop("agent", None)   # agent config is resolved separately below
+    resolved_config = {
+        "protocol_source": str(PROJECT / "configs" / "pilot60_canonical.yaml"),
+        "agent_source": str(PROJECT / "configs" / "agent" / "canonical_react.yaml"),
+        "protocol": protocol_dict,
+        "agent": protocol.agent.to_dict(),
+        "cli": {"method": args.method, "max_experience": args.max_experience,
+                "max_probes": args.max_probes, "output_root": str(out_root),
+                "delete_existing_run": bool(args.delete_existing_run or args.overwrite)},
+        "resolved": {
+            "seed": protocol.seed,
+            "probe_checkpoints": list(protocol.probe_checkpoints),
+            "max_agent_actions_per_source": protocol.max_agent_actions,
+            "episode_timeout_s": protocol.episode_timeout_s,
+            "planner_max_output_tokens": protocol.agent.planner.max_output_tokens,
+            "planner_validation_retries": protocol.agent.planner.max_validation_retries,
+            "max_rsi_injection_tokens": protocol.agent.rsi.max_injection_tokens,
+            "temperature": protocol.agent.planner.temperature,
+            "model": os.environ.get("DEEPSEEK_MODEL", "deepseek-flash"),
+            "model_base_url": normalize_base_url(os.environ.get("DEEPSEEK_BASE_URL", "")),
+        },
+        "hashes": {"agent_config_sha256": agent_config_hash(protocol.agent),
+                   "manifest_sha256": sha256_file(PROJECT / "manifests" / "pilot60.json")},
+    }
+    (out_root / "config_resolved.json").write_text(
+        json.dumps(resolved_config, indent=2, sort_keys=True) + "\n")
     external = json.loads((PROJECT / "manifests" / "external_sources.json").read_text())
     rsi_upstream = external.get({"none": "OpenETA", "raw_memory": "OpenETA",
                                  "ace_context": "ACE", "worldmind": "WorldMind",

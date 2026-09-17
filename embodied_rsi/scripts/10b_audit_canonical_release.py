@@ -42,6 +42,65 @@ def check(name: str, cond: bool, detail: str = "") -> None:
         FAILS.append(f"{name}: {detail}")
 
 
+def summarize_infra(pilot_root: Path) -> dict:
+    """Infra crash rates with honest denominators.
+
+    `rate_experience_episodes`: infra errors / executed experience episodes.
+    `rate_all_attempts`: infra errors / every executed attempt, counting probe
+    retries (a retried probe is an executed attempt, not an episode).
+    """
+    experience_infra = 0
+    experience_episodes = 0
+    experience_attempts = 0
+    probe_infra = 0
+    probe_tasks = 0
+    probe_attempts = 0
+    root = Path(pilot_root)
+    if root.exists():
+        for method_dir in sorted(p for p in root.iterdir() if p.is_dir()):
+            for seed_dir in method_dir.glob("seed_*"):
+                updates = seed_dir / "rsi_updates.jsonl"
+                if updates.exists():
+                    for line in updates.read_text().splitlines():
+                        if not line.strip():
+                            continue
+                        try:
+                            entry = json.loads(line)
+                        except json.JSONDecodeError:
+                            continue
+                        experience_episodes += 1
+                        experience_attempts += int(entry.get("attempts") or 1)
+                        if entry.get("infrastructure_error"):
+                            experience_infra += 1
+                probes = seed_dir / "probes"
+                if probes.exists():
+                    for ckpt in sorted(probes.glob("S*")):
+                        summary = ckpt / "summary.json"
+                        if not summary.exists():
+                            continue
+                        data = json.loads(summary.read_text())
+                        for task in (data.get("tasks") or {}).values():
+                            probe_tasks += 1
+                            probe_attempts += int(task.get("attempts") or 1)
+                            if task.get("error"):
+                                probe_infra += 1
+
+    def rate(num: int, den: int) -> float:
+        return (num / den) if den else 0.0
+
+    return {
+        "experience_infra_errors": experience_infra,
+        "experience_episodes": experience_episodes,
+        "experience_attempts": experience_attempts,
+        "probe_infra_errors": probe_infra,
+        "probe_tasks": probe_tasks,
+        "probe_attempts": probe_attempts,
+        "rate_experience_episodes": rate(experience_infra, experience_episodes),
+        "rate_all_attempts": rate(experience_infra + probe_infra,
+                                  experience_attempts + probe_attempts),
+    }
+
+
 def main() -> int:
     freeze = load(OUT / "CANONICAL_AGENT_FREEZE.json")
     check("canonical agent freeze PASS", freeze.get("status") == "PASS",
@@ -140,9 +199,14 @@ def main() -> int:
     embodiskill_status = method_status.get("embodiskill", gates.BLOCKED)
     check("embodiskill recorded as BLOCKED (never silently PASS)",
           embodiskill_status == gates.BLOCKED, embodiskill_status)
-    infra_rate = infra_crashes / max(total_episodes, 1)
-    check("infrastructure crash rate < 2%", infra_rate < 0.02,
-          f"{infra_crashes}/{total_episodes}")
+    infra = summarize_infra(PILOT)
+    check("infrastructure crash rate per experience episode < 2%",
+          infra["rate_experience_episodes"] < 0.02,
+          f"{infra['experience_infra_errors']}/{infra['experience_episodes']}")
+    check("infrastructure crash rate per executed attempt < 2%",
+          infra["rate_all_attempts"] < 0.02,
+          f"{infra['experience_infra_errors'] + infra['probe_infra_errors']}"
+          f"/{infra['experience_attempts'] + infra['probe_attempts']}")
 
     status = gates.FAIL if FAILS else gates.release_status(
         {**method_status, "embodiskill": embodiskill_status})

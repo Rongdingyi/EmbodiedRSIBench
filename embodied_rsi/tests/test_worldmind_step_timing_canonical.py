@@ -61,6 +61,15 @@ class SpyRSI:
     def set_update_enabled(self, enabled):
         self.update_enabled = enabled
 
+    def snapshot(self, output_dir):
+        from pathlib import Path as _P
+
+        _P(output_dir).mkdir(parents=True, exist_ok=True)
+        (_P(output_dir) / "spy_state.txt").write_text("v1")
+
+    def load_snapshot(self, input_dir):
+        self.events.append("rollback")
+
 
 class TimingAdapter(FakeAdapter):
     def step(self, name, parameters):

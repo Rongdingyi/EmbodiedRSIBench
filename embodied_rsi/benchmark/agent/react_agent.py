@@ -16,6 +16,7 @@ from benchmark.agent.prompt import (
     CANONICAL_SYSTEM_PROMPT,
     build_invalid_response_note,
     build_turn_prompt,
+    render_visual_inputs,
 )
 from benchmark.agent.types import AgentDecision, WorkingMemoryStep
 from benchmark.agent.vision import observation_image_parts
@@ -57,6 +58,16 @@ class CanonicalMultimodalReActAgent:
         self.memory.clear()
 
     # ------------------------------------------------------------------- decide
+    @staticmethod
+    def _current_image_roles(observation) -> list[str]:
+        """Allowlisted public image roles; never private metadata."""
+        metadata = getattr(observation, "public_metadata", None)
+        roles = metadata.get("image_roles") if isinstance(metadata, dict) else None
+        images = list(getattr(observation, "images", None) or [])
+        if not isinstance(roles, list) or len(roles) != len(images):
+            roles = ["current_view"] * len(images)
+        return [str(role) for role in roles]
+
     def decide(self, observation) -> AgentDecision:
         stuck_warning = self._stuck_warning()
         base_prompt = build_turn_prompt(
@@ -66,6 +77,7 @@ class CanonicalMultimodalReActAgent:
             public_feedback=observation.text_feedback,
             rsi_injection=self.rsi_injection,
             stuck_warning=stuck_warning,
+            visual_inputs_text=render_visual_inputs(self._current_image_roles(observation)),
         )
         images = observation_image_parts(observation, max_images=self.config.planner.max_images)
 

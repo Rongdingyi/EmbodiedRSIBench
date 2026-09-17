@@ -3,19 +3,34 @@
   "agent_name": "canonical_multimodal_react_v1",
   "critical_file_sha256": {
     "benchmark/agent/action_schema.py": "dad335299d58b944afce436df3ec55a4b322453dce980f914de72aae2207d5d6",
-    "benchmark/agent/backend.py": "758da206c61e8e326467584b0461facb0a308c24d18be7b41280615c02105ccf",
-    "benchmark/agent/episode_runner.py": "4e7c54fa4d61d36ccd7eb2de5e9d4865745cd03fdc545528f8405b9eca59cc36",
-    "benchmark/agent/prompt.py": "f19016b1f0f7a081691c2ac95dc1084ce9cf6cad7a95f0f5e338479519af4491",
-    "benchmark/agent/react_agent.py": "4b54dc34835750dc706b536b43f73480f27030d3aa91f2a872cb1d35bba6abe2",
+    "benchmark/agent/backend.py": "58663240e94ba9c20d135c9d0924f59985d50d2ebda774c838b2009303bc3d23",
+    "benchmark/agent/episode_runner.py": "73469b87019c2d7880edbf48664bb42c2bd4e84e30b24202d4c88f1fb608790a",
+    "benchmark/agent/prompt.py": "0cd11fd98f2a5fc7a2487be3e183f9f7a7b9fad9bb286b43defa4bcd29f15bb3",
+    "benchmark/agent/react_agent.py": "3c932ba5eb1b9f430469a3ec8716b2bef23689f7899eae114f244bab071f0a47",
     "benchmark/agent/working_memory.py": "63357696f6dfd1eb4c7d4b427e1fabcbc6b498eace1ee645134aaf0f3136b619",
     "configs/agent/canonical_react.yaml": "260efa152824c27b1edf523df6ac4ac49592394642a7f593f0350ce47722998c"
   },
   "cross_episode_agent_memory": false,
   "forbidden_import_violations": [],
+  "invariant_tests": {
+    "missing_tests": [],
+    "status": "PASS",
+    "summary": "16 passed in 0.59s",
+    "test_file_sha256": {
+      "tests/test_agent_action_validation.py": "ce9b86f0c4b73cefd3b2f3277a49cf5f230e104aa598b22a2bc7912059862294",
+      "tests/test_agent_budget_semantics.py": "7405eccd1d09795c4e20ad19ea79db4c311cc4d0235211044fc97e077a28f7c3",
+      "tests/test_agent_no_cross_episode_state.py": "e6ec61f2c66605b484287e151a8204a6f94892df9ad7c5fbc4fc298df735bd23",
+      "tests/test_agent_one_action_per_turn.py": "c8a99d76af7eced6a7f123a293cfe23acbbe814aa06a5337bed04bec5bdf634c",
+      "tests/test_agent_prompt_contract.py": "2baaee9d760ca35eeb03692adebc8efe2e7ae99c9835ba28f59932132bdd7282",
+      "tests/test_rsi_context_decoupled.py": "568f42ddf357c45b1408a858a0c38c7705e9d0b20cda421876c0781203d1a77a",
+      "tests/test_worldmind_step_timing_canonical.py": "95588b4e7eafca1bd7f86ffb6e1d63e71c72a4ee224083ec1c9fe87f32cec815"
+    }
+  },
   "one_action_per_turn": true,
   "reference": "EmbodiedBench/VLMPlanner",
   "reference_commit": "9be4e980e9cd6bcb38373cd4aab7c32724bdd401",
   "rsi_only_persistent_state": true,
+  "static_checks_status": "PASS",
   "status": "PASS",
   "system_prompt_sha256": "a4ba82a6ff4b4f1259795a09503cf1d6908700022b35a4342e84729f61cd020d"
 }

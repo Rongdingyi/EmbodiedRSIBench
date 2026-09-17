@@ -13,7 +13,8 @@ import sys
 import time
 from pathlib import Path
 
-from benchmark.rsi.context import RSIInjection, count_tokens, make_injection
+from benchmark.rsi.context import (RSIInjection, count_tokens, make_injection,
+                                   truncate_to_token_budget)
 from benchmark.rsi.base import RSIMethod
 
 PROJECT = Path(__file__).resolve().parents[2]
@@ -150,6 +151,7 @@ class AceContextRSI(RSIMethod):
             # deterministic relevance filter: keep the playbook headings only
             lines = [ln for ln in text.splitlines() if ln.startswith("##") or ln.startswith("-")]
             text = "\n".join(lines)
+        text = truncate_to_token_budget(text, MAX_PLAYBOOK_TOKENS)
         return make_injection(text, provenance_ids=["ace_playbook"])
 
     @staticmethod

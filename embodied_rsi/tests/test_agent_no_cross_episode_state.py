@@ -45,11 +45,12 @@ def test_agent_is_fresh_instance_per_episode_in_runner(tmp_path, monkeypatch):
 
     class TrackingAgent(real_cls):
         def __init__(self, **kwargs):
-            kwargs["backend"] = FakeBackend([valid_response("MoveAhead")] * 4)
             super().__init__(**kwargs)
             created.append(self)
 
     monkeypatch.setattr(er, "CanonicalMultimodalReActAgent", TrackingAgent)
+    monkeypatch.setattr(er, "CanonicalVLMBackend",
+                        lambda *a, **k: FakeBackend([valid_response("MoveAhead")] * 4))
     rsi = NoneRSI()
     rsi.init_run({"state_root": str(tmp_path / "rsi")})
     for index in (1, 2):
