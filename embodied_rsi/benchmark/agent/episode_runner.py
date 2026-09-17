@@ -133,6 +133,13 @@ def run_episode(task: dict, adapter, rsi, *, role: str, config: ProtocolConfig,
         config=config.agent,
         accountant=accountant,
     )
+    # the runner owns the accountant: wire injected agents/backends into it so
+    # validation-retry and token counters never silently disappear
+    if getattr(agent, "accountant", None) is None:
+        agent.accountant = accountant
+    backend = getattr(agent, "backend", None)
+    if backend is not None and getattr(backend, "accountant", None) is None:
+        backend.accountant = accountant
 
     observation = adapter.reset(task)
     tool_specs = adapter.build_tool_specs(task) or []
@@ -232,6 +239,11 @@ def run_episode(task: dict, adapter, rsi, *, role: str, config: ProtocolConfig,
         if outcome.truncated:
             stop_reason = stop_reason or "source_truncated"
             break
+
+    try:
+        agent.close_episode()
+    except Exception:  # noqa: BLE001
+        pass
 
     private_eval: dict = {"success": None, "error": "evaluator unavailable"}
     try:
