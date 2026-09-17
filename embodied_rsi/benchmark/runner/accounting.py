@@ -47,6 +47,9 @@ class Accountant:
     worldmind_sidecar: Usage = field(default_factory=Usage)
     embedding_calls: int = 0
     simulator_steps: int = 0
+    planner_validation_retries: int = 0
+    planner_invalid_json_count: int = 0
+    planner_invalid_action_count: int = 0
     request_dumps: list[dict] = field(default_factory=list)
 
     # ------------------------------------------------------------- recording
@@ -93,6 +96,17 @@ class Accountant:
     def record_env_step(self, n: int = 1) -> None:
         self.simulator_steps += int(n)
 
+    def record_validation_retry(self) -> None:
+        self.planner_validation_retries += 1
+
+    def record_invalid_json(self) -> None:
+        self.planner_invalid_json_count += 1
+        self.record_validation_retry()
+
+    def record_invalid_action(self) -> None:
+        self.planner_invalid_action_count += 1
+        self.record_validation_retry()
+
     # ---------------------------------------------------------------- output
     def leakage_violations(self, extra_forbidden_values: list[str] | None = None) -> list[str]:
         hits: list[str] = []
@@ -133,6 +147,9 @@ class Accountant:
             "worldmind_prediction_sidecar_calls": self.worldmind_sidecar.calls,
             "embedding_calls": self.embedding_calls,
             "simulator_steps": self.simulator_steps,
+            "planner_validation_retries": self.planner_validation_retries,
+            "planner_invalid_json_count": self.planner_invalid_json_count,
+            "planner_invalid_action_count": self.planner_invalid_action_count,
         }
 
 
