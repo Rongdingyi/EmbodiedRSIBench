@@ -80,6 +80,56 @@ class AgentConfig:
         return asdict(self)
 
 
+@dataclass(frozen=True)
+class ProtocolBudgets:
+    episode_timeout_s: float = 1200.0
+    planner_max_output_tokens: int = 2048
+    planner_validation_retries: int = 2
+    max_rsi_injection_tokens: int = 8192
+    max_agent_actions: dict = field(default_factory=dict)
+
+
+@dataclass(frozen=True)
+class ProtocolConfig:
+    seed: int = 20260915
+    roles: dict = field(default_factory=dict)
+    probe_checkpoints: list = field(default_factory=lambda: ["S000", "S030"])
+    probe_update_enabled: bool = False
+    agent: AgentConfig = field(default_factory=AgentConfig)
+    budgets: ProtocolBudgets = field(default_factory=ProtocolBudgets)
+
+    @property
+    def episode_timeout_s(self) -> float:
+        return float(self.budgets.episode_timeout_s)
+
+    @property
+    def max_agent_actions(self) -> dict:
+        return dict(self.budgets.max_agent_actions)
+
+
+def load_protocol_config(path: Path, *, repo_root: Path | None = None) -> ProtocolConfig:
+    raw = yaml.safe_load(Path(path).read_text()) or {}
+    root = Path(repo_root) if repo_root is not None else Path(path).resolve().parents[2]
+    agent_path = root / (raw.get("agent", {}) or {}).get(
+        "config", "configs/agent/canonical_react.yaml")
+    budgets_raw = raw.get("budgets") or {}
+    budgets = ProtocolBudgets(
+        episode_timeout_s=budgets_raw.get("episode_timeout_s", 1200),
+        planner_max_output_tokens=budgets_raw.get("planner_max_output_tokens", 2048),
+        planner_validation_retries=budgets_raw.get("planner_validation_retries", 2),
+        max_rsi_injection_tokens=budgets_raw.get("max_rsi_injection_tokens", 8192),
+        max_agent_actions=dict(budgets_raw.get("max_agent_actions") or {}),
+    )
+    return ProtocolConfig(
+        seed=int(raw.get("seed", 20260915)),
+        roles=dict(raw.get("roles") or {}),
+        probe_checkpoints=list(raw.get("probe_checkpoints") or ["S000", "S030"]),
+        probe_update_enabled=bool(raw.get("probe_update_enabled", False)),
+        agent=load_agent_config(agent_path),
+        budgets=budgets,
+    )
+
+
 def load_agent_config(path: Path) -> AgentConfig:
     raw = yaml.safe_load(Path(path).read_text()) or {}
     return AgentConfig(
