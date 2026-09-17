@@ -1,8 +1,8 @@
-"""Condition C: ACE-Context (OpenETA executor adaptation).
+"""Condition C: ACE-Context (Canonical ReAct executor adaptation).
 
 Official ACE Reflector/Curator/playbook machinery from
 `external/ace/ace/core/{reflector,curator}.py` + `playbook_utils.py`.
-OpenETA replaces ACE's Generator as the task executor; no ACE prompt or update
+The canonical ReAct agent replaces ACE's Generator as the task executor; no ACE prompt or update
 logic is modified (guide sections 2.3 / 19).
 """
 from __future__ import annotations
@@ -156,7 +156,7 @@ class AceContextRSI(RSIMethod):
     def _import_ace_with_own_logger():
         """Import ACE modules with ACE's own `logger.py` bound to `logger`.
 
-        The OpenETA venv also ships a top-level `logger` package; without this
+        The runtime venv also ships a top-level `logger` package; without this
         swap, ACE's `from logger import log_llm_call` resolves to OpenETA's
         module and raises ImportError.
         """

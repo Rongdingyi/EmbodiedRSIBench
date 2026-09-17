@@ -4,7 +4,7 @@ Call-path audit (guide section 21.2) is documented in
 `outputs/preflight/EMBODISKILL_CALL_PATH.md`. The official implementation is
 built around MS-Agent/ALFWorld `StateChain`/agentkit execution and its
 reflection epoch files assume the ALFWorld runner owns the trajectory. Wiring it
-to an external OpenETA trajectory without rewriting its reflection/update
+to a canonical public trajectory without rewriting its reflection/update
 semantics is not possible within the guide's <=200-line limit, so this method is
 recorded as BLOCKED instead of shipping a pseudo-EmbodiSkill.
 """

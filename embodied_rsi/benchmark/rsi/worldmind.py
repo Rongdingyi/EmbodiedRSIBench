@@ -1,10 +1,10 @@
-"""Condition D: WorldMind (Goal + Process Experience) with OpenETA executor.
+"""Condition D: WorldMind (Goal + Process Experience) with Canonical Multimodal ReAct executor.
 
 Official `Plugin/worldmind_plugin` modules:
   ProcessExperienceModule / GoalExperienceModule / ExperienceRetrievalModule.
 
 Prediction timing (P0-2, guide section 20.2): the prediction sidecar runs via
-`predict_sidecar()` AFTER OpenETA locks the action and BEFORE the environment
+`predict_sidecar()` AFTER the canonical agent selects and validates the action and BEFORE the environment
 executes it. `after_step()` then feeds the real public feedback into
 `process_single_step()` so the module compares predicted vs actual state. The
 sidecar output never returns to the planner.
